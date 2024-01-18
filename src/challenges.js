@@ -12,14 +12,44 @@ const repeatedWords = [
   "disobedience",
   "matter"
 ];
+ 
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, wordToSearch) {
+
+  if (repeatedWords.length===0){
+    return 0;
+  } 
+
+  let counter=0; 
+  
+  for (let i=0; i<repeatedWords.length; i++){
+    
+    if (repeatedWords[i]===wordToSearch){
+      
+      counter += 1;
+    } 
+    } 
+    return counter; 
+  }
+  
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+
+  if (n===0){
+    return [];
+  }
+let results=[];
+
+   for ( let i=0; i<=n ; i++ ){
+    results.push(i);
+   }
+   return results;
+}
 
 
 
@@ -27,8 +57,21 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
 
+  if (numbers.length===0){
+    return [];
+  }
+
+  let result = [];
+  numbers.forEach(function (number) {
+  let numberToArray = number*multiplier;
+  result.push(numberToArray);
+  })
+  return result;
+}
+
+ 
 
 
 
@@ -36,9 +79,33 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  
+  if (original.length === 0) {
+      return null;
+  }
+  
+  else if (toRemove.length === 0) {
+      return original;
+  }
 
+  
+  for (let i = 0; i <= toRemove.length - 1; i++) {
+      
+      let indexToRemove = original.indexOf(toRemove[i]);
 
+      
+      while (indexToRemove !== -1) {
+          original.splice(indexToRemove, 1);
+          indexToRemove = original.indexOf(toRemove[i]);
+      }
+  }
+
+  
+  return original;
+}
+
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,9 +123,29 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
 
 
+
+function uniquifyArray(words) {
+  
+  if (words.length === 0) {
+      return null;
+  }
+
+  
+  const uniqueArray = [];
+
+  
+  for (let i = 0; i < words.length; i++) {
+      
+      if (!uniqueArray.includes(words[i])) {
+          uniqueArray.push(words[i]);
+      }
+  }
+
+  
+  return uniqueArray;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
