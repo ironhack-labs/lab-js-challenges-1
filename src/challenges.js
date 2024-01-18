@@ -122,26 +122,14 @@ function uniquifyArray(wordArray) {
   if (wordArray.length === 0) {
     return null;
   }
-
-  let wordIndex1 = '';
-  let wordIndex2 = '';
-
-  wordArray.forEach(function (arrayWord1) {
-    wordIndex1 = wordArray.indexOf(arrayWord1);
-    wordArray.forEach(function (arrayWord2) { 
-      wordIndex2 = wordArray.indexOf(arrayWord2);
-
-     if (arrayWord1 === arrayWord2 && wordIndex1 !== wordIndex2) {
-        wordArray.splice(wordArray[wordIndex2], 1);
-      }
-    
-    })
-  }) 
-    return wordArray 
+  let result = [wordArray[0]];
+  
+  wordArray.forEach(function(word) {
+    if(!result.includes(word))
+      result.push(word);
+  })
+return result;
 }
-console.log(uniquifyArray(duplicateWords));
-
-
 
 
 
