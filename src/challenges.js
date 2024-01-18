@@ -71,15 +71,19 @@ function filterOut(original, toRemove) {
   } else if (toRemove.length===0){
     return original;
   }
+  
+  for (let i=0; i<toRemove.length; i++){
 
-  for (let k=0; k<original.length; k++){
-    if (original.includes(toRemove[k])){
-      original.splice(k, 1);
-      k--;
+    let indexToRemove = original.indexOf(toRemove[i]);
+
+    while (indexToRemove !== -1){
+      original.splice(indexToRemove, 1);
+      indexToRemove = original.indexOf(toRemove[i]);
     }
   }
   return original;
-}
+  }
+  
 
 
 
@@ -99,7 +103,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (words.length===0){
+    return null;
+  } 
+
+  const uniqueArray = [];
+
+  for (let i=0; i<words.length; i++){
+
+    if (!uniqueArray.includes(words[i])){
+      uniqueArray.push(words[i]);
+
+    }
+  }
+  return uniqueArray;
+}
 
 
 
