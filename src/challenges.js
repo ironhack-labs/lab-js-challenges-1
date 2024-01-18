@@ -13,30 +13,116 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsAll, wordsInside) {
+
+  if (wordsAll.length === 0) return 0;
+
+  let contagem = 0;
+
+  for (i = 0; i < wordsAll.length; i++) {
+
+    if (wordsAll[i] === wordsInside) {
+
+      contagem++
+
+    }
+
+  }
+
+  return contagem
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+function createSequence(n) {
 
 
+  if (n === 0) return [];
+
+  // let sequence = "";
+
+  let array = [];
+
+  for (i = 0; i <= n; i++) {
+
+    array.push(i)
+
+  }
+
+  return array
+
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array2, number) {
 
+  let contador = [];
 
+  if (array2.length === 0) return [];
+
+  array2.forEach((element) => {
+
+    let result = element * number
+
+    contador.push(result)
+
+  })
+
+  return contador
+
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original2, toRemove2) {
+
+  let finalArray = [];
+
+  if (original2.length === 0) {
+    return null;
+  }
+
+  if (toRemove2.length === 0) {
+    return original2;
+  }
+
+  /*for (let i = 0; i < original2.length; i++) {
+
+    for (let j = 0; j < toRemove2.length; j++) {
+
+      if (original2[i] !== toRemove2[j]) {
+
+        finalArray.push((original2[i]))
+
+        
+
+      }
+
+    }
+
+  }*/
+
+  original2.forEach((word) => {
+
+    if (!toRemove2.includes(word)) {
+
+      finalArray.push(word);
+
+    }
+
+  })
+
+  return finalArray;
+}
 
 
 
@@ -56,7 +142,29 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(someWords) {
+
+  let arraySolved = [];
+
+  if (someWords.length === 0) {
+
+    return null;
+
+  }
+
+  someWords.forEach((any) => {
+
+    if (arraySolved.indexOf(any) === -1) {
+
+      arraySolved.push(any)
+
+    }
+
+  })
+
+  return arraySolved
+
+}
 
 
 
@@ -85,4 +193,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
