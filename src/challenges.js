@@ -36,17 +36,20 @@ howManyTimes (repeatedWords, "");
 
 // Iteration 2 | Number Sequence
 function createSequence(n) {
-  let array = 0;
-  for (let i= 0; i < n.length ; i ++) {
-       const   = n[i];
-    if (eachWord === randomWord) {
-        count++
+  let array = [];
+  for (let i= 0; i <= n; i ++) {
+       array.push(i);
     }
+  if (n === 0){
+    return [];
   }
-  
-  console log(array)
-  return array
-}
+    console.log(array);
+  return array;
+  }
+
+createSequence(7);
+createSequence("");
+createSequence(0);
 
 
 
@@ -54,7 +57,23 @@ function createSequence(n) {
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let newArray = [];
+  
+    numbers.forEach(function(numbers) {
+    newArray.push(numbers*multiplier);
+  });
+
+  console.log (newArray);
+    return newArray;
+}
+
+
+multiplyBy(numbers, 2);
+
+
+
+
 
 
 
