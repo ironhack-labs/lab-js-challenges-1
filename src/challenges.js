@@ -1,25 +1,42 @@
 // Iteration 1 | Count Repetition
-const repeatedWords = [
-  "machine",
-  "matter",
-  "subset",
-  "trouble",
-  "starting",
-  "matter",
-  "eating",
-  "matter",
-  "truth",
-  "disobedience",
-  "matter"
-];
+const repeatedWords = ["machine", "matter", "subset", "trouble",  "starting", "matter", "eating", "matter", "truth", "disobedience",  "matter"];
+let wordToSearch= '';
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, wordToSearch) {
+
+  if (repeatedWords.length===0){
+    return 0;
+  } 
+
+  let counter=0; 
+  
+  for (let i=0; i<repeatedWords.length; i++){
+    
+    if (repeatedWords[i]===wordToSearch){
+      
+      counter += 1;
+    } 
+    } 
+    return counter; 
+  }
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n===0){
+    return [];
+  }
+
+  let result= [];
+
+  for (let j=0; j<=n; j++){
+    result.push(j);
+  }
+  return result;
+}
 
 
 
@@ -27,7 +44,19 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+
+  if (numbers.length===0){
+    return [];
+  }
+
+  let result = [];
+  numbers.forEach(function (number) {
+  let numberToArray = number*multiplier;
+  result.push(numberToArray);
+  })
+  return result;
+}
 
 
 
@@ -36,7 +65,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length===0){
+    return null;
+  } else if (toRemove.length===0){
+    return original;
+  }
+
+  for (let k=0; k<original.length; k++){
+    if (original.includes(toRemove[k])){
+      original.splice(k, 1);
+      k--;
+    }
+  }
+  return original;
+}
 
 
 
