@@ -105,29 +105,28 @@ const duplicateWords = [
   "poison",
   "communion",
   "simple",
-  "bring"
+  "bring",
 ];
 
-function uniquifyArray(arr){
-  let uniqueArr  = [];
-  for(let i =0; i<arr.length;i++)
-{
-  if(uniqueArr.indexOf(arr[i] === -1)){
-    uniqueArr.push(arr[i]);
+function uniquifyArray(arr) {
+  let uniqueArr = [];
+  let duplicatesArr = [];
 
+  for (let i = 0; i < arr.length; i++) {
+    if (uniqueArr.indexOf(arr[i]) === -1) {
+      uniqueArr.push(arr[i]);
+    } else {
+      duplicatesArr.push(arr[i]);
+    }
   }
-  else if(arr[i] === "1"){
-    return 1;
-  }else if (arr[i] === "2")
-  {
-    return 16;
-  }
+
+  
+  return { uniqueArr, duplicatesArr };
+  
+  
 }
 
-return uniqueArr;
-}
-
-uniquifyArray(duplicateWords)
+uniquifyArray(duplicateWords);
 
 
 
