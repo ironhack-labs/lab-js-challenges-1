@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordCounted) {
+  let count = 0;
+
+  arrayOfWords.forEach(word => {
+    if (word === wordCounted){
+      count ++
+    }
+  });
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let sequence = [];
+  if(n === 0){
+    return [];
+  }
+  for (let i=0; i<=n; i++){
+    sequence.push(i);
+  }
+  return sequence
+}
 
 
 
@@ -27,7 +45,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, n) {
+  let arrayMultiplied = [];
+
+  arrayOfNumbers.forEach(num => {
+    arrayMultiplied.push(num*n)
+  });
+  return arrayMultiplied;
+}
 
 
 
@@ -36,8 +61,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, arrayToRemove) {
+  let resultArray = [];
 
+  if(originalArray.length === 0){
+    return null
+  }
+  if(arrayToRemove.length === 0 || arrayToRemove === undefined){
+    return originalArray
+  }
+  for(let i = 0; i<originalArray.length;i++){
+    if(!arrayToRemove.includes(originalArray[i])){
+      resultArray.push(originalArray[i])
+    }
+  }
+  return resultArray
+}
 
 
 
@@ -56,7 +95,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfOWords) {
+  let dummyArray = []
+  if(arrayOfOWords.length === 0){
+    return null
+  }
+
+  for(let i=0; i<arrayOfOWords.length; i++){
+    if(!dummyArray.includes(arrayOfOWords[i])){
+      dummyArray.push(arrayOfOWords[i]);
+    }
+  }
+  return dummyArray
+}
 
 
 
@@ -85,4 +136,43 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(array){
+
+  var biggestHorProd = 0;
+  var biggestVerProd = 0;
+  var biggestTotalProd = 0;
+
+  for(let i=0 ; i<array.length ; i++){
+    for(let j=0; j<array[i].length -3; j++){
+      let prodHor = array[i][j]*array[i][j+1]*array[i][j+2]*array[i][j+3];
+
+      if (prodHor > biggestHorProd){
+        biggestHorProd = prodHor;
+      }
+    }
+  }
+
+  for(let i=0 ; i<array.length -3 ; i++){
+    for(let j=0 ; j<array[i].length; j++){
+      let prodVer = array[i][j]*array[i+1][j]*array[i+2][j]*array[i+3][j];
+
+      if (prodVer > biggestVerProd){
+        biggestVerProd = prodVer;
+      }
+    }
+  }
+
+  if(biggestHorProd > biggestVerProd){
+    biggestTotalProd = biggestHorProd;
+  }
+  else if(biggestHorProd < biggestVerProd){
+    biggestTotalProd = biggestVerProd;
+  }
+  else{
+    biggestTotalProd = biggestHorProd;
+  }
+  return biggestTotalProd
+
+}
+
+console.log(greatestProduct(matrix));
