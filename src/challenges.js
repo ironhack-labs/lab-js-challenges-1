@@ -124,8 +124,7 @@ function uniquifyArray(arr){
   }
 }
 
-const result = console.log(uniqueArr);
-return result;
+return uniqueArr;
 }
 
 uniquifyArray(duplicateWords)
