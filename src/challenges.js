@@ -72,22 +72,33 @@ function multiplyBy(numbers, multiplier) {
 multiplyBy(numbers, 2);
 
 
-
-
-
-
-
-
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+    }
 
+let newArray=[];
+
+  original.forEach(function(word) {
+     if (!toRemove.includes(word)){
+    newArray.push(word)
+     }
+  })
+  console.log (newArray);
+  return (newArray);
+}
+filterOut(original, toRemove);
+filterOut(0, toRemove);
 
 
 
 // Iteration 5 | Unique Arrays
+
+const result = `${original.splice(2,2)} ${original.splice(5,1)}`
 const duplicateWords = [
   "crab",
   "poison",
