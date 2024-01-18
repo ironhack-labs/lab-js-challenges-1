@@ -1,4 +1,27 @@
 // Iteration 1 | Count Repetition
+
+let count = 0
+
+function howManyTimes (repeatedWords , sameWord) {
+  
+  if (repeatedWords === sameWord) {
+    for (let i= 0; i < repeatedWords.length ; i ++) {
+      return count++
+    }
+  } 
+  else {return 0}
+
+  return count 
+}
+
+console.log(count) 
+howManyTimes('matter', 'matter')
+
+
+
+  
+     
+   
 const repeatedWords = [
   "machine",
   "matter",
