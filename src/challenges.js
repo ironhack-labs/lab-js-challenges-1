@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(wordArr, wordSearch) {
+  let totalRepetition = 0;
+  wordArr.forEach(function(element){
+    if (element === wordSearch) {
+      totalRepetition +=1;
+    }
+  })
+  return totalRepetition
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return [];
+  } else {
+    let newArray = [];
+    for (let i = 0; i <= n; i++) {
+      newArray.push(i); 
+    }
+    return newArray;
+  }
+}
+
 
 
 
@@ -27,8 +45,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(array, multiplier) {
+  if (array.length === 0) {
+    return [];
+  } else {
+    let newArray = [];
+    array.forEach(function(number){
+      newArray.push(number * multiplier);  
+    })
+    return newArray;
+  }
+}
 
 
 
@@ -36,9 +63,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
+function filterOut(basic, remove) {
+  if (basic.length === 0) {
+    return null
+  } else {
+    let newArray = [];
+    basic.forEach(function(element) {
+      if (!remove.includes(element)) {
+        newArray.push(element);
+      }
+    })
+    return newArray;
+  }
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +93,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (array.length === 0) {
+    return null;
+  } else {
+    let newArray = [];
+    array.forEach(function(element) {
+      if (!newArray.includes(element)) {
+        newArray.push(element);
+      }
+    })
+    return newArray;
+  }
+}
 
 
 
@@ -85,4 +134,47 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(array) {
+  let horizontallyNumber = 0;
+  let horizontallyX = 0;
+  let horizontallyY = 0;
+  let horizontallyfournumber = "";
+  for (let i = 0; i < array.length; i++) {
+    for (let y = 0; y < array[i].length-3; y++) {
+      if (array[i][y] * array[i][y+1] * array[i][y+2] * array[i][y+3] > horizontallyNumber) {
+        horizontallyNumber = array[i][y] * array[i][y+1] * array[i][y+2] * array[i][y+3]
+        horizontallyY = i+1;
+        horizontallyX = y+1;
+        horizontallyfournumber = `${array[i][y]}, ${array[i][y+1]}, ${array[i][y+2]}, ${array[i][y+3]}`
+      }
+    }
+  }
+  console.log(horizontallyNumber + " x: " + horizontallyX + " y: " + horizontallyY + " " + horizontallyfournumber);
+
+  let verticalNumber = 0;
+  let verticalX = 0;
+  let verticalY = 0;
+  let verticalfournumber = "";
+  
+  for (let i = 0; i < array.length-3; i++) {
+    for (let y = 0; y < array[i].length; y++) {
+      if (array[i][y] * array[i+1][y] * array[i+2][y] * array[i+3][y] > verticalNumber) {
+        verticalNumber = array[i][y] * array[i+1][y] * array[i+2][y] * array[i+3][y]
+        verticalY = i+1;
+        verticalX = y+1;
+        verticalfournumber = `${array[i][y]}, ${array[i+1][y]}, ${array[i+2][y]}, ${array[i+3][y]}`
+      }
+    }
+  }
+  console.log(verticalNumber + " x: " + verticalX + " y: " + verticalY + " " + verticalfournumber);
+
+
+  if (horizontallyNumber >= verticalNumber) {
+    return horizontallyNumber
+  } else {
+    return verticalNumber
+  }
+}
+
+
+console.log(greatestProduct(matrix));
