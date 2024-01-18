@@ -14,24 +14,43 @@ const repeatedWords = [
 ];
 
 function howManyTimes(wordArray, soughtWord) {
+  // Return 0 if the array is empty
   if (wordArray.length === 0){
-    return 0 
+    return 0;
   }
-  let count = 0 
+
+  // Initialize the variable where we store the number of matches
+  // between the sought word and the elements of the array
+  let countMatchesOfSoughtWordInArray = 0;
   
+  // Loop through the array looking for matches
   wordArray.forEach(function(arrayWord) {
-   if (arrayWord === soughtWord){
-    count+=1 
+   // This is the stuff that happens inside the loop 
+   if (arrayWord === soughtWord){// Check if the word in the current array index matches the sought word
+    countMatchesOfSoughtWordInArray+=1; // if there is a match, increase the variable that tracks the number of matches
   }
-  console.log(count)
   } )
+  return countMatchesOfSoughtWordInArray;  // Return the number of matches
 }
-howManyTimes(repeatedWords)
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+
+  const newArray = [];
+
+  if (n === 0){
+    return newArray;
+  }
+  
+  for (let i = 0; i <= n; i++) {
+    newArray.push(i);
+  }
+  return newArray;
+}
+
+console.log(createSequence(23));
 
 
 
