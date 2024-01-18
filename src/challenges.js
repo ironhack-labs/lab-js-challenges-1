@@ -16,29 +16,37 @@ const repeatedWords = [
 
 
 
-function howManyTimes (repeatedWords , sameWord) {
+function howManyTimes (repeatedWords , randomWord) {
   let count = 0;
-  
   for (let i= 0; i < repeatedWords.length ; i ++) {
        const eachWord = repeatedWords[i];
-    if (eachWord === sameWord) {
- 
-     console.log (count++) 
-    //return count++
-   
+    if (eachWord === randomWord) {
+        count++
   }
-      
   }
-
-  //return count;
+  console.log (count);
+  return count;
 }
-
-howManyTimes (repeatedWords, "matter");
+howManyTimes (repeatedWords, "starting");
+howManyTimes (repeatedWords, "");
+howManyTimes (repeatedWords, "mundo");
+howManyTimes (repeatedWords, "");
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let array = 0;
+  for (let i= 0; i < n.length ; i ++) {
+       const   = n[i];
+    if (eachWord === randomWord) {
+        count++
+    }
+  }
+  
+  console log(array)
+  return array
+}
 
 
 
