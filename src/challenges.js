@@ -13,33 +13,66 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+  let count = 0;
 
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === wordToSearch) {
+      count++;
+    }
+  }
 
-
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
 
+  let sequence = [];
 
+  if (n === 0){
+  return [];
+  }
 
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let result = [];
 
+  numbers.forEach((number) => {
+    result.push(number * multiplier);
+  });
 
-
+  return result;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  let filteredArray = [];
 
+  if (original.length === 0) {
+    return null;
+  }
+  original.forEach((item) => {
+    let coicide = false;
+for (let i = 0; i<toRemove.length; i++){
+if (item === toRemove[i]){
+  coicide = true;} 
+}
+if (!coicide){filteredArray.push(item);}})
 
-
+  return filteredArray;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +89,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+let uniqueArray = [];
+if (words.length === 0) {
+    return null;
+  }
 
+  words.forEach(function(word) {
+    if (!uniqueArray.includes(word)) {
+      uniqueArray.push(word);
+    }
+  });
 
-
+  return uniqueArray;
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +128,11 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+let count = 0;
+
+if (matrix.length === 0) {
+  return null;
+}
+
+}
