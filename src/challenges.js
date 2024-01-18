@@ -13,21 +13,47 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, target) {
+  let count = 0
+
+  repeatedWords.forEach(element => {
+    if (element === target) {
+      count++
+    } 
+  });
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let array = []
+  
+  if (n === 0 ){ 
+    return array
+  }
 
+  for (let i=0; i <= n; i++){
+    array.push(i)
+    
+  }
+  return array
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+ let array = [];
+ numbers.forEach(number =>{
+  array.push(number * multiplier);
+ });
+ return array;
+}
 
 
 
@@ -36,7 +62,28 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+ 
+  if (original.length === 0){
+    return null
+  }
+  for (let i = 0; i < original.length; i++) {
+
+   
+    for (let j = 0; j < toRemove.length; j++) {
+       if (original[i] === toRemove[j]) {
+        original.splice(i,1);
+      } 
+    }
+
+  } 
+
+  return original
+
+ 
+
+
+}
 
 
 
@@ -56,7 +103,30 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+
+
+function uniquifyArray(duplicateWords) {
+
+  if (duplicateWords.length === 0) {
+    return null
+  }
+
+  let newArray = []
+
+  duplicateWords.forEach(element => {
+    if (!newArray.includes(element) ){
+      newArray.push(element)
+    }
+  })
+
+  return newArray
+  
+}
+uniquifyArray(duplicateWords);
+
+
+
+
 
 
 
@@ -85,4 +155,32 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const test = [
+  [ 1,  2, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1,  4, 3, 4, 5],
+]
+
+
+const greatestProduct = (test) => {
+    let total = 0;
+    for (let i = 0; i < test.length; i++) {
+      for (let j = 0; j < test[i].length; j++) {
+        // Horizontales Produkt
+        if (i <= test[i].length - 4){
+          let product = test[i][j] * test[i + 1][j] * test[i + 2][j] * test[i + 3][j];
+          total = Math.max(total, product);
+        } else if (j <= test.length - 4){
+          let product = test[i][j] * test[i][j + 1] * test[i][j + 1] * test[i][j + 1];
+          total = Math.max(total, product);
+        }
+     
+      }
+    }
+    console.log(total)
+    return total;
+}
+
+greatestProduct(matrix);
