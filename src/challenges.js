@@ -159,4 +159,27 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(array) {
+  let products = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const row = array[i];
+    for (let j = 0; j <= row.length - 4; j++) {
+      let product = row[j] * row[j + 1] * row[j + 2] * row[j + 3];
+
+      products.push(product);
+    }
+  }
+
+  return findMax(products);
+}
+
+function findMax(arr) {
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) max = arr[i];
+  }
+
+  return max;
+}
