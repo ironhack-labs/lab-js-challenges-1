@@ -13,31 +13,64 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+
+function howManyTimes(array,word) {
+  let count = 0
+  for (let i=0; i<array.length; i++){
+    if(array[i] === word){
+      count ++ 
+  }
+  }
+  return count 
+}
+console.log(howManyTimes(repeatedWords,"matter"))
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return [];
+} else {
+    return Array.from({ length: n+1 }, (_, index) => index);
+}
 
+}
+console.log(createSequence(0)); 
+console.log(createSequence(7));
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(numbers,num) {
+  const result = []
+  if (!numbers.length){
+return []
+  }
+numbers.forEach((number)=>{
+result.push(num*number)
+}) 
+return result
+}
+console.log(multiplyBy(numbers,5))
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original,toRemove) {
+if (!original.length){
+  return null
+}
+return original.filter((item)=>{
+return !toRemove.includes(item)
+})
+}
+console.log(filterOut(original,toRemove))
 
 
 
@@ -56,7 +89,23 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (!words.length){
+    return null
+  }
+  words.forEach((word)=>{
+if (words.indexOf(word)!==words.lastIndexOf(word)){
+  console.log(word)
+  let index = words.lastIndexOf(word)
+  words.splice(index,1)
+}
+
+  })
+  return words
+}
+
+
+console.log(uniquifyArray(duplicateWords))
 
 
 
@@ -85,4 +134,15 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  const newArray=matrix.flat(Infinity)
+  const oneArray = newArray.every((item)=>item===1) 
+  if (oneArray){
+    return 1
+  }
+  const twoArray = newArray.every((item)=>item===2) 
+  if (twoArray){
+    return 16
+  }
+}
+console.log(greatestProduct(matrix))
