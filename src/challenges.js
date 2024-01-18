@@ -121,7 +121,7 @@ function uniquifyArray(arr) {
   }
 
   
-  return { uniqueArr, duplicatesArr };
+  return  uniqueArr ;
   
   
 }
