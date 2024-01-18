@@ -173,7 +173,7 @@ const greatestProduct = (test) => {
           let product = test[i][j] * test[i + 1][j] * test[i + 2][j] * test[i + 3][j];
           total = Math.max(total, product);
         } else if (j <= test.length - 4){
-          let product = test[i][j] * test[i][j + 1] * test[i][j + 1] * test[i][j + 1];
+          let product = test[i][j] * test[i][j + 1] * test[i][j + 2] * test[i][j + 3];
           total = Math.max(total, product);
         }
      
