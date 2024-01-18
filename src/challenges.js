@@ -1,33 +1,41 @@
 // Iteration 1 | Count Repetition
-const repeatedWords = [
-  "machine",
-  "matter",
-  "subset",
-  "trouble",
-  "starting",
-  "matter",
-  "eating",
-  "matter",
-  "truth",
-  "disobedience",
-  "matter"
-];
 
-function howManyTimes() {}
-
-
+function howManyTimes(arrayOfWords, wordToSearch) {
+  if (arrayOfWords.length === 0) {
+    return 0
+  } else if (arrayOfWords.length === 1 && arrayOfWords[0] === wordToSearch) {
+    return 1
+  } else {
+    const count = arrayOfWords.filter(word => word === wordToSearch).length
+    return count
+  }
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(n) {
+  if (n === 0) {
+    return []
+  }
+  const result = []
+  for (let i = 0; i <= n; i++) {
+    result.push(i)
+  }
+  return result
+}
 
 
 // Iteration 3 | Multiply for Each
-const numbers = [1, 2, 5, 10, 13, 50];
+const numbers = [1, 2, 5, 10, 13, 50]
 
-function multiplyBy() {}
+function multiplyBy(number) {
+  const result = []
+
+  numbers.forEach((num) => {
+    result.push(num * number)
+  })
+  return result
+}
 
 
 
@@ -36,8 +44,25 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+  }
 
+  if (toRemove.length === 0) {
+    return original.slice()
+  }
+
+  const result = []
+
+  original.forEach((pet) => {
+    if (!toRemove.includes(pet)) {
+      result.push(pet);
+    }
+  })
+
+  return result
+}
 
 
 
@@ -56,9 +81,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if (arr.length === 0) {
+    return null
+  }
 
-
+  const result = []
+  const gatheredNewArray = new Set(arr)
+  gatheredNewArray.forEach((animal) => {
+    result.push(animal)
+  })
+  return result
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +119,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
