@@ -26,9 +26,19 @@ function howManyTimes(words, word) {
 
 
 
-
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let answer = [];
+
+  if (n === 0) {
+    return answer;
+  }
+
+  for (let i = 0; i <= n; i++) {
+    answer.push(i);
+  }
+  return answer;
+}
 
 
 
@@ -36,8 +46,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, n) {
+  let numArr = [];
 
+  numbers.forEach(element => {
+    const result = element *= n;
+    numArr.push(result)
+  });
+  return numArr;
+}
 
 
 
@@ -45,7 +62,27 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, wordsToRemove) {
+  if (originalArray.length === 0) {
+    return null;
+  }
+  else if (wordsToRemove.length === 0) {
+    return originalArray;
+  }
+  let answer = [];
+  console.log(originalArray)
+  console.log(wordsToRemove)
+
+  originalArray.forEach(element => {
+    wordsToRemove.forEach(elementToRemove => {
+      if (element !== elementToRemove) {
+        answer.push(element)
+      }
+    });
+  });
+  console.log(answer)
+  return answer;
+}
 
 
 
