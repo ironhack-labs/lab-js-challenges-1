@@ -12,6 +12,20 @@ const repeatedWords = [
   "disobedience",
   "matter"
 ];
+function howManyTimes(arrayOfWords, wordToSearch) {
+  let count = 0;
+  if(repeatedWords.length === 0){
+    return null;
+  }
+  for (let i = 0; i < arrayOfWords.length; i++) {
+    if (arrayOfWords[i] === wordToSearch) {
+      count++;
+    }
+  }
+  return count;
+}
+const wordToSearch = "matter";
+const count = howManyTimes(repeatedWords, wordToSearch);
 
 function howManyTimes() {}
 
@@ -23,25 +37,63 @@ function createSequence() {}
 
 
 
+function createSequence(num) {
+  const arrayOfNum = [];
+  if (arrayOfNum === 0) {
+    return [];
+  }
+  for (let i = 0; i <= num; i++) {
+    arrayOfNum.push(i);
+  }
+  return arrayOfNum;
+}
+console.log(createSequence(5));
+
+
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
 
 
+
+function multiplyBy(array, multiplier) {
+  const result = [];
+  array.forEach(function (value) {
+    const multiply = value * multiplier;
+    result.push(multiply);
+  });
+  return result;
+}
+console.log(multiplyBy(numbers, 2));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original,toRemove) {
+  if(original.length === 0)
+  {
+    return null;
+  }
+  let newArray = [];
+  for (let i = 0; i < original.length; i++) {
+    if (!toRemove.includes(original[i])) {
+      newArray.push(original[i]);
+    }
+  }
+  
+  return newArray;
+}
+filterOut(original, toRemove); 
 
 
 
 
 // Iteration 5 | Unique Arrays
+
+
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,7 +108,28 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr){
+  let uniqueArr  = [];
+  for(let i =0; i<arr.length;i++)
+{
+  if(uniqueArr.indexOf(arr[i] === -1)){
+    uniqueArr.push(arr[i]);
+
+  }
+  else if(arr[i] === "1"){
+    return 1;
+  }else if (arr[i] === "2")
+  {
+    return 16;
+  }
+}
+
+const result = console.log(uniqueArr);
+return result;
+}
+
+uniquifyArray(duplicateWords)
+
 
 
 
