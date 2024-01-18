@@ -50,8 +50,6 @@ function createSequence(n) {
   return newArray;
 }
 
-console.log(createSequence(23));
-
 
 
 
@@ -76,9 +74,31 @@ function multiplyBy(numArray, multiplier) {
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
-const toRemove = ["cat", "dog"];
+const toRemove = ["cat", "dog", "fish"];
 
-function filterOut() {}
+const emptyArray = [];
+
+function filterOut(stringArr, filterArr) {
+
+  if (stringArr.length === 0) {
+    return null;
+  }
+
+  if (filterArr.length === 0) {
+    return stringArr;
+  }
+
+  filterArr.forEach(function(filterWord) {
+    stringArr.forEach(function(word) {
+      if (word === filterWord) {
+        stringArr.splice(stringArr.indexOf(word), 1)
+      }
+    })
+  })
+  return stringArr;
+
+}
+
 
 
 
@@ -98,7 +118,12 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordArray) {
+  if (wordArray.length === 0) {
+    return null;
+  }
+
+}
 
 
 
