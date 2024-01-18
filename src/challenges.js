@@ -15,21 +15,21 @@ const repeatedWords = [
 
 function howManyTimes(wordArray, soughtWord) {
   // Return 0 if the array is empty
-  if (wordArray.length === 0){
+  if (wordArray.length === 0) {
     return 0;
   }
 
   // Initialize the variable where we store the number of matches
   // between the sought word and the elements of the array
   let countMatchesOfSoughtWordInArray = 0;
-  
+
   // Loop through the array looking for matches
-  wordArray.forEach(function(arrayWord) {
-   // This is the stuff that happens inside the loop 
-   if (arrayWord === soughtWord){// Check if the word in the current array index matches the sought word
-    countMatchesOfSoughtWordInArray+=1; // if there is a match, increase the variable that tracks the number of matches
-  }
-  } )
+  wordArray.forEach(function (arrayWord) {
+    // This is the stuff that happens inside the loop 
+    if (arrayWord === soughtWord) {// Check if the word in the current array index matches the sought word
+      countMatchesOfSoughtWordInArray += 1; // if there is a match, increase the variable that tracks the number of matches
+    }
+  })
   return countMatchesOfSoughtWordInArray;  // Return the number of matches
 }
 
@@ -40,10 +40,10 @@ function createSequence(n) {
 
   const newArray = [];
 
-  if (n === 0){
+  if (n === 0) {
     return newArray;
   }
-  
+
   for (let i = 0; i <= n; i++) {
     newArray.push(i);
   }
@@ -57,16 +57,16 @@ function createSequence(n) {
 const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy(numArray, multiplier) {
-  const newArray = []; 
+  const newArray = [];
 
-  if (numArray.length === 0){
+  if (numArray.length === 0) {
     return newArray;
   }
-  numArray.forEach(function(arrayNum) {
-    newArray.push(arrayNum * multiplier);  
+  numArray.forEach(function (arrayNum) {
+    newArray.push(arrayNum * multiplier);
   })
   return newArray;
-  
+
 }
 
 
@@ -88,8 +88,8 @@ function filterOut(stringArr, filterArr) {
     return stringArr;
   }
 
-  filterArr.forEach(function(filterWord) {
-    stringArr.forEach(function(word) {
+  filterArr.forEach(function (filterWord) {
+    stringArr.forEach(function (word) {
       if (word === filterWord) {
         stringArr.splice(stringArr.indexOf(word), 1)
       }
@@ -123,7 +123,25 @@ function uniquifyArray(wordArray) {
     return null;
   }
 
+  let wordIndex1 = '';
+  let wordIndex2 = '';
+
+  wordArray.forEach(function (arrayWord1) {
+    wordIndex1 = wordArray.indexOf(arrayWord1);
+    wordArray.forEach(function (arrayWord2) { 
+      wordIndex2 = wordArray.indexOf(arrayWord2);
+
+     if (arrayWord1 === arrayWord2 && wordIndex1 !== wordIndex2) {
+        wordArray.splice(wordArray[wordIndex2], 1);
+      }
+    
+    })
+  }) 
+    return wordArray 
 }
+console.log(uniquifyArray(duplicateWords));
+
+
 
 
 
