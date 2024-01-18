@@ -58,7 +58,18 @@ console.log(createSequence(23));
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArray, multiplier) {
+  const newArray = []; 
+
+  if (numArray.length === 0){
+    return newArray;
+  }
+  numArray.forEach(function(arrayNum) {
+    newArray.push(arrayNum * multiplier);  
+  })
+  return newArray;
+  
+}
 
 
 
