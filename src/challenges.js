@@ -12,14 +12,34 @@ const repeatedWords = [
   "disobedience",
   "matter"
 ];
+ 
+function howManyTimes(setOfWords, wordToSearch) {
+  let count = 0
 
-function howManyTimes() {}
+  setOfWords.forEach((word)=> {
+    if (word === wordToSearch) {
+      count++
+    }
+  })
+  return count
+
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let sequence = []
+  if (n === 0) {
+    return [];
+  }
+
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 
@@ -27,7 +47,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(setOfNum,num) {
+  let result = []
+
+  setOfNum.forEach((number)=>{
+    result.push(number*num)
+  })
+  return result
+
+}
 
 
 
@@ -36,7 +64,28 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originArray,removeArray) {
+  let cleanArray = [];
+
+  if (originArray.length === 0) {
+    return null
+  }
+
+  originArray.forEach((word)=> {
+    let coincides = false
+    for (let i = 0; i < removeArray.length; i++) {
+      if (word === removeArray[i]) {
+        coincides = true
+      }
+    }
+    if (!coincides) {
+      cleanArray.push(word)
+    }
+  })
+  return cleanArray
+
+
+}
 
 
 
@@ -56,7 +105,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(setofWords) {
+  if (setofWords.length === 0) {
+    return null;
+  }
+  let nonDuplicate = []
+
+  for (let i = 0; i < setofWords.length; i++) {
+    if (nonDuplicate.indexOf(setofWords[i]) === -1) {
+      nonDuplicate.push(setofWords[i])
+    }
+  }
+  return nonDuplicate
+}
 
 
 
@@ -85,4 +146,29 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  
+  let result = 0
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j <matrix.length -3; j++) {
+      let resultHor = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j+3];
+      
+      if (resultHor > result) {
+        result = resultHor
+      }
+    }
+  }
+
+  for (let i = 0; i < matrix.length -3; i++) {
+    for (let j = 0; j < matrix.length; j++) {
+      let resultVer = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j]
+
+      if (resultVer > result) {
+        result = resultVer
+      }
+    }
+  }
+return result
+
+}
