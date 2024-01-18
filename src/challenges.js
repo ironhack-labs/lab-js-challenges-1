@@ -180,4 +180,4 @@ function greatestProduct(matrix) {
   }
 }
 
-console.log(greatestProduct(matrix));
+// console.log(greatestProduct(matrix));
