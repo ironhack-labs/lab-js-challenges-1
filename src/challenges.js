@@ -13,13 +13,42 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray, soughtWord) {
+  // Return 0 if the array is empty
+  if (wordArray.length === 0) {
+    return 0;
+  }
 
+  // Initialize the variable where we store the number of matches
+  // between the sought word and the elements of the array
+  let countMatchesOfSoughtWordInArray = 0;
+
+  // Loop through the array looking for matches
+  wordArray.forEach(function (arrayWord) {
+    // This is the stuff that happens inside the loop 
+    if (arrayWord === soughtWord) {// Check if the word in the current array index matches the sought word
+      countMatchesOfSoughtWordInArray += 1; // if there is a match, increase the variable that tracks the number of matches
+    }
+  })
+  return countMatchesOfSoughtWordInArray;  // Return the number of matches
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+
+  const newArray = [];
+
+  if (n === 0) {
+    return newArray;
+  }
+
+  for (let i = 0; i <= n; i++) {
+    newArray.push(i);
+  }
+  return newArray;
+}
 
 
 
@@ -27,16 +56,49 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArray, multiplier) {
+  const newArray = [];
+
+  if (numArray.length === 0) {
+    return newArray;
+  }
+  numArray.forEach(function (arrayNum) {
+    newArray.push(arrayNum * multiplier);
+  })
+  return newArray;
+
+}
 
 
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
-const toRemove = ["cat", "dog"];
+const toRemove = ["cat", "dog", "fish"];
 
-function filterOut() {}
+const emptyArray = [];
+
+function filterOut(stringArr, filterArr) {
+
+  if (stringArr.length === 0) {
+    return null;
+  }
+
+  if (filterArr.length === 0) {
+    return stringArr;
+  }
+
+  filterArr.forEach(function (filterWord) {
+    stringArr.forEach(function (word) {
+      if (word === filterWord) {
+        stringArr.splice(stringArr.indexOf(word), 1)
+      }
+    })
+  })
+  return stringArr;
+
+}
+
 
 
 
@@ -56,7 +118,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordArray) {
+  if (wordArray.length === 0) {
+    return null;
+  }
+  let result = [wordArray[0]];
+  
+  wordArray.forEach(function(word) {
+    if(!result.includes(word))
+      result.push(word);
+  })
+return result;
+}
 
 
 
