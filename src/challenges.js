@@ -13,13 +13,46 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray,wordMatch) {
+
+  let newArray = 0;
+  let countMatch = 0;
+
+  if (wordArray.length === 0) {
+    return newArray;
+  }
+    for (let i = 0; i < wordArray.length; i++) {
+      
+      if (wordArray[i]=== wordMatch) {
+        countMatch++;
+      }
+      
+    }
+    return countMatch
+    
+  }
+
+  
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(nTimes) {
+
+  let sequenceArray = [];
+
+  if (nTimes === 0) {
+    return sequenceArray;
+  }
+  
+  for (let i = 0; i <= nTimes; i++) {
+    sequenceArray.push(i);
+  }
+
+  return sequenceArray;
+}
+
 
 
 
@@ -27,7 +60,24 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers,multValue){
+
+  let result = [] 
+
+  if ( numbers == 0 ){
+    return [];
+  } 
+
+  numbers.forEach((number)=>{
+    return result.push(number*multValue);
+  })
+  return result;
+}
+
+
+  
+  
+  
 
 
 
@@ -36,7 +86,31 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(list1, list2) {
+    let filteredArray = [];
+
+    if (list1 == 0 ){
+      return null;
+    }
+  
+    for (let i = 0; i < list1.length; i++) {
+      let shouldInclude = true;
+  
+      for (let j = 0; j < list2.length; j++) {
+        if (list1[i] === list2[j]) {
+          shouldInclude = false;
+          break;
+        }
+      }
+  
+      if (shouldInclude) {
+        filteredArray.push(list1[i]);
+      }
+    }
+  
+    return filteredArray;
+  }
+
 
 
 
@@ -56,9 +130,34 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array,mulWord) {
+    let arr = [];
+
+    if (array == 0){
+      return null;
+    }
+  
+    for (let i = 0; i < array.length; i++) {
+      let isDuplicated = false;
+  
+      for (let j = 0; j < arr.length; j++) {
+        if (array[i] === arr[j]) {
+          isDuplicated = true;
+          break;
+        }
+      }
+  
+      if (!isDuplicated) {
+        arr.push(array[i]);
+      }
+    }
+  
+    return arr;
+  }
 
 
+
+/*
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -86,3 +185,5 @@ const matrix = [
 ];
 
 function greatestProduct() {}
+
+*/
