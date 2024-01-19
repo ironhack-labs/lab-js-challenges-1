@@ -170,6 +170,13 @@ function greatestProduct(array) {
       products.push(product);
     }
   }
+  for (let i = 0; i <= array.length - 4; i++) {
+    for (let j = 0; j < array[i].length; j++) {
+      let verticalProduct =
+        array[i][j] * array[i + 1][j] * array[i + 2][j] * array[i + 3][j];
+      products.push(verticalProduct);
+    }
+  }
 
   return findMax(products);
 }
