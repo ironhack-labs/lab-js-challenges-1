@@ -1,4 +1,5 @@
 // Iteration 1 | Count Repetition
+
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,13 +14,42 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
 
+
+function howManyTimes (repeatedWords , randomWord) {
+  let count = 0;
+  for (let i= 0; i < repeatedWords.length ; i ++) {
+       const eachWord = repeatedWords[i];
+    if (eachWord === randomWord) {
+        count++
+  }
+  }
+  console.log (count);
+  return count;
+}
+howManyTimes (repeatedWords, "starting");
+howManyTimes (repeatedWords, "");
+howManyTimes (repeatedWords, "mundo");
+howManyTimes (repeatedWords, "");
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let array = [];
+  for (let i= 0; i <= n; i ++) {
+       array.push(i);
+    }
+  if (n === 0){
+    return [];
+  }
+    console.log(array);
+  return array;
+  }
+
+createSequence(7);
+createSequence("");
+createSequence(0);
 
 
 
@@ -27,21 +57,48 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let newArray = [];
+  
+    numbers.forEach(function(numbers) {
+    newArray.push(numbers*multiplier);
+  });
+
+  console.log (newArray);
+    return newArray;
+}
 
 
+multiplyBy(numbers, 2);
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+    }
 
+let newArray=[];
+
+  original.forEach(function(word) {
+     if (!toRemove.includes(word)){
+    newArray.push(word)
+     }
+  })
+  console.log (newArray);
+  return (newArray);
+}
+filterOut(original, toRemove);
+filterOut(0, toRemove);
 
 
 
 // Iteration 5 | Unique Arrays
+
+const result = `${original.splice(2,2)} ${original.splice(5,1)}`
 const duplicateWords = [
   "crab",
   "poison",
