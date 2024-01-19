@@ -13,13 +13,34 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+  let count = 0
+  for(i=0; i< array.length; i++){
+    if(array[i]===word){
+      count++
+    }
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const array = []
+  if (n===0){
+    return array
+  }
+  else{
+    for(let i = 0; i < n+1 ; i++){
+      array.push(i)
+    }
+ }
+ return array
+}
+
+
 
 
 
@@ -27,7 +48,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayNumbers, multipliers) {
+  let resultArray = []
+  arrayNumbers.forEach(function(element){
+   let result = multipliers*element
+    resultArray.push(result)
+  })
+  return resultArray
+
+}
+
 
 
 
@@ -36,8 +66,25 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(newArray, oldArray) {
+  let filteredArray= []
+  if (newArray.length === 0){
+    return null
+  }
 
+else{
+  for(let i=0; i<newArray.length; i++){
+    if(oldArray.includes(newArray[i])===false){
+      filteredArray.push(newArray[i])
+    }
+    
+  }
+  return filteredArray 
+
+}
+}
+
+filterOut(original, toRemove)
 
 
 
@@ -56,13 +103,29 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicate) {
+  if (duplicate.length === 0) {
+     return null;
+  }
+  let uniqueWords = [];
+  for (let i = 0; i < duplicate.length; i++) {
+     if (uniqueWords.indexOf(duplicate[i]) === -1) {
+       uniqueWords.push(duplicate[i]);
+     }
+  }
+  return uniqueWords;
+ }
+
+
+
+
+
 
 
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
-const matrix = [
+const matrixxx = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
   [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65],
@@ -85,4 +148,53 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arrMatrix) {
+//for finding product horizontally
+// arrHProduct will create a new array of product of 4 adjacent numbers aligned horizontally
+// arrVProduct will create a new array of product of 4 adjacent numbers aligned vertically
+  let arrHProduct = []
+  let arrVProduct = []
+  
+  for(let i= 0; i<arrMatrix.length; i++){
+    for(let j=0; j< arrMatrix[i].length-3; j++){
+        let product1 = arrMatrix[i][j]*arrMatrix[i][j+1]*arrMatrix[i][j+2]*arrMatrix[i][j+3]
+        arrHProduct.push(product1)
+    }
+  }
+  
+  //largestH will store the largest value if we multiply 4 adjacent numbers horizontally
+
+  let largestH = arrHProduct[0];
+  for(let i=0; i<arrHProduct.length; i++){
+    if(arrHProduct[i] > largestH ){
+      largestH = arrHProduct[i]
+    }
+  }
+
+//for finding product vertically
+
+for(let i=0; i< arrMatrix.length-3; i++){
+  for(let j=0; j<arrMatrix[i].length; j++){
+    
+    let product2 = arrMatrix[i][j]*arrMatrix[i+1][j]*arrMatrix[i+2][j]*arrMatrix[i+3][j]
+    arrVProduct.push(product2)
+    //console.log(product2)
+  }
+}
+
+//largestV will store the largest value if we multiply 4 numbers horizontally
+let largestV = arrVProduct[0];
+for(let i=0; i<arrVProduct.length; i++){
+  if(arrVProduct[i] > largestV ){
+    largestV = arrVProduct[i]
+  }
+}
+//compare largestV and largestH values 
+
+if(largestV > largestH ){
+  return largestV
+}else{
+  return largestH
+}
+}
+greatestProduct(arrMatrix)
