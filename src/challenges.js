@@ -66,7 +66,31 @@ return result
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayOfStrings, stringsToFilter) {
+  let newArray = []
+
+//for (let i = 0; i < arrayOfStrings; i++) {
+  /*eachElement = arrayOfStrings[i]
+  arrayOfStrings.splice(1, stringsToFilter); 
+console.log(arrayOfStrings)*/
+
+/*stringToFilter.forEach(item => {
+  let index = arrayOfStrings.indexOf(item);
+  if (index !== -1) {
+    arrayOfStrings.splice(index, 1);
+  }
+});*/
+
+for (let i = 0; i < stringsToFilter.length; i++) {
+  let index = arrayOfStrings.indexOf(stringsToFilter[i]);
+  if (index !== -1) {
+    arrayOfStrings.splice(index, 1);
+  }
+}
+return arrayOfStrings
+
+}
+
 
 
 
@@ -86,9 +110,25 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfWords) {
+let newArray = [];
+
+/*for (let i = 0; i < arrayOfWords.length; i++) {
+    let eachElement = arrayOfWords[i];
+
+    if (eachElement !== -1) {
+      newArray.push(eachElement);
+
+    }
 
 
+
+  }*/
+}
+
+
+
+// indexOf includes
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
