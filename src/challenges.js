@@ -13,9 +13,18 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordToSearch) {
 
+let result = 0 
 
+for (let i = 0; i < arrayOfWords.length; i++) {
+  if (arrayOfWords[i] === wordToSearch) {
+  result++
+}
+}
+return result 
+
+}
 
 
 // Iteration 2 | Number Sequence
