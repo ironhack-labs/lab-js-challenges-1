@@ -60,9 +60,21 @@ function multiplyBy(numbers1, multiplicador) {
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayOriginal, arrayBorrada) {
+let words1 = []
+
+  for (let i=0; i < arrayOriginal.length; i++){
+  if (arrayOriginal[i] === arrayBorrada[i]){
+    arrayOriginal.pop()
+  }
+  }
+  //if (arrayOriginal[i] === arrayBorrada[0] || arrayOriginal[i] === arrayBorrada[1]){
+
+}
 
 
+
+filterOut (original, toRemove)
 
 
 // Iteration 5 | Unique Arrays
