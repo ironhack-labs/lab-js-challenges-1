@@ -28,7 +28,24 @@ return result
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+let result=[]
+let emptyResult=[]
+ if (number === 0){
+  return emptyResult
+}
+for (let i = 0; i <= number; i++){
+
+//let oneNumber = number[i]
+if (i <= number){
+  result.push(i)
+  
+
+}
+
+}
+return result
+}
 
 
 
@@ -36,10 +53,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
 
-
-
+function multiplyBy(numbers, multiplier) {
+  let result = []
+  numbers.forEach((number) => {
+    result.push(number * multiplier);
+})
+return result
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
