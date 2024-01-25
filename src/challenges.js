@@ -23,21 +23,35 @@ function howManyTimes(arrayOfWords, wordToSearch) {
   }return repeat
 }
 
-console.log (howManyTimes(repeatedWords,"matter"))
+// console.log (howManyTimes(repeatedWords,"matter"))
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num1) {
+  let cadena = [];
+  for (let i = 0; i <= num1.length; i++) {
+   cadena.push(num1[i])
+  } return cadena
+}
 
 
+//let num2 = 9
+//console.log (createSequence(num1))
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers1, multiplicador) {
+  let finalNumbers = [];
+  numbers1.forEach(element) = finalNumbers
+
+  for ( let i = 0; i < numbers1.length; i++) {
+    numbers1[i].forEach("number")
+  }
+}
 
 
 
