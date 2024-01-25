@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords , word) {
+  let TimesRepeatWords = 0;
+  for (let i= 0; i < repeatedWords.length; i++){
+  if (repeatedWords[i] === word) {
+    TimesRepeatWords ++;
+    }
+  }
+  return TimesRepeatWords;
+}
+console.log(howManyTimes(repeatedWords,"matter"))
 
 
 
-
-// Iteration 2 | Number Sequence
-function createSequence() {}
+//Iteration 2 | Number Sequence
+function createSequence(Number) {
+  let num = [];
+  for (let i = 0; i < Number.length; i++){
+    if ( Number[i] < 10){
+      num.push(Number[i]);
+      num ++; 
+    }
+  }
+  return num;
+  }
+  console.log(CreateSequence(5))
 
 
 
