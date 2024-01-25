@@ -13,13 +13,39 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordToSearch) {
 
+let result = 0 
 
+for (let i = 0; i < arrayOfWords.length; i++) {
+  if (arrayOfWords[i] === wordToSearch) {
+  result++
+}
+}
+return result 
+
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+let result=[]
+let emptyResult=[]
+ if (number === 0){
+  return emptyResult
+}
+for (let i = 0; i <= number; i++){
+
+//let oneNumber = number[i]
+if (i <= number){
+  result.push(i)
+  
+
+}
+
+}
+return result
+}
 
 
 
@@ -27,16 +53,44 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
 
-
-
+function multiplyBy(numbers, multiplier) {
+  let result = []
+  numbers.forEach((number) => {
+    result.push(number * multiplier);
+})
+return result
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayOfStrings, stringsToFilter) {
+  let newArray = []
+
+//for (let i = 0; i < arrayOfStrings; i++) {
+  /*eachElement = arrayOfStrings[i]
+  arrayOfStrings.splice(1, stringsToFilter); 
+console.log(arrayOfStrings)*/
+
+/*stringToFilter.forEach(item => {
+  let index = arrayOfStrings.indexOf(item);
+  if (index !== -1) {
+    arrayOfStrings.splice(index, 1);
+  }
+});*/
+
+for (let i = 0; i < stringsToFilter.length; i++) {
+  let index = arrayOfStrings.indexOf(stringsToFilter[i]);
+  if (index !== -1) {
+    arrayOfStrings.splice(index, 1);
+  }
+}
+return arrayOfStrings
+
+}
+
 
 
 
@@ -56,9 +110,25 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfWords) {
+let newArray = [];
+
+/*for (let i = 0; i < arrayOfWords.length; i++) {
+    let eachElement = arrayOfWords[i];
+
+    if (eachElement !== -1) {
+      newArray.push(eachElement);
+
+    }
 
 
+
+  }*/
+}
+
+
+
+// indexOf includes
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
