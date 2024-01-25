@@ -30,12 +30,15 @@ function howManyTimes(arrayOfWords, wordToSearch) {
 
 // Iteration 2 | Number Sequence
 function createSequence(num1) {
-  let cadena = [];
+  let cadena = []
+  if (num1 === 0){
+    return cadena
+  }
   for (let i = 0; i <= num1.length; i++) {
    cadena.push(num1[i])
   } return cadena
 }
-
+createSequence(num1)
 
 //let num2 = 9
 //console.log (createSequence(num1))
@@ -61,11 +64,16 @@ const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
 function filterOut(arrayOriginal, arrayBorrada) {
+  if (arrayOriginal.length===0){
+    return null
+  }else if (arrayBorrada.length === 0){
+    return toRemove
+  }
 let words1 = []
 
   for (let i=0; i < arrayOriginal.length; i++){
-  if (arrayOriginal[i] === arrayBorrada[i]){
-    arrayOriginal.pop()
+  if (arrayBorrada.includes(arrayOriginal[i])) {
+    return words1.push(arrayOriginal[i])
   }
   }
   //if (arrayOriginal[i] === arrayBorrada[0] || arrayOriginal[i] === arrayBorrada[1]){
