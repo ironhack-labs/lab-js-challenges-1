@@ -63,13 +63,18 @@ function multiplyBy(numberArray1, number1) {
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut(originalArray,toRemoveArray) {
-  if (originalArray.length == 0) return null;
-  if (toRemoveArray.length == 0) return array;
-originalArray.forEach((element)) => {
-  resultingArray.pop
-}
-}
+function filterOut(originalArray, toRemoveArray) {
+  if (originalArray.length === 0) return null;
+  if (toRemoveArray.length === 0) return originalArray;
+
+  let resultingArray = [];
+  originalArray.forEach((element) => {
+    if (!toRemoveArray.includes(element)) {
+      resultingArray.push(element);
+    }
+  }); // end of forEach loop
+  return resultingArray;
+} // end of filterout function
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -86,7 +91,18 @@ const duplicateWords = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  let newArray = []
+
+array.forEach((word) => {
+  if (!newArray.includes(word)) {
+    newArray.push(word)
+  }
+})
+
+return newArray.length ? newArray : null
+
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -154,4 +170,6 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+
+}
