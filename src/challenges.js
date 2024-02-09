@@ -13,32 +13,63 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(words, wordToFind) {
+  let wordCount = 0
+  for (i = 0; i < words.length; i++) {
+    if (wordToFind === words[i]) {
+      wordCount += 1
+    }
+  }
+  return wordCount
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let arr = []
+  if (n > 0)
+    for (i = 0; i <= n; i++) {
+      arr.push(i)
+    }
+  return arr
+}
 
-
+console.log(createSequence(0))
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
+  const newArr = []
+  arr.forEach(element => {
+    newArr.push(element * multiplier)
+  });
+  return newArr
+}
 
-
+console.log(multiplyBy(numbers, 2))
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(words, remove) {
+  if (words.length > 0) {
+    for (i = 0; i < words.length; i++) {
+      for (j = 0; j < remove.length; j++) {
+        if (words[i] === remove[j]) {
+          words.splice(i, 1);
+        }
+      }
+    }
+  } else words = null
+  return words
+}
 
-
+console.log(filterOut(original, toRemove))
 
 
 // Iteration 5 | Unique Arrays
@@ -46,19 +77,23 @@ const duplicateWords = [
   "crab",
   "poison",
   "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
   "poison",
-  "communion",
   "simple",
-  "bring"
+  "sharp",
+  "simple"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  let distinctWords = []
+    for (i = 0; i < words.length; i++) {
+      if (!distinctWords.includes(words[i])) {
+        distinctWords.push(words[i]);
+      }
+    }
+  return distinctWords.length ? distinctWords : null
+}
 
-
+console.log(uniquifyArray([duplicateWords]))
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +120,24 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function greatestProduct(matrix) {
+  products = []
+  // horizontal products
+  for (i = 0; i < matrix.length; i++) {
+    for (j = 0; j < matrix[i].length - 3; j++) {
+      products.push(matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3])
+    }
+  }
+  // vertical products
+  for (i = 0; i < matrix.length - 3; i++) {
+    for (j = 0; j < matrix[i].length; j++) {
+      products.push(matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j])
+    }
+  }
+  // console.log(products)
+  return Math.max(...products)
+  
+}
+
+console.log(greatestProduct(matrix))
