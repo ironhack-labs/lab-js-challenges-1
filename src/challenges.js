@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+  let counter = 0
+  array.forEach((element) => {
+    if (element === word) {
+      counter ++
+    }
+  }) 
+  return counter
+}
 
-
+howManyTimes(repeatedWords, "matter");
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let counter = 0 
+  let array = []
+
+  while (number >= counter && number) {
+    array.push(counter)
+    counter++
+  }
+
+  return array
+}
 
 
 
@@ -27,17 +45,47 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  numbers.forEach((number, i, arr) => {
+    arr[i] = number * multiplier
+  })
 
+  return numbers
+}
 
+/* alternative solutions
+
+  let useMap = (numbers, multiplier) => {
+  return numbers.map(number => number*multiplier)
+}
+console.log((useMap(theseNumbers, 12))*/
+
+/*let useMap = (numbers, multiplier) => {
+  let newArray = numbers.map(number) => {
+    return number * multiplier
+  }
+  return newArray
+}
+console.log((useMap(theseNumbers, 12))*/
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut (array, toRemove) {
 
+  return array.length ? array.filter((word) => !toRemove.includes(word)) : null
+}
+  /*remove.forEach ((removeable) => {
+    array.forEach ((word, i) => {
+      if(word == removeable) {
+        array.splice(i, 1)
+      }
+    })
+  })
+  return array
+} */
 
 
 
@@ -56,7 +104,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  let distinctWords = []
+  if (words.length > 0) {
+    for (i = 0; i < words.length; i++) {
+      if (!distinctWords.includes(words[i])) {
+        distinctWords.push(words[i]);
+      }
+    }
+  } else distinctWords = null
+  return distinctWords
+}
 
 
 
