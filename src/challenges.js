@@ -41,12 +41,9 @@ console.log(createSequence(7));
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy(arr, num) {
-  let newArr = [];
-  for (let i=0; i < arr.length; i++) {
-    newArr.push(arr[i]*num);
-  }
-  return newArr;
+let useMap = (numbers,multiplier) => {
+  let newArray = numbers.map((number) => {return number*multiplier;});
+  return newArray;
 }
 
 console.log(multiplyBy(numbers, 2));
