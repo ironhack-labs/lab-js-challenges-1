@@ -85,17 +85,15 @@ const duplicateWords = [
 
 function uniquifyArray(words) {
   let distinctWords = []
-  if(words.length > 0){
     for (i = 0; i < words.length; i++) {
       if (!distinctWords.includes(words[i])) {
         distinctWords.push(words[i]);
       }
     }
-  } else distinctWords = null
-  return distinctWords
+  return distinctWords.length ? distinctWords : null
 }
 
-console.log(uniquifyArray(duplicateWords))
+console.log(uniquifyArray([duplicateWords]))
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
