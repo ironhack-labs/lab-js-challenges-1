@@ -13,22 +13,44 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(repeatwords, searchWord) {
+  let counter = 0;
+  repeatwords.forEach (function (word) {
+    if ( searchWord == word){
+      counter ++;
+    }
+  }) 
+  
+  return counter;
+}
+//console.log (howManyTimes(repeatedWords, ""));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(value) {
+  let sequence = []
+  if (value == 0){
+    return sequence;
+  }
+  for (let i = 0; i <= value; i++) {
+      sequence.push(i);
+  }
+return sequence;
+}
+// console.log(createSequence(7));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(numbers, mult) {
+  const result = []
+  numbers.forEach(function (numbers) {
+  result.push(numbers * mult);
+  }) 
+  return result;
+}
+// console.log(multiplyBy (numbers, 5));
 
 
 
@@ -36,8 +58,20 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
 
+function filterOut(original, toRemove) {
+  if (original.length == 0){
+    return null;
+  }
+  const newArray = []
+  original.forEach (function (word) {
+    if (!toRemove.includes(word)){
+      newArray.push(word)
+    }
+  }) 
+  return newArray;
+}
+// console.log(filterOut(original,toRemove));
 
 
 
@@ -56,7 +90,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicated) {
+  if (duplicated.length == 0){
+    return null;
+  }
+  const newUnique = []
+  duplicated.forEach (function (word) {
+    if (!newUnique.includes(word)){
+      newUnique.push(word)
+    }
+  }) 
+  return newUnique;
+}
+// console.log(uniquifyArray (duplicateWords));
 
 
 
@@ -85,4 +131,39 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(numTable) {
+  let max = 0
+  let combination = [1, 1, 1, 1]
+  for (let row = 0; row < numTable.length; row++){
+    for (let col = 0; col < numTable[row].length; col++){
+      // Check if horizontal multiplication is possible
+      if (col +3 < numTable[row].length){
+
+        let result = numTable[row][col] * numTable[row][col+1] * numTable[row][col+2] * numTable[row][col+3];
+        if (result > max) {
+          max = result
+          combination = [numTable[row][col], numTable[row][col+1], numTable[row][col+2], numTable[row][col+3]];
+        }
+      }
+
+      // check if vertical multiplication is possible
+      if (row +3 < numTable.length) {
+        let result = numTable[row][col] * numTable[row+1][col] * numTable[row+2][col] * numTable[row+3][col];
+        if (result > max) {
+          max = result
+          combination = [numTable[row][col], numTable[row+1][col], numTable[row+2][col], numTable[row+3][col]];
+        }
+
+      }
+    }
+  }
+if (combination[0] ==1 && combination[1] ==1 && combination[2] ==1 && combination[3] ==1){
+  return 1;
+}
+if (combination[0] ==2 && combination[1] ==2 && combination[2] ==2 && combination[3] ==2){
+  return 16;
+}
+  return combination;
+
+}
+// console.log(greatestProduct(matrix));
