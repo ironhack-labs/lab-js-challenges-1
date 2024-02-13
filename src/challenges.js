@@ -87,11 +87,14 @@ function filterOut(arr, arrToRemove) {
   }
 
  })
- console.log(filteredArr)
  return filteredArr
+
+  // return arr.filter(element => {
+  //   return !arrToRemove.includes(element)
+  // })
  
 }
-
+console.log(filterOut(original, toRemove))
 filterOut(original, toRemove)
 
 
@@ -164,7 +167,7 @@ function greatestProduct(matrix = matrix) {
   
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
-      // Verticall Product
+      // Vertical Product
       if (i <= matrix.length - 4) {
         verticallProduct = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j]
         if (verticallProduct > greatestProduct) greatestProduct = verticallProduct
