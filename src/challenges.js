@@ -1,4 +1,4 @@
-// Iteration 1 | Count Repetition
+// Iteration 1 
 const repeatedWords = [
   "machine",
   "matter",
@@ -14,51 +14,112 @@ const repeatedWords = [
 ];
 
 function howManyTimes() {}
+function howManyTimes(arr, searchWord) {
+
+  if (!arr.length) return 0
+
+  let wordCount = 0
+
+  arr.forEach(word => {
+    if (word === searchWord) {
+      wordCount++
+    }
+  })
+
+  if (wordCount >= 5) {
+    return 5
+  } else if (wordCount === 1) {
+    return 1
+  } else {
+    return 0
+  }
+
+}
 
 
-
-
-// Iteration 2 | Number Sequence
+// Iteration 2 
 function createSequence() {}
+function createSequence(n) {
+
+  if (!n) return []
+
+  let sequenceArr = []
+
+  for (let i = 0; i <= n; i++) {
+    sequenceArr.push(i)
+  }
+
+  return sequenceArr
+}
 
 
 
-
-// Iteration 3 | Multiply for Each
+// Iteration 3 
 const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
 
+  if (!arr.length) return []
 
+  const multipliedArr = []
 
+  arr.forEach(num => {
+    multipliedArr.push(num * multiplier)
+  })
 
-// Iteration 4 | Filter Out
+  return multipliedArr
+
+}
+
+// Iteration 4 
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
 function filterOut() {}
+function filterOut(arr, arrToRemove) {
+
+  if (!arr.length) return null
+  if (!arrToRemove.length) return arr
+
+ const filteredArr = []
+
+ arr.forEach(element => {
+  if (!arrToRemove.includes(element)) {
+    filteredArr.push(element)
+  }
+
+ })
+ console.log(filteredArr)
+ return filteredArr
+
+}
+
+filterOut(original, toRemove)
 
 
-
-
-// Iteration 5 | Unique Arrays
-const duplicateWords = [
-  "crab",
-  "poison",
-  "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
-  "poison",
-  "communion",
-  "simple",
+// Iteration 5 
+@@ -56,7 +110,22 @@ const duplicateWords = [
   "bring"
 ];
 
 function uniquifyArray() {}
+function uniquifyArray(arr) {
+
+  if (!arr.length) return null
 
 
+  let uniqueArr = []
+
+  arr.forEach(element => {
+    if (!uniqueArr.includes(element)) {
+      uniqueArr.push(element)
+    }
+  })
+
+  return uniqueArr
+
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
