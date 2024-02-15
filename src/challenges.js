@@ -1,4 +1,4 @@
-// Iteration 1 | Count Repetition
+// Iteration 1 | Count Repetition Jorge
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,13 +13,48 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(testArr, word) {
 
+    if (testArr.length === 0) {
+      return 0;
+    }
 
+    let foundWord = 0;
+
+    testArr.forEach ((element)=> {
+
+      if (element === word)
+      {
+        foundWord++
+      }
+      
+    })
+    return foundWord;
+
+}
+
+//const timesfound = howManyTimes(repeatedWords, "mac")
+//console.log(timesfound)
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+let arr = [];
+
+  if (n === 0) {
+    return arr;
+  }
+
+  let counter = []
+
+  for(let i = 0; i<= n; i++) {
+    counter.push(i);
+  }
+
+  return counter 
+
+}
+
 
 
 
@@ -27,7 +62,22 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(nArr, toMultiplicate) {
+
+  const result = [];
+
+  nArr.forEach((e)=>{
+
+    result.push(e * toMultiplicate)
+
+})
+
+return result
+
+}
+
+//const total = multiplyBy(numbers, 10)
+//console.log(total)
 
 
 
@@ -36,9 +86,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, toRemArr) {
 
+  if ( originalArr.length === 0) {
+    return null;
+  }
+    const arrfiltered = originalArr.filter(element => !toRemArr.includes(element))
+    return arrfiltered;
 
+}
+
+//const resultArr = filterOut(original, toRemove);
+//console.log(resultArr)
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +115,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrDuplic) {
+
+  if (arrDuplic.length === 0) {
+    return null;
+  }
+
+  const filteredArr = []
+
+  arrDuplic.forEach((e) =>{
+
+    if(filteredArr.indexOf(e) === -1 && !filteredArr.includes(e)) {
+      filteredArr.push(e)
+    }
+  }) 
+    return filteredArr;
+}    
+
+
 
 
 
@@ -85,4 +161,26 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+
+    let finalResult = 0;    
+
+    for(let i = 0; i < matrix.length; i++){
+
+      for(let j = 0; j < matrix[i].length - 3; j++){
+
+        // horizontal
+        let horizontalResult = matrix[i][j] * matrix [i][j+1] * matrix[i][j + 2] * matrix[i][j + 3];
+        if (horizontalResult > finalResult) {
+          finalResult = horizontalResult;
+        }
+        // vertical
+        let verticalResult = matrix[j][i] * matrix[j+ 1 ][i] * matrix[j + 2][i] * matrix[j + 3][i]
+          if( verticalResult > finalResult){
+              finalResult = verticalResult;
+          }
+      }
+    }
+      return finalResult;
+  }
+
