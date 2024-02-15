@@ -1,4 +1,4 @@
-// Iteration 1 | Count Repetition
+// Iteration 1 | Count Repetition Jorge
 const repeatedWords = [
   "machine",
   "matter",
