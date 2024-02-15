@@ -102,6 +102,7 @@ function uniquifyArray(duplicateWords) {
       uniquifyArr.push(word);
     }
   });
+  //another way to iterate over array
   // for (i = 0; i < duplicateWords.length; i++) {
   //   const word = duplicateWords[i];
   //   if (!uniquifyArr.includes(word)) {
@@ -177,10 +178,31 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let max = 0;
+  let result = 0;
 
-// let sequenceArrayTest = [];
+  // iterate the rows.
+  for (let i = 0; i < matrix.length; i++) {
+    // iterate the columns.
+    for (let j = 0; j < matrix.length; j++) {
+      // check the maximum product
+      // in horizontal row.
+      if (j - 3 >= 0) {
+        result =
+          matrix[i][j] * matrix[i][j - 1] * matrix[i][j - 2] * matrix[i][j - 3];
+        if (max < result) max = result;
+      }
 
-// const result = createSequence(7);
+      // check the maximum product
+      // in vertical row.
+      if (i - 3 >= 0) {
+        result =
+          matrix[i][j] * matrix[i - 1][j] * matrix[i - 2][j] * matrix[i - 3][j];
 
-// console.log(`message test ${result}`);
+        if (max < result) max = result;
+      }
+    }
+  }
+  return max;
+}
