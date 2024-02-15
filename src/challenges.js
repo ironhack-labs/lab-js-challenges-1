@@ -16,16 +16,15 @@ const repeatedWords = [
 function howManyTimes(array, word) {
   let wordCount = 0;
   array.forEach((element) => {
-    wordCount = wordCount + element;
+    if (word === element) {
+      wordCount += 1;
+    }
   });
   return wordCount;
-  if(word === )
 }
 
-const whatTheRobotDid = howManyTimes(repeatedWords);
+const whatTheRobotDid = howManyTimes(repeatedWords, "matter");
 console.log(whatTheRobotDid);
-
-console.log(0 + "string" + false + "Hello");
 
 // Iteration 2 | Number Sequence
 function createSequence() {}
