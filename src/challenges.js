@@ -170,7 +170,7 @@ function greatestProduct(matrix) {
       for(let j = 0; j < matrix[i].length - 3; j++){
 
         // horizontal
-        let horizontalResult = matrix[i][j] * matrix[i][j + 2] * matrix[i][j + 3];
+        let horizontalResult = matrix[i][j] * matrix [i][j+1] * matrix[i][j + 2] * matrix[i][j + 3];
         if (horizontalResult > finalResult) {
           finalResult = horizontalResult;
         }
