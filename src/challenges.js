@@ -13,21 +13,39 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(arr, word) {
+  let counter = 0
+  for (let i = 0; i<arr.length; i++) {
+    if (arr[i] === word) {
+      counter ++;
+    }
+  }
+  return counter
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(n) {
+  let arr = []
+  if (n === 0) {return []}
+  for (let i=0; i<=n; i++){
+    arr.push(i); 
+  } return arr
+  }
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArr, multiplier) {
+  let multipliedNumbers = [];
+  numbersArr.forEach((number) => {
+    const multipliedNumber = number * multiplier;
+    multipliedNumbers.push(multipliedNumber); 
+  });
+  return multipliedNumbers;
+}
 
 
 
@@ -36,7 +54,23 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, filter) {
+
+  if (original.length===0) {return null;}
+  if (filter.length ===0) { return original}
+
+  const result = [];
+
+original.forEach((pet) => {
+  if (!filter.includes(pet)) {
+    result.push(pet);
+  }
+})
+
+return result;
+
+}
+
 
 
 
@@ -56,9 +90,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(wordArray) {
+  const uniqueWords = [];
+  if (wordArray.length === 0) {
+    return null
+  }
+  for (let i = 0; i < wordArray.length; i++) {
+    const word = wordArray[i];
+    if (!uniqueWords.includes(word)) {
+      uniqueWords.push(word);
+    }
+  }
+  return uniqueWords;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +129,51 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function largestMultiplied(array) {
+
+  let largestSum = 0;
+
+  for (let i = 0; i < array.length; i++) {
+
+
+    for (let j = 0; j < array[i].length - 3; j++) {
+      let sum = array[i][j] * array[i][j + 1] * array[i][j + 2] * array[i][j + 3]
+
+      if (sum > largestSum) {
+        largestSum = sum;
+      }
+
+    }
+
+    
+
+
+  }
+
+  return largestSum;
+}
+  
+console.log(largestMultiplied(matrix))
+
+
+
+
+// function greatestProduct(matrix) {
+//   let product = 0;
+
+//   const numberofRows = matrix.length;
+//   const numberofColumns = matrix[0].length;
+
+//   for (let i = 0; i < numberofRows; i++) {
+//     let row = matrix[i];
+//     for (let j = 0; j < numberofColumns -3; j++) {
+//       let rowProduct = row[j] * row[j + 1] * row[j + 2] * row[j + 3];
+//       if (rowProduct > product) {
+//         product = rowProduct;
+//       }
+//     }
+//   }
+// }
+
+// console.log(greatestProduct(matrix))
