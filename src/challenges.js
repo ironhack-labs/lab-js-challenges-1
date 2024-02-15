@@ -13,13 +13,43 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words) {
+  const wordCounts = {}; // Object to store word counts
+
+  // Iterate over the array of words
+  words.forEach(word => {
+    if (wordCounts[word]) {
+      wordCounts[word] += 1; // Increment count if word exists
+    } else {
+      wordCounts[word] = 1; // Initialize count for new word
+    }
+  });
+
+  return wordCounts; // Return the object with word counts
+}
+
+// Usage
+const wordCounts = howManyTimes(repeatedWords);
+console.log(wordCounts);
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(start, difference, length) {
+  const sequence = []; // Initialize an empty array to hold the sequence
+
+  for (let i = 0; i < length; i++) {
+    sequence.push(start + i * difference); // Calculate each term and add to the sequence
+  }
+
+  return sequence; // Return the generated sequence
+}
+
+// Usage example: start at 1, common difference of 2, sequence length of 5
+const sequence = createSequence(1, 2, 5);
+console.log(sequence); // Output: [1, 3, 5, 7, 9]
 
 
 
@@ -27,7 +57,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiplier) {
+  const multipliedArray = array.map(function(element) {
+    return element * multiplier; // Multiply each element by the multiplier
+  });
+
+  return multipliedArray; // Return the new array with multiplied values
+}
+
+// Usage example: Multiply each element in `numbers` by 3
+const result = multiplyBy(numbers, 3);
+console.log(result); // Output: [3, 6, 15, 30, 39, 150]
 
 
 
@@ -36,7 +76,17 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, removeArray) {
+  // Filter out elements that are included in the `removeArray`
+  const filteredArray = originalArray.filter(element => !removeArray.includes(element));
+
+  return filteredArray; // Return the filtered array
+}
+
+// Usage
+const filtered = filterOut(original, toRemove);
+console.log(filtered); // Output: ["fish", "bird", "fish"]
+
 
 
 
@@ -56,7 +106,16 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  const uniqueSet = new Set(array); // Create a Set to remove duplicates
+  const uniqueArray = Array.from(uniqueSet); // Convert the Set back into an Array
+  return uniqueArray; // Return the array with unique values
+}
+
+// Usage
+const uniqueWords = uniquifyArray(duplicateWords);
+console.log(uniqueWords);
+
 
 
 
