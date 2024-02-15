@@ -13,21 +13,56 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(wordArrayfind, word) {
+  let wordCount = 0
+  wordArrayfind.forEach((eWord) => {
+  if (eWord === word){
+    wordCount++
+  }
+})
+return wordCount
+}
+const wordCount = iteration1
+const iteration1 = howManyTimes(repeatedWords, 'machine')
+console.log(iteration1)
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
 
+function createSequence(number) {
+  if (number === 0 ){
+    return []
+  }
+  numArray = []
+  for (let i = 0; i <= number; i++){
+      numArray.push(i) 
+  }
+  return numArray    
+}
+const iteration2 = createSequence(7)
+console.log(iteration2)
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
+const multiplier = 10
 
-function multiplyBy() {}
+function multiplyBy(numArray, multiplier) {
+  let multiple = 0
+  numArray1 = []
+  numArray.forEach((numE) =>{
+    multiple = numE * multiplier
+    numArray1.push(multiple)
+  })
+return numArray1
+}
+const iteration3 = multiplyBy(numbers, multiplier)
+console.log(iteration3)
+
+
+
+
+
 
 
 
@@ -36,7 +71,27 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(words, minusWords) {
+if (words.length === 0){
+  return null
+}
+  filterArray = []
+     filteredArray = words.filter(item => !minusWords.includes(item))
+    filteredArray.push()
+  return filteredArray
+}
+const iteration4 = filterOut(original, toRemove)
+console.log(iteration4)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -56,7 +111,31 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(dupWordArray) {
+  if (dupWordArray.length === 0){
+    return null
+  }
+  let filteredArray = []
+  dupWordArray.forEach((filtWord) =>{
+    if (!filteredArray.includes(filtWord)){
+      filteredArray.push(filtWord)
+    }
+  })
+  return filteredArray
+}
+
+
+const iteration5 = uniquifyArray(duplicateWords)
+console.log(iteration5)
+
+
+
+
+
+
+
+
+
 
 
 
