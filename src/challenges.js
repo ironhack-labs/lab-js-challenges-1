@@ -161,4 +161,27 @@ const matrix = [
   ],
 ];
 
-function greatestProduct() {}
+// "should return 1 (one) when all numbers of the arrays are 1"
+// "should return 16 when all the numbers of the arrays are 2"
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      let product =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let product =
+        matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+  return maxProduct;
+}
