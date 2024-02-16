@@ -26,19 +26,46 @@ function howManyTimes(array, word) {
 const whatTheRobotDid = howManyTimes(repeatedWords, "matter");
 console.log(whatTheRobotDid);
 
+//"should return an array with the numbers in range from 0 to n"
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  sequenceArray = [];
+  if (n === 0) {
+    return sequenceArray;
+  }
+  for (let i = 0; i <= n; i++) {
+    sequenceArray.push(i);
+  }
+  return sequenceArray;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiplier) {
+  let multipliedArray = [];
+  array.forEach((element) => {
+    multipliedArray.push(element * multiplier);
+  });
+  return multipliedArray;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+  let filteredArray = [];
+  original.forEach((element) => {
+    if (!toRemove.includes(element)) {
+      filteredArray.push(element);
+    }
+  });
+  return filteredArray;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -55,7 +82,18 @@ const duplicateWords = [
   "bring",
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  let uniqueArray = [];
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  duplicateWords.forEach((element) => {
+    if (!uniqueArray.includes(element)) {
+      uniqueArray.push(element);
+    }
+  });
+  return uniqueArray;
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
