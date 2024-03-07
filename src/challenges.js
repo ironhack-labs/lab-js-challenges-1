@@ -13,13 +13,40 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(myArray,myWord) {
+  if(myArray.length===0){
+    return 0;
+  }
+  else{
+    let count=0;
+    myArray.forEach(element => {
+      if(element === myWord){
+          count++;
+      }  
+    });
+
+    return count;
+  }
+}
+
+
+
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let myArray=[];
+  if(n===0){
+    return myArray;
+  }
+  for(let i=0;i<=n;i++){
+  myArray.push(i);
+  }
+  return myArray;
+}
 
 
 
