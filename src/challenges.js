@@ -54,8 +54,15 @@ function createSequence(n) {
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numberArray, num) {
+  let newArray= []
+  numberArray.forEach(element => {
+    newArray.push(element*num)
+  })
+  return newArray
+}
 
+console.log(multiplyBy(numbers, 7))
 
 
 
@@ -63,7 +70,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  let newArray= original
+  let myWord = toRemove[0]
+  let i=0
+
+  original.forEach(element =>{
+    if (element === myWord){
+      newArray=original.splice(i,1)
+      i++
+    }
+  })
+  console.log(myWord)
+  return newArray
+}
+console.log(filterOut(original,toRemove))
+
 
 
 
