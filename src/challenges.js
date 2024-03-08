@@ -13,13 +13,40 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(myArray,myWord) {
+  if(myArray.length===0){
+    return 0;
+  }
+  else{
+    let count=0;
+    myArray.forEach(element => {
+      if(element === myWord){
+          count++;
+      }  
+    });
+
+    return count;
+  }
+}
+
+
+
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let myArray=[];
+  if(n===0){
+    return myArray;
+  }
+  for(let i=0;i<=n;i++){
+  myArray.push(i);
+  }
+  return myArray;
+}
 
 
 
@@ -27,7 +54,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numberArray, num) {
+  let newArray= []
+  numberArray.forEach(element => {
+    newArray.push(element*num)
+  })
+  return newArray
+}
+
 
 
 
@@ -36,7 +70,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if(original.length===0){
+    return null;
+  }
+  else {
+  let newArray= original
+  
+toRemove.forEach(word=>{
+  let i=0
+  original.forEach(element =>{
+
+    if (element === word){
+      newArray.splice(i,1) 
+    }
+    i++
+  })
+
+})
+  
+  return newArray
+}
+}
+
 
 
 
@@ -56,8 +112,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(duplicateWords) {
+  if(duplicateWords.length===0){
+    return null;
+  }
+  let newArray =[];
+  for(let i= 0;i<duplicateWords.length;i++){
+    let check = duplicateWords[i];
+    if(!newArray.includes(check)){
+      newArray.push(check);
+    }
+  }
+  return newArray;
+}
 
 
 
@@ -84,5 +151,53 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+const mat2 = [
+  [ 1,  2, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1,  4, 3, 4, 5]
+]
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let horizontalMatrix = [];
+  let verticalMatrix =[];
+  let temp = 1;
+  for(let i=0;i<matrix.length;i++){
+    for(let j=0 ;j<matrix[i].length;j++){
+      for(let k=0;k<4;k++){
+        
+        temp = temp * matrix[i][j+k]
+        
+      }
+      if (temp){
+        horizontalMatrix.push(temp);
+      }
+      temp = 1;
+      
+      
+    }
+
+
+
+ 
+
+}
+let tempArr = [];
+let temp2 = 1;
+    for(let i=0;i<matrix.length;i++){
+      for(let j=0 ;j<matrix[i].length;j++){
+        
+       
+        tempArr.push(matrix[j][i]);
+        
+        
+      }
+      verticalMatrix.push(tempArr);
+      tempArr=[];
+  }
+
+  console.log(verticalMatrix)
+}
+
+greatestProduct(mat2);
