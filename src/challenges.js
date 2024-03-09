@@ -106,10 +106,19 @@ const duplicateWords = [
 
 function uniquifyArray(duplicateWords) {
 
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    
+  if (duplicateWords.length === 0) {
+    return null;
   }
+  
+  let newArray = []; 
+
+  for (let i = 0; i < duplicateWords.length; i++) {
+    let grabbedWord = duplicateWords[i];
+    if (!newArray.includes(grabbedWord))
+    newArray.push(grabbedWord); 
+  }
+
+  return newArray;
 
 
 }
