@@ -13,13 +13,49 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+
+function howManyTimes(array, word) {
+  if (array.length === 0) {
+    return 0;
+  }
+
+  let count = 0;
+  for(const index of array){
+    if(index === word){
+      console.log(index);
+      count++;
+    }
+  }
+  
+  return count;
+
+}
+
+const result = howManyTimes(repeatedWords, "matter");
+
+console.log(result);
+
+console.log(howManyTimes(repeatedWords));
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+let arr = [];
+// n = 5
+// arr = [0,1,2,3,4,5]
+//push() unshift()
+
+if(n === 0){
+  return arr;
+}
+
+for (let i = 0; i <= n; i++) {
+  arr.push(i);
+} return arr;
+  
+}
 
 
 
@@ -27,18 +63,42 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiple) {
+  if(array.length === 0){
+    return array;
+  }
+  let multipleArray = [];
 
+  array.forEach((element) =>{
+  multipleArray.push(element * multiple);
+  })
+ 
+ return multipleArray;
+}
 
-
+let newArray = multiplyBy(numbers);
+  
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr1, arr2) {
+  if (arr1.length === 0) {
+    return null;
+  }
+  if(arr2.length === 0){
+    return arr1;
+  }
 
-
+  const result = [];
+  for (const item of arr1) {
+      if (!arr2.includes(item)) {
+          result.push(item);
+      }
+  }
+  return result;
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +116,12 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if(array.length === 0){
+    return null;
+  }
+
+}
 
 
 
