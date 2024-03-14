@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, searchWord) {
+  let counter = 0;
+  if (!repeatedWords.length) return 0;
+  repeatedWords.forEach(element => {
+    if (element === searchWord)
+      counter++;
+  });
+  return counter;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let arrSequence = [];
+
+  if (n == 0) return arrSequence;
+  for (let i = 0; i <= n; i++) {
+    arrSequence.push(i)
+
+  }
+  return arrSequence;
+
+}
 
 
 
@@ -27,7 +45,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplyBy) {
+  let result = [];
+  numbers.forEach((element) => {
+    result.push(element * multiplyBy);
+  });
+  return result;
+}
 
 
 
@@ -36,8 +60,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrOriginal, arrRemove) {
+  let result = [];
+  if (!arrOriginal.length) return null;
+  if (!arrRemove.length) return arrOriginal;
+  arrOriginal.forEach(element => {
+    if (!arrRemove.includes(element)) {
+      result.push(element);
+    }
+  });
+  return result;
 
+}
 
 
 
@@ -56,9 +90,16 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(duplicateWords) {
+  let result = [];
+  if (!duplicateWords.length) return null;
+  duplicateWords.forEach(element => {
+    if (!result.includes(element)) {
+      result.push(element);
+    }
+  });
+  return result;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +126,51 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+
+  let greatestProduct = 0;
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let horizontalProduct = 0;
+      let verticalProduct = 0;
+
+      if (i < matrix.length - 4) {
+        verticalProduct = calcProduct(matrix, i, j, "col");
+      }
+
+      if (j < matrix[i].length - 4) {
+        horizontalProduct = calcProduct(matrix, i, j, "row");
+      }
+
+      if (verticalProduct && verticalProduct > greatestProduct) {
+        greatestProduct = verticalProduct;
+      }
+
+      if (horizontalProduct && horizontalProduct > verticalProduct) {
+        greatestProduct = horizontalProduct;
+      }
+    }
+  }
+  return greatestProduct;
+}
+
+
+
+function calcProduct(matrix, row, col, position) {
+  let productTimes = 1;
+
+  if (position == 'row') {
+    for (let i = 0; i < 4; i++) {
+      productTimes *= matrix[row][col + i];
+    }
+  }
+
+  if (position == 'col') {
+    for (let i = 0; i < 4; i++) {
+      productTimes *= matrix[row + i][col];
+    }
+  }
+
+  return productTimes;
+}
