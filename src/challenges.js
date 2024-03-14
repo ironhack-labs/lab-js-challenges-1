@@ -53,6 +53,13 @@ const toRemove = ["cat", "dog"];
 
 function filterOut(original, toRemove) {
   if (original.length > 0) {
+    return original.filter((element) => !toRemove.includes(element));
+  }
+  return null;
+}
+/*
+function filterOut(original, toRemove) {
+  if (original.length > 0) {
     const filtered = [];
     original.forEach((element) => {
       let keep = true;
@@ -70,7 +77,7 @@ function filterOut(original, toRemove) {
     return filtered;
   }
   return null;
-}
+}*/
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
