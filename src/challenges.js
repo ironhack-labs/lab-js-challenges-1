@@ -209,11 +209,11 @@ function greatestProduct(matrix) {
         }
       }
       if (column + N < matrix[row].length) {
-        let colMult = (rowMult =
+        colMult = rowMult =
           matrix[row][column] *
           matrix[row][column + 1] *
           matrix[row][column + 2] *
-          matrix[row][column + 3]);
+          matrix[row][column + 3];
 
         if (maxMult === null || maxMult < colMult) {
           maxMult = colMult;
