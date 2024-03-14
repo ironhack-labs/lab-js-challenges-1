@@ -13,33 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(repeatedWords, word) {
+  return repeatedWords.filter((currentWord) => currentWord === word).length;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
+function createSequence(n) {
+  return n === 0 ?  [] : Array.from(Array(n + 1).keys());
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, factor) {
+    let newArr = [];
 
+    numbers.forEach(element => {
+      newArr.push(element * factor);
+    });
 
-
+    return newArr;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
-
+function filterOut(original, toRemove) {
+  return original.length !== 0 ? original.filter(item => !toRemove.includes(item)) : null;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -55,11 +57,10 @@ const duplicateWords = [
   "simple",
   "bring"
 ];
-
-function uniquifyArray() {}
-
-
-
+function uniquifyArray(dublicateWords) {
+  return  dublicateWords.length === 0 ?
+   null : dublicateWords.filter((element, index) => dublicateWords.indexOf(element) === index);
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +86,17 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let biggestMultiplication = 0;
+  let adjacentNumber = 4;
+  
+  for (let i = 0; i < matrix.length; i++){
+    for(let j = 0; j <= matrix[i].length - adjacentNumber; j++){
+        const horizontalMultiplication = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+        const verticalMultiplication = matrix[j][i] * matrix[j+1][i] * matrix[j+2][i] * matrix[j+3][i];
+        biggestMultiplication = Math.max(biggestMultiplication, horizontalMultiplication, verticalMultiplication);
+    }
+  }
+
+  return biggestMultiplication;
+}
