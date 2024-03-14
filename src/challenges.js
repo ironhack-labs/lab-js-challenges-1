@@ -95,6 +95,14 @@ const duplicateWords = [
 ];
 
 function uniquifyArray(wordArray) {
+  if (wordArray.length > 0) {
+    return wordArray.filter(
+      (element, index) => wordArray.indexOf(element) === index
+    );
+  } else {
+    return null;
+  }
+  /*
   if (wordArray.length > 1) {
     let index = 0;
     while (index < wordArray.length - 1) {
@@ -112,6 +120,7 @@ function uniquifyArray(wordArray) {
   } else {
     return null;
   }
+  */
 }
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
