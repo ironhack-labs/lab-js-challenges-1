@@ -13,21 +13,75 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(names, userInputName) {
+  if(names.length === 0){
+    return 0;
+  }//done
 
+  let namesCount = 0;
 
+  for (let i = 0; i < names.length; i++) {
+    if(names[i] === userInputName){
+        namesCount+=1;
+    }
+    
+  }
+  return namesCount;
+}
 
-
+// User gives us an number which is n
+// Then if the n is 0 then we return empty array Done
+// But if the n is not 0, then we should return an array until that number so -> if n is 5 then return array is like this [1,2,3,4,5]
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(userInputNumber) {
+  let sequenceArray = [];
+
+  if(userInputNumber === 0){
+    return sequenceArray;
+  }
+  // we say userInputNumber is 5 to test the scenarios
+  // 0 <= 5 condition works and we push 0 in to the array
+  // 1 <= 5 condition works and we push 1 in to the array
+  // 2 <= 5 condition works and we push 2 in to the array
+  // 3 <= 5 condition works and we push 3 in to the array
+  // 4 <= 5 condition works and we push 4 in to the array
+  // 5 <= 5 condition works and we push 5 in to the array 
 
 
+  for(let i = 0; i <= userInputNumber; i++){
+      sequenceArray.push(i);
+  }
+
+  return sequenceArray;
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+
+
+
+
+
+function multiplyBy(numberArray ,multiplier) {
+  let multiplicationResult = 1;
+  let multipliedArray = [];
+  
+  numberArray.forEach(currentElement => {
+    multiplicationResult = currentElement * multiplier;
+    multipliedArray.push(multiplicationResult);
+  });
+
+  return multipliedArray;
+  // for (let i = 0; i < numberArray.length; i++){
+  //   multiplicationResult *= numberArray[i];
+  // }
+
+  // return multiplicationResult;
+}
+
+
 
 
 
@@ -35,28 +89,59 @@ function multiplyBy() {}
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
+                  
+function filterOut(originalArray, itemsToRemove) {
+  let cutOut = [];
+  if(originalArray.length === 0){
+    return null;
+  }
+  
+  if(itemsToRemove.length === 0){
+    return originalArray;
+  }
+  for (let i = 0; i < originalArray.length; i++){
+      for(let j=0; j < itemsToRemove.length; j++){
+        if(originalArray[i]===itemsToRemove[j]){
+            originalArray.splice(i, 1);
+        }
+      }
+  }
+  return originalArray;
 
-function filterOut() {}
-
-
+}
 
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
-  "crab",
-  "poison",
+  "crab", 
+  "poison",                                     
   "contagious",
   "simple",
   "bring",
   "sharp",
   "playground",
-  "poison",
+  "poison",  
   "communion",
   "simple",
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(doubleWords) {
+  let wordsDouble = 0;
+  if (doubleWords.length === 0){
+    return null;
+  }
+  for( let i = 0; i < doubleWords.length; i++){
+    for( let j = i+1; j < doubleWords.length; j++){
+      if(doubleWords[i] === doubleWords[j]){
+        doubleWords.splice(j,1);
+        j--;
+      }
+    }
+  }
+  return doubleWords;
+
+}
 
 
 
@@ -85,4 +170,83 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let biggestMultiplication = 1;
+  
+
+  for (let i = 0; i < matrix.length; i++){
+    let firstMultiplication = 1;
+    let secondMultiplication = 1;
+    let thirdMultiplication = 1;
+    let fourthMultiplication = 1;
+    for(let j = 0; j<4; j++){
+        firstMultiplication *= matrix[i][j];
+        secondMultiplication *= matrix[i][j+1];
+        thirdMultiplication *= matrix[j][i];
+        fourthMultiplication *= matrix[j+1][i];
+
+    }
+
+    if(firstMultiplication>biggestMultiplication){
+      biggestMultiplication = firstMultiplication;
+    }
+
+    if(secondMultiplication>biggestMultiplication){
+      biggestMultiplication = secondMultiplication;
+    }
+
+    if(thirdMultiplication>biggestMultiplication){
+      biggestMultiplication = thirdMultiplication;
+    }
+
+    if(fourthMultiplication>biggestMultiplication){
+      biggestMultiplication = fourthMultiplication;
+    }
+  }
+  return biggestMultiplication;
+}
+
+// function greatestProduct(matrix) {
+//   let biggestMultiplication = 0;
+
+//   // Calculate the greatest product horizontally
+//   for (let i = 0; i < matrix.length; i++) {
+//     for (let j = 0; j <= matrix[i].length - 4; j++) {
+//       const horizontalProduct = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+//       biggestMultiplication = Math.max(biggestMultiplication, horizontalProduct);
+//     }
+//   }
+
+
+//   //Calculate the greatest product vertically
+//   for (let i = 0; i <= matrix.length - 4; i++) {
+//     for (let j = 0; j < matrix[i].length; j++) {
+//       const verticalProduct = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+//       biggestMultiplication = Math.max(biggestMultiplication, verticalProduct);
+//     }
+//   }
+
+//   return biggestMultiplication;
+// }
+
+// console.log(greatestProduct([[ 1,  2, 3, 4, 5],
+//                              [ 1, 20, 3, 4, 5],
+//                              [ 1, 20, 3, 4, 5],
+//                              [ 1, 20, 3, 4, 5],
+//                              [ 1,  4, 3, 4, 5]])); 
+// function greatestProduct(matrix) {
+//   let biggestMultiplication = 0;
+
+//   for (let i = 0; i < matrix.length; i++) {
+//     for (let j = 0; j < matrix[i].length - 3; j++) {
+//       const horizontalProduct = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+//       const verticalProduct = matrix[j][i] * matrix[j + 1][i] * matrix[j + 2][i] * matrix[j + 3][i];
+//       biggestMultiplication = Math.max(biggestMultiplication, horizontalProduct, verticalProduct);
+//     }
+//   }
+
+//   return biggestMultiplication;
+// }
+
+// 
+
