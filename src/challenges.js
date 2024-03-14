@@ -209,7 +209,7 @@ function greatestProduct(matrix) {
         }
       }
       if (column + N < matrix[row].length) {
-        colMult = rowMult =
+        colMult =
           matrix[row][column] *
           matrix[row][column + 1] *
           matrix[row][column + 2] *
