@@ -1,4 +1,17 @@
-// Iteration 1 | Count Repetition
+/* Iteration 1 | Count Repetition
+/*
+Declare a function named howManyTimes that will take in an array of words as the first argument and a word to search for as the second argument. 
+The function should return the number of times the word appears in the array.
+
+You can use the following array to test your solution:
+Example:
+
+howManyTimes(repeatedWords, "matter");
+Expected output:
+
+4
+
+*/
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,35 +26,114 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayWords, wordSearch) {
+  let count = 0;
+
+  for (let i = 0; i < arrayWords.length; i++) {
+    if (arrayWords[i] === wordSearch) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+/* Declare a function named createSequence. The function should take one argument: a number (n). 
+The function should return an array of numbers in the range from 0 to n. */
+
+
+function createSequence(n) {
+
+  const resArray = [];
+
+  if (n === 0) {
+    return [];
+  }
+
+  for (let i = 0; i <= n; i++) {
+    resArray.push(i);
+  }
+
+  return resArray;
+}
 
 
 
 
 // Iteration 3 | Multiply for Each
+
+/* Implement the function multiplyBy that takes two arguments: an array of numbers and a number (multiplier). 
+It should return a new array containing each number of the first array multiplied by the multiplier.
+
+Important: You must use the forEach() method in the function to iterate over the array. If you need a refresher 
+on the forEach() method, check today's lesson or the following MDN page. */
+
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(oldArray, multiplier) {
+  const newArray = [];
+
+  oldArray.forEach(
+    function (el, i, arr) {
+
+      const oldVal = el; /* arr[i] */
+      const newVal = oldVal * multiplier;
+      newArray.push(newVal);
+
+    }
+  )
+
+  return newArray;
+}
 
 
 
 
 // Iteration 4 | Filter Out
+/*  Declare a function filterOut. The function should take two arguments: an array of strings (original), and an array of strings
+ to filter out.
+
+The function should return a new array that only includes the strings from the original array that are not present
+ in the second array. In other words, you should remove all the strings listed in the second array.
+
+You can use the following array to test your solution:*/
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
 
+  let newArray = [];
+
+  original.forEach(
+    function (el, i, arr) {
+
+      if (!toRemove.includes(el)) {
+        newArray.push(el);
+      }
+
+    }
+  )
+
+  return newArray;
+}
 
 
 
 // Iteration 5 | Unique Arrays
+/* Take the following array, remove the duplicates, and return a new array. You are more than likely going to 
+want to check out the Array methods indexOf and includes.
+
+Do this in the form of a function uniquifyArray that receives an array of words as an argument.
+
+You can use the following array to test your solution: */
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,7 +148,33 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayWords) {
+
+  if (arrayWords.length === 0) {
+    return null;
+  }
+
+  return Object.keys(doCount(arrayWords));
+}
+
+
+function doCount(arrayWords) {
+  counting = {};
+  for (const word of arrayWords) {
+
+    if (Object.keys(counting).includes(word)) {
+      counting[word] += 1;
+    } else {
+      counting[word] = 1;
+    }
+  }
+  return counting;
+}
+
+
+
+
+
 
 
 
@@ -85,4 +203,11 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(inputArray) { 
+
+  var products = [];
+  for(var i = 0; i <= inputArray.length; i = i + 2) {
+      products.push(inputArray[i] * inputArray[i + 1]);
+
+  }
+}
