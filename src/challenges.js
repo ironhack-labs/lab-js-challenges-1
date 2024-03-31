@@ -13,13 +13,29 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, searchWord) {
+  let count = 0;
+  words.forEach(word => {
+    if (word === searchWord) {
+      count++;
+    }
+  });
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const sequence = [];
+  if (typeof n === 'number' && n > 0) {  
+    for (let i=0; i<=n; i++) {
+      sequence.push(i);
+    }
+  }
+  return sequence;
+}
 
 
 
@@ -27,7 +43,11 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  const result = [];
+  numbers.forEach((number) => result.push(number * multiplier));
+  return result;
+}
 
 
 
@@ -36,7 +56,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+
+  const result = [];
+  original.forEach((originalString) => {
+      if (! toRemove.includes(originalString)) {
+        result.push(originalString)
+      }
+  });
+  return result;
+}
 
 
 
@@ -56,7 +88,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(originalArray) {
+  if (originalArray.length === 0) {
+    return null;
+  }
+
+  let cleanedArray = [];
+  for (let element of originalArray) {
+    if (!cleanedArray.includes(element)) {
+      cleanedArray.push(element);
+    }
+  }
+
+  return cleanedArray;
+}
 
 
 
@@ -85,4 +130,44 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  return Math.max(greatestProductHorizontal(matrix), greatestProductHorizontal(matrixTranspose(matrix)));
+}
+
+function greatestProductHorizontal(matrix) {
+  const productLength = 4;
+  let greatestProduct = 0;
+
+  for (let indexColumn = 0; indexColumn < matrix.length; indexColumn++) {
+    for (let indexRow = 0; indexRow < matrix[indexColumn].length - productLength; indexRow++) {
+     
+      let product = matrix[indexColumn][indexRow] * 
+                    matrix[indexColumn][indexRow + 1] * 
+                    matrix[indexColumn][indexRow + 2] * 
+                    matrix[indexColumn][indexRow + 3]; 
+ 
+      if (product > greatestProduct) {
+        greatestProduct = product;
+      }
+    }
+  }
+  return greatestProduct;
+}
+
+function matrixTranspose(matrix) {
+  let transposedMatrix = [];
+
+  const columnLength = matrix.length;
+  const rowLength = matrix[0].length; 
+
+  for (let i = 0; i < rowLength; i++) {
+    let row = [];    
+    for (let j = 0; j < columnLength; j++) {
+      row.push(matrix[j][i]);
+    }
+    transposedMatrix.push(row);
+  }
+  return transposedMatrix;
+}
+
+ 
