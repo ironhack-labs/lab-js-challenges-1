@@ -13,22 +13,41 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, searchWord){
+  if(words.length===0) return 0;
 
-
+  let wordCount = 0;
+  words.forEach(function (element){
+    if (element === searchWord) wordCount++; 
+  })
+  // can we shorten the above with ES6??
+  return wordCount;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(max){
+  let result = [];
+  if(max === 0) return result;
 
-
-
+  for(let i=0; i<=max; i++){
+    result.push(i)
+  }
+  return result;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numberz, multiplier){
+  let result = [];
+  if (numberz.length === 0) return result;
 
+  numberz.forEach(function (element){
+    result.push(element*multiplier);
+  })
+  return result;
+}
 
 
 
@@ -36,9 +55,16 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(words, filteredWords) {
+  result = []
+  if(words.length === 0) return null;
 
-
+  words.forEach(function(element){
+  if(!filteredWords.includes(element)) result.push(element);
+  // push word if it is not in the filter list.
+  })
+  return result;
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +82,14 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(input) {
+  result = []
+  if (input.length === 0) return null;
+  input.forEach(function(element){
+  if(!result.includes(element)) result.push(element);
+})
+  return result;
+}
 
 
 
