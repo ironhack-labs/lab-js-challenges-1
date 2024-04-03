@@ -13,52 +13,89 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, wordToSearch) {
+  if (repeatedWords.length === 0) return 0;
+  
+  let count = 0;
+  for (let i = 0; i < repeatedWords.length; i++) {
+    const element = repeatedWords[i];
+    if (element === wordToSearch) count++;
+  }
 
-
-
+  if (count === 1) return 1;
+  else if (count === 0) return 0;
+  else return count;
+}              
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
 
+function createSequence(n) {
+  
+  if(n === 0){
+    return [];
+  }
+let array = [];
+for(let i = 0; i <= n; i++){
+  array.push(i);
+}
+return array;
+} 
 
 
 
 // Iteration 3 | Multiply for Each
-const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(arr, multiplier) {
+  let result = [];
+  arr.forEach(num => {
+    result.push(num * multiplier);
+  });
+  return result;
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, wordsToRemove) {
+  if (originalArr.length === 0) {
+    return null;
+  }
+  if (wordsToRemove.length === 0) {
+    return originalArr;
+  }
 
+  const array1 = [];
 
+  originalArr.forEach(function(el) {
+    if (!wordsToRemove.includes(el)) {
+      array1.push(el);
+    }
+  });
+
+  return array1;
+}
+
+const array1 = filterOut(original, toRemove);
+console.log(array1); // Output: ["fish", "bird", "fish"]
 
 
 // Iteration 5 | Unique Arrays
+function uniquifyArray(array) {
+  if(array.length === 0) return null;
+  return array.filter((word, index) => array.indexOf(word) === index);
+}
+
 const duplicateWords = [
   "crab",
   "poison",
   "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
   "poison",
-  "communion",
   "simple",
-  "bring"
+  "sharp",
+  "simple"
 ];
-
-function uniquifyArray() {}
-
-
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -82,7 +119,10 @@ const matrix = [
   [4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36],
   [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16],
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
-  [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
-];
+  [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]]
+  ;
 
-function greatestProduct() {}
+function greatestProduct() {};
+
+
+
