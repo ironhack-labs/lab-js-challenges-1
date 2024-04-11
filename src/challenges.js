@@ -13,21 +13,61 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, words) 
+{
+  let counter = 0; 
+  
+  if (arrayOfWords.length === 0)
+  {
+      return 0;  
+  }
+  
+  for (let i = 0; i < arrayOfWords.length; i++)
+  {
+    if (arrayOfWords[i] === words)
+    {
+      counter++; 
+    }
 
+  }
+  return counter; 
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) 
+{
+  const arrayNumbers = [];
 
+  if (number === 0)
+  {
+      return [];
+  }
 
+  for (let i = 0; i <= number; i++)
+  {
+    arrayNumbers.push(i);
+  }
+
+  return arrayNumbers; 
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayNumbers, multiNumber) 
+{
+  const numbersMultiplied = [];
+
+  arrayNumbers.forEach(number => {
+    numbersMultiplied.push(multiNumber * number);
+
+  } );
+  return numbersMultiplied;
+
+}
 
 
 
@@ -36,7 +76,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, filteredArray) 
+{
+  const finalArray = [];
+ 
+     if (originalArray.length === 0)  //should return null if receives an empty array as the first argument
+      {
+         return null; 
+
+      }
+
+    for (let i = 0; i < originalArray.length; i++)
+    {
+      let counter = originalArray[i];
+
+      if (filteredArray.indexOf(counter) === -1) 
+     {
+      finalArray.push(counter);
+     }
+
+    }
+
+     return finalArray;
+}
 
 
 
@@ -56,7 +118,25 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(checkArray) 
+{
+  const newArray = [];
+
+  if (checkArray.length === 0)  //should return null if receives an empty array as the first argument
+      {
+         return null; 
+      }
+    for (let i = 0; i < checkArray.length; i++)
+    {
+      const counter = checkArray[i];  
+
+      if (newArray.indexOf(checkArray[i]) === -1 )
+      {
+        newArray.push(counter);/* NO SABEMOS CÓMO NI POR QUÉ PERO FUNCIONA newArray.push(checkArray[i]); */ 
+      }
+    }
+      return newArray; 
+}
 
 
 
