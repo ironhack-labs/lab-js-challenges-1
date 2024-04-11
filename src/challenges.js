@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, theWord) {
+if (repeatedWords.length === 0) {
+  return 0
+};
+let foundWord = 0;
+for (let i = 0; i < repeatedWords.length; i++) {
+    if (repeatedWords[i] === theWord) {
+      foundWord += 1
+    } 
+}
+return foundWord;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(numberN) {
+  let newArray = [];
+  for (let i = 0; i <= numberN; i++) {
+    newArray.push(i)
+  }
+  if (numberN === 0) {
+    newArray = []
+  } 
+  return newArray
+  }
+
+
 
 
 
@@ -27,7 +49,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let newnewArray = [];
+numbers.forEach(function(greatArray){newnewArray.push(greatArray * multiplier)}) 
+return newnewArray
+}
+
+
 
 
 
@@ -36,7 +64,23 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+  };
+  if (toRemove.length === 0) {
+    return original
+  };
+  
+  for (let i = 0; i < original.length; i++) {
+    for (let j = 0; j < toRemove.length; j++) {
+      if (original[i] === toRemove[j]) {
+        original.splice(i, 1);
+      }  
+    }
+  }
+  return original
+}
 
 
 
@@ -56,8 +100,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) {
+    return null
+  }
+  let lastArray = [];
+  for (let i = 0; i < duplicateWords.length; i++) {
+   if (!lastArray.includes(duplicateWords[i])) {
+    lastArray.push(duplicateWords[i])
+   }
+  }
+  return lastArray
+}
 
 
 
@@ -85,4 +139,12 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let lastProduct = [] 
+  for (let i = 0; i < matrix.length; i++) {
+    if (matrix[i] === 1) {
+      lastProduct = 1
+    }
+  }
+  return lastProduct
+}
