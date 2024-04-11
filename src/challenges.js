@@ -13,21 +13,65 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrPalabras, palabra) {
+  //devolvemos 0 si el array arg está vacio
+  if (arrPalabras.length === 0){
+    return 0
+  }
+
+  //declaramos el contador
+  let counter = 0
+
+  //buscamos en el array
+  for (let i = 0; i < arrPalabras.length; i++) {
+    if (arrPalabras[i] === palabra){
+      counter += 1
+    }
+  }
+
+  return counter
+}
+
+howManyTimes (repeatedWords)
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  //devolvemos un array vacio si n=0
+  if (n === 0) {
+    return []
+  }
 
+  let arrNumbers = [];
+  for ( let i = 0; i <= n; i++ ) {
+   arrNumbers.push(i) 
+  }
+
+  return arrNumbers
+}
+
+createSequence(10)
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy (numeros, multiplicador) {
+  //devolvemos un array vacio si n=0
+  if (numeros.length === 0) {
+    return []
+  }
+
+  let arrMultiplicador = []
+  numeros.forEach ((elementArr) => {
+    arrMultiplicador.push(elementArr * multiplicador)
+  })
+
+  return arrMultiplicador
+}
 
 
 
@@ -36,7 +80,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+let arrCadena = []
+let filteredString = []
+function filterOut(originalString, filteredString) {
+  //devolvemos null si el arg es un array vacio
+  if (originalString.length === 0) {
+    return null
+  }
+
+  //devolvemos el array original si el array arg esta vacio
+  if (filteredString.length === 0) {
+    return originalString
+  }
+
+  let arrResult = []
+  for ( let i = 0; i < originalString.length; i++ ) {
+    let x = originalString[i]
+    if (filteredString.indexOf(x) === -1) {
+      arrResult.push(x)
+    }
+  }
+  
+  return arrResult
+}
 
 
 
@@ -56,7 +122,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+
+function uniquifyArray(randomWords) {
+  //devolvemos null si el arg es un array vacio
+  if (randomWords.length === 0) {
+    return null
+  }
+  let nuevoArr = []
+  for ( let i = 0; i < randomWords.length; i++ ) {
+    if (nuevoArr.indexOf(randomWords[i]) === -1) {
+      nuevoArr.push(randomWords[i])
+    }
+  }
+
+  return nuevoArr
+
+}
+
+uniquifyArray(duplicateWords)
 
 
 
