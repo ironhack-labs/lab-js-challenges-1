@@ -13,30 +13,68 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
 
+  let wordCount = 0
 
+  array.forEach((wordInArray) => {
+    if (wordInArray === word) wordCount++
+  })
 
+  return wordCount
+
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(times) {
 
+  const sequence = []
+  if (times !== 0) {
+    for (let i = 0; i <= times; i++) {
+      sequence.push(i);
+    }
+  }
 
+  return sequence;
 
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, number) {
 
+  const multipliedArray = []
+  array.forEach((multiplied) => {
+    multipliedArray.push(multiplied * number)
+  })
+  return multipliedArray
 
-
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+
+  const filtered = original
+  if (original.length === 0) {
+    return null
+  } else {
+    toRemove.forEach((removedAnimal) => {
+      filtered.forEach((animal) => {
+        if (animal === removedAnimal) {
+          const position = filtered.indexOf(animal)
+          filtered.splice(position, 1)
+        }
+      })
+    })
+  }
+
+  return filtered;
+
+}
 
 
 
@@ -56,7 +94,23 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+
+  const uniqueArray = []
+  if (array.length === 0) {
+    return null
+  } else {
+
+    array.forEach((word) => {
+      if (!uniqueArray.includes(word)) {
+        uniqueArray.push(word)
+      }
+    })
+  }
+
+  return uniqueArray
+
+}
 
 
 
@@ -85,4 +139,37 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(numberMatrix) {
+
+  let horizontalTest = 1
+  let horizontalFinal = 1
+  let verticalTest = 1
+  let verticalFinal = 1
+
+  numberMatrix.forEach((array) => {
+    horizontalTest = 1
+    for (let i = 0; i < array.length; i++) {
+      horizontalTest = horizontalTest * array[i]
+    }
+    if (horizontalTest > horizontalFinal) {
+      horizontalFinal = horizontalTest
+    }
+
+  })
+
+  for (let i = 0; i < numberMatrix.length; i++) {
+    verticalTest = 1
+    numberMatrix.forEach((array) => {
+      verticalTest = verticalTest * array[i]
+    })
+
+    if (verticalTest > verticalFinal) {
+      verticalFinal = verticalTest
+    }
+  }
+
+  if (horizontalFinal > verticalFinal) {
+    return horizontalFinal
+  } else return verticalFinal
+
+}
