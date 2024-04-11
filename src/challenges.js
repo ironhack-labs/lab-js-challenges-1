@@ -13,32 +13,43 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(words, searchWord) {
+  let count = 0;
+  for (let word of words) {
+    if (word === searchWord) {
+      count++;
+    }
+  }
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(n) {
+  return Array.from({ length: n + 1 }, (_, index) => index);
+  }
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(numbers, multiplier) {
+  let multipliedArray = [];
+  numbers.forEach(function(number) {
+    multipliedArray.push(number * multiplier);
+  });
+  return multipliedArray;
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
+function filterOut(original, toRemove) {
+  return original.filter(word => !toRemove.includes(word));
+}
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,9 +67,10 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(words) {
+  return words.filter((word, index) => words.indexOf(word) === index);
+}
+console.log(uniquifyArray(duplicateWords));
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
