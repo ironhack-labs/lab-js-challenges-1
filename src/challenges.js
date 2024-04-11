@@ -13,33 +13,60 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(array, word) {
+  let counter= 0;
+  for (element of array) {
+    if (word === element) {
+      counter ++
+    } 
+  }
+  return counter
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return []
+  }
+  const result = []
 
-
-
+  for (let i = 0; i <= n; i++) {
+    result.push(i)
+  }
+  return result;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
+function multiplyBy(array, multiplier) {
 
-function multiplyBy() {}
+  const result = [];
+  array.forEach(element => {
+    result.push(element*multiplier)
+  });
 
-
-
+  return result
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+const result = [];
 
-
-
+  if (original.length === 0) {
+    return null
+  }
+  for (let i= 0; i < original.length; i++) {
+    if (! toRemove.includes(original[i])) {  
+      result.push(original[i])
+    }
+  }
+  return result
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +83,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (array.length === 0) {
+    return null;
+  }
+ let newArray = [];
+ for (let i = 0; i < array.length; i++) { 
 
+  let evaluation= newArray.indexOf(array[i])
+  if (evaluation === -1) {
+    newArray.push(array[i])
 
-
+  }
+  
+ }
+  return newArray
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +124,42 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(array) {
+  let horizontalLength = array[0].length;
+  let verticalLength = array.length;
+  let result = 0;
+
+  //Horizontal
+  for (row of array) {
+    let largestLine= 0;
+      for (let i = 0; i <= horizontalLength - 4; i++) {    
+
+        let product = row[i] * row[i+1] * row[i+2] * row[i+3]
+        
+        if (product > largestLine) {
+          largestLine = product;
+        }
+      }
+    if (largestLine > result) {
+      result = largestLine
+    }
+  }
+  //Vertical
+  for (let columnNumber = 0; columnNumber < horizontalLength; columnNumber++) {
+   let largestLine = 0;
+
+    for ( let rowNumber = 0; rowNumber <= verticalLength - 4; rowNumber++) {
+        let product = array[rowNumber][columnNumber] * array[rowNumber +1][columnNumber] * array[rowNumber+2][columnNumber] * array[rowNumber+3][columnNumber];
+        if  (product > largestLine)
+          { largestLine = product}
+      }
+
+   if (largestLine > result) {
+      result = largestLine;
+   }
+  }
+return result;
+
+}
+
+console.log(greatestProduct(matrix))
