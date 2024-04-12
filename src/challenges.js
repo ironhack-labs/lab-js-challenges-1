@@ -1,4 +1,5 @@
 // Iteration 1 | Count Repetition
+
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,22 +14,43 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(wordArray, wordToCount) {
+  if (wordArray.length === 0) {
+    return 0
+  }
+  let algo = 0;
+  for (let i = 0; i < wordArray.length; i++) {
+    if (wordArray[i] === wordToCount) {
+      algo = algo + 1;
+    }
+  }
+  return algo;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(n) {
+  if (n === 0) {
+    return []
+  }
+  let unarray = [];
+  for (let i = 0; i <= n; i++) {
+    unarray.push(i)
+  }
+  return unarray
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(arrayNumber1, number2) {
+  const newArray = [];
+  arrayNumber1.forEach(function (ditto) { newArray.push(ditto * number2) });
+  return newArray;
+}
 
 
 
@@ -36,8 +58,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, toRemove) {
+  if (original.length === 0) { return null };
+  let indexArray = [];
+  for (i of original) {
+    let flag = false;
+    for (j of toRemove) {
+      if (i === j) {
+        flag = true;
+      };
+    }
+    if (!flag) {
+      indexArray.push(i)
+    }
+  };
+  return indexArray;
+}
 
 
 
@@ -56,8 +92,12 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) { return null };
+  const arrayKing = [];
+  duplicateWords.forEach(function (element) { if (!arrayKing.includes(element)) { arrayKing.push(element) } });
+  return arrayKing;
+};
 
 
 
@@ -85,4 +125,36 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrixInput) {
+  const arrayValues = []
+  for (i in matrixInput) {
+    for (j in matrixInput[i]) {
+      if (i - 3 >= 0 && j - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i) - 3][Number(j) - 3] * matrixInput[Number(i) - 2][Number(j) - 2] * matrixInput[Number(i) - 1][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i + 3 < matrixInput.length && j - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j) - 3] * matrixInput[Number(i) + 2][Number(j) - 2] * matrixInput[Number(i) + 1][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i + 3 < matrixInput.length && j + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j) + 3] * matrixInput[Number(i) + 2][Number(j) + 2] * matrixInput[Number(i) + 1][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i - 3 >= 0 && j + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i) - 3][Number(j) + 3] * matrixInput[Number(i) - 2][Number(j) + 2] * matrixInput[Number(i) - 1][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i) - 3][Number(j)] * matrixInput[Number(i) - 2][Number(j)] * matrixInput[Number(i) - 1][Number(j)] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (i + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i) + 3][Number(j)] * matrixInput[Number(i) + 2][Number(j)] * matrixInput[Number(i) + 1][Number(j)] * matrixInput[Number(i) + 0][Number(j)]);
+      };
+      if (j - 3 >= 0) {
+        arrayValues.push(matrixInput[Number(i)][Number(j) - 3] * matrixInput[Number(i)][Number(j) - 2] * matrixInput[Number(i)][Number(j) - 1] * matrixInput[Number(i)][Number(j)]);
+      };
+      if (j + 3 < matrixInput.length) {
+        arrayValues.push(matrixInput[Number(i)][Number(j) + 3] * matrixInput[Number(i)][Number(j) + 2] * matrixInput[Number(i)][Number(j) + 1] * matrixInput[Number(i)][Number(j)]);
+      };
+    };
+  };
+  arrayValuesMax = Math.max.apply(Math, arrayValues);
+  return arrayValuesMax;
+};
