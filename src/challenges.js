@@ -13,13 +13,38 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray, word) {
+  if (!wordArray.length) return 0;
+
+  let repeated = 0
+  wordArray.forEach(currentWord => {
+    if (currentWord === word) {
+      repeated += 1
+    }
+  })
+  return repeated
+}
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  
+
+  if (num === 0) return []
+  
+  let result = [];
+  for(let i = 0; i <= num; i++){
+    result.push(i);
+  }
+  return result;
+}
+
+createSequence(0)
+
+
 
 
 
@@ -27,7 +52,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let multipliedArray = [];
+  numbers.forEach((number) => {
+    multipliedArray.push(number * multiplier);
+  });
+  return multipliedArray;
+}
 
 
 
@@ -36,7 +67,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, excludedArr) {
+  if(!originalArr.length) {
+    return null;
+  }
+  let filteredArr = [];
+  originalArr.forEach((animal) => {
+    if (!excludedArr.includes(animal)) {
+      filteredArr.push(animal);
+    }
+  });
+  return filteredArr;
+}
 
 
 
@@ -56,7 +98,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (!array.length) return null
+
+  let newArr = []
+  array.forEach(word => {
+    if (newArr.includes(word)) {
+      return
+    }
+    else {
+      newArr.push(word)
+    }
+  })
+  return newArr
+}
 
 
 
@@ -85,4 +140,27 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function greatestProduct(matrix) {
+  let greatestProd = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let prodRow =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (i < matrix.length - 3) {
+        let prodCol =
+          matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+          greatestProd = Math.max(greatestProd, prodCol);
+      }
+    }
+  }
+  return greatestProd;  
+}
+
+
+/*
+Bonus - Iteration #8.2: Product of diagonals
+        Following the logic you've used in iteration #8.1, declare a function called 
+        greatestProductOfDiagonals(matrix). It takes a matrix as a parameter and returns
+        the greatest product of any four values layed out diagonally, in either direction.
+*/
