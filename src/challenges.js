@@ -13,21 +13,71 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+// function howManyTimes(words, wordToSearch) {
 
+//   const counts = {};
+//   repArr.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+//   return counts
+//   }
+
+
+function howManyTimes(array, wordInArray) {
+
+  let count = 0
+
+  array.forEach((foundWord) => {
+    if (foundWord === wordInArray) {
+      count++;
+    }
+  })
+
+  return count
+
+}
+  
+  
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(numb) {
 
+  let numbers = []
+
+  for (let i = 0; i <= numb; i++) {
+
+  if (numb !== 0) {
+    numbers.push(i)
+    }
+  }
+
+  return numbers
+
+}
+
+
+
+// function createSequence(n) {
+//   return Array.from({length: n}, (_, i) => i + 1)
+// }
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+
+  const multipliedTotal = []
+
+  numbers.forEach((number) => {
+
+    multipliedTotal.push(number * multiplier);
+
+  })
+
+  return multipliedTotal;
+}
 
 
 
@@ -36,9 +86,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toFilter) {
 
+  if (!original.length) {
+    return null
+  }
 
+  toFilter.forEach((wordToFilter) => {
+
+    original.forEach((word, index) => {
+
+      if (wordToFilter === word) {
+
+        original.splice(index, 1)
+
+      }
+
+    })
+
+  })
+
+  return original
+
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +126,35 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+
+  if (!words.length) {
+    return null
+  }
+
+  words.forEach((word) => {
+    if (words.indexOf(word) !== words.lastIndexOf(word)) {
+      words.splice(words.lastIndexOf(word), 1)
+    }
+  })
+
+  return words
+
+}
+
+// function uniquifyArray(array) {
+//   if (!array.length) return null
+
+//   let newArr = []
+//   array.forEach(word => {
+//     if (newArr.includes(word)) {
+//       return
+//     } else {
+//       newArr.push(word)
+//     }
+//   })
+//   return newArr
+// }
 
 
 
@@ -85,4 +183,24 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+// Remny
+function greatestProduct(matrix) {
+  let greatestProd = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let prodRow =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (prodRow > greatestProd) {
+        greatestProd = prodRow;
+      }
+      if (i < matrix.length - 3) {
+        let prodCol =
+          matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+        if (prodCol > greatestProd) {
+          greatestProd = prodCol;
+        }
+      }
+    }
+  }
+  return greatestProd;
+}
