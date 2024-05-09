@@ -13,13 +13,36 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordToSearch) {
+
+let count = 0;
+
+arrayOfWords.forEach(found => {
+  if(wordToSearch === found){
+    count++
+  }
+
+});
+return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let sequNum = [ ];
+  
+  if( n=== 0){
+    return sequNum;
+  }
+
+  for (i = n; i >= 0; i--){
+    sequNum.unshift(i);
+  }return sequNum;
+  
+
+}
 
 
 
@@ -27,18 +50,45 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, number) {
 
+let count2= [ ];
 
+if (arrayOfNumbers === 0){
+  return count2;
+}
+  arrayOfNumbers.forEach(multNum => {
+    let firstCount = multNum*number;
+    count2.push(firstCount)
+    }
+  );return count2;
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, filteredArray) {
 
+  let filterFinal = [ ];
 
+  if (originalArray.length === 0){
+    return null;
+  }
+
+  if (filteredArray.length === 0){
+    return originalArray;
+  }
+
+  for (let l = 0; l < originalArray.length ; l++){
+    if(!filteredArray.includes(originalArray[l])){
+      filterFinal.push(originalArray[l]);
+    }
+    
+  }console.log(filterFinal, originalArray, filteredArray)
+  return filterFinal;
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,11 +106,27 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrOfWords) {
+
+  let uniqArray = [ ];
+
+  if(arrOfWords.length=== 0){
+    return null;
+  }
+
+  arrOfWords.forEach(word => {
+    if(!uniqArray.includes(word)){
+      uniqArray.push(word);
+    }
 
 
 
+  });
 
+return uniqArray;
+}
+
+  
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
