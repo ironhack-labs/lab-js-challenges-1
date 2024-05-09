@@ -13,13 +13,38 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+  let count = 0; 
+  
+  
+  for (let i = 0; i < words.length; i++) {
+      if (words[i] === wordToSearch) {
+          count++; 
+      }
+  }
+  
+  return count; 
+}
+
+console.log(howManyTimes(repeatedWords, "matter")); 
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const sequence = []; 
+
+  for (let i = 0; i <= n; i++) {
+      sequence.push(i); 
+  }
+  
+  return sequence; 
+}
+
+console.log(createSequence(7)); 
+
 
 
 
@@ -27,7 +52,18 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  const multipliedArray = []; 
+
+  numbers.forEach(function(number) {
+      multipliedArray.push(number * multiplier); 
+  });
+  
+  return multipliedArray; 
+}
+
+console.log(multiplyBy(numbers, 3));
+
 
 
 
@@ -36,7 +72,16 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+
+  const filteredArray = original.filter(function(word) {
+      return !toRemove.includes(word); 
+  });
+  
+  return filteredArray; 
+}
+
+console.log(filterOut(original, toRemove)); 
 
 
 
@@ -56,7 +101,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  const uniqueArray = []; 
+
+  array.forEach(function(word) {
+      if (!uniqueArray.includes(word)) {
+          uniqueArray.push(word); 
+      }
+
+  });
+  
+  return uniqueArray; 
+}
+console.log(uniquifyArray(duplicateWords));
 
 
 
@@ -85,4 +142,35 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+
+  function getProduct(row, col, dx, dy) {
+      let product = 1;
+      for (let i = 0; i < 4; i++) {
+          product *= matrix[row + i * dy][col + i * dx];
+      }
+      return product;
+  }
+
+  for (let row = 0; row < matrix.length; row++) {
+      for (let col = 0; col < matrix[row].length; col++) {
+          
+          if (col <= matrix[row].length - 4) {
+              maxProduct = Math.max(maxProduct, getProduct(row, col, 1, 0));
+          }
+          if (row <= matrix.length - 4) {
+              maxProduct = Math.max(maxProduct, getProduct(row, col, 0, 1));
+          }
+          if (col <= matrix[row].length - 4 && row <= matrix.length - 4) {
+              maxProduct = Math.max(maxProduct, getProduct(row, col, 1, 1));
+          }
+          
+          if (col >= 3 && row <= matrix.length - 4) {
+              maxProduct = Math.max(maxProduct, getProduct(row, col, -1, 1));
+          }
+      }
+  }
+
+  return maxProduct;
+}
