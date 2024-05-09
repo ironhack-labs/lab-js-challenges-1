@@ -1,4 +1,5 @@
 // Iteration 1 | Count Repetition
+
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,35 +14,76 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(words, word) {
+  if(words.length === 0) return 0;
+  // remove elements from array if not type of "string"
+  words = words.filter(e => {
+    return typeof e === "string";
+  });
+  let count = 0;
+  words.forEach(w => {
+    if(word.localeCompare(w) === 0) count++;
+  });
+  return count;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
 
-
+function createSequence(n) {
+  if(n === 0) return [];
+  let seq = [];
+  for(let i = 0; i <= n; i++) seq.push(i);
+  return seq;
+}
 
 
 // Iteration 3 | Multiply for Each
+
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(numbers, n) {
+  if(numbers.length === 0) return [];
+  // remove elements from array if not type of "number"
+  /*numbers = numbers.filter(e => {
+    return typeof e === "number";
+  });*/
+  numbers.forEach((e, i) => {
+    numbers[i] *= n
+  });
+  return numbers;
+}
 
 
 // Iteration 4 | Filter Out
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
+function filterOut(og, tr) {
+  if(og.length === 0) return null;
+  else if(tr.length === 0) return og;
+  // remove elements from array if not type of "string"
+  og = og.filter(e => {
+    return typeof e === "string";
+  });
+  tr = tr.filter(e => {
+    return typeof e === "string";
+  });
+  og.forEach((w, i) => {
+    tr.forEach(r => {
+      if(w.localeCompare(r) === 0) og[i] = 0;
+    });  
+  });
+  og = og.filter(e => {
+    return e !== 0;
+  });
+  return og;
+}
 
 
 // Iteration 5 | Unique Arrays
+
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,12 +98,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(words) {
+  if(words.length === 0) return null;
+  // remove elements from array if not type of "string"
+  words = words.filter(e => {
+    return typeof e === "string";
+  });
+  let filtered = [];
+  for(const word of words) 
+    if(!filtered.includes(word)) filtered.push(word);
+  return filtered; 
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
+// not finished
+
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -85,4 +137,31 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const matrixSmall = [
+  [ 1,  2, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1,  4, 3, 4, 5]
+]
+
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+  for(let i = 0; i < matrix[i].length-4; i++) {
+    for(let j = 0; j < matrix[j].length-4; j++) {
+      const hor = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+      const ver = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+      const max = hor > ver ? hor : ver;
+      maxProduct = max > maxProduct ? max : maxProduct;
+      console.log("i,j: ",i,",",j)
+      console.log("h: ", hor)
+      console.log("v: ", ver)
+      console.log("m: ", max)
+      console.log("P: ", maxProduct)
+    }
+  }
+  console.log(maxProduct)
+  return maxProduct;
+}
+
+console.log(greatestProduct(matrixSmall));
