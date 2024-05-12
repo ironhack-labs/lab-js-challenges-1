@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayWords, word) {
+  let count = 0;
+  for (let i = 0; i < arrayWords.length; i++){
+
+    if (arrayWords[i] === word){
+      count++
+    }
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let newArray = [];
+
+  if (n === 0){
+    return newArray;
+  }
+
+  for (let i = 0; i <= n; i++){
+    newArray.push(i);
+
+  }
+  return newArray;
+ 
+};
 
 
 
@@ -27,7 +49,26 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let numArray = [];
+  if (numbers.length === 0){
+    return numArray
+  }
+  else {
+    numbers.forEach(element => {
+      numArray.push(element * multiplier)
+      
+    });
+  }
+  return numArray
+};
+
+
+  
+
+
+
+
 
 
 
@@ -36,7 +77,35 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, stringsRemove) {
+  let filteredArray = [];
+
+  if (originalArray.length === 0){
+    return null
+  }
+
+  else if (stringsRemove.length === 0){
+    return originalArray
+  }
+  else {
+    originalArray.forEach(item => {
+      let shouldInclude = true;
+
+      stringsRemove.forEach(removeItem => {
+        if (item === removeItem) {
+          shouldInclude = false;
+        }
+      });
+
+      if (shouldInclude) {
+        filteredArray.push(item);
+      }
+    });
+  }
+
+  return filteredArray;
+  }
+
 
 
 
@@ -56,7 +125,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  let uniqueArray = [];
+
+  if (words.length === 0){
+    return null
+  }
+
+ words.forEach(word => {
+     if (uniqueArray.indexOf(word) === -1) {
+      uniqueArray.push(word);
+    }
+  });
+
+  return uniqueArray;
+}
 
 
 
