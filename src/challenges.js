@@ -1,4 +1,10 @@
 // Iteration 1 | Count Repetition
+/*Declare a function named howManyTimes that will take in an array of words as 
+the first argument and a word to search for as the second argument. The function 
+should return the number of times the word appears in the array.
+
+You can use the following array to test your solution:*/
+
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,21 +19,52 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, theword) {
+  if (repeatedWords.length === 0) {
+    return 0
+  };
+  let founWord = 0;
+  for ( let i =0; i < repeatedWords.length; i++) {
+    if(repeatedWords[i] === theword) {
+      founWord += 1
+    }
+    
+
+  }
+  return founWord;
+
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(numberN) {
+  let newArray= [];
+  for( let i=0; i<= numberN; i++){
+    newArray.push(i)
+  }
+  if (numberN === 0){
+    newArray=[]
+  }
+  return newArray
+}
+s
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, number) {
+  let newNewArray= [];
+  numbers.forEach(function (greatArray){newNewArray.push(greatArray * number)})
+
+   return newNewArray 
+  
+    
+  }
+
 
 
 
@@ -36,7 +73,20 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+}
+
+if (toRemove.length === 0) {
+    return original;
+}
+
+const filteredArray = original.filter(item => !toRemove.includes(item));
+
+return filteredArray;
+}
+
 
 
 
@@ -56,7 +106,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if (arr.length === 0){
+    return null;
+  }
+  const uniqueArray= [];
+  for(let i= 0; i< arr.length;i++){
+    if(!uniqueArray.includes(arr[i])){
+      uniqueArray.push(arr[i]);
+
+    }
+
+  }
+  return uniqueArray;
+
+}
 
 
 
