@@ -13,22 +13,61 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, checkWord) {
+  if (repeatedWords.length === 0) {
+    return 0;
+  }
+  else {
+    let count = 0;
+    for (i = 0; i < repeatedWords.length; i++) {
+      if (repeatedWords[i] === checkWord) {
+        count++;
+      }
+      else {
+        continue;
+      }
+    }
+    return count;
+  }
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const arr = [];
+  if (n === 0) {
+    return arr;
+  }
+  else {
+    for (i = n; i >= 0; i--) {
+      arr.unshift(i);
+    }
+    return arr;
+  }
 
 
+}
+
+console.log(createSequence(7))
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(numbers, multiplier) {
+  const arr = [];
+  if (numbers.length === 0) {
+    return arr;
+  }
+  else {
+    numbers.forEach(element => {
+      arr.push(element * multiplier);
+    });
+    return arr;
+  }
+}
 
 
 
@@ -36,7 +75,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  let result = original;
+  if (original.length === 0) {
+    return null;
+  }
+  else if (toRemove.length === 0) {
+    return result;
+  }
+  else {
+    return result.filter(element => !toRemove.includes(element));
+  }
+}
+
 
 
 
@@ -56,10 +107,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
-
+function uniquifyArray(duplicateWords) {
+  let result = [];
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  else {
+    for (i = 0; i < duplicateWords.length; i++) {
+      if (result.includes(duplicateWords[i])) {
+        continue;
+      }
+      else {
+        result.push(duplicateWords[i]);
+      }
+    };
+    console.log(result);
+    return result;
+  }
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +150,20 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let result = 1;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      if (matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3] > result) {
+        result = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      }
+    }
+  } 
+for (let l = 0; l < matrix.length - 3; l++) {
+    for (let m = 0; m < matrix[l].length; m++) {
+      if (matrix[l][m] * matrix[l + 1][m] * matrix[l + 2][m] * matrix[l + 3][m] > result)
+      result = matrix[l][m] * matrix[l + 1][m] * matrix[l + 2][m] * matrix[l + 3][m];
+    }
+  }
+  return result;
+}
