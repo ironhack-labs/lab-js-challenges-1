@@ -13,13 +13,37 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArr, wordToFind) {
+  // keep track of occurances for word to find
+  let occurances = 0;
+  // for each word in array, compare to word to find
+  wordsArr.forEach(word => {
+    if (word === wordToFind) {
+      occurances += 1;
+    }
+  });
+  return occurances;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  // set empty array
+  const sequence = [];
+  // check if n != 0
+  if (n < 1) {
+    return sequence;
+  }
+  // push numbers into sequence
+  for (let i = 0; i <= n; i += 1) {
+    sequence.push(i);
+  }
+
+  return sequence;
+
+}
 
 
 
@@ -27,7 +51,20 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArr, multiplier) {
+  
+  const result = [];
+  // return empty array if arg is empty arr
+  if (numbersArr.length === 0) {
+    return result;
+  }
+  // push each number multiplied by factor into result array
+  numbersArr.forEach(number => {
+    result.push(number * multiplier);
+  });
+
+  return result;
+}
 
 
 
@@ -36,7 +73,26 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(wordsArr, filter) {
+
+  // check for empty array
+  if (wordsArr.length === 0) {
+    return null;
+  }
+
+  const filteredArr = [];
+  // check for each word if it is included in filter, push into new array if not
+  wordsArr.forEach(word => {
+
+    if (!filter.includes(word)) {
+      filteredArr.push(word);
+    }
+
+  });
+
+  return filteredArr;
+
+}
 
 
 
@@ -56,7 +112,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArr) {
+  // check for empty array
+  if (wordsArr.length === 0) {
+    return null;
+  }
+
+  const uniqueArr = [];
+  // if word doesn't already occur in array, push into array
+  wordsArr.forEach(word => {
+    if (!uniqueArr.includes(word)) {
+      uniqueArr.push(word);
+    }
+  });
+
+  return uniqueArr;
+}
 
 
 
@@ -85,4 +156,33 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  // keep track of greatest product
+  let result = 0;
+
+  // call method for each element (row) in matrix, keep track of index
+  matrix.forEach((row, rowIndex) => {
+    // make sure to not go out of bounds, rows are checked in groups of 4
+    if (rowIndex <= matrix.length - 4) {
+      // call method for each element (column) in row, keep track of index
+      row.forEach((col, colIndex) => {
+        // prevent going out of bounds, as columns are checked in groups of 4
+        if (colIndex <= row.length - 4) {
+          // get product of 4 elements next to eachother (in row)
+          let newProduct = matrix[rowIndex][colIndex] * matrix[rowIndex][colIndex + 1] * matrix[rowIndex][colIndex + 2] * matrix[rowIndex][colIndex + 3];
+          // set new result if product is greater than previous result
+          if (newProduct > result) {
+            result = newProduct;
+          }
+          // same proces but for 4 elements in underneath eachother (in column)
+          newProduct = matrix[rowIndex][colIndex] * matrix[rowIndex + 1][colIndex] * matrix[rowIndex + 2][colIndex] * matrix[rowIndex + 3][colIndex];
+          if (newProduct > result) {
+            result = newProduct;
+          }
+        }
+      });
+    }
+  });
+
+  return result;
+}
