@@ -13,21 +13,46 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray, word) {
+  if (!wordArray.length) return 0;
 
-
-
+  let repeated = 0
+  wordArray.forEach(currentWord => {
+    if (currentWord === word) {
+      repeated += 1
+    }
+  })
+  return repeated
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
+function createSequence(num) {
+  
+  if (num === 0) return []
+  
+  let result = [];
+  for(let i = 0; i <= num; i++){
+    result.push(i);
+  }
+  return result;
+}
+createSequence(0)
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplyer) {
+  const arr = [];
+  if (numbers.length === 0){
+    return arr;
+  }
+  else {
+    numbers.forEach(element => {
+      arr.push(element * multiplyer);
+    });
+    return arr;
+  }
+}
 
 
 
@@ -35,11 +60,18 @@ function multiplyBy() {}
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
-
-function filterOut() {}
-
-
-
+function filterOut(original, toRemove){
+  const result = original;
+  if (original.length === 0){
+    return null;
+  }
+  else if (toRemove.length === 0) {
+    return result;
+  }
+  else {
+    return result.filter(element => !toRemove.includes(element));
+  }
+  }
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +88,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (!array.length) return null
 
-
-
+  let newArr = []
+  array.forEach(word => {
+    if (newArr.includes(word)) {
+      return
+    }
+    else {
+      newArr.push(word)
+    }
+  })
+  return newArr
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +127,38 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let greatestProd = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let prodRow =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (i < matrix.length - 3) {
+        let prodCol =
+          matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+          greatestProd = Math.max(greatestProd, prodCol);
+      }
+    }
+  }
+  return greatestProd;  
+}
+
+function greatestProductDiag(matrix) {
+  let greatestProd = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let prodD = 0;
+      if (i < matrix.length - 3 && j < matrix[i].length - 3) {
+        prodD = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+        greatestProd = Math.max(greatestProd, prodD);
+      }
+      if (i > 2 && j < matrix[i].length - 3) {
+        prodD =
+          matrix[i][j] * matrix[i - 1][j + 1] * matrix[i - 2][j + 2] * matrix[i - 3][j + 3];
+        greatestProd = Math.max(greatestProd, prodD);
+      }
+    }
+  }
+  return greatestProd;
+}
+
