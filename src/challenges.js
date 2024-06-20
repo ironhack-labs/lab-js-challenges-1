@@ -13,31 +13,70 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
 
-
+function howManyTimes(arrayPalabras, palabra) {
+  let numP = 0;
+  for(let i = 0; i < arrayPalabras.length; i++){
+    if(arrayPalabras[i]=== palabra){
+      numP++
+    }
+  }
+  return numP;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(numero) {
+  if(numero === 0){
+    return [];
+  }
+  let nuevoArray = [];
+  for(let i = 0; i <= numero; i++){
+    nuevoArray.push(i);
+  }
+  return nuevoArray;
+}
 
-
+console.log(createSequence(7));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(matriz, multiplicador) {
+  let nuevaMatriz = [];
+  
+  for(let i = 0; i < matriz.length; i++){
+    nuevaMatriz. push(matriz[i]* multiplicador)
+  }
+return nuevaMatriz;
+}
 
-
+console.log(multiplyBy(numbers, 3));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayString1, arraySF){
+  let arrFiltrado = [];
 
+  for(let i = 0; i < arrayString1.length; i++){
+    let arryA = arrayString1[i];
+    let boolResultado = true;
+    for(let j = 0; j < arraySF.length; j++){
+      if(arryA === arraySF[j]){
+        boolResultado = true;
+      } else if(!boolResultado){
+          arrFiltrado.push(arrayA)
+      }
+    }
+  } return arrFiltrado;
+} 
+
+console.log(filterOut(original, toRemove));
+ 
 
 
 
