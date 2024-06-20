@@ -13,22 +13,46 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, word) {
+if (arrayOfWords.length === 0) {
+  return 0
+}  else if (arrayOfWords.includes(word) !== true) {
+  return 0
+} 
 
-
-
+let count= 0
+for (let i=0; i<arrayOfWords.length; i++){
+    if(arrayOfWords[i].startsWith(word) === true ) {
+    count++
+    }
+}
+return count
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
+function createSequence(n) {
+  let nuevoArray=[]
+  if (n === 0) {
+    return [];
+  }
+  for (let i=0; i<=n; i++){
+    nuevoArray.push(i) // queremos agregar al array cada valor de i .
+                       
+  } return nuevoArray
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, number) {
+let nuevoArray1=[];
+for (let i=0; i<arrayOfNumbers.length ; i++) {
+  nuevoArray1.push(arrayOfNumbers[i]*number)
 
+}return nuevoArray1
+}
+
+// console.log(multiplyBy([1, 2, 5, 10, 13, 50], 3))
 
 
 
@@ -36,8 +60,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut (original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  } else if (toRemove.length === 0){
+    return original
+  }
+let nuevoOriginal = []
+for (let i=0; i<original.length; i++) {
+  if (!toRemove.includes(original[i])) {
+    nuevoOriginal.push(original[i]);
+   
+  }
+}return nuevoOriginal
+}
+// console.log(filterOut (original, toRemove))
 
 
 
@@ -56,7 +93,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) {
+    return null;
+  } 
+  
+  let randomWords=[]
+  for (let i=0; i<duplicateWords.length; i++){
+    if(!randomWords.includes(duplicateWords[i])){
+    randomWords.push(duplicateWords[i])
+    }
+  }
+  return randomWords
+}
 
 
 
