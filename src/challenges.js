@@ -13,21 +13,65 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, word) {
+  let sum = 0
+
+  arrayOfWords.forEach(function (eachWord) {
+    if (eachWord === word) {
+      sum++
+    }
+  })
+
+  // for (let i = 0; i < arrayOfWords.length; i++) {
+  //   if (arrayOfWords[i] === word) {
+  //     sum++
+  //   }
+  // }
+
+  return sum
+}
+
+//howManyTimes(repeatedWords, "matter")
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
 
+  let result = []
+
+  for (let i = 0; i <= number; i++) {
+
+    if (number === 0) {
+      return result
+    } else {
+      result.push(i)
+    }
+  }
+
+  return result
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, numberMultiplier) {
+  let result = []
+
+  arrayOfNumbers.forEach(function (eachNumber) {
+    let operation = eachNumber * numberMultiplier
+    result.push(operation)
+  })
+  // for (let i = 0; i < arrayOfNumbers.length; i++) {
+  //   let operation = arrayOfNumbers[i] * numberMultiplier
+  //   result.push(operation)
+  // }
+
+  return result
+}
 
 
 
@@ -36,7 +80,23 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrOriginal, arrRemove) {
+  let result = []
+  for (let i = 0; i < arrOriginal.length; i++) {
+    let originWord = arrOriginal[i]
+    for (let j = 0; j < arrRemove.length; j++) {
+      let removeWord = arrRemove[j]
+      if (originWord !== removeWord) {
+        result.push(originWord)
+      }
+    }
+  }
+  return result
+  // ver lo que hay en el primer array (i)
+  // ver lo que hay en le segundo array (j)
+  // si en el primero array no es igual a lo que aarece en el segundo lo push a result
+  // retornamos 
+}
 
 
 
@@ -56,7 +116,7 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray() { }
 
 
 
@@ -85,4 +145,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
