@@ -13,21 +13,54 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
 
+function howManyTimes(words, stringToSearch) {
+  let counter = 0;
+
+  for(let i = 0; i < words.length; i++ ){
+    if(words[i] === stringToSearch){
+      counter++;
+    }
+  }
+
+  return counter;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+function createSequence(n) {
+  let sequence = [];
+  if(n !== 0){
+    for(let i=0; i<n+1; i++){
+      sequence.push(i);
+    }
+    return sequence;
+  }
+  return sequence;
+}
+
+// console.log(createSequence(7))
 
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
+let multNumbers = [];
 
-function multiplyBy() {}
+function multiplyBy(arr, mult) {
+  arr.forEach(function(number){
+    arr.push(number*mult);
+  })
+  for(let i=0; i<arr.length; i++){
+    arr.shift()
+  }
+  return arr;
+}
+
+// console.log(multiplyBy(numbers, 3))
 
 
 
@@ -36,8 +69,16 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr, rem){
+  if(arr.length !== 0){
+    return arr.filter(function(word){
+      return word !== rem[0] && word !== rem[1]
+    })
+  }
+  return null;
+}
 
+// console.log(filterOut(original, toRemove))
 
 
 
@@ -56,9 +97,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+// function uniquifyArray(arr) {
+//   arr.forEach(fuction(word){
 
+//   })
+// }
 
+function uniquifyArray(arr) {
+  if(arr.length !== 0){
+    return arr.filter(function(word, i) {
+        return arr.indexOf(word) === i;
+      });
+  }
+  return null;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +137,42 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arr) {
+  let biggestMultRow = 0;
+  let biggestMultCol = 0;
+  let coordinatesRow = [];
+  let coordinatesCol = [];
+  for(let i = 0; i < arr.length - 3; i++){
+    for(let j = 0; j < arr[i].length - 3; j++){
+      if(arr[i][j] * arr[i][j+1] * arr[i][j+2] * arr[i][j+3]  >  biggestMultRow){
+        biggestMultRow = arr[i][j] * arr[i][j+1] * arr[i][j+2] * arr[i][j+3];
+        coordinatesRow = [j+1, i+1];
+      }
+      if(arr[i][j] * arr[i+1][j] * arr[i+2][j] * arr[i+3][j]  >  biggestMultCol){
+        biggestMultCol = arr[i][j] * arr[i+1][j] * arr[i+2][j] * arr[i+3][j];
+        coordinatesCol = [j+1,i+1];
+      }
+    }
+  }
+  if(biggestMultCol > biggestMultRow){
+    return biggestMultCol + ` in column from ${coordinatesCol} downwards`;
+  }
+  return biggestMultRow + ` in row at ${coordinatesRow} to the right`
+  // return biggestMultCol>biggestMultRow ? biggestMultCol : biggestMultRow;
+}
+
+// console.log(greatestProduct(matrix))
+
+/****************************************************************************/
+
+// let array = [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8];
+// let biggestMultRow = 1;
+
+
+// for(let i=0; i<array.length; i++){
+//   if(array[i]*array[i+1]*array[i+2]*array[i+3] > biggestMultRow){
+//     biggestMultRow = array[i]*array[i+1]*array[i+2]*array[i+3];
+//   }
+// }
+
+// console.log(biggestMultRow);
