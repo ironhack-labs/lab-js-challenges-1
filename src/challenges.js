@@ -13,33 +13,59 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(wordArray, word) {
+  let wordAmount = 0;
+  for (let i=0; i<wordArray.length; i++) {
+    if (wordArray[i] === word) {
+      wordAmount++
+    }
+  }
+  return wordAmount;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
+function createSequence(number) {
+  let numArr = [];
+  if (number === 0) {
+    return numArr;
+  }
+  for (let i=0; i<=number; i++){
+    numArr.push(i)
+  }
+  return numArr;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
-
+function multiplyBy(numbers, num) {
+  let arr = [];
+  numbers.forEach((number) => {
+    arr.push(number * num);
+  });
+  return arr;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
-
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+  if (toRemove.length === 0) {
+    return original;
+  }
+  toRemove.forEach((remWord) => {
+    original.forEach((word, index) => {
+      if (remWord === word) {
+        original.splice(index, 1);
+      }
+    });
+  });
+  return original;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +82,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
-
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  let newArr = []
+  duplicateWords.forEach((word) => {
+    if (newArr.includes(word) === false) {
+      newArr.push(word);
+    }  
+  });
+  return newArr
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +119,18 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function greatestProduct(matrix) {
+  let bigNumber = 0;
+  matrix.forEach((arrays, index, array) => {
+    arrays.forEach((arrHoriz, index1, array1) => {
+      if (bigNumber < arrHoriz * array1[index1+1] * array1[index1+2] * array1[index1+3]) {
+        bigNumber = arrHoriz * array1[index1+1] * array1[index1+2] * array1[index1+3];
+      }
+      if (bigNumber < arrHoriz * array[index+1[index1]] * array[index+2[index1]] * array[index+3[index1]]){
+        bigNumber = arrHoriz * array[index+1[index1]] * array[index+2[index1]] * array[index+3[index1]]
+      }
+    });
+  });
+  return bigNumber
+}
