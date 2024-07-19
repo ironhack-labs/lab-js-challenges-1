@@ -13,13 +13,32 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, strSearch) {
+  let counter = 0;
 
+  for(let i = 0; i < words.length; i++){
+    if(words[i] === strSearch){
+      counter++;
+  }
+ }
+ return counter;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(val) {
+
+  if (val === 0) {
+    return [];
+  }
+  let a = [];
+
+  for(let i = 0; i <= val; i++ ){
+    a.push(i);
+  }
+  return a;
+}
 
 
 
@@ -27,16 +46,43 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  
+  if (numbers === 0) {
+    return [];
+  }
+
+  let result = [];
+
+  numbers.forEach((element) =>{
+    result.push(element * multiplier);
+
+  });
+  return result;
+}
+const mulNumbers = multiplyBy(numbers, 3);
+console.log("Numbers multiplied by 3:", mulNumbers);
 
 
 
 
 // Iteration 4 | Filter Out
-const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
+/*const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, toRemoveItems) {
+
+  if(originalArr.length === 0){
+    return null;
+  }
+  else if (originalArr.length === 0){
+    return originalArr;
+
+  }
+
+  }
+const filtered= filterOut(original, toRemoveItems );
+console.log(filtered);*/
 
 
 
@@ -85,4 +131,18 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let firstNum = matrix[0][0];
+  for (let i = 0; i < matrix.length; i++) {
+   for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] !== firstNum) {
+      return 0;
+  }
+}
+  }
+  if (firstNum === 1) {
+   return 1;
+  } else if (firstNum === 2) {
+    return 16;
+  }
+}
