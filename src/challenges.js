@@ -13,21 +13,40 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(words, searchedWord) {
+  return words.filter((word) => word === searchedWord).length
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(num) {
+  if (!num){
+    return []
+  }
+  return [...Array(num + 1).keys()];
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  const multipliedNumbers = [];
+
+  numbers.forEach((number) => {
+    multipliedNumbers.push(number * multiplier);
+  });
+
+  return multipliedNumbers;
+}
+
+
+// Iteration 3.2 | Multiply map
+
+function multiplyByV2(numbers, multiplier) {
+  return numbers.map((number) => number * multiplier)
+}
 
 
 
@@ -36,7 +55,12 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (!original.length){
+    return null
+  }
+  return original.filter((word) => !toRemove.includes(word))
+}
 
 
 
@@ -56,7 +80,12 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (!words.length){
+    return null
+  }
+  return words.filter((word, index) => words.indexOf(word) === index )
+}
 
 
 
@@ -85,4 +114,29 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  const rows = matrix.length;
+  const cols = matrix[0].length;
+  let maxProduct = 0;
+
+  // Check horizontal products
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols - 3; j++) {
+      let prod = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+      if (prod > maxProduct) {
+        maxProduct = prod;
+      }
+    }
+  }
+
+  // Check vertical products
+  for (let i = 0; i < rows - 3; i++) {
+    for (let j = 0; j < cols; j++) {
+      let prod = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+      if (prod > maxProduct) {
+        maxProduct = prod;
+      }
+    }
+  }
+  return maxProduct;
+}

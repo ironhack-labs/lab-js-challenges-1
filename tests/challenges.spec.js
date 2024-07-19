@@ -225,5 +225,15 @@ describe("Bonus: Iteration 6 | Product of Adjacent Numbers", () => {
       ];
       expect(greatestProduct(matrix)).toBe(16);
     });
+
+    it("should return 1000000", () => {
+      const matrix = [
+        [0, 2, 50, 1, 2],
+        [0, 2, 40, 1, 2],
+        [1, 2, 10, 3, 2],
+        [0, 2, 50, 1, 2],
+      ];
+      expect(greatestProduct(matrix)).toBe(1000000);
+    });
   });
 });
