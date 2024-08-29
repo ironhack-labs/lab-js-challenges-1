@@ -13,13 +13,37 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(palabras,buscarPalabra) {
+  let suma= 0
+  if (palabras.length===0){
+    return 0
+}
+for (let i = 0; i < palabras.length; i++){
 
+    if (palabras[i] === buscarPalabra) {
+        suma = suma + 1
+      }
+}
+return suma 
+}
+console.log (howManyTimes(repeatedWords,"matter"))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+function createSequence(numero) {
+  let matriz= []
+  if (numero === 0){
+    return []
+  }
+  for (let i = 0; i<=numero; i++){
+    matriz.push(i) 
+  }
+  return matriz
+} 
+console.log (createSequence(7))
+
 
 
 
@@ -27,7 +51,20 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+
+function multiplyBy(numeros,multiplicador) {
+
+  let matriz= []
+  if (numeros.length === 0){
+  return []
+  }
+  for (let i = 0; i <numeros.length; i++){
+
+    matriz.push([numeros[i]] * multiplicador)
+}
+  return matriz
+}
+
 
 
 
@@ -36,8 +73,30 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(matrizOriginal,matrizFiltrar) {
 
+    let matriz =[]
+    if (matrizOriginal.length === 0){
+      return null
+    }
+
+    for (let i = 0; i < matrizOriginal.length; i++){
+      let existe = false;
+      for (let j = 0; j < matrizFiltrar.length; j++){
+        if (matrizOriginal[i] === matrizFiltrar[j]){
+          existe = true;
+        }
+      }
+      
+      if(!existe){
+        matriz.push(matrizOriginal[i])
+      }
+      
+   }
+   return matriz
+}
+
+console.log(filterOut(original, toRemove))
 
 
 
