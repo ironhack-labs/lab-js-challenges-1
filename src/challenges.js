@@ -13,16 +13,39 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(matrix, word) {
+
+  let Count = 0
+
+ for( let i=0; i < matrix.length; i++ ){
+
+  if (word === matrix[i]){
+    Count++
+  }
+ }
+
+return Count
+
+}
+console.log(howManyTimes(repeatedWords, "matter"));
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
 
+function createSequence(n) {
+                                                      
+  let result = []; 
+  for (let i = 0; i <= n; i++) {
+    result.push(i);
+  }
+  
+  return result;
+}
 
-
+console.log(createSequence(7));
+console.log(createSequence());
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
