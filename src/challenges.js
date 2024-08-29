@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, wordToSearch) {
+  let counter = 0;
+
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordToSearch === wordsArray[i]) {
+      counter++
+    }
+  }
+
+  return counter;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let numbersArray = [];
+  
+  if (number === 0) {
+    return numbersArray
+  }
+
+  for (let i = 0; i <= number; i++) {
+    numbersArray.push(i);
+  }
+
+  return numbersArray;
+}
 
 
 
@@ -27,7 +49,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArray, multiplierNumber) {
+  let multiplierArray = [];
+
+  for (let i = 0; i < numbersArray.length; i++) {
+    let multipliedNumber = numbersArray[i] * multiplierNumber;
+    multiplierArray.push(multipliedNumber);
+  }
+
+  return multiplierArray;
+}
 
 
 
@@ -36,7 +67,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, arrayFilter) {
+  let newArray=[];
+  if (originalArray.length === 0) {
+    return null;
+  }
+
+  for(i=0; i<originalArray.length; i++){
+    if(!arrayFilter.includes(originalArray[i])){
+      newArray.push(originalArray[i]);
+  }
+}
+  return newArray;
+}
 
 
 
@@ -56,7 +99,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (words.length === 0) {
+    return null;
+  }
+  
+  let newWord=[];
+  for(let i=0; i<words.length; i++){
+    if(!newWord.includes(words[i])){
+      newWord.push(words[i]);
+    }
+  }
+  return newWord;
+}
 
 
 
@@ -85,4 +140,21 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let masMulti= 0;
+  for(let i=0; i<matrix.length; i++){
+    for(let j=0; j<matrix[i].length; j++){
+      let fourNumHorizontal= matrix[i][j]* matrix[i][j+1]*matrix[i][j+2]* matrix[i][j+3];
+      let fourNumVertical= matrix[i][j]* matrix[i+1][j]*matrix[i+2][j]* matrix[i+3][j];
+      if(fourNumHorizontal> masMulti){
+        masMulti=fourNumHorizontal;
+      }
+      if(fourNumVertical> masMulti){
+        masMulti=fourNumVertical;
+      }
+    }
+    return masMulti;
+  }
+  
+}
+
