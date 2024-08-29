@@ -13,13 +13,43 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayWords, wordToSearch) {
 
+  let count = 0
+
+  for (let i = 0; i < arrayWords.length; i++) {
+    if (arrayWords[i] === wordToSearch) {
+      count++
+    }
+  }
+
+  return count
+
+}
+
+console.log(howManyTimes(repeatedWords, "matter"))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let numArray= []
+
+  let arrayVacio = []
+
+  for (let i=0; i <= n; i++) {
+    numArray.push(i)
+  }
+  if (n === 0) {
+    return arrayVacio
+  }
+
+  return numArray
+
+    
+}
+
+console.log(createSequence(0))
 
 
 
@@ -27,7 +57,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArray, multiplier) {
+  let result = []
+
+  for (let i = 0; i < numbersArray.length; i++) {
+    result.push(numbersArray[i] * multiplier)
+  }
+
+  return result
+}
+
+console.log(multiplyBy(numbers, 2))
 
 
 
@@ -36,7 +76,43 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, toRemoveArray) {
+  
+  let resultArray = [];
+
+  if (originalArray.length === 0) {
+    return null
+  }
+
+  for (let i = 0; i < originalArray.length; i++) {
+    if (!toRemoveArray.includes(originalArray[i])) {
+      
+      resultArray.push(originalArray[i])
+    }
+
+  }
+
+  return resultArray;
+  
+}
+
+console.log(filterOut(original, toRemove))
+
+  
+  // for (let i = 0; i < originalArray.length; i++) {
+  //   let resultado = false;
+    
+  //   for (let j = 0; j < toRemoveArray.length; j++) {
+  //     if (originalArray[i] === toRemoveArray[j]) {
+  //       resultado = true;
+  //       break; 
+  //     }
+  //   }
+
+  //   if (!resultado) {
+  //     resultArray.push(originalArray[i]);
+  //   }
+  // }
 
 
 
@@ -56,7 +132,26 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+
+  let unica = []
+
+  if (words.length === 0) {
+    return null
+  }
+
+  for (let i=0; i < words.length; i++) {
+    if(!unica.includes(words[i])){
+      unica.push(words[i])
+    } 
+  } 
+
+ 
+
+  return unica
+}
+
+console.log(uniquifyArray(duplicateWords))
 
 
 
