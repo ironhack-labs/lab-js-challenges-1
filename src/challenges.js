@@ -13,13 +13,43 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordToSearch) {
+
+  let count = 0
+  
+
+  for (let i = 0; i < arrayOfWords.length; i++){
+     if(arrayOfWords[i] === wordToSearch){
+      count ++;
+    } 
+
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+
+  const newArray = []
+
+  if(n === 0){
+    return newArray
+  } else {
+
+    for(let i = 0; i <= n; i++){
+      newArray[i] = i
+      console.log(newArray);
+    }
+  
+  //return un array from 0 - n
+    return newArray
+  }
+  
+
+}
 
 
 
@@ -27,7 +57,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers , multiplier) {
+//return a new array that contains arrayOfNumbers * multiplier
+const newArray = []
+for (let i= 0; i < arrayOfNumbers.length; i++){
+  newArray[i] = arrayOfNumbers[i]*multiplier
+}
+return newArray
+
+}
 
 
 
@@ -36,7 +74,39 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayOfStrings, arrayToFilter) {
+  const newArray = []
+
+  if(arrayOfStrings.length === 0){
+    return null
+  } else if(arrayToFilter.length === 0){
+    return arrayOfStrings
+  } else {
+
+    for(let i = 0 ; i < arrayOfStrings.length; i++) {
+      for(let j = 0; j < arrayToFilter.length; j++){
+         if (arrayOfStrings[i] === arrayToFilter[j]){
+          arrayOfStrings.splice(i, 1);
+        } 
+       /* if(arrayOfStrings[i] !== arrayToFilter[j]){
+        newArray.push(arrayOfStrings[i]);
+       } */
+      }
+  }
+
+  //return newArray
+  return arrayOfStrings
+
+  //return newArray
+    
+    
+    //if (arrayOfStrings[i] === arrayToFilter[i]){
+      
+     
+  }
+  
+//return a new array, including only firstArray elements not included in arrayToFilter
+}
 
 
 
@@ -56,7 +126,49 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+//indexOf
+//includes
+
+//return una nueva matriz sin duplicados
+
+//Array methods indexOf and includes.
+
+function uniquifyArray(arr) {
+  const newArr = []
+ 
+
+  if(arr.length === 0){
+
+    return null
+
+  } else {
+
+    for (let i = 0; i < arr.length; i++){
+
+      
+      if((arr.indexOf(arr[i], i+1)) === -1){
+        newArr.push(arr[i]);
+      } else if ((arr.indexOf(arr[i], i+1)) !== -1){
+        newArr.splice((arr[i]), 1)
+      } 
+
+        
+      /* if((arr.indexOf(arr[i], i+1)) === -1){
+        newArr.push(arr[i]);
+      } else { 
+        
+      } */
+
+
+
+      //arr.includes(arr.indexÇOf(arr[i]))
+
+    }
+    
+    return newArr
+  }
+}
+
 
 
 
