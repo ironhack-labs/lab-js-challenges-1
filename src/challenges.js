@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let result = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (word === arr[i]) {
+      result += 1
+    }
+  }
+  return result
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const seq = [];
+  if (n === 0) {
+    return seq
+  }
+  for (let i = 0; i <= n; i++) {
+    seq.push(i)
+  }
+  return seq;
+}
 
 
 
@@ -27,7 +44,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, num) {
+  const multiplyArr = [];
+  arr.forEach((element) => {
+    multiplyArr.push(element * num)
+  })
+  return multiplyArr
+}
+console.log(multiplyBy(numbers, 2));
 
 
 
@@ -36,12 +60,31 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+// function filterOut(arr, arrayFilter) {
 
-
+//  // const result = arr.filter(element => !arrayFilter.includes(element))
+//   //return result
+// }
+function filterOut(arr, arrayFilter) {
+  const receive = []
+  if (arr.length === 0) {
+    return null
+  }
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arrayFilter.length; j++) {
+      if (arr[i] === arrayFilter[j]) {
+        arr.splice(i, 1)
+      }
+    }
+  }
+  console.log(arr);
+  return arr
+}
+console.log(filterOut(original, toRemove))
 
 
 // Iteration 5 | Unique Arrays
+
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,7 +99,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  let burn = [];
+  if (arr.length === 0) {
+    return null
+  }
+  arr.forEach((element, index) => {
+    if (!burn.includes(element)) {
+      burn.push(element)
+    }
+  })
+  return burn;
+}
+
 
 
 
@@ -85,4 +140,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
