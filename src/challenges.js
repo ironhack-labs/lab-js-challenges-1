@@ -13,14 +13,41 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords,word) {
 
+if(repeatedWords.length == 0){
+  return 0;
+}
+
+let count = 0;
+repeatedWords.forEach(function(element){
+if(element === word){
+  count++;
+}
+});
+
+return count;
+
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
 
+  const Arr=[];
+
+  if(num === 0){
+    return Arr;
+  }
+
+  for(let arrValue = 0; arrValue<=num;arrValue++){
+  Arr.push(arrValue)
+}
+return Arr;
+
+
+}
 
 
 
@@ -29,14 +56,26 @@ const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy() {}
 
-
+//check phone SS
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(wordArr , wordsToRemove) {
+const filteredArr = [];
+
+wordsArr.forEach(function(currentWord){
+
+if(!wordsToRemove.include(currentWord)){
+  filteredArr.push(currentWord)
+}
+return filteredArr
+)
+
+
+}
 
 
 
