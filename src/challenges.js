@@ -13,32 +13,71 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+let count = 0 ;
+for (let i=0; i<array.length; i++){
+const currentword= array[i];
+if(currentword === word){
+  count++;
+}
+}
+return count
+}
 
-
-
+console.log (howManyTimes(repeatedWords, "trouble"));
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+let sequence = [];
+if (n === 0){
+  return sequence;
+}
+for (let i=0; i<=n ; i++){
+sequence.push (i);
+}
+return sequence;
+}
 
-
-
+console.log (createSequence(10));
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, numberMultiplier) {
 
+let result = [];
+arrayOfNumbers.forEach(function(number) {
+  result.push(number * numberMultiplier);
+});
+return result;
+}
+console.log (multiplyBy(numbers, 2));
 
-
+//  solved with for loop: 
+//for (let i=0; i< arrayOfNumbers.length ; i++){
+//result.push(arrayOfNumbers[i]* numberMultiplier);};
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
 
+  if (original.length === 0) {
+    return null;
+  }
+  const filteredArray = [];
 
+  for (let i = 0; i < original.length; i++) {
+    if (toRemove.includes(original[i]) === false) {
+      filteredArray.push(original[i]);
+    }
+  }
+  
+  return filteredArray;
+}
+
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,8 +95,23 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfWords) {
 
+  if (arrayOfWords.length === 0) {
+    return null;
+  }
+  
+  const uniqueArray = [];
+  
+  for (let i = 0; i < arrayOfWords.length; i++) {
+   
+    if (uniqueArray.includes(arrayOfWords[i]) === false) {
+      uniqueArray.push(arrayOfWords[i]);
+    }
+  }
+  
+  return uniqueArray;
+}
 
 
 
