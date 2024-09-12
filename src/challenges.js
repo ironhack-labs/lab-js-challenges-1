@@ -13,13 +13,41 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+// function howManyTimes() {}
+  const howManyTimes = (arrayOfWords, word) => {
+    let count = 0;
+
+    if (arrayOfWords.length === 0 || !arrayOfWords.includes(word)){
+      return 0;
+    } 
+    
+    arrayOfWords.forEach(item => {
+        if(item === word){
+          count++;
+      }
+    })
+
+    return count;
+  }
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+// function createSequence() {}
+const createSequence = (count) => {
+
+  const sequence = [];
+
+  if (count === 0){
+    return [];
+  }
+    
+  for (let i = 0; i <= count; i++ ){
+      sequence.push(i);
+    } 
+  return sequence;
+}
 
 
 
@@ -27,7 +55,21 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+// function multiplyBy() {}
+const multiplyBy = (array, n) => {
+
+  if (array.length === 0){
+    return [];
+  } 
+
+  const newArray = [];
+
+  array.forEach(number => {
+    newArray.push(number * n);
+  }); 
+
+  return newArray;
+}
 
 
 
@@ -36,7 +78,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+// function filterOut() {}
+  const filterOut = (orgArray, toRemove) => {
+    const newArray = []
+    if (orgArray.length === 0) {
+      return null;
+    } else if (toRemove.length === 0) {
+      return orgArray;
+    }
+
+    orgArray.forEach(word => {
+      if (!toRemove.includes(word)){
+        newArray.push(word);
+      }
+    })
+    return newArray;
+  }
 
 
 
@@ -56,7 +113,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+// function uniquifyArray() {}
+  const uniquifyArray = (array) => {
+    let uniqueArray = [];
+    if (array.length === 0 ) {
+      return null;
+    }
+
+    array.forEach(word => {
+      if (!uniqueArray.includes(word)){
+        uniqueArray.push(word);
+      }
+    })
+    return uniqueArray;
+  }
 
 
 
@@ -85,4 +155,63 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const greatestProduct = (matrix) => {
+  const numRows = matrix.length;
+  const numCols = matrix[0].length;
+  let maxProduct = 0;
+
+  const calculateProduct = (arr) => {
+    let initialVal = 1
+    return arr.reduce((product, num) => product * num, initialVal);
+  }
+
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols; col++) {
+      
+      // Horizontal
+      if (col + 3 < numCols) {
+        const horizontal = [
+          matrix[row][col],
+          matrix[row][col + 1],
+          matrix[row][col + 2],
+          matrix[row][col + 3]
+        ];
+        maxProduct = Math.max(maxProduct, calculateProduct(horizontal));
+      }
+
+      // Vertical
+      if (row + 3 < numRows) {
+        const vertical = [
+          matrix[row][col],
+          matrix[row + 1][col],
+          matrix[row + 2][col],
+          matrix[row + 3][col]
+        ];
+        maxProduct = Math.max(maxProduct, calculateProduct(vertical));
+      }
+
+      // Diagonal right
+      if (row + 3 < numRows && col + 3 < numCols) {
+        const diagonalRight = [
+          matrix[row][col],
+          matrix[row + 1][col + 1],
+          matrix[row + 2][col + 2],
+          matrix[row + 3][col + 3]
+        ];
+        maxProduct = Math.max(maxProduct, calculateProduct(diagonalRight));
+      }
+
+      // Diagonal left
+      if (row + 3 < numRows && col - 3 >= 0) {
+        const diagonalLeft = [
+          matrix[row][col],
+          matrix[row + 1][col - 1],
+          matrix[row + 2][col - 2],
+          matrix[row + 3][col - 3]
+        ];
+        maxProduct = Math.max(maxProduct, calculateProduct(diagonalLeft));
+      }
+    }
+  }
+  return maxProduct;
+};
