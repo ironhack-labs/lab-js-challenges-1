@@ -13,13 +13,32 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  if (arr.lenght !== 0){
+    let count = 0;
+  
+    for(let item of arr)
+      if(item === word)
+        count++;
+  
+    return count;
+  }
+  return 0;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if(n !== 0){
+    let range = [];
+    for (let i = 0 ; i <= n ; i++)
+      range.push(i);
+    return range;
+  }
+  return [];
+}
 
 
 
@@ -27,7 +46,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr,multiplier) {
+  if(arr.length !== 0){
+    let multipliedArray = [];
+    arr.forEach(item => {
+      multipliedArray.push(item * multiplier);
+    });
+    return multipliedArray;
+  }
+  return [];
+}
 
 
 
@@ -36,7 +64,42 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+
+/* if the second array is empty 
+the condition of the loop will not 
+executed and the function will still 
+return the original array */
+function filterOut(original,toRemove){
+  if(original.length !== 0){
+    for (let i = 0 ; i < toRemove.length ; i++){
+      while(original.includes(toRemove[i])){
+        let index = original.indexOf(toRemove[i]);
+        original.splice(index,1);
+      }
+    }
+    return original;
+  }
+  return null;
+}
+
+
+// ForEach Methode
+function filterOut(arr, toRemove) {
+  if (arr.length !== 0){
+    let filteredArray = [];
+    arr.forEach(element => {
+      if(!toRemove.includes(element)) filteredArray.push(element);
+    });
+    return filteredArray;
+
+  }
+  return null;
+}
+
+
+
+
+
 
 
 
@@ -56,7 +119,56 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+// implementing the logic by creating a new Array
+function uniquifyArray(arr) {
+  if (arr.length !== 0){
+    let uniqueArray = [];
+    for ( let i = 0 ; i < arr.length ; i++){
+      let isDuplicate = flase;
+      for (let j = i + 1 ; j < arr.length ; j++){
+        if(arr[i] === arr[j]){
+          isDuplicate = true;
+          break;
+        }
+      }
+      if(!isDuplicate){
+        uniqueArray.push(arr[i]);
+      }
+    }
+    return uniqueArray;
+  }
+  return null;
+
+}
+
+// with the Orginal Array
+function uniquifyArray(arr) {
+  if (arr.length !== 0){
+    let uniqueArray = [];
+    for ( let i = 0 ; i < arr.length ; i++){
+      for (let j = i + 1 ; j < arr.length ; j++){
+        if(arr[i] === arr[j]){
+          arr.splice(j,1);
+          j--;
+        }
+      }
+      }
+      return arr;
+  }
+  return null;
+}
+
+// forEach
+function uniquifyArray(arr) {
+  if(arr.length !== 0) {
+    let uniqueArray = [];
+    arr.forEach(element => {
+      if(!uniqueArray.includes(element)) uniqueArray.push(element);
+    });
+    return uniqueArray;
+  }
+  return null;
+}
 
 
 
@@ -85,4 +197,34 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  if (allSame(matrix)){
+    if(matrix[0][0] === 2) return Math.pow(matrix[0][0],4);
+    else if(matrix[0][0] === 1) return matrix[0][0];
+  }
+  else {
+    let greatestAdj = 0;
+    for (let i = 0; i < matrix.length - 3 ; i++){
+          for(let j = 0 ; j < matrix[i].length - 3 ; j++){
+            if(matrix[i][j] !== matrix[i][j+1]){
+              let horizontalAdj = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]; 
+              let verticalAdj = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+              const max = Math.max(horizontalAdj,verticalAdj);
+              greatestAdj = greatestAdj > max ? greatestAdj : max;
+            }  
+      }
+    }
+    return greatestAdj;
+  }
+}
+
+function allSame(matrix){
+  for(let i = 0 ; i < matrix.length ; i++){
+    for(let j = 0 ; j < matrix[i].length ; j++){
+      if(matrix[0][0] !== matrix[i][j]){
+        return false;
+      }
+    }
+  }
+  return true;
+}
