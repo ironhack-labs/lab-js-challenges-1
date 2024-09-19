@@ -13,13 +13,19 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(repeatedWords, word) {
+  const numRepeat = repeatedWords.filter(words => words === word);
+  return numRepeat.length;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n){
+  return [...Array(n+1).keys()]
+}
+
+console.log(createSequence(7))
 
 
 
@@ -29,6 +35,9 @@ const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy() {}
 
+function multiplyBy(numbers, n) {
+  return numbers.map(number => number * n)
+}
 
 
 
@@ -38,7 +47,17 @@ const toRemove = ["cat", "dog"];
 
 function filterOut() {}
 
+function filterOut(original, toRemove) {
+  return original.filter(animal => !toRemove.includes(animal))
+  
+  
+}
 
+////we can make it with sets 
+const original = new Set(["cat", "dog", "fish", "bird", "cat", "fish"]);
+const toRemove = new Set(["cat", "dog"]);
+
+console.log(original.intersection(toRemove))
 
 
 // Iteration 5 | Unique Arrays
@@ -58,7 +77,9 @@ const duplicateWords = [
 
 function uniquifyArray() {}
 
-
+function uniquifyArray(words) {
+  return [...new Set(words)]
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
