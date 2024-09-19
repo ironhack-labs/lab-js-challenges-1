@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, word) {
+  let counter =0;
+  for (let i = 0; i<repeatedWords.length; i++) {
+    if (word === repeatedWords[i]){
+      counter++
+    }
+  }
+  return counter;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0){
+    return [];
+  }
+  let arr =[];
+  for(let i=0; i<=n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
 
 
 
@@ -27,7 +44,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let newArr =[];
+
+  numbers.forEach(function(num) {
+    newArr.push(num*multiplier)
+  })
+  return newArr;
+}
 
 
 
@@ -36,7 +60,20 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0){
+    return null;
+  }
+
+  let removedItems = [];
+
+  original.forEach(function(i) {
+    if (!toRemove.includes(i)) {
+      removedItems.push(i)
+    }
+  });
+  return removedItems;
+}
 
 
 
@@ -56,7 +93,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0){
+    return null;
+  }
+  let newArr = [];
+  duplicateWords.forEach(function (i) {
+    if (!newArr.includes(i)){
+      newArr.push(i)
+    }
+  });
+  return newArr;
+}
 
 
 
@@ -85,4 +133,38 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+  const numRows = matrix.length;
+  const numCols = matrix[0].length;
+
+  // Check horizontal products
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols - 3; col++) {
+      const product =
+        matrix[row][col] *
+        matrix[row][col + 1] *
+        matrix[row][col + 2] *
+        matrix[row][col + 3];
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+
+  // Check vertical products
+  for (let row = 0; row < numRows - 3; row++) {
+    for (let col = 0; col < numCols; col++) {
+      const product =
+        matrix[row][col] *
+        matrix[row + 1][col] *
+        matrix[row + 2][col] *
+        matrix[row + 3][col];
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+
+  return maxProduct;
+}
