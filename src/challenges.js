@@ -13,13 +13,26 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray,searchTerm) {
+  let counter = 0;
+  wordArray.forEach(function(element,index,array) {
+    if (element === searchTerm) counter+=1;
+  })
+  return counter;
+};
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let sequence = [];
+  if (number === 0) return [];
+  for (i = 0; i <= number; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 
@@ -27,7 +40,12 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numberArray,multiplier) {
+  //return numberArray.map((el) => el*multiplier);
+  let result = [];
+  numberArray.forEach(function(element) {result.push(element*multiplier)});
+  return result;
+}
 
 
 
@@ -36,7 +54,10 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalWordArray, toRemoveArray) {
+  if (originalWordArray.length === 0) return null;
+  return originalWordArray.filter(word => !toRemoveArray.includes(word));
+}
 
 
 
@@ -56,9 +77,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordArray) {
+  if (wordArray.length === 0) return null;
+  return [...new Set(wordArray)];
+  // let duplicates = [];
+  // wordArray.forEach(function(element, index) {
+  //   if(index !== wordArray.indexOf(element)) duplicates.push(element);
+  // } )
+  // console.log(duplicates);
+  // return filterOut(wordArray,duplicates).concat([...new Set(duplicates)]); //makes sure duplicates are added back once and not more than once.
+}
 
-
+console.log(uniquifyArray(duplicateWords));
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +115,38 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const matrix2 = [
+  [1,2,3,4,5],
+  [1,20,3,4,5],
+  [1,20,3,4,5],
+  [1,20,3,4,5],
+  [1,4,3,4,5]
+];
+
+
+function getMatrixValue(inputMatrix, row, col) {
+  // Return 1 if out of bounds (undefined), otherwise return the actual value
+  if (inputMatrix[row] === undefined || inputMatrix[row][col] === undefined) {
+    return 1;
+  }
+  return inputMatrix[row][col];
+}
+
+function greatestProduct(inputMatrix) {
+  let multipliedMatrixResults = [];
+  inputMatrix.forEach(function(elementRow,indexRow) {
+    elementRow.forEach(function(elementColumn,indexColumn) {
+      multipliedMatrixResults.push(elementColumn*
+      getMatrixValue(inputMatrix, indexRow, indexColumn + 1) *
+      getMatrixValue(inputMatrix, indexRow, indexColumn + 2) *
+      getMatrixValue(inputMatrix, indexRow, indexColumn + 3));
+      multipliedMatrixResults.push(elementColumn*
+      getMatrixValue(inputMatrix, indexRow + 1, indexColumn) *
+      getMatrixValue(inputMatrix, indexRow + 2, indexColumn) *
+      getMatrixValue(inputMatrix, indexRow + 3, indexColumn));
+    })
+  })
+  return Math.max(...multipliedMatrixResults);
+}
+
+console.log(greatestProduct(matrix2));
