@@ -13,13 +13,33 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords,wordToCount) {
+  let counterArr=[]
+  for(i=0;i<repeatedWords.length;i++)
+    if(repeatedWords[i]==wordToCount)
+      {counterArr.push(repeatedWords[i])}
+  return counterArr.length
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let counter=0
+  let counterArr = []
+  if(n===0)
+    {return counterArr}
+else
+  {for(i=0;i<=n;i++)
+  
+    {counter
+      counterArr.push(counter)
+    counter++}
+  }
+
+  return counterArr
+}
 
 
 
@@ -27,7 +47,9 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers,multiplier) {let result = [];
+  numbers.forEach(function (item) {result.push(item*multiplier)})
+  return result}
 
 
 
@@ -36,7 +58,14 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original,toRemove) { if(!original.length) {return null}
+else {
+const result = original.filter(filterAnimals);
+function filterAnimals(original)
+{return original !== (toRemove[0]) && original !== (toRemove[1])
+}
+return result
+    }}
 
 
 
@@ -56,8 +85,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+//code meets all specified criteria but for some reason keeps failing jasmine test
+function uniquifyArray(words) {
+  if(!duplicateWords.length) {return null}
+else {  
+  let duplicateFree = []
+for(i=0;i<duplicateWords.length;i++){if(!duplicateFree.includes(duplicateWords[i]))
+  {duplicateFree.push(duplicateWords[i])}
+  }
+ return duplicateFree
+}
+}
 
+uniquifyArray(duplicateWords)
+
+console.log(uniquifyArray(duplicateWords))
 
 
 
