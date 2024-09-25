@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words,search) {
+  let counter = 0;
+  words.forEach(word => {
+    if (word === search) {
+      counter++;
+    }
+  });
+  return counter;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const numberArray = [];
+  if (n === 0){
+    return numberArray;
+  }
+  for (i = 0; i <= n; i++) {
+    numberArray.push(i);
+  }
+  return numberArray;
+}
 
 
 
@@ -27,7 +44,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers,multiplier) {
+  const multiplyArray = [];
+  numbers.forEach(number => {
+    multiplyArray.push(number * multiplier);
+  });
+  return multiplyArray;
+}
 
 
 
@@ -36,10 +59,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, filter) {
+  const filteredArray = [];
 
-
-
+  if (original.length === 0){
+    return null;
+  }
+  original.forEach(string => {
+    if (!filter.includes(string)){
+        filteredArray.push(string);
+    }    
+  });
+  return filteredArray;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,7 +88,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  const uniquifiedArray = [];
+  if (words.length === 0){
+    return null;
+  }
+  words.forEach(word => {
+    if (!uniquifiedArray.includes(word)) {
+      uniquifiedArray.push(word);
+    }
+  });
+  return uniquifiedArray;
+}
+console.log(uniquifyArray(duplicateWords));
+
 
 
 
@@ -85,4 +130,51 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let product = 0;
+  matrix.forEach(element => {
+    for (i = 0; i < element.length - 3; i++) {
+      const currentProduct = element[i]*element[i+1]*element[i+2]*element[i+3];
+      if (product < currentProduct){
+        product = currentProduct;
+      };
+    }   
+  });
+  for (i = 0; i < matrix.length - 3; i++) {
+    matrix[i].forEach(element => {
+      const currentProduct = matrix[i][i]*matrix[i+1][i]*matrix[i+2][i]*matrix[i+3][i];
+      if (product < currentProduct){
+        product = currentProduct;
+      };
+    });
+  }
+  return product;
+}
+
+//AI Solution proposed when submitting
+function greatestProductIa(matrix) {
+  let product = 0;
+  const numberOfRows = matrix.length;
+  const numberOfColumns = matrix[0].length;
+  for (let i = 0; i < numberOfRows; i++) {
+    for (let j = 0; j < numberOfColumns - 3; j++) {
+      const currentProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+      if (currentProduct > product) {
+        product = currentProduct;
+      }
+    }
+  }
+  for (let i = 0; i < numberOfRows - 3; i++) {
+    for (let j = 0; j < numberOfColumns; j++) {
+      const currentProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+      if (currentProduct > product) {
+        product = currentProduct;
+      }
+    }
+  }
+  return product;
+}
+
+
+console.log(greatestProduct(matrix));
+console.log(greatestProductIa(matrix));
