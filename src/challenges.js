@@ -13,13 +13,34 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, element) {
+  let number = 0;
+  for (let i = 0; i < repeatedWords.length; i++) {
+    const word = repeatedWords[i];
+    if (word === element) {
+      number++
+    }
+  }
+return number;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+if (number === 0){
+  return[];
+}
+
+  const sequence = [];
+
+  for (let i = 0; i <= number; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+
+}
 
 
 
@@ -27,7 +48,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier ) {
+let result = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  result.push(numbers[i]*multiplier)
+}
+return result;
+}
 
 
 
@@ -36,8 +64,28 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, filter) {
+  if (original.length === 0) {
+    return null
+  } else {
+    const filteredByArray = [];
+    for (let i = 0; i < original.length; i++) {
+      let flag = false;
+      for (let j = 0; j < filter.length; j++) {
+        if (original[i] === filter[j]) {
+          flag = true;
+          continue;
+        }
+      }
+      if (flag) {
+        continue;
+      }
+      filteredByArray.push(original[i])
+    }
+    return filteredByArray
+  }
+}
+  
 
 
 
@@ -56,7 +104,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) { 
+  if (duplicateWords.length === 0) {  // Si la matriz está vacía, devolver null
+    return null;
+  }
+
+  const uniqueArray = [];   // Para almacenar palabras únicas
+  for (let i = 0; i < duplicateWords.length; i++) {  // Recorrer
+    if (uniqueArray.indexOf(duplicateWords[i]) === -1) { // verificar si la palabra ya existe en uniqueWords
+      uniqueArray.push(duplicateWords[i]); // Si no existe en uniqueWords, la agregamos
+    }
+  }
+return uniqueArray;
+}
 
 
 
