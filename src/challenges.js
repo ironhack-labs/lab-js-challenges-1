@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, word) {
+  let numberOfTimes = 0;
+
+  for(let i = 0; i < wordsArray.length; i++)
+  {
+    if(wordsArray[i] === word)
+    {
+      numberOfTimes++;
+    }
+  }
+
+  return numberOfTimes;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  const numbers = [];
+
+  if(number > 0) {
+    for(let i = 0; i<=number; i++) {
+      numbers.push(i);
+    }
+  }
+  
+  return numbers;
+}
 
 
 
@@ -27,7 +49,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  const multipliedNumbers = [];
+  
+  numbers.forEach(element => {
+    multipliedNumbers.push(element*multiplier);
+  });
+
+  return multipliedNumbers;
+}
 
 
 
@@ -36,7 +66,37 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  const filteredArray = [];
+
+  if(original.length === 0)
+  {
+    return null;
+  }
+
+  for(let i = 0; i < original.length; i++) {
+    let isExcluded = false;
+
+    const current = original[i];
+
+    for(let j = 0; j < toRemove.length; j++)
+    {
+      const currentToRemove = toRemove[j];
+
+      if(current === currentToRemove){
+        isExcluded = true;
+        break;
+      }
+    }
+
+    if(!isExcluded)
+    {
+      filteredArray.push(current);
+    }
+  }
+
+  return filteredArray;
+}
 
 
 
@@ -56,7 +116,23 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  const uniquifiedArray = [];
+
+  if(words.length === 0) {
+    return null;
+  }
+
+  for(let i = 0; i < words.length; i++) {
+    const currentWord = words[i];
+
+    if(!uniquifiedArray.includes(currentWord)) {
+      uniquifiedArray.push(currentWord);
+    }
+  }
+
+  return uniquifiedArray;
+}
 
 
 
