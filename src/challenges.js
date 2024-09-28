@@ -13,13 +13,40 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, wordToSearch) {
 
+  let count = 0;
 
+  for (let i = 0; i < wordsArray.length; i++) {
 
+    if (wordsArray[i] === wordToSearch) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(howManyTimes(repeatedWords, "matter"));
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const sequence = [];
+
+  if (n === 0) {
+    return sequence;
+
+  }
+
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+
+  return sequence;
+
+}
+
+console.log(createSequence(7));
 
 
 
@@ -27,19 +54,45 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArray, multiplier) {
+  const result = [];
 
+  numbersArray.forEach(function(number) {
+    result.push(number * multiplier);
+  });
 
+  return result;
 
+}
+
+console.log(multiplyBy(numbers, 3));
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+
+  if (original.length === 0){
+    return null;
+
+  }
+
+  const result = [];
+
+  for (let i = 0; i < original.length; i++) {
+    const item = original [i];
+
+    if (!toRemove.includes(item)) {
+      result.push(item);
+
+    }
+  }
+  return result;
+}
 
 
-
+console.log(filterOut(original, toRemove))
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +109,32 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArray) {
+
+  if (wordsArray.length === 0){
+    return null;
+
+  }
+
+  const uniqueArray = []; 
+
+ 
+  for (let i = 0; i < wordsArray.length; i++) {
+      const word = wordsArray[i]; 
+      
+
+      if (!uniqueArray.includes(word)) {
+          uniqueArray.push(word); 
+      }
+  }
+
+  return uniqueArray; 
+}
 
 
-
+// Prueba de la función
+console.log(uniquifyArray(duplicateWords)); 
+// Salida esperada: ["crab", "poison", "contagious", "simple", "sharp"]
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
