@@ -13,33 +13,77 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+// word = 'matter'
+// i = 0
+// countWords = 0
+// element  = 'machine'
 
 
+
+
+function howManyTimes(array, word) {
+  let countWords = 0;
+  for (let i = 0; i < array.length; i++) {
+    let element = array[i];
+    if (element === word) {
+      countWords +=1
+    }
+  }
+  return countWords
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(number) {
+  let finalarray = [];
+  if (number === 0) {
+    return finalarray = [];
+  } else {
+    for (let i = 0; i <= number; i++) {
+      finalarray.push(i);
+    }
+    return finalarray
+  }
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(array, multiplier) {
+  let finalarray = []
+  for (let i =0; i < array.length; i++) {
+    let element = array[i];
+    finalarray.push(element*multiplier)
+  }
+  return finalarray
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
-
+function filterOut(array, filterArray) {
+  if (array.length === 0){
+    return null;
+  }
+  let finalarray = [];
+  for (let i = 0; i < array.length; i++) {
+    let element1 = array[i];
+    let exist = false
+    for (let j = 0; j < filterArray.length; j++) {
+      let elementFilterArray = filterArray[j]
+      if (element1 === elementFilterArray) {
+        exist = true
+        } 
+      }
+      if (exist === false) {
+        finalarray.push(element1)
+      }
+    }
+    return finalarray
+   }
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,8 +100,30 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfwords) {
+  
+  if (arrayOfwords.length === 0){
+    return null;
+  }
+  let cleanArray = [];
+  
+  for (let i = 0; i < arrayOfwords.length; i++) {
+    let elementArray1 = arrayOfwords[i];
+    let exist = false;
 
+    for (let j = 0; j < cleanArray.length; j++){
+      let elementArray2 = cleanArray[j];
+      if (elementArray1 === elementArray2){
+        exist = true;
+      }
+    }
+    if (exist === false) {
+      cleanArray.push(elementArray1);
+
+    }
+  } 
+  return cleanArray
+}
 
 
 
