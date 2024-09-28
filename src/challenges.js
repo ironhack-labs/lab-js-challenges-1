@@ -13,22 +13,49 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(words, wordToSearch) {
+  let count = 0;
+  for (let i = 0; i < words.length; i++){
+    if ( wordToSearch === words[i]) {
+      count++;
+    }
+  }
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(number) {
+  let result = [];
+  for (let i = 0; i <= number; i++) {
+    if (number === 0) {
+      return result;
+    } else {
+      result.push(i);
+    }
+  }
+  return result;
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+// function multiplyBy(arrayNumbers, multiPlayer) {
+//   let result = [];
+//   for ( let i = 0; i < arrayNumbers.length; i++) {
+//     result.push(number[i]*multiPlayer);
+//   }
+//   return result;
+// }
 
+function multiplyBy (arrayNumbers, multiPlayer) {
+  let result = [];
+  arrayNumbers.forEach(function (number) {
+    result.push(number*multiPlayer);
+  })
+  return result;
+}
 
 
 
@@ -36,7 +63,25 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, toRemoveArray) {
+  if (originalArray.length === 0) {
+    return null;
+  }
+  let filterArray = [];
+  for (let i = 0; i < originalArray.length; i++) {
+    let found = false;
+    for (let j = 0; j < toRemoveArray.length; j++) {
+      if (originalArray[i] === toRemoveArray[j]) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      filterArray.push(originalArray[i]);
+    }
+  }
+  return filterArray;
+}
 
 
 
@@ -56,7 +101,25 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (words.length === 0) {
+    return null;
+  }
+  let result = [];
+  for (let i = 0; i < words.length; i++) {
+    let found = false;
+    for (let j = 0; j < result.length; j++) {
+      if (words[i] === result[j]) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      result.push(words[i]);
+    }
+  }
+  return result;
+}
 
 
 
