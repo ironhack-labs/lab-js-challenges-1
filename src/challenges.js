@@ -13,22 +13,45 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayWords,wordILookFor) {
+  let counter = 0;
+  for (i = 0; i < arrayWords.length; i++){
+    word = arrayWords[i];
+    if (word === wordILookFor){
+      counter++;
+    }
+  }
+  return counter; 
+}
 
-
+console.log(howManyTimes(repeatedWords, 'matter'));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(n) {
+  let sequence=[];
+  if (n !== 0){
+     for ( let j = 0; j <= n; j++){
+    sequence [j] = j;
+  }
+  }
+ 
+  return sequence;
+}
+console.log(createSequence(7)); 
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(numbers, multiplier) {
+  for ( let k = 0; k < numbers.length; k++){
+    numbers [k] = numbers [k] * multiplier;
+  }
+  return numbers;
+}
+ console.log(multiplyBy(numbers, 3)); 
 
 
 
@@ -36,8 +59,30 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, toRemove) { //I know this names for the arguments are the same as the variables, I cant think of new ones
+  let output = [];
+  let isEqual = 0;
+ if (original.length===0){
+      output = null;
+  }
+  else{
+    for ( let l = 0; l < original.length; l++){
+     const element = original[l]; 
+     isEqual = 0;
+      for ( let m = 0; m < toRemove.length; m++ ){
+      const remove = toRemove[m]; 
+        if ( element === remove){
+        isEqual = 1;
+        }
+      }
+      if (!isEqual){
+        output.push(element);
+     }
+    }
+  }
+  return output; 
+}
+ console.log(filterOut(original, toRemove));
 
 
 
@@ -56,8 +101,28 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(doubleWords) {
+  let noRepeats=[];
+  let repeated = false;
+  if (doubleWords.length===0){
+    noRepeats = null;
+  }
+  for ( let n = 0; n < doubleWords.length; n++){
+    word = doubleWords[n]; 
+    repeated = false;
+    for ( let o = 0; o < noRepeats.length; o++){
+      wordInOutput = noRepeats[o];
+      if (word == wordInOutput){
+        repeated = true;
+      }
+    }
+      if (!repeated) {
+       noRepeats.push(word);
+      }
+    }
+  return noRepeats; 
+}
+console.log(uniquifyArray(duplicateWords)); 
 
 
 
