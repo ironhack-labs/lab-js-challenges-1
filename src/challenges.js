@@ -13,21 +13,46 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, word) {
+  let count = 0;
+  for (let i = 0; i < repeatedWords.length; i++) {
+    const palabra = repeatedWords[i];
+    if (word === palabra) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  if (number === 0) {
+    return [];
+  }
 
+  const numbers = [];
+  for (let i = 0; i <= number; i++) {
+    numbers.push(i);
+  }
+  return numbers;
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multipler) {
+  const result = []; 
+  for (let i = 0; i < numbers.length; i++) {
+    const number = numbers[i];
+    result.push(number*multipler);
+  }
+  return result;
+}
 
 
 
@@ -36,7 +61,37 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length < 1) {
+    return null;
+  }
+
+  if (toRemove.length < 1) {
+    return original;
+  }
+  const salida = [];
+
+  for (let i=0; i < original.length; i++) {
+    const palabra = original[i];
+    let isBanned;
+
+    for (let j = 0; j < toRemove.length; j++) {
+      if (palabra === toRemove[j]) {
+        isBanned = true;
+        break;
+      } else {
+        isBanned = false;
+      }
+    }
+    
+    if (!isBanned) {
+      salida.push(palabra);
+    }
+    
+  }  
+
+  return salida;    
+}
 
 
 
@@ -56,7 +111,33 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length < 1) {
+    return null;
+  }
+
+  const arrayUnicos = [];
+
+  for (let i = 0; i < duplicateWords.length; i++) {
+    const palabra = duplicateWords[i];
+    let isRepe = false;
+
+    for (let j = 0; j < arrayUnicos.length; j++) {
+      const otraPalabra = arrayUnicos[j];
+
+      if (palabra === otraPalabra) {
+        isRepe = true;
+        break;
+      }
+    }
+
+    if (!isRepe) {
+      arrayUnicos.push(palabra);
+    }
+  }
+
+return arrayUnicos;
+}
 
 
 
@@ -85,4 +166,50 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxFila = 0;
+  let maxColumna = 0;
+  
+  //Busco la multiplicación máxima por fila, así qeu voy recorriendo la matriz fila a fila (j).
+  //en cada fila hago las multiplicaciones de los 4 elementos adyacentes y busco su maximo (maxAuxF).
+  //luego comparo el maxAux con el máximo almacenado de una multiplicación por filas y me qeudo con el mayor (maxFila)
+  for (let j = 0; j < matrix.length; j++) {
+    const fila = matrix[j];
+ 
+    for (i = 0; i < fila.length-3; i++) {
+      let filaMultiplicada = [];
+      let maxAuxF = 0;
+      let aux = fila[i]*fila[i+1]*fila[i+2]*fila[i+3];
+      filaMultiplicada.push(aux);
+      maxAuxF = Math.max(filaMultiplicada);
+      if (maxAuxF > maxFila) {
+        maxFila = maxAuxF;
+      };
+    };
+
+  };
+    
+
+  //Para cada columna, primero la convierto en un array, y luego hago como en los arrays por filas de más arriba.
+  //Guardo en maxAuxC y en maxColumna.
+  const numColum = matrix[0].length;
+
+  for (let j = 0; j < numColum; j++) {
+    const columna = [];
+
+    for (let i=0; i < matrix.length; i++) {
+      columna.push(matrix[i][j]);
+    };
+
+    for (i = 0; i < columna.length-3; i++) {
+      let columnaMultiplicada = [];
+      let maxAuxC = 0;
+      columnaMultiplicada.push(columna[i]*columna[i+1]*columna[i+2]*columna[i+3]);
+      maxAuxC = Math.max(columnaMultiplicada);
+      if (maxAuxC > maxColumna) {
+        maxColumna = maxAuxC;
+      };
+    };
+  };
+  return Math.max(maxFila, maxColumna);
+}
