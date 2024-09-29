@@ -121,7 +121,11 @@ describe("Iteration 4 | Filter Out", () => {
 
     it("should correctly filter out the elements of the second array from the first array", () => {
       expect(filterOut(["a", "b", "c", "a", "b"], ["a", "b"])).toEqual(["c"]);
-      expect(filterOut(["a", "b", "c", "a", "b"], ["a"])).toEqual(["b", "c", "b"]);
+      expect(filterOut(["a", "b", "c", "a", "b"], ["a"])).toEqual([
+        "b",
+        "c",
+        "b",
+      ]);
     });
   });
 });
