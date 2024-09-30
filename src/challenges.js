@@ -13,22 +13,44 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(arr, wordSearch) {
+  let wordCount = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const word = arr[i];
+    if (word === wordSearch) {
+      wordCount++;
+    }
+  }
+  return wordCount;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(n) {
+  const numArray = [];
+  if (n === 0) {
+    return numArray;
+  }
+  for (let i = 0; i <= n; i++) {
+    numArray.push(i);
+  }
+  return numArray;
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(numArray, number) {
+  const multipliedArray = [];
+  for (let i = 0; i < numArray.length; i++) {
+    const iteratedNum = numArray[i];
+    multipliedArray.push(iteratedNum * number);
+  }
+  return multipliedArray;
+}
 
 
 
@@ -36,8 +58,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, toRemoveArr) {
+  if (!originalArr.length) {
+    return null; 
+  }
 
+  let filteredArray = []; 
+  for (let i = 0; i < originalArr.length; i++) {
+    const originalItem = originalArr[i]; 
+    let exists = false; // Asumimos que el elemento no existe en toRemoveArr.
+    
+    for (let j = 0; j < toRemoveArr.length; j++) {
+      const toRemoveItem = toRemoveArr[j];
+      if (originalItem === toRemoveItem) {
+        exists = true; 
+        break; 
+      }
+    }
+    if (!exists) {
+      filteredArray.push(originalItem); 
+    }
+  }
+  return filteredArray; 
+}
 
 
 
@@ -56,12 +99,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(wordsArr) {
+  if (!wordsArr.length) {
+    return null;
+  }
+  const uniqueArr = [];
+  for (let i = 0; i < wordsArr.length; i++) {
+    const word = wordsArr[i];
+    if (!uniqueArr.includes(word)) {
+      uniqueArr.push(word);
+    }
+  }
+  return uniqueArr;
+}
 
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
+// No hay que hacerla
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -85,4 +140,5 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {}
+
