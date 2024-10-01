@@ -1,4 +1,5 @@
 // Iteration 1 | Count Repetition
+
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,13 +14,25 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray, targetWord) {
+  let count = 0;
+  for (let i = 0; i < wordArray.length; i++) {
+    if (wordArray[i] === targetWord) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  return Array.from({length: n + 1}, (_, i) => i);
+}
+
+console.log(createSequence(7));
 
 
 
@@ -27,7 +40,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
+  const result = [];
+  arr.forEach(num => result.push(num * multiplier));
+  return result;
+}
+
+console.log(multiplyBy(numbers, 3));
 
 
 
@@ -36,7 +55,11 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  return original.filter(item => !toRemove.includes(item));
+}
+
+console.log(filterOut(original, toRemove));
 
 
 
@@ -56,7 +79,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  const uniqueArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!uniqueArr.includes(arr[i])) {
+      uniqueArr.push(arr[i]);
+    }
+  }
+  return uniqueArr;
+}
+
+console.log(uniquifyArray(duplicateWords));
 
 
 
@@ -85,4 +118,40 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+
+  // Buscar productos horizontales
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      const product = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      maxProduct = Math.max(maxProduct, product);
+    }
+  }
+
+  // Buscar productos verticales
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      const product = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      maxProduct = Math.max(maxProduct, product);
+    }
+  }
+
+  // Buscar productos diagonales hacia abajo a la derecha
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      const product = matrix[i][j] * matrix[i + 1][j + 1] * matrix[i + 2][j + 2] * matrix[i + 3][j + 3];
+      maxProduct = Math.max(maxProduct, product);
+    }
+  }
+
+  // Buscar productos diagonales hacia abajo a la izquierda
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 3; j < matrix[i].length; j++) {
+      const product = matrix[i][j] * matrix[i + 1][j - 1] * matrix[i + 2][j - 2] * matrix[i + 3][j - 3];
+      maxProduct = Math.max(maxProduct, product);
+    }
+  }
+
+  return maxProduct;
+}
