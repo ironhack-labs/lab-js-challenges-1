@@ -1,4 +1,6 @@
-// Iteration 1 | Count Repetition
+/* Iteration 1 | Count Repetition
+  Declare a function named howManyTimes that will take in an array of words as the first argument and a word to search for as the second argument. The function should return the number of times the word appears in the array.
+*/
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,35 +15,141 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArr, word) {
+
+  let counter= 0; //Creo una variable para almancenar las palabras repetidas. 
+
+    if (wordsArr.length === 0){ //Hago un if para que devuelva un cero si el array está vacío.
+      return 0; 
+
+    }
+
+    for (let i = 0; i < wordsArr.length ; i++){ //Hago un for para recorrer el array.
+
+      let wordsOfTheArray = wordsArr[i]; //Almaceno cada elemento del array en esta variable (no hace falta realmente).
+
+      if (wordsOfTheArray === word) { 
+        counter++; //Aquí describimos la condición: si la palabra que pasemos como segundo argumento está en el array aumentamos el número de veces en la variable counterWords. 
+
+      }
+
+    }
+    return counter; 
+
+}
+
+howManyTimes (repeatedWords, "matter");
+
+
+/* Iteration 2 | Number Sequence: 
+  Declare a function named createSequence. The function should take one argument: a number (n). The function should return an array of numbers in the range from 0 to n.
+*/
+
+function createSequence(n) {
+
+  const arrayOfNumbers = []; //Creo un array vacío para ir almacenando los números. 
+
+  if (n === 0) { //Si el número introducido es cero, devuelve un array vacío. 
+
+    return []; //Devuelve un array vacío.
+
+  }
+
+  for (let i = 0; i <= n; i++){ //Recorremos el array.
+    
+      arrayOfNumbers.push(i); //Añadimos los número al array vacío del principio con push para hacerlo ordenado. 
+    }
+  
+    return arrayOfNumbers; 
+  }
+
+createSequence(7); 
 
 
 
 
-// Iteration 2 | Number Sequence
-function createSequence() {}
+/* Iteration 3 | Multiply for Each: 
+
+  Implement the function multiplyBy that takes two arguments: an array of numbers and a number (multiplier). It should return a new array containing each number of the first array multiplied by the multiplier.
+
+  Important: You must use the forEach() method in the function to iterate over the array. If you need a refresher on the forEach() method, check today's lesson or the following MDN page.
+
+  You can use the following array to test your solution: */
 
 
-
-
-// Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrNumbers, multiplier) {
+
+  let arrayNumbersMultiplied = [];
+
+  for (let i = 0; i < arrNumbers.length; i++){
+
+    let numbersOfTheArray = arrNumbers[i];
+    
+    arrayNumbersMultiplied.push(numbersOfTheArray * multiplier); 
+
+  }
+
+  return arrayNumbersMultiplied; 
+}
+
+multiplyBy(numbers, 3);
 
 
+/* Iteration 4 | Filter Out: 
 
+  Declare a function filterOut. The function should take two arguments: an array of strings (original), and an array of strings to filter out.
 
-// Iteration 4 | Filter Out
+  The function should return a new array that only includes the strings from the original array that are not present in the second array. In other words, you should remove all the strings listed in the second array.
+
+*/
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrStrings1, arrStrings2 ) {
+
+  let filteredArray = []; //Declaro un array vacío para contener los "strings" filtrados.
+
+  if (arrStrings1.length === 0){ //Primer filtro. Si el primer array está vacío devuelve "null".
+
+    return null; 
+
+  }
+
+  if (arrStrings2.length === 0){ //Segundo filtro. Si el array que sirve de filtro está vacío devuelve el primero sin tocar (si no hay filtro, no se filtra).
+    
+    return arrStrings1; 
+    
+  }
+
+  for (let i = 0; i <arrStrings1.length; i++){ //Con FOR recorro el array. 
+
+    let counterWords = arrStrings1[i];  //El contenido del array lo almaceno en una nueva variable (no hace falta).
+    
+    if (!arrStrings2.includes(counterWords)){ /*Podría hacerlo con "indexOf() === -1", .find() o .filter() */
+      
+      filteredArray.push(counterWords); /* Aquí almacenamos con push (al final), los elementos fitrados en el nuevo array con un orden parecido al del array original: el primer "fish" primero, luego "bird" y finalmente el segundo "fish". Si empleara .unshift() lo habría hecho en orden inverso, aunque aquí no se notaría la diferencia. */ 
+    }
+    
+  }
+
+return filteredArray;  
+}
+
+console.log(filterOut(original, toRemove));
+ 
 
 
+/* Iteration 5 | Unique Arrays
 
+  Take the following array, remove the duplicates, and return a new array. You are more than likely going to want to check out the Array methods indexOf and includes.
 
-// Iteration 5 | Unique Arrays
+  Do this in the form of a function uniquifyArray that receives an array of words as an argument.
+
+*/
+
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,7 +164,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+
+  let newArrayFiltered = []; 
+
+  if (words.length === 0){ //Creo el filtro por si el array está vacío.
+
+    return null; 
+
+  }
+
+
+
+}
 
 
 
