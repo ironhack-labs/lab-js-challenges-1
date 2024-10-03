@@ -227,7 +227,6 @@ Implement the function `multiplyBy` that takes two arguments: an *array of numbe
 
 
 
-
 You can use the following array to test your solution:
 
 ```javascript
