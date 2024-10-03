@@ -13,13 +13,36 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+/* function howManyTimes(wordArr, wordSearched) {
+  if (wordArr.length === 0) {
+    return 0;
+  }
+let count = 0; */
 
+function howManyTimes(wordsArray, searchWord) {
+  let count = 0;
+  for (let word of wordsArray) {
+    if (word === searchWord) {
+      count++;
+    }
+  }
+  return count;
+  
+}; 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return [];
+  }
+  const result = [];
+  for (let i = 0; i <= n; i++) {
+    result.push(i);
+  }
+  return result;
+};
 
 
 
@@ -27,16 +50,49 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numberArr, multiplier) {
+  if (!numberArr.length) {
+    return numberArr
+  }
+  const result = []; 
+
+  numberArr.forEach(function (element, index){
+    result.push(element * multiplier)
+  })
+  // numberArr.forEach(() => {})
+return result
+};
 
 
+multiplyBy(numbers)
+/* array.forEach( function(element) {
+  // code to be executed for each element
+}); */
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (!original.length) {
+    return null; 
+
+  }
+  
+  const result = [];
+  for (let i = 0; i < original.length; i++) {
+    const item = original[i];
+    if (!toRemove.includes(item)) {
+      result.push(item);
+      
+    }
+    
+  }
+  return result;  
+
+
+};
 
 
 
