@@ -1,7 +1,7 @@
 // Iteration 1 | Count Repetition
 const repeatedWords = [
-  "machine",
-  "matter",
+  "machine", 
+  "matter", 
   "subset",
   "trouble",
   "starting",
@@ -10,24 +10,57 @@ const repeatedWords = [
   "matter",
   "truth",
   "disobedience",
-  "matter"
+  "matter" 
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word ) {
+  
+  let result = 0
+  for (let i = 0; i < arr.length; i++ ) {
+    if (arr[i] === word)
+      result ++
+  }
 
-
+  return result
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let result1 = []; 
 
+  if (n === 0) {
+    return result1;
+  } else {
+  for (let i = 0; i <= n; i++) {
+    if (n[i] !== 0) {
+    result1.push(i);
+    }
+  }
+  console.log(result1)
+  return result1
+
+}
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArr, multiplier) {
+  let multiplyByResult = []
+  if (numbersArr === "") {
+    return [];
+  }
+  numbersArr.forEach(function (element) {
+   multiplyByResult.push(element * multiplier);
+   console.log("this is the console log " , multiplyByResult)
+  })
+  return multiplyByResult;
+};
+
+  
 
 
 
@@ -36,9 +69,20 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+    if (!original.length) {
+      return null
+    }
 
+    let filteredArray = []
+    original.forEach(function(element){
+      if (!toRemove.includes(element)) {
+        filteredArray.push(element)
+      }
+    })
+      return filteredArray
 
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +100,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  
+  if (!words.length) {
+    return null
+  }
+
+  let filtered = []
+  words.forEach(function (element) {
+    if (!filtered.includes(element)) {
+      filtered.push(element)
+  }  
+  })
+  return filtered
+}
 
 
 
