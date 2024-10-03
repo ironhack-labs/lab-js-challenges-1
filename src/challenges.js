@@ -13,13 +13,34 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
 
+let count = 0
+for (let i=0 ; i<arr.length ; i++){
+  if(arr[i] === word){
+    count++;
+  }
+}
+return count;
+
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let arr =[];
+  if (n === 0) { 
+    return arr ;
+  }
+  else {
+    for (let i=0 ; i<=n ; i++){
+      arr.push(i);
+    }
+    return arr;
+  }
+  
+}
 
 
 
@@ -27,7 +48,18 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
+  
+  let resultArr = [];
+  
+  arr.forEach(function multiply(element){
+
+    resultArr.push(element*multiplier);
+
+  })
+  return resultArr;
+
+}
 
 
 
@@ -36,7 +68,35 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+
+// we were thinking about using .splice() to filter out words from the original array.
+// After a while, instead :
+// we start from an empty array
+// we look to the words of the original one by one
+// if it is not present in toRemove, we push it in the initial empty array 
+
+function filterOut(arr, filter) {
+
+if(arr.length === 0){
+  return null
+} else {
+  let result = [];
+
+  for (let i = 0 ; i<arr.length ; i++){
+  
+  wordToCheck = arr[i];
+  
+  if(filter.indexOf(wordToCheck) === -1){
+    result.push(wordToCheck)
+  }
+  
+  }
+  
+  return result
+  
+}
+
+}
 
 
 
@@ -56,12 +116,38 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+// strategy :
+// an empty array
+// 
+// on each iteration we check if word is already present, if not we add it ! 
+
+
+function uniquifyArray(arr) {
+  let arrResult = []
+  if(arr.length === 0){
+    return null
+  
+  } else {
+
+  for (let i = 0 ; i<arr.length ; i++){
+    if(arrResult.indexOf(arr[i]) === -1){
+      arrResult.push(arr[i])
+    }
+  
+  }
+
+  return arrResult ;
+
+  }
+}
 
 
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
+
+// I like it but no time left !
+
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
