@@ -13,13 +13,51 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, wordy) {
+  if (array.length === 0) {
+    return 0;
+  }
+  let count = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === wordy) {
+        count++;
+      }
+    }
+    if (count === 0) {
+      return 0;
+    } else if (count === 1) {
+      return 1;
+    } else if (count === 5) {
+      return 5;
+    } else {
+      return count;
+    }
+}
+console.log(howManyTimes(repeatedWords, "matter"));
+console.log(howManyTimes(repeatedWords, "machine"));
+console.log(howManyTimes(repeatedWords, "truth"));
+console.log(howManyTimes(repeatedWords, "hello"));
+console.log(howManyTimes([], "matter"));
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return [];
+  }
+  const sequence = [];
+  for (let i = 0; i < n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
+console.log(createSequence(0));
+console.log(createSequence(1));
+console.log(createSequence(5));
+console.log(createSequence(10));
 
 
 
@@ -27,7 +65,19 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArr, multiplier) {
+ if (numArr.length === 0) {
+  return [];
+ }
+ const result = [];
+ for (let i = 0; i < numArr.length; i++) {
+  result[i] = numArr[i] * multiplier;
+ }
+ return result;
+}
+console.log(multiplyBy(numbers, 2));
+console.log(multiplyBy(numbers, 3));
+console.log(multiplyBy([], 5));
 
 
 
@@ -36,7 +86,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, removeArr) {
+  if(originalArr.length === 0) {
+    return null;
+  }
+  if (removeArr.length === 0) {
+    return originalArr
+  }
+  const filterArr = originalArr.filter(item => !removeArr.includes(item));
+  return filterArr;
+}
+console.log(filterOut(original, toRemove));
+console.log(filterOut([], toRemove));
+console.log(filterOut(original, []));
 
 
 
