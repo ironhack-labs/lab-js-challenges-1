@@ -13,32 +13,62 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, wordToSearch) {
+  let count = 0;
 
-
-
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] === wordToSearch) {
+      // console.log("Current word is: " + wordToSearch)
+      count ++;
+    }
+  }
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let arr = [];
+  
+  if (n === 0) {
+    return []
+  } 
 
-
-
+  for (let i = 0; i <= n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
+  let multiplesArray = [];
+  
+  if(arr.length === 0) {
+    return [];
+  }
 
-
-
+  arr.forEach(function(element){
+    multiplesArray.push(element * multiplier)
+  })
+  return multiplesArray;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, wordsToRemove) {
 
-
+  if(originalArray.length === 0) {
+    return null
+  } else if (wordsToRemove.length === 0) {
+    return originalArray
+  }
+  
+  return originalArray.filter(item => !wordsToRemove.includes(item));
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,10 +86,12 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
-
+function uniquifyArray(arr) {
+  if(arr.length === 0) {
+    return null;
+  }
+  return arr.filter((item, index) => arr.indexOf(item) === index);
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +117,30 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function greatestProduct(matr) {
+  let greatestProduct = 0;
+
+  for (let i = 0; i < matr.length; i++) {
+    for (let j = 0; j < matr[i].length; j++) {
+      // Check horizontal product if it's within bounds
+      if (j + 3 < matr[i].length) {
+        let horizontalProduct =
+          matr[i][j] * matr[i][j + 1] * matr[i][j + 2] * matr[i][j + 3];
+        if (horizontalProduct > greatestProduct) {
+          greatestProduct = horizontalProduct;
+        }
+      }
+
+      // Check vertical product if it's within bounds
+      if (i + 3 < matr.length) {
+        let verticalProduct =
+          matr[i][j] * matr[i + 1][j] * matr[i + 2][j] * matr[i + 3][j];
+        if (verticalProduct > greatestProduct) {
+          greatestProduct = verticalProduct;
+        }
+      }
+    }
+  }
+  return greatestProduct;
+}
