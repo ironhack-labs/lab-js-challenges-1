@@ -13,13 +13,32 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, searchWord) {
+  let count = 0
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    if (array[i] === searchWord) {
+      count++
+    }
+  }
+  return count
+}
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  const array = []
+  if (!number) {
+    return array
+  }
+  for (let i = 0; i <= number; i++) {
+    array.push(i)
+  }
+  return array
+}
 
 
 
@@ -27,7 +46,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, number) {
+  const resultArray = []
+  // for (let i = 0; i < numbers.length; i++) {
+  //   resultArray.push(numbers[i]*number)
+  // }
+  // return resultArray
+  numbers.forEach(num => {
+    resultArray.push(num * number)
+  });
+  return resultArray
+}
 
 
 
@@ -36,7 +65,27 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+  } else {
+    const filteredArray = [];
+    for (let i = 0; i < original.length; i++) {
+      let flag = false;
+      for (let j = 0; j < toRemove.length; j++) {
+        if (original[i] === toRemove[j]) {
+          flag = true;
+          continue;
+        }
+      }
+      if (flag) {
+        continue;
+      }
+      filteredArray.push(original[i])
+    }
+    return filteredArray;
+  }
+}
 
 
 
@@ -56,8 +105,63 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length===0) {
+    return null
+  } else {
+    const arrayCopy= duplicateWords
+    const result = []
+    const indexes = []
+    for (let i = 0; i < duplicateWords.length; i++) {
+      const duplicateWord = duplicateWords[i];
+      let count = 0
+      for (let j = 0; j < arrayCopy.length; j++) {
+        const copy = arrayCopy[j];
+        if (duplicateWord===copy) {
+          // console.log(duplicateWord, copy);
+          count++
+        }
+        if (count > 1 && duplicateWord === copy) {
+          // console.log(count);
+          // console.log("j", j);
+          indexes.push(j)
+        }
+      }
+    }
+    // console.log("indexes: ", indexes);
+    
+    for (let i = 0; i < duplicateWords.length; i++) {
+      const word = duplicateWords[i];
+      let flag = false;
+      for (let j = 0; j < indexes.length; j++) {
+        const number = indexes[j];
+          if (i === number) {
+            flag = true;
+          }
+      }
+      if (flag) {
+        continue;
+      }
+      result.push(word)
+    }
+    if (duplicateWords.length === result.length) {
+      return duplicateWords
+    }
+    return result
+  }
+ }
+// console.log(uniquifyArray([
+//   "iPhone",
+//   "Samsung",
+//   "Android",
+//   "iOS",
+//   "iPhone",
+//   "Samsung",
+//   "Nokia",
+//   "Blackberry",
+//   "Android",
+// ]));
+ 
 
 
 
@@ -85,4 +189,116 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(array) { 
+  //Multiplicación de filas
+  const productFilaMatrix =[[]]
+  let string =""
+  for (let i = 0; i < array.length; i++) {
+    const fila = array[i];
+    const aux  = [];
+    // string += "\nFila\n"
+    // let string = ""
+    //  console.log("typeof(fila)");
+    //console.log("Columna");
+    for (let j = 0; j < fila.length; j++) {
+      const columna = fila[j];
+      // console.log(columna);
+      // string += columna + ", ";
+      // string += `\n${columna}\n`
+      let result= 1;
+      if (j < fila.length - 3) {
+        for (let k = 0; k < 4; k++) {
+          const number = fila[k+j];
+          // string += `${number} `;
+          result *= number;
+        }
+        aux.push(result);
+        // string += `${result} `;
+      }
+      // console.log(string);
+    }
+    productFilaMatrix.push(aux);
+    // console.log(string);
+    
+  }
+  // console.log(string);
+  // for (let i = 0; i < productFilaMatrix.length; i++) {
+  //    console.log(productilaMatrix[i]);
+  // }
+  //Multiplicacion de columnas
+  const productColumnMatrix =[[]]
+  for (let i = 0; i < array.length; i++) {
+    const fila = array[i];
+    const aux = [];
+    for (let j = 0; j < fila.length; j++) {
+      const columna = fila[j];
+      // string += `${array[j][i]} `;
+      // let number = 1;
+      if (j < array.length - 3) {
+        let number = 1;
+        for (let k = 0; k < 4; k++) {
+          if (j+k < array.length) {
+            // console.log(array[j+k][i]);          
+            number *= array[j+k][i];  
+          }
+        }
+        aux.push(number);
+        // string += `${number} `;
+        // string += " | ";
+        // string += `${j} `;
+      }
+      // string += `${number} `;
+      // string += `${j} `;
+    }
+    productColumnMatrix.push(aux)
+    // string += `\n`; 
+    // string += `${j}\n`;
+    
+    // if (i < array.length - 3) {
+    //   let result = 1;
+    //   for (let j = 0; j < 4; j++) {
+    //     const number = fila[i+j][i];
+    //     console.log(fila[i+j][i]);
+        
+    //   }
+    // }
+  }
+  // console.log(string);
+  // for (let i = 0; i < productColumnMatrix.length; i++) {
+  //   console.log(productColumnMatrix[i]);
+  // }
+
+  //Mayor del array fila
+  let maxOfRow= -1;
+  for (let i = 0; i < productFilaMatrix.length; i++) {
+    const fila = productFilaMatrix[i];
+    for (let j = 0; j < fila.length; j++) {
+      const columna = fila[j];
+      // console.log("columna: ", columna);
+      if (maxOfRow < columna) {
+        maxOfRow =  columna;       
+      }
+    }
+  }
+  console.log("maxOfRow: ", maxOfRow);
+
+  //Mayor del array columna
+  let maxOfColum= -1;
+  for (let i = 0; i < productColumnMatrix.length; i++) {
+    const fila = productColumnMatrix[i];
+    for (let j = 0; j < fila.length; j++) {
+      const columna = fila[j];
+      // console.log("columna: ", columna);
+      if (maxOfColum < columna) {
+        maxOfColum =  columna;       
+      }
+    }
+  }
+  console.log("maxOfColum: ", maxOfColum);
+  if (maxOfColum < maxOfRow) {
+    return maxOfRow;
+  } else {
+    return maxOfColum
+  }
+}
+greatestProduct(matrix);
