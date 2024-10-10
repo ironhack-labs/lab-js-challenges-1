@@ -13,21 +13,49 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(wordsArray, wordToSearch) {
+  let count = 0;
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === wordToSearch) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(n) {
+  let sequence = [];
+  if (n === 0) {
+    return sequence;
+  }
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArray, multiplier) {
+  /*
+  let result = [];
+  numbersArray.forEach(number => {
+    result.push(number * multiplier);
+  });
+  return result;
+  */
+  let result = [];
+  for (let i = 0; i < numbersArray.length; i++) {
+    result.push(numbersArray[i] * multiplier);
+  }
+  return result;
+
+}
 
 
 
@@ -36,7 +64,26 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+  let result = [];
+  for (let i = 0; i < original.length; i++) {
+    let found = false;
+    for (let j = 0; j < toRemove.length; j++) {
+      if (original[i] === toRemove[j]) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      result.push(original[i]);
+    }
+  }
+  return result;
+
+}
 
 
 
@@ -56,7 +103,26 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArray) {
+  if (wordsArray.length === 0) {
+    return null;
+  }
+  let uniqueArray = [];
+  for (let i = 0; i < wordsArray.length; i++) {
+    let isDuplicate = false;
+    for (let j = 0; j < uniqueArray.length; j++) {
+      if (wordsArray[i] === uniqueArray[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    if (!isDuplicate) {
+      uniqueArray.push(wordsArray[i]);
+    }
+  }
+  return uniqueArray;
+
+}
 
 
 
@@ -85,4 +151,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
