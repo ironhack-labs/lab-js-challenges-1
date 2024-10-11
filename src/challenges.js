@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+  let countWords = 0;
+  for (let i = 0; i < array.length; i++) {
+    let element = array[i];
+    if (array[i] === word) {
+      countWord += 1;
+    }
+  }
+
+  return countWords;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let finalArray = [];
+  if (number === 0) {
+    return finalArray = [];
+  } else {
+    for (let i = 0; i <= number; i++) {
+      finalArray.push(i);
+  }
+   
+  return finalArray;
+  }
+}
+
 
 
 
@@ -27,8 +49,27 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiplier) {
+  let finalArray = [];
+  for (let i = 0; i < array.length; i++) {
+    let element = array[i];
+    finalArray.push(element * multiplier)
+  }
 
+  return finalArray;
+}
+
+// Iteration 3 with forEach
+
+function multiplyBy(array, multiplier) {
+  let finalArray = [];
+  array.forEach(function(element) {
+    finalArray.push(element * multiplier);
+  });
+
+  return finalArray;
+
+}
 
 
 
@@ -36,8 +77,28 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(array, filterArray) {
+  if (array.length === 0) {
+    return null;
+  }
+  let finalArray = [];
+  for (let i = 0; i < array.length; i++) {
+    let element = array[i];
+    let exist = false;
+  for (let j = 0; j < filterArray.length; j++) {
+    let elementFilterArray = filterArray[j];
+    if (element === filterArray[j]) {
+      exist = true;
+    }
+  }
+  if (!exist) {
+    finalArray.push(element);
+  }
+  }
 
+return finalArray;
+
+}
 
 
 
@@ -56,7 +117,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArray) {
+  if (wordsArray.length === 0) {
+    return null;
+  }
+  let uniqueArray = [];
+  for (let i = 0; i < wordsArray.length; i++) {
+    let word = wordsArray[i];
+    if (uniqueArray.indexOf(word) === -1) {
+      uniqueArray.push(word);
+    }
+  }
+  return uniqueArray;
+}
 
 
 
