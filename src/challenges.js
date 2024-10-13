@@ -13,33 +13,52 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+  if (array.length === 0) return 0;
 
+  let count = 0;
+  array.forEach(element => {
+    if (element === word) {
+      count++;
+    }
+  });
 
-
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(n) {
+  if (n === 0) return [];
+  const sequence = [];
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
-
+function multiplyBy(array, multiplier) {
+  if (array.length === 0) return [];
+  const result = [];
+  array.forEach(number => {
+    result.push(number * multiplier);
+  });
+  return result;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, toRemoveArray) {
+  if (originalArray.length === 0) return null;
+  if (toRemoveArray.length === 0) return originalArray;
 
-
-
+  return originalArray.filter(item => !toRemoveArray.includes(item));
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,8 +75,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (array.length === 0) return null;
+  
+  const uniqueArray = [];
+  array.forEach(item => {
+    if (!uniqueArray.includes(item)) {
+      uniqueArray.push(item);
+    }
+  });
 
+  return uniqueArray;
+}
 
 
 
@@ -85,4 +114,30 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+
+  // Recorremos cada fila de la matriz
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length - 3; col++) {
+      // Producto de 4 números adyacentes en fila
+      const productRow = matrix[row][col] * matrix[row][col + 1] * matrix[row][col + 2] * matrix[row][col + 3];
+      if (productRow > maxProduct) {
+        maxProduct = productRow;
+      }
+    }
+  }
+
+  // Recorremos cada columna de la matriz
+  for (let row = 0; row < matrix.length - 3; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+      // Producto de 4 números adyacentes en columna
+      const productCol = matrix[row][col] * matrix[row + 1][col] * matrix[row + 2][col] * matrix[row + 3][col];
+      if (productCol > maxProduct) {
+        maxProduct = productCol;
+      }
+    }
+  }
+
+  return maxProduct;
+}
