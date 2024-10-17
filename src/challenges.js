@@ -13,13 +13,37 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(wordsArray, wordToSearch) {
+  let count = 0;
+  for (let word of wordsArray) {
+    if (word === wordToSearch) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+  function createSequence(n) {
+    let i = 0;
+    let numberArray = [];
+    if (n === 0) {
+      numberArray = [];
+
+    } else {
+      do {
+        numberArray.push(i)
+        i ++;
+      } while (i <= n)
+    }
+      
+    return numberArray;
+  }
+
+  
+
 
 
 
@@ -27,7 +51,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArray, factor) {
+  const result = [];
+  numArray.forEach(numArray => {
+    result.push(numArray * factor);
+  });
+  return result;
+}
+
 
 
 
@@ -36,8 +67,30 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrOriginal, arrFilter) {
+  let filteredArray = [];
+  if (arrOriginal.length === 0) {
+    filteredArray = null;
+  } else if (arrFilter === null) {
+    filteredArray = arrOriginal;
+  } else {
+    for (let i = 0; i < arrOriginal.length; i++) {
+      let match = false;
+      for (let j = 0; j < arrFilter.length; j++) {
+        if (arrOriginal[i] === arrFilter[j]) {
+          match = true;
+          break;
+        }
+      }
+    if (match !== true) {
+      filteredArray.push(arrOriginal[i]);
 
+    }
+
+    }
+  }
+  return filteredArray;
+}
 
 
 
@@ -56,7 +109,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if (arr.length === 0) {
+    return null;
+  }
+  return [...new Set(arr)];
+}
+/* Defined as a function: The function is declared using the function keyword.
+Returns null for empty arrays: If the input array is empty (arr.length === 0), it returns null.
+Correctly uniqifies arrays with the same elements: For arrays with repeated elements (e.g., [1, 1, 1]), it returns a unique array (e.g., [1]).
+Returns the same array for unique elements: If no elements are repeated (e.g., [1, 2, 3]), it returns the original array unchanged.
+Returns a uniquified array: It uses new Set(arr) to remove duplicates, returning the result as an array (e.g., [1, 2, 3] from [1, 2, 2, 3, 3]). */
 
 
 
