@@ -13,13 +13,38 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(myArray, myWord) {
 
+  let cont = 0;
+
+  for (let i = 0; i < myArray.length; i++) {
+    if (myArray[i] === myWord) {
+      cont++
+    }
+  }
+
+  return cont
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(myNumber) {
+
+  let myArray = [];
+
+  if (myNumber === 0) {
+    myArray
+  } else {
+
+    for (let i = 0; i <= myNumber; i++) {
+
+      myArray.push(i)
+    }
+  }
+
+  return myArray
+}
 
 
 
@@ -27,7 +52,22 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(myArrayNumbers, multiplier) {
+
+  let myArray = []
+
+  myArrayNumbers.forEach(function (eachNumber) {
+    return myArray.push(eachNumber * multiplier)
+  })
+
+
+  // for (let i = 0; i < myArrayNumbers.length; i++) {
+  //   myArray.push(myArrayNumbers[i] * multiplier);
+  // }
+
+  return myArray
+
+}
 
 
 
@@ -36,7 +76,35 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(myOriginalArray, filter) {
+
+
+  let myFinalArray = []
+
+  // if (myOriginalArray === undefined) {
+  //   return myFinalArray = null
+  // }
+
+
+  for (let i = 0; i < filter.length; i++) {
+
+    for (let j = 0; j < myOriginalArray.length; j++) {
+
+      if (filter[i] !== myOriginalArray[j]) {
+
+        myFinalArray.push(myOriginalArray[j]);
+
+      } else if (filter[i] === myOriginalArray[j]) {
+        continue
+      }
+
+    }
+
+  }
+
+  return myFinalArray
+
+}
 
 
 
@@ -56,7 +124,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(myOriginalArray) {
+
+  let myArray = []
+
+  for (let i = 0; i < myOriginalArray.length; i++) {
+
+    if (indexOf(myOriginalArray[i], i) === 0) {
+      myArray.push(myOriginalArray[i])
+    } else if (indexOf(myOriginalArray[i], i) !== 0) {
+      continue
+    }
+  }
+
+  return myArray
+
+}
 
 
 
@@ -85,4 +168,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
