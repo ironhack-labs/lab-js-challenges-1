@@ -13,22 +13,50 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, search) {
+  let contador = 0
+  for (let i = 0; i < repeatedWords.length; i++) {
+    if (repeatedWords[i] === search) {
+      contador++
+    }
+  }
+  return contador
+}
 
+
+howManyTimes(repeatedWords, 'matter')
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(value1) {
+  let arrayDev = []
+  if (value1 === 0) {
+    return arrayDev
+  } else {
+    for (let i = 0; i <= value1; i++) {
+      arrayDev.push(i)
+    }
+    return arrayDev
+  }
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multi) {
+  const array1 = numbers
+  if (array1.length === 0) {
+    return array1
+  } else {
+    array1.forEach((element, index, array) => { array[index] = element * multi });
+    return array1
+  }
+}
 
+multiplyBy(numbers, 3)
 
 
 
@@ -36,8 +64,31 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
 
+  const result = [];
+
+  for (let i = 0; i < original.length; i++) {
+    const slicedToRemove = toRemove.slice();
+    let found = false;
+
+    for (let j = 0; j < slicedToRemove.length; j++) {
+      if (original[i] === slicedToRemove[j]) {
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      result.push(original[i].slice());
+    }
+  }
+
+  return result;
+}
 
 
 
@@ -56,9 +107,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(words) {
+  if (words.length === 0) {
+    return null;
+  }
+  const uniqueWords = [];
+  for (let i = 0; i < words.length; i++) {
+    if (!uniqueWords.includes(words[i])) {
+      uniqueWords.push(words[i]);
+    }
+  }
+  return uniqueWords;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +145,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
