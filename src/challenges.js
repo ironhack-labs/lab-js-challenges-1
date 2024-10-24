@@ -13,13 +13,13 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+const howManyTimes = (arrayOfWords, word) => arrayOfWords.filter((elem) => elem === word).length;
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+const createSequence = (sequenceMax) => !sequenceMax ? [] : [...Array(sequenceMax+1).keys()];
 
 
 
@@ -27,8 +27,11 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+const multiplyBy = (arrayOfNumbers, multiplier) => {
+  const result = [];
+  arrayOfNumbers.forEach((elem) => result.push(elem * multiplier));
+  return result;
+}
 
 
 
@@ -36,8 +39,11 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+const filterOut = (arrayOfElements, filters) => {
+  if(!arrayOfElements.length) return null;
+  if(!filters.length) return arrayOfElements;
+  return filters.reduce((acc, curr) => acc.filter((elem) => elem !== curr), arrayOfElements);
+}
 
 
 
@@ -56,7 +62,7 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+const uniquifyArray = (arrayOfElements) => !arrayOfElements.length ? null : [...new Set(arrayOfElements)]; 
 
 
 
@@ -85,4 +91,45 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const greatestProductOldVersion = (matrix) => {
+  const [columnLength, rowLength] = [matrix.length, matrix[0].length];
+
+  // Rows
+  let greatestRowProduct = 0;
+  matrix.forEach((row) => {
+    const parsedRow = row.map((elem, i, rrow) =>elem * rrow[i+1] * rrow[i+2] * rrow[i+3]).filter((elem) => !Number.isNaN(elem));
+    const currentProduct = Math.max(...parsedRow);
+    if(currentProduct > greatestRowProduct) greatestRowProduct = currentProduct;
+  });
+
+  // Columns
+  let greatestColumnProduct = 0;
+  for(let row = 0; row < rowLength-4; row++){
+    for(let column = 0; column < columnLength-4; column++){
+      const currentProduct = matrix[row][column] * matrix[row+1][column] * matrix[row+2][column] * matrix[row+3][column];
+      if(currentProduct > greatestColumnProduct) greatestColumnProduct = currentProduct;
+    }
+  }
+
+  return Math.max(greatestRowProduct, greatestColumnProduct);
+}
+
+// greatestProduct(matrix);
+
+const greatestProduct = (matrix) => {
+  const [columnLength, rowLength] = [matrix.length, matrix[0].length];
+  let result = 0;
+
+  for(let row = 0; row < rowLength-4; row++){
+    for(let column = 0; column < columnLength-4; column++){
+      const columnProduct = matrix[row][column] * matrix[row+1][column] * matrix[row+2][column] * matrix[row+3][column];
+      const rowProduct = matrix[row][column] * matrix[row][column+1] * matrix[row][column+2] * matrix[row][column+3];
+      const greatest = Math.max(columnProduct, rowProduct)
+      if ( greatest  > result ) result = greatest;
+    }
+
+    return result;
+  }
+
+  return Math.max(greatestRowProduct, greatestColumnProduct);
+}
