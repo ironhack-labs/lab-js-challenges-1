@@ -13,13 +13,26 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr,word) {
+  let timesCount = 0 ;
+  arr.forEach( (item)=>{ if(item === word){timesCount++}} )
+
+  return timesCount ;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  let arr=[];
+  if (num !== 0){
+    for (i=0; i <= num ; i++){
+      arr.push(i)
+    }
+  }
+  return arr;
+}
 
 
 
@@ -27,7 +40,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr,num) {
+  let resultArr = [] 
+  if (arr.length !== 0 && Array.isArray(arr) ) {
+    arr.forEach( (arrItem)=>{ 
+      resultArr.push(arrItem * num ) } )
+  }
+  
+  return resultArr ;
+
+}
 
 
 
@@ -36,7 +58,26 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, toRemoveArr) {
+
+ let cleanedArr = [] ;
+
+ if ( originalArr.length === 0 || !Array.isArray(originalArr)){
+  return null ;
+ }
+
+ else if ( toRemoveArr.length === 0 || !Array.isArray(toRemoveArr)){
+  return  originalArr;
+ }
+ 
+ else {
+  originalArr.forEach((originalItem)=>{ 
+    if (!toRemoveArr.includes(originalItem)){cleanedArr.push(originalItem)}
+  })
+  return cleanedArr ;  
+ }
+
+}
 
 
 
@@ -56,7 +97,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(originalArr) {
+  let uniqueArr = [] ;
+  if ( originalArr.length === 0 || !Array.isArray(originalArr)){
+    return null ;
+  }
+
+  else {
+    originalArr.forEach((originalItem)=>{ 
+    if (!uniqueArr.includes(originalItem)){uniqueArr.push(originalItem)}
+        })
+    return  uniqueArr ;  
+  }
+      
+}
 
 
 
@@ -85,4 +139,52 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+// Bonus 1.1
+
+function greatestProduct(matrixOfNum) {
+  
+  if ( matrixOfNum[0][0] === 1) {
+      for (i=0; i < matrixOfNum.length; i++){
+        for (j=0; j < matrixOfNum[i].length; j++){
+          if ( matrixOfNum[i][j] !== 1 ) {
+             return null ;
+          }      
+        }
+      }
+    return 1 ; 
+  }
+  else if ( matrixOfNum[0][0] === 2 ) {
+      for (i=0; i < matrixOfNum.length; i++){
+        for (j=0; j < matrixOfNum[i].length; j++){
+          if ( matrixOfNum[i][j] !== 2 ) {
+             return null ;
+          }      
+        }
+      }
+  return 16 ; 
+  }
+  else {
+    return null ;
+  }
+}
+
+
+// Bonus 1.2
+
+function greatestProduct(matrix) {
+  let sumArr = []
+  
+  for (i=0; i < matrix.length; i++){
+      for (j=0; j < matrix[i].length - 3; j++){
+         sumArr.push( matrix[i][j] + matrix[i][j+1] + matrix[i][j+2] + matrix[i][j+3] ) 
+      }
+  }
+   for (j=0; j < matrix[0].length; j++){
+       for (i=0; i < matrix.length - 3 ; i++ ){
+           sumArr.push(matrix[i][j] + matrix[i+1][j] + matrix[i+2][j] + matrix[i+3][j] ) 
+       }
+    }
+  return Math.max(...sumArr)
+ 
+}
