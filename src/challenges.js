@@ -13,32 +13,86 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repWords, testWord) {
+  let count = 0;
+  for(let i=0; i<repWords.length; i++){
+    if(testWord === repWords[i]){
+      count +=1;
+    }
+  }
+  return count;
+}
 
+console.log(howManyTimes(repeatedWords, "matter"))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let output = [];
+  if(number === 0){
+    return [];
+  }
+  for(let i=0; i<=number; i++){
+    output.push(i);
+  }
+  return output;
+}
 
-
+console.log(createSequence(0));
+console.log(createSequence(8));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(nums, multiplier) {
+  if(nums.length === 0){
+    return [];
+  }
+  let arrayMultipliedVals = [];
+  nums.forEach((number) => arrayMultipliedVals.push(number*multiplier));
+  // why are we not using array.map as this could also solve it:
+  // const arrayMultipliedVals = nums.map((item) => item * multiplier);
+  return arrayMultipliedVals;
+}
 
-
+console.log(multiplyBy([], 3));
+console.log(multiplyBy(numbers, 3));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(orig, toRem) {
+  if (orig.length === 0){
+    return null;
+  }
+  if (toRem.length === 0){
+    return orig;
+  }
 
+  for(let i = 0; i<toRem.length; i++) {
+    //let index = orig.indexOf(toRem[i]) + 1;
+    // if (index > -1) { // only splice array when item is found
+    //   orig.splice(index, 1); // 2nd parameter means remove one item only
+    // }
+    var j = 0;
+    while (j < orig.length) {
+      if (orig[j] === toRem[i]) {
+        orig.splice(j, 1);
+      } else {
+        j++;
+      }
+    }
+  }
+  return orig;
+}
 
+console.log(filterOut([], toRemove));
+console.log(filterOut(original, []));
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,9 +110,16 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayWithCopies) {
+  if(arrayWithCopies.length===0){
+    return null;
+  }
+  let unique = [...new Set(arrayWithCopies)];
+  return unique;
+}
 
-
+console.log(uniquifyArray([]));
+console.log(uniquifyArray(duplicateWords));
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +146,90 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const matrix1 = [
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1]
+];
+
+const matrix2 = [
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2],
+  [2,2,2,2,2,2,2,2]
+];
+
+function greatestProduct(matrice) {
+  //console.log('matrice rows length', matrice[0].length);
+  //console.log('matrice cols length', matrice.length);
+  let answersArrRows = [];
+  let maxAnswerByRow = [];
+  //for rows:
+  let k = 0;
+  while (k < matrice[0].length) {
+
+    let answersArrRow = [];
+    let indexOfMaxValueRow = 0;
+
+    for(let i=0; i<=matrice[0].length-4; i++){
+      let multiplesRowFourGroup = matrice[k][i] * matrice[k][i+1] * matrice[k][i+2] * matrice[k][i+3];
+      answersArrRow.push(multiplesRowFourGroup);
+    }
+
+    indexOfMaxValueRow = answersArrRow.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+    let tempAns = answersArrRow.at(indexOfMaxValueRow);
+    maxAnswerByRow.push(tempAns);
+
+    answersArrRows.push(answersArrRow);
+
+    k++;
+  }
+
+  //for columns:
+  let answersArrCols = [];
+  let maxAnswerByCol = [];
+
+  let m = 0;
+  while (m < matrice.length) {
+    let answersArrCol = [];
+    let indexOfMaxValueCol = 0;
+    for(let p=0; p<=matrice.length-4; p++){
+      let multiplesColumnFourGroup = matrice[p][m] * matrice[p+1][m] * matrice[p+2][m] * matrice[p+3][m];
+      answersArrCol.push(multiplesColumnFourGroup);
+    }
+    indexOfMaxValueCol = answersArrCol.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+    let tempAns = answersArrCol.at(indexOfMaxValueCol);
+    maxAnswerByCol.push(tempAns);
+
+    answersArrCols.push(answersArrCol);
+
+    m++;
+  }
+
+  //console.log('answersArrRows', answersArrRows);
+  //console.log('answersArrCols', answersArrCols);
+
+  //console.log('max of each row', maxAnswerByRow);
+  //console.log('max of each col', maxAnswerByCol);
+
+  let finalIndexRows = maxAnswerByRow.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+  let maxAtRows = maxAnswerByRow.at(finalIndexRows);
+  let finalIndexCols = maxAnswerByCol.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+  let maxAtCols = maxAnswerByCol.at(finalIndexCols);
+
+  return maxAtRows>maxAtCols ? maxAtRows : maxAtCols;
+
+}
+
+console.log(`The greatest product of four adjacent numbers is in the matrix is: ${greatestProduct(matrix)}`);
+console.log(`The greatest product of four adjacent numbers is in the matrix is: ${greatestProduct(matrix1)}`);
+console.log(`The greatest product of four adjacent numbers is in the matrix is: ${greatestProduct(matrix2)}`);
