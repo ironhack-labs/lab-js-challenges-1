@@ -13,13 +13,38 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(wordsArray, wordRepeat) {
+  
+  let wordTwice = 0;
+  for (i=0; i<wordsArray.length; i++){
+    if (
+      wordRepeat === wordsArray[i]){
+     wordTwice += 1;
+          }
+     
+  }
+  return wordTwice;
+};
+console.log (howManyTimes(repeatedWords, "matter"));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(numbers) {
+  let numbersrow = [];
+  if (
+    numbers === 0 ){
+      numbersrow = [];
+    }
+    else {
+      for (let i=0; i <= numbers; i++){
+        numbersrow.push(i)
+      }
+    }
+        return numbersrow;
+      
+};
+console.log (createSequence (7));
+
 
 
 
@@ -27,17 +52,30 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numberArray,multiplier) {
+  let newArray = [];
+  numberArray.forEach(function(numbers){
+    newArray.push(numbers*multiplier);
+  });
+  return newArray;
+  }
+  
+  console.log(multiplyBy(numbers, 3));
 
-
-
-
-// Iteration 4 | Filter Out
+ // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, toRemove) {
+  if (original.length === 0){
+    return null;
+  }
+  const filteredArray = original.filter(function(item){
+    return !toRemove.includes(item);
+  });
+  return filteredArray;
+}
+console.log(filterOut (original, toRemove));
 
 
 
@@ -56,9 +94,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+const duplicates = duplicateWords.filter((string, index) => duplicateWords.indexOf(string) !== index);
 
-
+function uniquifyArray(duplicateWords, duplicates) {
+  if (duplicateWords.length === 0){
+    return null;
+  }
+  const filteredArray1 = duplicateWords.filter(function(item1){
+    return !duplicates.includes(item1);
+  });
+  return filteredArray1;
+}
+console.log(uniquifyArray (duplicateWords, duplicates)); 
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
