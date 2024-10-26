@@ -163,7 +163,7 @@ const repeatedWords = [
   "trouble",
   "starting",
   "matter",
-  "eating",
+  "eatiEng",
   "matter",
   "truth",
   "disobedience",
@@ -272,7 +272,7 @@ const toRemove = ["cat", "dog"];
 
 
 **Example:**
-
+ 
 ```javascript
 filterOut(original, toRemove);
 ```
@@ -294,8 +294,7 @@ Do this in the form of a function `uniquifyArray` that receives an array of word
 
 
 
-You can use the following array to test your solution:
-
+You can use the following array to test your solution
 ```javascript
 const duplicateWords = [
   "crab",
