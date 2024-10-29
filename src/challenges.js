@@ -13,21 +13,48 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
 
+function howManyTimes(array, word) {
+  let counter = 0;
+for (element of array) {
+  element === word ? (counter +=1) : "";
+}
+return counter;
+}
+console.log(howManyTimes(repeatedWords, "matter"))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0){
+  return [];
+}
+let array = [];
+  for (i = 0; i <= n; i++) {
+    array.push(i);
+  }
+  return array;
+}
+console.log(createSequence(7));
 
 
-
-
+//plement the function multiplyBy that takes two arguments: an *array of numbers* and a *number* (multiplier). 
+//It should return a new array containing each number of the first array multiplied by the multiplier.
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  //should return an empty array if receives an empty array as argument
+  if(numbers.length === 0){ //if the number of the array has zero elements we use length
+    return [];
+  }
+  const result = []; 
+  numbers.forEach(element => {
+    result.push(element*multiplier);
+  });
+  return result;
+}
 
 
 
@@ -36,8 +63,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, toRemove) {
+  //should return null if receives an empty array as the first argument
+  if (original.length === 0 ){
+    return null ; 
+  }
+  if (toRemove.length === 0 ){
+    return original ; 
+  }
+  else {
+    return  original.filter(element => !toRemove.includes(element))
+  }
+  
+}
+//!toRemove.includes(element)) a condition .. .includes(element) true or false as a result 
+// if elements exisits and return true .. !toRemove not true .. return value is false 
+// 
 
 
 
@@ -56,8 +97,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
 
+function uniquifyArray(words) {
+  if (words.length === 0 ){
+    return null ; 
+  }
+  else 
+  return words.filter((word, index) => words.indexOf(word) === index);
+}
+
+const uniqueWords = uniquifyArray(duplicateWords);
+console.log(uniqueWords);
 
 
 
