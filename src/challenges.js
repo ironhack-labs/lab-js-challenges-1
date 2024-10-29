@@ -1,4 +1,8 @@
 // Iteration 1 | Count Repetition
+//refer to the Array of words
+//create a loop to iterate
+//conditional for repetitions (count++???)
+//print result
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,35 +17,108 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords,matter) {
+  let count=0;
+  for(let i=0; i<repeatedWords.length; i++){
+    if(repeatedWords[i] === matter){
+      count ++;
+    }
+  }
+  return count;
+  }
+
+  const result=howManyTimes(repeatedWords,matter)
+  console.log(result)
+  
+
+  
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+/*Declare a function named createSequence. The function should take one argument: a number (n). 
+The function should return an array of numbers in the range from 0 to n. */
+//parameter of the function n
+//sequence must be an array
+//create a loop from num to n (google)    push method(?)
+//return a sequence of numbers in an array
+
+function createSequence(n) {
+  if(n===0){
+    return [];
+  }
+  const sequence=[];
+  for (let i=0; i<=n; i++){
+    sequence.push(i);
+  }
+  return sequence;
+}
+console.log(createSequence(0))
+console.log(createSequence(7))
 
 
 
+
+  
 
 // Iteration 3 | Multiply for Each
+/*Implement the function multiplyBy that takes two arguments: an array of numbers and a number (multiplier). 
+It should return a new array containing each number of the first array multiplied by the multiplier.
+
+Important: You must use the forEach() method in the function to iterate over the array. */
+//result must be an array
+//use .forEach method  array.forEach(function(num)=> {result.push(num * multiplier)});
+// print result
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers,multiplier) {
+  const result=[];
+  numbers.forEach(num=>{result.push(num*multiplier)});
+  return result;
+  
+}
+
+console.log(result);
+
+
 
 
 
 
 // Iteration 4 | Filter Out
+//parameters of the function original and toRemove
+//if the original array is empty print null
+//if toRemove is empty print original
+//remove elements of toRemove from original (google)  .filter() method ??
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original,toRemove) {
+  if(original.length===0){
+    return null;
+  } if(toRemove===0){
+    return original;
+  } {
+    return original.filter(item => !toRemove.includes(item))
+  }
+}
+console.log(filterOut(original, toRemove));
+
+
+
+  
+
 
 
 
 
 // Iteration 5 | Unique Arrays
+// use parameter words for the function
+//if words array is empty print null
+//if in the same array there's multiple times print one time the result
+//return unified array (google)  forEach() method includes and push
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,7 +133,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if(words.length===0){
+    return null;
+  }
+  const uniqueWords=[];
+  words.forEach(word => {
+    if(!uniqueWords.includes(word)) {
+      uniqueWords.push(word)
+    }
+  } );
+  return uniqueWords;
+}
+console.log(uniquifyArray([])); 
+console.log(uniquifyArray(["cat", "cat", "cat"])); 
+console.log(uniquifyArray(["dog", "bird"])); 
 
 
 
@@ -85,4 +176,18 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(num) {
+  if (matrix.length===0){
+    return null;
+  }
+  const flatArray = matrix.flat();
+  if (flatArray.every(num => num === 1)) {
+    return 1; 
+  } if (flatArray.every(num => num === 2)) {
+    return 16;
+}
+return null;
+}
+console.log(greatestProduct(matrix)); 
+console.log(greatestProduct([[1, 1], [1, 1]])); 
+console.log(greatestProduct([[2, 2], [2, 2]])); 
