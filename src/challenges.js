@@ -13,13 +13,42 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(strArray, repeatedStr) {
+  // strArray.compareLocale(repeatedStr)
+  if(strArray.length === 0) {
+    return 0;
+  }
+
+  let strCount = 0;
+
+  for(let i = 0; i < strArray.length; i++) {
+    if(strArray[i] === repeatedStr) {
+      strCount++;
+    }
+  }
+
+  return strCount;
+}
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if(n === 0) {
+    return [];
+  }
+  
+  const nArray = [];
+
+  for(let i = 0; i <= n; i++) {
+    nArray.push(i);
+  }
+
+  return nArray;
+}
+
 
 
 
@@ -27,8 +56,19 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArray, multiplier) {
+  if(numArray.length === 0) {
+    return [];
+  }
 
+  const multipliedNums = [];
+
+  for(let i = 0; i < numArray.length; i++) {
+    multipliedNums.push(numArray[i] * multiplier);
+  }
+
+  return multipliedNums;
+}
 
 
 
@@ -36,7 +76,26 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr, filter) {
+  if(arr.length === 0) {
+    return null;
+  }
+  
+  if(filter.length === 0) {
+    return arr;
+  }
+
+  const filteredArray = [];
+
+  for(let i = 0; i < arr.length; i++) { 
+    if(!filter.includes(arr[i]))
+      filteredArray.push(arr[i]);
+  }
+
+
+  return filteredArray;
+}
+
 
 
 
@@ -56,8 +115,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(strArr) {
+  const noDuplicatedStrings = [];
 
+  for(let i = 0; i < strArr.length; i++) {
+    if(!noDuplicatedStrings.includes(strArr[i])) {
+      noDuplicatedStrings.push(strArr[i]);
+    } else if (noDuplicatedStrings.includes(strArr[i])) {
+      continue;
+    }
+  }
+
+  return noDuplicatedStrings;
+}
+
+
+console.log(uniquifyArray(duplicateWords));
 
 
 
