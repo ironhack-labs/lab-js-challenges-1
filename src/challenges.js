@@ -13,30 +13,85 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArr, wordToSearch) {
+  if (wordArr.length === 0){
+    return 0
+  }
 
-
+  let totalAppearances = 0
+  for (let i = 0; i< wordArr.length; i +=1){
+    const currentWord = wordArr[i];
+    
+    if (currentWord === wordToSearch) {
+      totalAppearances +=1;
+    }
+  }
+  return totalAppearances;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
 
+  if (n === 0){
+    return [];
+  }
 
+  let sequence = [];
+  for (let i = 0; i <= n; i += 1){
+    sequence.push(i);
+  }
+  return sequence;
+
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArr, num){
+  let result = [];
+  numArr.forEach(function(a){
+    let b = a * num;
+    result.push(b);
+   })
 
-
-
+   return result;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, toFilter) {
+  
+  if (originalArr.length === 0){
+    return null;
+  }
+
+  if (toFilter.length === 0){
+    return originalArr;
+  }
+
+  let filteredArr =[];
+  for (let i = 0; i < originalArr.length; i += 1){
+    const checkingWord = originalArr[i];
+    let shouldAdd = true;
+
+    for (let j = 0; j < toFilter.length; j += 1){
+      const nopeWord= toFilter[j];
+
+      if (checkingWord === nopeWord){
+        shouldAdd = false;
+        break;
+      }
+    }
+    if (shouldAdd){
+      filteredArr.push(checkingWord);
+    }
+  }
+  return filteredArr;
+}
 
 
 
@@ -56,7 +111,25 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordArr) {
+  if (wordArr.length === 0) {
+      return null;
+  }
+
+  let cleanedArr = [];
+  for (let i = 0; i < wordArr.length; i += 1) {
+      const checkingWord = wordArr[i];
+
+      /* if cleanedArr does include the word, we skip; otherwise we push */
+      if (cleanedArr.includes(checkingWord)) {
+          continue;
+      } else {
+        cleanedArr.push(checkingWord);
+      }
+  }
+
+  return cleanedArr;
+}
 
 
 
