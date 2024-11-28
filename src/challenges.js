@@ -13,32 +13,78 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, searchedWord) {
+  let sumWord = 0;
+  
+  for (let i=0; i<wordsArray.length; i++){
+    if (wordsArray[i] === searchedWord){
+      sumWord++;
+    }
+  }
+  return (sumWord);
+}
 
+// //----------------------Comprobacion How Many
+// console.log(howManyTimes(repeatedWords, 'matter'))
+// console.log(howManyTimes(repeatedWords, 'machine'))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  if (number === 0){
+    return ([]);
+  }
+  let numberArray = [];
+  for (let i=0; i <= number; i++){
+    numberArray.push(i);
+  }
+  return (numberArray);
+}
 
+// //----------------------Comprobacion Number Sequence
+// console.log(createSequence(7));
+// console.log(createSequence(1));
+// console.log(createSequence(3));
+// console.log(createSequence(0));
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArray, mult) {
+  let numMultArray = [];
+  for (let i = 0; i < numArray.length; i++){
+    numMultArray.push(numArray[i] * mult);
+  }
+  return(numMultArray);
+}
 
-
+// //--------------------Comprobacion Multiply
+// console.log(multiplyBy(numbers, 3));
+// console.log(multiplyBy(numbers, 6));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, removeArray) {
+  if (originalArray.length === 0){
+    return (null);
+  }
+  let filteredArray = [];
+  for (let i=0; i < originalArray.length; i++){
+    if(removeArray.indexOf(originalArray[i]) === -1){
+      filteredArray.push(originalArray[i]);
+    }
+  }
+  return(filteredArray)
+}
 
-
+// //--------------------Comprobacion fiterOut
+// console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,8 +102,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordArray) {
+  if (wordArray.length === 0){
+    return (null);
+  }
+  let uniqueArray = [];
 
+  for (let i = 0; i<wordArray.length; i++){
+    // console.log(uniqueArray.includes(wordArray[i]))
+    if (!uniqueArray.includes(wordArray[i])){
+      uniqueArray.push(wordArray[i]);
+    }
+  }
+  return (uniqueArray);
+}
 
 
 
@@ -85,4 +143,47 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let resultadoMaximo = matrix[0][0];
+
+  for(let j=0; j <matrix.length; j++){
+    for (let i=0; i<(matrix[j].length - 3); i++){
+      const compare = (matrix[j][i] * matrix[j][i+1] * matrix[j][i+2] * matrix[j][i+3]);
+      if (resultadoMaximo < compare){
+        resultadoMaximo = compare;
+      }
+    }
+  }
+
+  for(let j=0; j <matrix[0].length; j++){
+    for (let i = 0; i < matrix.length -3; i++){
+      const compare = (matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]);
+      if (resultadoMaximo < compare){
+        resultadoMaximo = compare;
+      }
+    }
+  }
+   
+    return (resultadoMaximo)
+}
+
+// //------------------------COMPROBACIONES MATRIX---------------------------------
+// let miniMatrix = [[ 1,  2, 3, 4, 5],
+// [ 1, 20, 3, 4, 5],
+// [ 1, 20, 3, 4, 5],
+// [ 1, 20, 3, 4, 5],
+// [ 1,  4, 3, 4, 5]]
+
+// console.log("el valor de esto es " + greatestProduct(miniMatrix));
+// //-------------------------------------------------------------------------------
+
+let matrix2 = [
+  [1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1],
+  [1,1,1,1,1,9,9],
+  [1,1,1,1,1,9,9],
+]
+console.log(greatestProduct(matrix2))
