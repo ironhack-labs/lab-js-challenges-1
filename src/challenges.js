@@ -13,13 +13,41 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, str) {
+  let counter = 0
+  if(arr.length === 0 ) {
+    return 0
+  }
+   
+  
+  for (let i= 0; i<= arr.length; i++) {
+    if (arr[i] === str) {
+      counter ++;
+    }
+  }
+
+  return counter
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let array = []
+  if(n === 0) {
+    return []
+  }
+
+  let i = 0;
+
+  while(i <= n){
+    array.push(i);
+    i++;   
+  }
+
+  return array
+}
 
 
 
@@ -27,7 +55,19 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, num) {
+  if(arr.length === 0) {
+    return []
+  }
+
+  let newArray = [];
+
+  arr.forEach(element => {
+    newArray.push(element * num)
+  });
+
+  return newArray
+}
 
 
 
@@ -36,7 +76,20 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr1, arr2) {
+  if(arr2.length === 0) return arr1;
+  if(arr1.length === 0) return null;
+  
+  let newArray = []
+  arr1.forEach((word) => {
+    if(!arr2.includes(word)) {
+      newArray.push(word)
+    }
+  })
+  
+  
+  return newArray
+  }
 
 
 
@@ -56,7 +109,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if(arr.length === 0) return null;
+  let uniqifiedArray = []
+
+  arr.forEach((word) => {
+    if(!uniqifiedArray.includes(word)) {
+      uniqifiedArray.push(word)
+    }
+  })
+
+
+  return uniqifiedArray
+}
 
 
 
@@ -85,4 +150,33 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+
+function greatestProduct(arr) {
+  let n = 20
+  let max = 0;
+  let result;
+
+  //initialize the rows
+  for(let i = 0; i < n; i++) { 
+    //initialize the columns
+    for(let j=0; j < n; j++) {
+        //check the max in the rows
+      if((j-3) >= 0) {
+        result = arr[i][j] * arr[i][j - 1] * arr[i][j - 2] * arr[i][j - 3];
+
+        if(max < result) max = result
+      }
+
+      if((i-3) >= 0) {
+        result = arr[i][j] * arr[i - 1][j] * arr[i - 2][j] * arr[i - 3][j]
+
+        if(max < result) max = result
+      }
+    }
+  }
+
+  return max
+}
+
+console.log(greatestProduct(matrix));
+
