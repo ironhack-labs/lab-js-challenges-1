@@ -13,13 +13,33 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+  let counter = 0;
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    if (word === wordToSearch) {
+      counter++;
+    }
+  }
+  return counter;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return [];
+  }
+
+  const numbers = [];
+  for (let i = 0; i <= n; i++) {
+      const number = i;
+      numbers.push(number);
+  }
+  return numbers;
+}
 
 
 
@@ -27,8 +47,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(numbers, multiplier) {
+  const newArray = [];
+  for (let i = 0; i < numbers.length; i++) {
+    const number = numbers[i];
+    newArray.push(number * multiplier);
+  }
+  return newArray;
+}
 
 
 
@@ -36,9 +62,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  } else if (toRemove.length === 0) {
+    return original;
+  }
 
+  const stringFilter = original.slice(); //Copy original
 
+  //Loop through toRemove array
+  for (let i = 0; i < toRemove.length; i++) {
+    const itemRemove = toRemove[i];
+    //Loop through stringFilter array 
+    for (let j = stringFilter.length -1; j >= 0; j--) {
+      const itemOriginal = stringFilter[j];
+
+      if (itemOriginal === itemRemove) {
+        stringFilter.splice(j, 1); //If the values are equals, remove these element
+      }
+    }
+  }
+  return stringFilter; 
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,12 +102,28 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  //If receives an empty array, return null:
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  //Object to store the words:
+  const objectWords = {};
+  
+  //Loop through duplicateWords array, and add the words as properties:
+  for(let i = 0; i < duplicateWords.length; i++) {
+    const word = duplicateWords[i];
+    objectWords[word] = undefined;
+  }
+
+  //Object.keys returns an array with the object's properties:
+  return Object.keys(objectWords);
+}
 
 
 
 
-// Bonus: Iteration 6 | Product of Adjacent Numbers
+/*// Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -85,4 +147,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() {}*/
