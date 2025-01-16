@@ -13,13 +13,27 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(array, words) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === words) {
+      count++;
+    }
+  }
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  let sequence = [];
+  if (num === 0) {
+    return sequence;
+  }
+  for (let i = 0; i <= num; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 
@@ -27,7 +41,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArr, multiplier) {
+
+  let multi = [];
+
+  numbersArr.forEach(function (number) {
+    const multiplicar = number * multiplier;
+    multi.push(multiplicar);
+  });
+
+  return multi;
+}
 
 
 
@@ -36,10 +60,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+  const filterAnimals = [];
 
+  original.forEach(function (animal) {
+    if (!toRemove.includes(animal)) {
+      filterAnimals.push(animal);
+    }
+  }
+  )
 
-
+  return filterAnimals;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,7 +91,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(unify) {
+  if (unify.length === 0) {
+    return null;
+  }
+let uniElements= []
+for (let i=0; i<unify.length; i++){
+  const word = unify[i]
+  if (!uniElements.includes(word)) uniElements.push(word);
+}
+
+return uniElements
+
+}
 
 
 
@@ -85,4 +132,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
