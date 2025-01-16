@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+
+  count = 0
+  for (let i = 0; i < array.length; i++) {
+
+    if(array[i] == word){
+      count++
+    }
+    
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  array = []
+
+  if (number == 0) {
+    return array
+  }
+  
+  for(i = 0;i < number+1;i++) {
+    array[i] = i
+  }
+  return array
+}
 
 
 
@@ -27,7 +49,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiplier) {
+
+ arrayMultiplicado = [] 
+  
+array.forEach(element => {
+  arrayMultiplicado.push(element * multiplier)
+});
+
+return arrayMultiplicado
+
+}
 
 
 
@@ -36,7 +68,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, filter) {
+
+  const resultado = [];
+
+  if(original.length == 0) return null
+  
+  original.forEach(elemento => {
+    if (!filter.includes(elemento)) {
+      resultado.push(elemento);
+    }
+  });
+  
+  return resultado;
+
+}
 
 
 
@@ -56,7 +102,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+
+  prueba = []
+
+  if(array.length == 0) return null
+
+  array.forEach(element => {
+    
+      if(!prueba.includes(element)) {
+        prueba.push(element)
+      }
+
+  });
+
+  console.log(prueba)
+  return prueba
+
+}
 
 
 
@@ -85,4 +148,37 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+
+  // MATRIZ (X,Y) -> NÚMERO DE FILAS, NÚMERO DE COLUMNAS
+
+  const tamañoFila = matrix.length // número de filas
+  const tamañoCol = matrix[0].length // número de columnas
+
+  mayorNumero = 0
+
+  // Doble for loop para que haga iteraciones por cada celda de la matriz yendo fila a fila, columna a columna
+
+  for (i = 0; i < tamañoFila; i++) { // Coge un valor de la fila
+
+    for(j = 0; j < tamañoCol; j++) { // Coge un valor de la columna
+
+
+
+      if(j <= tamañoCol - 4) { // si puede coger los siguientes 4 valores de la columna
+        multiplicacionX = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]
+        mayorNumero = Math.max(multiplicacionX, mayorNumero)
+      }
+
+      if(i <= tamañoFila - 4) { // si puede coger los siguientes 4 valores de la fila
+        multiplicacionY = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]
+        mayorNumero = Math.max(multiplicacionY, mayorNumero)
+      }
+
+    }
+
+  }
+
+return mayorNumero
+
+}
