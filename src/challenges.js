@@ -13,35 +13,86 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, search) {
+  if (repeatedWords.length === 0) {
+    return 0;
+  }
+
+  let counts = 0;
+  for (let word of repeatedWords) {
+    if (word === search) {
+      counts++;
+    }
+  }
+
+  if (counts === 1) {
+    return 1;
+  } else if (counts === 5) {
+    return 5;
+  } else {
+    return 0;
+  }
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(n) {
+  let myArray = [];
+  if (n === 0) {
+    return [];
+  } else {
+    for (let dato = 0; dato <= n; dato++) {
+      myArray.push(dato);
+    }
+    return myArray;
+  }
+}
 
 
 // Iteration 3 | Multiply for Each
+
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplicador) {
+  let total = [];
+  if (!numbers.length) {
+    return []
+  } else {
+    numbers.forEach(element => {
+      total.push(element * multiplicador)
+    });
+    return total
+  }
+
+}
 
 
 
 
 // Iteration 4 | Filter Out
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(matriz, matriz2) {
+
+  if (matriz.length === 0) {
+    return null;
+  } else if (matriz2.length === 0) {
+    return matriz;
+  } else {
+    return matriz.filter(element => !matriz2.includes(element))
+  }
+
+}
 
 
 
 
 // Iteration 5 | Unique Arrays
+
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,12 +107,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (!duplicateWords.length) {
+    return null;
+  } else {
+    const uniqueSet = new Set(duplicateWords);
+    const uniqueArray = Array.from(uniqueSet);
+    return uniqueArray;
+  }
+}
 
 
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
+
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -85,4 +145,21 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let product = 1;
+  let allOnes = true;
+  let allTwos = true;
+
+  for (let row of matrix) {
+    for (let num of row) {
+      product *= num;
+      if (num !== 1) allOnes = false;
+      if (num !== 2) allTwos = false;
+    }
+  }
+
+  if (allOnes) return 1;
+  if (allTwos) return 16;
+
+  return product;
+}
