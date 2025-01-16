@@ -13,21 +13,46 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0;
+  for(val of arr){
+    if(word===val){
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(num) {
+  let arr =[];
+  if(num===0){
+    return arr;
+  }else{
+    for(let i=0; i<=num; i++){
+      arr.push(i);
+    }
+    return arr;
+  }  
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
+  let narr =[];
+  arr.forEach((element,index,array) => {
+    // console.log(element)
+    narr.push(element*multiplier);
+  })
+  // console.log(narr)
+  return narr;
+}
 
 
 
@@ -36,28 +61,60 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, filter) {
+  if(!original.length){
+    return null;
+  }else{
+    // console.log(original)
+    // console.log(filter)
+    let filtered = [];
+    for(let i=0; i<original.length; i++){
+      for (let j=0; j< filter.length; j++){
+        if(original[i]===filter[j]){
+          original.splice(i,1)
+          // console.log("filtered 1, original now: ", original)
+        }
+      }
+    }
+    filtered = original;
+    return filtered;
+  }
+  
+}
 
-
+// console.log(filterOut(original,toRemove))
 
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
   "crab",
-  "poison",
-  "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
-  "poison",
-  "communion",
-  "simple",
-  "bring"
+  "crab",
+  "crab",
+  "crab"
 ];
 
-function uniquifyArray() {}
 
+function uniquifyArray(arr) {
+  if(!arr.length){
+    return null;
+  }
+ let newArr = []
+  for(let i=0; i<arr.length; i++){
+   if(!newArr.includes(arr[i])){
+    newArr.push(arr[i])
+   }
+    // let index = arr.indexOf(arr[i]);
+    // console.log(i, index)
+ 
+    // if(index!=i){
+    //   arr.splice(index,1);
+    //   console.log("POP index: ", index, " i: ",i)
+    //   console.log(arr)
+    // }
+  }
+  return newArr
+}
+// console.log(uniquifyArray(duplicateWords))
 
 
 
@@ -85,4 +142,39 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+let test =[
+  [ 1,  2, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1, 20, 3, 4, 5],
+  [ 1,  4, 3, 4, 5],
+]
+
+function greatestProduct(matrix) {
+  let maxrow =0, maxcol=0, col_product, row_product;
+  for (let col=0; col<matrix.length; col++){
+    for (let row=0; row<matrix.length; row++){
+      if(row<matrix.length-3){
+        row_product = matrix[col][row]*matrix[col][row+1]*matrix[col][row+2]*matrix[col][row+3];
+        // console.log("check rp: ", row_product, row)
+      }
+      if(col<matrix.length-3){
+        col_product = matrix[col][row]*matrix[col+1][row]*matrix[col+2][row]*matrix[col+3][row];
+      }
+      maxrow = Math.max(row_product,maxrow);
+      maxcol = Math.max(col_product,maxcol);
+      
+      // console.log(row, col, row_product,col_product);
+      // if(row_product> maxrow){
+      //   console.log(row_product);
+      //   maxrow = (row_product);
+      // }
+      // if(col_product>maxcol){
+      //   maxcol = col_product;
+      // }       
+    }
+  }
+  console.log(maxrow, maxcol)
+  return Math.max(maxrow,maxcol)
+}
+console.log(greatestProduct(matrix));
