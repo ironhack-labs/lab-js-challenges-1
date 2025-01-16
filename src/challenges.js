@@ -13,13 +13,27 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(list, word) {
+  let counter = 0;
 
-
+  for (let i = 0; i < list.length; i++){
+    if(list[i] == word){
+      counter++
+    }
+  }
+  return counter
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let numberSequence = []
+  if (n == 0){return []}
+  for (let i = 0; i <= n; i++) {
+    numberSequence.push(i)
+  }
+  return numberSequence
+}
 
 
 
@@ -27,17 +41,32 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(array1, n1) {
+  let multipliedNbrs = [];
+  
+  array1.forEach(function(e) {
+    multipliedNbrs.push(e * n1)
+  })
+return multipliedNbrs
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  let newArray = [];
+  if (original.length == 0) {return null}
+  else if (toRemove.length == 0) {return original}
 
+  else { 
+    for (let i = 0; i < original.length; i++) {
+      if (!toRemove.includes(original[i])) {
+        newArray.push(original[i]);
+      }
+  }
+    return newArray} }
 
 
 
@@ -56,8 +85,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(b) {
+  let newArray1 = [];
+  
+  if (b.length == 0) {return null};
 
+  for (let i = 0; i < b.length; i++) {
+    if(!newArray1.includes(b[i])){
+      newArray1.push(b[i])
+  };
+  }
+  return newArray1
+}
 
 
 
@@ -85,4 +124,21 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(grid) {
+  let maxProduct = 0; 
+  for (i = 0; i < grid.length; i++) {
+
+    for (j = 0; j < grid[i].length; j++) {
+      if (j <= grid[i].length - 4) {
+        const horizontalProduct = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3];
+        maxProduct = Math.max(maxProduct, horizontalProduct);
+      }
+      if (i <= grid.length - 4) {
+        const verticalProduct = grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j];
+        maxProduct = Math.max(maxProduct, verticalProduct);
+      }
+    }
+  }
+
+  return maxProduct;
+}
