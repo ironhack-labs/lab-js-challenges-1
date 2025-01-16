@@ -13,21 +13,42 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatCount, wordToSearch) {
+  let counter = 0;
+  repeatCount.forEach(function (wordSearching){
+    if(wordSearching === wordToSearch){
+      counter ++
+    }
+  })
+    return counter;
 
 
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
+function createSequence(n) {
+  let nCount = []
+  if (n===0){
+    return nCount;
+  }
+  for(i=0; i<=n; i++){
+    nCount.push(i)
+  }
+  return nCount;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrM, multi) {
+  let newArrM = [];
+  arrM.forEach(function (numb){
+    newArrM.push(numb * multi);
+  })
+  return newArrM;
+
+}
 
 
 
@@ -36,9 +57,31 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(animalsOriginal, animalsFilter) {
+  let animalsFiltered= [];
+  if(!animalsOriginal.length){
+    return null;
+  }
+  if (!animalsFilter.length){
+    return animalsOriginal;
+  }
+
+  for(u= 0; u<animalsOriginal.length; u++){
+    for (o= 0; o< animalsFilter.length; o++){
+      if (animalsOriginal[u] === animalsFilter[o]){
+        animalsOriginal.splice(u, 1);
+      }
+    }
 
 
+  }
+
+  
+  return animalsOriginal;
+}
+
+
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +99,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(dupliArr) {
+  let uniqueArr = [];
+  if(!dupliArr.length){
+    return null;
+  }
+  for(a =0; a< dupliArr.length; a++){
+      if(uniqueArr.indexOf(dupliArr[a]) === -1){
+        uniqueArr.push(dupliArr[a])
+      }
+  }
+  return uniqueArr
+
+}
 
 
 
@@ -85,4 +140,31 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let product = 0;
+  let product2 = 0;
+  // calc horizontal products
+  for (let i = 0; i < matrix.length-3; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      // product *= matrix[i][j]; 
+      if(matrix[i]*matrix[i+1]*matrix[i+2]*matrix[i+3] > product){
+        product = matrix[i]*matrix[i+1]*matrix[i+2]*matrix[i+3];
+      }
+    }
+  }
+
+  // calc vertic products
+  for(let o = 0 ; o< matrix.length; o++){
+    for(let p = 0; p<matrix[o].length-3; p++){
+      if(matrix[p]*matrix[p+1]*matrix[p+2]*matrix[p+3] > product2){
+        product2 = matrix[p]*matrix[p+1]*matrix[p+2]*matrix[p+3]
+      }
+    }
+  }
+  if(product > product2){
+    return product;
+  } else {
+    return product2;
+  }
+  
+}
