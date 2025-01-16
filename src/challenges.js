@@ -13,21 +13,48 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let counter = 0;
+  if (arr.length === 0) {
+    return 0
+  };
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      counter++
+    }
+  };
+  return counter
+}
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let counter = [0];
+  if (n === 0) {
+    counter = []
+  }
+  for (let i = 1; i <= n; i++) {
+    counter.push(i)
+  }
 
+  return counter
 
-
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrNumber, multiplier) {
+  let result = [];
+  arrNumber.forEach(function (numberToBeMultiplied) {
+    result.push(numberToBeMultiplied * multiplier);
+  })
+  return result
+}
+
 
 
 
@@ -36,7 +63,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArr, arrToRemove) {
+  let newArr = [];
+  if (originalArr.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < originalArr.length; i++) {
+    if (!arrToRemove.includes(originalArr[i])) {
+      newArr.push(originalArr[i]);
+    }
+  }
+  return newArr
+}
+
+
+
 
 
 
@@ -56,8 +97,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrWords) {
+  if (arrWords.length === 0) {
+    return null
+  }
+  let newListArr = [];
+  for (let i = 0; i < arrWords.length; i++) {
 
+    if (newListArr.indexOf(arrWords[i]) === -1) {
+      newListArr.push(arrWords[i]);
+    }
+  }
+
+  return newListArr
+}
 
 
 
@@ -85,4 +138,19 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrixArr) {
+  let filteredMatrix = [];
+  for (let i=0; i<matrixArr.length; i++); {
+       for (let y=0; y<matrixArr[i].length; y++) {
+          if (matrixArr[i][y+1]*matrixArr[i][y+2]*matrixArr[i][y+3]*matrixArr[i][y+4]>matrixArr[i][y]*matrixArr[i][y+1]*matrixArr[i][y+2]*matrixArr[i][y+3]) {
+            filteredMatrix.push(matrixArr[i][y+1], matrixArr[i][y+2], matrixArr[i][y+3], matrixArr[i][y+4]);
+          }
+          else {filteredMatrix.push(matrixArr[i][y], matrixArr[i][y+1], matrixArr[i][y+2], matrixArr[i][y+3]);
+          }
+          }   
+  }
+  return filteredMatrix;
+  console.log(filteredMatrix)
+}
+
+   
