@@ -1,3 +1,5 @@
+
+
 // Iteration 1 | Count Repetition
 const repeatedWords = [
   "machine",
@@ -13,21 +15,50 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(Arr,word) {
+  if (Arr.length === 0){
+    return 0
+  }
+  let counter = 0
+  for (const val of Arr){
+    if (val === word){
+        counter += 1
+    }
+  }
+  return counter
+}
 
-
+console.log(howManyTimes(repeatedWords,"matter"))
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+ 
+  let myArr = []
+  if (num === 0){
+    return myArr
+  }
+  for (let i = 0; i <= num; i++){
+    myArr.push(i)
+  }
+  return myArr
+}
 
-
+console.log(createSequence(7))
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(Arr,num) {
+ Arr.forEach((element,index) => {
+      Arr[index] = element * num
+  
+ })
+ return Arr
+}
+
+console.log(multiplyBy(numbers,3))
 
 
 
@@ -36,9 +67,30 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(mainArr,secArr) {
+  if (mainArr.length === 0){
+       return null
+  }
+  newArr = []
+  for (let i = 0; i < mainArr.length; i++){
+    let found = false
+    for (let j = 0; j < secArr.length; j++){
+      if (mainArr[i] === secArr[j]){
+        found = true
+        break
+      }
+    }
+    if(!found){
+      newArr.push(mainArr[i])
+    }
+  }
+  
+    
+  
+   return newArr
+}
 
-
+console.log(filterOut(original,toRemove))
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +108,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateArr) {
+  if (duplicateArr.length === 0){
+    return null
+  }
+  let newArr = []
+  for (const val of new Set(duplicateArr)){
+    newArr.push(val)
+  }
+  return newArr
+}
+
+console.log(uniquifyArray(duplicateWords))
+
 
 
 
