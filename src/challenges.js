@@ -13,21 +13,42 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, wordsearch) {
+  let contador = 0;
+  
+  for (let i = 0; i < repeatedWords.length; i++) {
+    if (repeatedWords[i] === wordsearch) {
+      contador++;
+    }
+  }
+  return contador;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  let array = [];
+  if (num === 0) return []
+  for (let i = 0; i <= num; i++) {
+    array.push(i);
+  }
+  return array;
+}
 
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
-
-function multiplyBy() {}
+function multiplyBy(numbers, num) {
+  let newArray = []
+  numbers.forEach(operator => {
+    newArray.push(operator * num);
+  });
+  return newArray;
+}
 
 
 
@@ -36,7 +57,25 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) return null
+  
+  let finalArray = []
+  for (let i = 0; i < original.length; i++) {
+    let repeat = false;
+
+    for (let j = 0; j < toRemove.length; j++) {
+      if (original[i] === toRemove[j]) {
+        repeat = true;
+        continue;
+      }
+    }
+    if (repeat === false) {
+      finalArray.push(original[i]);
+    }
+  }
+  return finalArray;
+}
 
 
 
@@ -56,7 +95,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) return null;
+
+  let uniqueArray = []
+   duplicateWords.forEach(iterations => {
+    if (!uniqueArray.includes(iterations)) {
+        uniqueArray.push(iterations);
+      }
+   });     
+   return uniqueArray;
+}
 
 
 
@@ -85,4 +134,22 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+  const rows = matrix.length
+  const cols = matrix[0].length
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      if (j <= cols - 4) {
+        let horizontal = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3]
+        maxProduct = Math.max(maxProduct, horizontal) 
+      }
+      if (i <= rows - 4) {
+        let vertical = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j]
+        maxProduct = Math.max(maxProduct, vertical)
+      }
+    }
+  }
+  return maxProduct;
+}
