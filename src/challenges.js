@@ -13,22 +13,54 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  
+  let count = 0
+  
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i] === word){
+      count++
+    }
+  } 
+  return count
+}
 
-
+console.log(howManyTimes(repeatedWords, "matter"));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n){
 
+const sequence = []
 
+  for (let j = 0; j <= n; j++){
+    sequence.push(j)
+  }
+  if (n === 0){
+    return []
+  }
+  return sequence
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let newArray = [];
+  numbers.forEach(function (n) {
+    newArray.push(n * multiplier);
+  });
 
+  return newArray;
+}
+
+let multiplier = 3;
+console.log(multiplyBy(numbers, multiplier)); 
+
+// // Example usage:
+// const numbers = [1, 2, 3, 4, 5];
+// exampleFunction(numbers);
 
 
 
@@ -36,9 +68,30 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
 
 
+function filterOut(original, toRemove) {
+
+  let result = [];
+
+  if(original.length === 0){
+    return null;
+  }
+
+  if(toRemove.length === 0){
+    return original;
+  }
+
+  for (let i = 0; i < original.length; i++) {
+    if (toRemove.includes(original[i]) === false) {
+      result.push(original[i]);
+    }
+  }
+
+  return result;
+}
+
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +109,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  let result = [];
+
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < duplicateWords.length; i++) {
+    if (!result.includes(duplicateWords[i])) {// If the item isn't already in the result array
+      result.push(duplicateWords[i]); // Add it to the result array
+    }
+  }
+  return result;
+}
 
 
 
