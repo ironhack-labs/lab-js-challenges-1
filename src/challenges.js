@@ -13,51 +13,97 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
 
+function howManyTimes(arr, search) {
+  let counter = 0; // Initialize counter outside the loop
 
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === search) {
+      counter++; // Increment the counter when a matching word is found
+    }
+  }
+  return counter;
+}
+console.log(howManyTimes(repeatedWords, "matter"))
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+function createSequence(n) {
+  let sequence = [];
+  for (let i = 0; i <= n; i++) {
+    if (n === 0) {
+      return sequence;
+    } else {
+      sequence.push(i);
+    }
+  }
+  return sequence;
+}
 
 
-
-
-// Iteration 3 | Multiply for Each
+// // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+ function multiplyBy(numbers, multiplier) {
+  let result = [];
+  
+  numbers.forEach(num => {
+    result.push(num * multiplier);
+  })
+  return result;
+ }
 
 
 
 
-// Iteration 4 | Filter Out
+// // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  let result = [];
+
+  if (!original.length) return null;
+
+  if (!toRemove.length) {
+    result = original;
+    return result;
+  }
+
+  result=original.filter(word => !toRemove.includes(word))
+
+  return result;
+}
 
 
 
 
 // Iteration 5 | Unique Arrays
-const duplicateWords = [
+ const duplicateWords = [
   "crab",
   "poison",
   "contagious",
   "simple",
   "bring",
-  "sharp",
-  "playground",
-  "poison",
+ "sharp",
+ "playground",
+ "poison",
   "communion",
   "simple",
-  "bring"
+ "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  let result = [];
 
+  for (const word of duplicateWords) {
+    if (!result.includes(word)) {
+      result.push(word);
+    }
+  }
+  return result;
+}
 
 
 
