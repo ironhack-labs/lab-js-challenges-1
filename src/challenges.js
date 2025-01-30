@@ -13,32 +13,65 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, wordToSearch) {
+  let count = 0;
+   for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === wordToSearch) {
+    count++;
+   }
+}
+return count;
+}
 
-
-
+console.log(howManyTimes(repeatedWords, "matter"));
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let sequence = [];
+  for (let i = 0; i <= n; i++){
+    if (n === 0) return [];
+    sequence.push(i);
+  }
+  return sequence;
+}
 
-
+console.log(createSequence(7));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(array, number) {
+  let result = [];
+  array.forEach((nums) => {
+    result.push(nums * number);
+  });
+  return result;
+}
+ console.log(multiplyBy(numbers, 3));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
 
+  if (original.length === 0) return null;
+  if (toRemove.length === 0) return original;
 
+  let result = [];
+
+  for (let i = 0; i < original.length; i++) {
+    if (!toRemove.includes(original[i])) {
+      result.push(original[i]);
+    }
+  }
+
+  return result;
+}
+
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -56,10 +89,26 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
 
+  if(words.length === 0){
+    return null;
+  }
 
+  let uniqword = [];
+  //You create an empty array uniqword that will store the unique words.
 
+  for(let i = 0; i < words.length; i++){
+    if(!uniqword.includes(words[i])){
+      uniqword.push(words[i]);
+  /* You loop through the words array and for each word, check if it is already in the 
+  uniqword array using the includes method.
+  If it isn't in uniqword, you add it to the array using push. */
+    }
+  }
+  return uniqword;
+}
+  console.log(uniquifyArray(duplicateWords));
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +134,26 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+/* function greatestProduct(matrix) {
+  let maxProduct = 0;
+
+  // Check horizontal products
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      let product = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      //console.log(`Horizontal product at row ${i}, coluna ${j}: ${product}`);
+      maxProduct = Math.max(maxProduct, product);
+    }
+  }
+
+  // Check vertical products
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let product = matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+     //console.log(`Vertical product at row ${i}, coluna ${j}: ${product}`);
+      maxProduct = Math.max(maxProduct, product);
+    }
+  }
+  console.log(`Greatest product found: ${maxProduct}`);
+  return maxProduct;
+} */
