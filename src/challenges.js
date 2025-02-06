@@ -13,22 +13,49 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let contador = 0
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] === word){
+      contador ++
+    }
+  }
+  return contador
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
 
+  let secuenciaNumero = [];
 
+  if(num===0)
+    return secuenciaNumero;
+
+  for (let i=0; i<=num;i++)  {
+    secuenciaNumero.push(i);
+  }
+  return secuenciaNumero;
+}
+
+console.log(createSequence(10))
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArr, num2) {
+let multNum = []
+for ( let i = 0; i < numArr.length; i++){
+  multNum[i] = numArr[i] * num2;
 
+}
+return multNum
+}
+
+console.log(multiplyBy(numbers, 3))
 
 
 
@@ -36,9 +63,24 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(oriArr,reArr) {
+  
+  let animalsArr = []
 
+  if(oriArr.length===0) {
+    return null;
+  }
+  for(let i = 0; i < oriArr.length; i++){
 
+    // Porque Fish no está en el array de toRemove. Cat sí.
+    if(reArr.includes(oriArr[i]) === false) {
+      animalsArr.push(oriArr[i]);
+    }
+  }
+return animalsArr
+}
+
+console.log(filterOut(original,toRemove))
 
 
 // Iteration 5 | Unique Arrays
@@ -56,10 +98,26 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(argumentsArr) {
+if(argumentsArr.length === 0){
+  return null
+}
+let nuevoArray = [];
 
+  for(let i = 0; i < argumentsArr.length; i++){
+    if(nuevoArray.includes(argumentsArr[i]) === false) {
+      nuevoArray.push(argumentsArr[i]);
+    }
+/*if(argumentsArr){
 
+  
+}*/
+  }
 
+  return nuevoArray;
+}
+
+console.log(uniquifyArray(duplicateWords));
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
