@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+
+function howManyTimes(array, words) {
+  let count = 0;
+  for(let i = 0;i < array.length; i++) {
+      if(words === array[i]){
+        count++;
+      }  
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  if(num === 0 )
+    return [];
+  arr=[];
+  for (let i =0;i<=num ;i++){
+      arr.push(i);
+       }
+       return arr;
+
+}
 
 
 
@@ -27,7 +45,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, num) {
+  let arr2=[];
+  arr.forEach((aNum)=>{
+   let newNum=aNum*num;
+   arr2.push(newNum);
+  })
+  return arr2;
+}
 
 
 
@@ -36,7 +61,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(stringArr, filterArr) {
+  if (stringArr.length === 0) {
+    return null
+  }
+  let newArray= [];
+  stringArr.forEach((word)=>{
+   if(filterArr.includes(word)=== false){
+    newArray.push(word);
+   }
+  })
+  return newArray;
+}
 
 
 
@@ -56,7 +92,13 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(dupWords) {
+  if (dupWords.length === 0) {
+    return null
+  }
+/// w3 instructions
+  return dupWords.filter ((word, i) => dupWords.indexOf(word) === i)
+}
 
 
 
