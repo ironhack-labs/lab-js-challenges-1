@@ -13,21 +13,39 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
+function howManyTimes(array, word) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === word) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
+function createSequence(n) {
+  const sequence = [];
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, multiplier) {
+  const result = [];
+  arr.forEach(function (num) {
+    result.push(num * multiplier);
+  });
+  return result;
+}
 
 
 
@@ -36,8 +54,15 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, toRemove) {
+  const result = [];
+  for (let i = 0; i < original.length; i++) {
+    if (!toRemove.includes(original[i])) {
+      result.push(original[i]);
+    }
+  }
+  return result;
+}
 
 
 
@@ -56,7 +81,16 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+
+function uniquifyArray(words) {
+  const unique = [];
+  for (let i = 0; i < words.length; i++) {
+    if (!unique.includes(words[i])) {
+      unique.push(words[i]);
+    }
+  }
+  return unique;
+}
 
 
 
@@ -85,4 +119,24 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let max = 0;
+
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+      // Horizontal
+      if (col + 3 < matrix[row].length) {
+        let prod = matrix[row][col] * matrix[row][col + 1] * matrix[row][col + 2] * matrix[row][col + 3];
+        if (prod > max) max = prod;
+      }
+
+      // Vertical
+      if (row + 3 < matrix.length) {
+        let prod = matrix[row][col] * matrix[row + 1][col] * matrix[row + 2][col] * matrix[row + 3][col];
+        if (prod > max) max = prod;
+      }
+    }
+  }
+
+  return max;
+}
