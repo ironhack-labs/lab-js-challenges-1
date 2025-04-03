@@ -13,22 +13,37 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArray, wordToSearch) {
+  let count = 0;
+
+  for (let i = 0; i < wordArray.length; i++) {
+    if (wordArray[1] === wordToSearch) {
+      count++;
+    }
+  }
+  return count;
+}
 
 
-
+// remember that i <= something  means “loop until and including”
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+let sequence = []; //creating an empty box = array that holds the number n
+
+for (let i = 0; i <= n; i++){ //you could read i=0 as count start at 0
+  sequence.push(i); //.push is used to add a value at the end 
+}
+return sequence; //Give me the final result when you’re done.
+}
 
 
-
+//sorry my brain is on fire.
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy() {}
-
 
 
 
