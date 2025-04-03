@@ -1,5 +1,5 @@
-// Iteration 1 | Count Repetition
-const repeatedWords = [
+// Iteration 1 | Count Repetition          // code 1
+const repeatedWords = [  
   "machine",
   "matter",
   "subset",
@@ -13,35 +13,78 @@ const repeatedWords = [
   "matter"
 ];
 
+function howManyTimes(arr , word) {
+  let count  = 0;
+  arr.forEach(function(element) {
+    if(element === word) {
+      count++;
+    }
+  })
+  return count;
+
+}
+
 function howManyTimes() {}
 
 
 
 
-// Iteration 2 | Number Sequence
-function createSequence() {}
+// Iteration 2 | Number Sequence         // code 2
+function createSequence(n)  {
+  let arr = [];
+  for (let i = 0; i <= n; i++) {
+      arr.push(i);
+  }
+  return arr;
+}
+
+// Example usage
+console.log(createSequence(7)); 
 
 
 
 
-// Iteration 3 | Multiply for Each
+
+// Iteration 3 | Multiply for Each                 // code 3
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let newArr = []; 
+  numbers.forEach(function(element){
+      newArr.push(element * multiplier);
+  });
+  return newArr;
+}
 
 
+console.log(multiplyBy(numbers, 3)); 
 
 
-// Iteration 4 | Filter Out
+                                                    
+// Iteration 4 | Filter Out                          // code 4
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+
+function filterOut(original, toRemove) {
+  let newArr = [];
+  
+  original.forEach(function (element){
+    
+    if(toRemove.includes(element)){
+      return ;
+    }else{
+      return newArr.push(element);
+
+    }
+   });
+
+  return newArr ;
+}
 
 
 
-
-// Iteration 5 | Unique Arrays
+// Iteration 5 | Unique Arrays                       // code 5
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,12 +99,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+
+function uniquifyArray(words) {
+  let uniqueArr = [];
+  
+  for (let i = 0; i < words.length; i++) {
+    if (uniqueArr.indexOf(words[i]) === -1) {
+      uniqueArr.push(words[i]);
+    }
+  }
+
+  return uniqueArr;
+}
+
+console.log(uniquifyArray(duplicateWords));
 
 
 
-
-// Bonus: Iteration 6 | Product of Adjacent Numbers
+// Bonus: Iteration 6 | Product of Adjacent Numbers                   // code 6
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
