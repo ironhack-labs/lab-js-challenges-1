@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArr, word) {
+  let count = 0;
+  if (wordArr.length == 0) {
+    return 0;
+  } else {
+    for (let i=0; i<wordArr.length; i++) {
+      if (wordArr[i] === word) {
+        count ++;
+      }
+    }
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  let numSeq = [];
+  if (num === 0) {
+    return numSeq;
+  } else {
+    for (let i=0; i<num+1; i++) {
+      numSeq.push(i);
+    }
+  }
+  return numSeq;
+}
 
 
 
@@ -27,7 +49,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArr, mult) {
+  let multArr = [];
+  if (numArr.length===0) {
+    return multArr;
+  } else {
+    numArr.forEach(function(val, i) {
+      multArr[i] = val*mult;
+    });
+  }
+  return multArr;
+}
 
 
 
@@ -36,7 +68,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(wordArr, remArr) {
+  let result = [];
+  if (wordArr.length===0) {
+    return null;
+  } else if (remArr.length===0) {
+    return wordArr;
+  } else {
+    for (let i=0; i<wordArr.length; i++) {
+      if (remArr.indexOf(wordArr[i]) === -1) {
+        result.push(wordArr[i]);
+      }
+    }
+  }
+  return result;
+}
 
 
 
@@ -56,7 +102,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  let result = [];
+  if (arr.length===0) {
+    return null;
+  } else {
+    for (let i =0; i<arr.length; i++) {
+      if (result.indexOf(arr[i])===-1) {
+        result.push(arr[i]);
+      }
+    }
+  }
+  return result;
+}
+
 
 
 
@@ -85,4 +144,29 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(neo) {
+  let maxProd = 0;
+  let rows = neo.length;
+  let cols = neo[0].length; 
+
+  for (let i=0; i<rows; i++) {
+    for (let j=0; j<=cols-4; j++) {
+      let prod = neo[i][j] * neo[i][j+1] * neo[i][j+2] * neo[i][j+3];
+      if (prod > maxProd) {
+        maxProd = prod;
+      }
+    }
+  }
+
+  for (let i=0; i<rows-4; i++) {
+    for (let j=0; j<=cols; j++) {
+      let prod = neo[i][j] * neo[i+1][j] * neo[i+2][j] * neo[i+3][j];
+      if (prod > maxProd) {
+        maxProd = prod;
+      }
+    }
+  }
+
+  return maxProd;
+
+}
