@@ -13,13 +13,33 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrawOfWords, wordToLookFor) {
+  let numberOfTimesFound = 0;
+  for (let i = 0; i < arrawOfWords.length; i++) {
+    const currentWord = arrawOfWords[i];
+    if (currentWord === wordToLookFor) {
+      numberOfTimesFound++;
+    }
+  }
+  return numberOfTimesFound;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let arrayOfNumbers = [];
+  if (n === 0) {
+    return arrayOfNumbers;
+  }
+  for (let i = 0; i <= n; i++) {
+    arrayOfNumbers.push(i);
+  }
+  return arrayOfNumbers;
+}
+
+createSequence(3);
 
 
 
@@ -27,7 +47,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, multiplierNumber) {
+  let multipliedArray = [];
+  let currentPos = 0;
+  arrayOfNumbers.forEach(function(currentNumber) {
+    multipliedArray[currentPos] = currentNumber * multiplierNumber;
+    currentPos++;
+  });
+  return multipliedArray;
+}
 
 
 
@@ -36,7 +64,26 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, arrayOfFilters) {
+  let filteredArray = [];
+  if (originalArray.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < originalArray.length; i++) {
+    const currentWord = originalArray[i];
+    let found = false;
+    for (let x = 0; x < arrayOfFilters.length; x++) {
+      const currentRemoveWord = arrayOfFilters[x];
+      if (currentWord === currentRemoveWord) {
+        found = true;
+      }
+    }
+    if (!found) {
+      filteredArray.push(currentWord);
+    }
+  }
+  return filteredArray;
+}
 
 
 
@@ -56,7 +103,26 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfWords) {
+  if (arrayOfWords.length === 0) {
+    return null;
+  }
+  let uniquifiedArray = [];
+  for (let i = 0; i < arrayOfWords.length; i++) {
+    const currentWord = arrayOfWords[i];
+    let repeatedElement = false;
+    for (let x = 0; x < uniquifiedArray.length; x++) {
+      const currentUniquifiedElement = uniquifiedArray[x];
+      if (currentWord === currentUniquifiedElement) {
+        repeatedElement = true;
+      }
+    }
+    if (!repeatedElement) {
+      uniquifiedArray.push(currentWord);
+    }
+  }
+  return uniquifiedArray;
+}
 
 
 
@@ -85,4 +151,44 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arrayOfNumbers) {
+  let greatestNumber = 0;
+
+  for (let i = 0; i < arrayOfNumbers.length; i++) {
+    for (let j = 0; j < arrayOfNumbers[i].length; j++) {
+      const currentVerticalPosition = i;
+      const currentHorizontalPosition = j;
+
+      //Calculate the horizontal opetation
+      if (currentHorizontalPosition < arrayOfNumbers[i].length - 3) {
+        const firstHorizontalNumber = arrayOfNumbers[i][j];
+        const secondHorizontalNumber = arrayOfNumbers[i][j+1];
+        const thirdHorizontalNumber = arrayOfNumbers[i][j+2];
+        const fourthHorizontalNumber = arrayOfNumbers[i][j+3];
+        let prod = firstHorizontalNumber * secondHorizontalNumber * thirdHorizontalNumber * fourthHorizontalNumber;
+        if (prod > greatestNumber) {
+          greatestNumber = prod;
+        }
+      }
+
+      //Calculate the vertical operation
+      if (currentVerticalPosition < arrayOfNumbers.length - 3) {
+        const firstVerticalNumber = arrayOfNumbers[i][j];
+        const secondVerticalNumber = arrayOfNumbers[i][j+1];
+        const thirdVerticalNumber = arrayOfNumbers[i][j+2];
+        const fourthVerticalNumber = arrayOfNumbers[i][j+3];
+        let prod = firstVerticalNumber * secondVerticalNumber * thirdVerticalNumber * fourthVerticalNumber;
+        if (prod > greatestNumber) {
+          greatestNumber = prod;
+        }
+      }
+    }
+  }
+  
+  return greatestNumber;
+}
+
+
+
+
+
