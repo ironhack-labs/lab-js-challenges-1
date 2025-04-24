@@ -13,22 +13,43 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayDepalabras, palabraAbuscar) {
+if (arrayDepalabras.length === 0){
+  return 0;
+}
 
-
-
+let contador = 0
+for (let i = 0; i < arrayDepalabras.length; i++) {
+  if (arrayDepalabras[i] === palabraAbuscar) {
+      contador++;
+  }
+}
+return contador;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(n) {
+  if (n === 0){
+    return []
+  }
+let arraySecuencia = []
+for (let i = 0; i <= n; i++) {
+  arraySecuencia.push(i)
+}
+return arraySecuencia 
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(arraydenumeros, numeromultiplicador) {
+  let arrayMultiplicado = []
+  for (let i = 0; i < arraydenumeros.length; i++){
+    arrayMultiplicado.push(arraydenumeros[i]*numeromultiplicador)
+  }
+  return arrayMultiplicado
+}
 
 
 
@@ -36,7 +57,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arraydecadenas, arraydecadenasparafiltrar) {
+  let arraydeanimales = []
+for (let i = 0; i < arraydecadenas.length; i++){
+for (let j = 0; j < arraydecadenasparafiltrar.length; i++){
+  if (arraydecadenas[i] === arraydecadenasparafiltrar[j]) {
+arraydeanimales.push(arraydecadenas[i])
+  }
+}
+}
+
+return arraydeanimales
+}
 
 
 
