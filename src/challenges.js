@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordToSearch) {
+  let count = 0
+  for (let i=0; i < arrayOfWords.length; i++){
+    if(arrayOfWords[i] === wordToSearch){
+      count++
+    }
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let sequence=[]
+  if (n === 0){
+    return sequence
+  }
+  for(let i=0; i<=n; i++){
+    sequence.push(i)
+  }
+  return sequence
+}
 
 
 
@@ -27,7 +44,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, numbers) {
+  let result = []
+  arrayOfNumbers.forEach(function(arrayOfNumbers) {
+    result.push(arrayOfNumbers * numbers )
+  })
+
+return result
+}
 
 
 
@@ -36,7 +60,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, filter) {
+  if(original.length === 0){
+    return null
+  }
+  let done = []
+  for (let i=0; i<original.length;i++){
+    if(!filter.includes(original[i])){
+      done.push(original[i])
+    }
+  }
+  return done
+}
 
 
 
@@ -56,7 +91,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  let newArr=[]
+  if(arr.length === 0){
+    return null
+  }
+  for( let i=0; i<arr.length;i++){
+    if(newArr.indexOf(arr[i]) === -1) {
+      newArr.push(arr[i])
+    }
+  }
+  return newArr
+}
 
 
 
@@ -85,4 +131,42 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxProduct = 0
+  let row = matrix.length
+  let collum = matrix[0].length
+  for(let i=0;i<row;i++){
+    for(let j=0;j<collum-3;j++){
+      const product=matrix[i][j]*matrix[i][j+1]*matrix[i][j+2]*matrix[i][j+3]
+      if(product>maxProduct){
+        maxProduct=product
+      }
+    }
+  }
+    for(let i=0;i<row-3;i++){
+      for(let j=0;j<collum;j++){
+        const product=matrix[i][j]*matrix[i+1][j]*matrix[i+2][j]*matrix[i+3][j]
+        if(product>maxProduct){
+          maxProduct=product
+        }
+      }
+      for(let i=0;i<row-3;i++){
+        for(let j=0;j<collum-3;j++){
+          const product=matrix[i][j]*matrix[i+1][j+1]*matrix[i+2][j+2]*matrix[i+3][j+3]
+          if(product>maxProduct){
+            maxProduct=product
+          }
+        }
+      }
+      for(let i=0;i<row-3;i++){
+        for(let j=3;j<collum;j++){
+          const product=matrix[i][j]*matrix[i+1][j-1]*matrix[i+2][j-2]*matrix[i+3][j-3]
+          if(product>maxProduct){
+            maxProduct=product
+          }
+        }
+      }
+    
+  }
+  return maxProduct
+}
