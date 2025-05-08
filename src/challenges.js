@@ -13,21 +13,51 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, desiredWord) {
+  let repeatedcount = 0;
+  wordsArray.forEach(word => {
+    if(word === desiredWord){
+      repeatedcount ++;
+    }
+  });
+  return repeatedcount
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let sequence = [];
+  
+  if(number === 0){
+    return sequence;
+  }
+  else{
+    for(let i = 0; i<= number; i++){
+      sequence.push(i);
 
+    }
+    console.log(sequence)
+    return sequence
+}
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let multipliedNumbers = [];
+  
+  numbers.forEach(number => {
+    multipliedNumbers.push(number * multiplier)
+  })
+  return multipliedNumbers;
+
+
+}
 
 
 
@@ -36,10 +66,24 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, toRemove) {
+  let filterOutArray = [];
+
+  if(originalArray.length === 0 ){
+    return null;
+  }
+  else{
+  originalArray.forEach(element =>{
+    if(!toRemove.includes(element)){
+      filterOutArray.push(element);
+
+    }
+  })
+  return filterOutArray;}
+}
 
 
-
+console.log(filterOut(original, toRemove));
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,7 +100,29 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWordsArray) {
+  let uniqeArray = [];
+  if(duplicateWordsArray.length === 0 ){
+    return null;
+  }
+  else{
+
+  for (let i = 0; i < duplicateWordsArray.length; i++){
+    let element = duplicateWordsArray[i]
+    if(!uniqeArray.includes(element))
+      {
+        uniqeArray.push(element);
+
+    }}
+  }
+
+  // duplicateWordsArray.forEach(element => {
+  //   if (!uniqeArray.icludes(element)){
+  //        uniqeArray.push(element);
+  //   }
+  // })
+  return uniqeArray;
+}
 
 
 
