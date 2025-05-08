@@ -13,13 +13,34 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+
+
+  function howManyTimes(array, word) {
+  
+    let times= 0; 
+    for (let i=0; i<array.length; i++){
+        if (array[i]===word){
+            times++;
+        }
+    } return times;
+  }
+
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+
+  let count = [];
+  if(n === 0){
+    return [];}
+      for (let i=0; i<=n; i++){
+          count.push(i);
+    } 
+    return count;
+  }
 
 
 
@@ -27,7 +48,14 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiply) {
+  let afterMultiply = [];
+  array.forEach((array) => {
+    afterMultiply.push(array * multiply);
+    
+  });
+  return afterMultiply;
+}
 
 
 
@@ -36,8 +64,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
 
+  let notFiltered = [];
+  if (original.length === 0){
+    return null;
+  }
+  
+  original.forEach((original) => {
+      if (!toRemove.includes(original)){
+          notFiltered.push(original)};
+
+      });
+    
+return notFiltered;
+}
 
 
 
