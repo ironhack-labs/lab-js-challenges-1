@@ -13,13 +13,36 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      count = count + 1;
+
+    }
+
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+
+  if (n === 0) {
+    return [];
+  }
+
+  let newArr = [];
+  for (let i = 0; i <= n; i++) {
+    newArr.push(i);
+  }
+  return newArr;
+}
+
 
 
 
@@ -27,7 +50,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, number) {
+
+  let multArr = [];
+  arr.forEach(function (element) {
+    multArr.push(number * element)
+  })
+  return multArr
+
+}
 
 
 
@@ -36,9 +67,37 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, filter) {
+
+  if (original.length === 0) {
+    return null;
+  }
+
+  let result = [];
 
 
+
+
+  for (let i = 0; i < original.length; i++) {
+
+    result.push(original[i]);
+
+    for (let j = 0; j < filter.length; j++) {
+      if (original[i] === filter[j]) {
+        result.pop(original[i]);
+
+      }
+
+
+
+
+
+    }
+
+
+  }
+  return result;
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +115,25 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(withOutDouble) {
+
+  if (withOutDouble.length === 0) {
+    return null;
+  }
+  let newBox = [];
+
+  for (let i = 0; i < withOutDouble.length; i++) {
+
+    if (newBox.includes(withOutDouble[i]) === false) {
+      newBox.push(withOutDouble[i]);
+
+    }
+
+  }
+  return newBox;
+
+
+}
 
 
 
@@ -85,4 +162,30 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+ 
+  let result = 0;
+ 
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (j + 3 < matrix[0].length) {
+        const product = matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+
+        if (product > result) {
+          result = product
+        }
+      }
+      
+      if (i + 3 < matrix.length) {
+        const product = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+
+        if (product > result) {
+          result = product
+        }
+      }
+
+
+    }
+  }
+  return result
+}
