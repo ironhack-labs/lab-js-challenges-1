@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(repeatedWords, word) {
+  let count= 0;
+  for (let i=0;i<repeatedWords.length;i++)
+    if (repeatedWords[i] === word){
+    count++;
+    }
+    return count;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let arr=[];
+  if (n===0){
+    arr=[];
+  }
+  else {
+
+  for (i=0;i<=n;i++){
+    arr.push(i);
+  }
+}
+  return arr;
+}
 
 
 
@@ -27,7 +44,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, number) {
+  let newArray=[];
+  numbers.forEach(num => {
+    newArray.push(num*number);
+  });
+  return newArray;
+}
 
 
 
@@ -36,8 +59,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(original, toRemove) {
+  originalV2 = [];
+  if (original.length === 0)
+    return null;
+  else {
+  for (let i=0;i<original.length;i++){
+    if (!toRemove.includes(original[i])){
+      originalV2.push(original[i]);
+    }
+  }
+}
+  return originalV2;
+ }
 
 
 
@@ -56,7 +90,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  let newArray=[];
+  if (duplicateWords.length === 0){
+    return null;
+  }
+  for (let i=0;i<duplicateWords.length;i++){
+    if (!newArray.includes(duplicateWords[i])){
+      newArray.push(duplicateWords[i])
+    }
+  }
+return newArray;
+}
 
 
 
@@ -85,4 +130,15 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let maxMultplication = 0;
+for (let i=0;i<matrix.length-3;i++){
+  for (let j=0;j<matrix[i].length-3;j++){
+    maxMultplication = Math.max(maxMultplication, matrix[i][j]*matrix[i][j+1]*matrix[i][j+2]*matrix[i][j+3], matrix[i][j]*matrix[i+1][j]*matrix[i+2][j]*matrix[i+3][j])
+}
+
+}
+return maxMultplication;
+}
+
+console.log(greatestProduct(matrix))
