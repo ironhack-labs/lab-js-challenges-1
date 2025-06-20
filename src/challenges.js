@@ -53,8 +53,8 @@ function multiplyBy(array, n) {
   if (array.length === 0) {
     return [];
   }
-  array.forEach(function (numbers) { 
-    
+  array.forEach(function (numbers) {
+
     multiplyedArray.push(numbers * n);
 
   })
@@ -68,9 +68,27 @@ function multiplyBy(array, n) {
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() { }
+function filterOut(originalArr, toRemoveArr) {
+  if (originalArr.length === 0) {
+    return null;
+  }
+  if (toRemoveArr.length === 0) {
+    return originalArr;
+  }
+  let result = [];
 
+  for (let i = 0; i < originalArr.length; i++) {
 
+    if (!toRemoveArr.includes(originalArr[i])) {
+      result.push(originalArr[i]);
+    }
+
+  }
+  return result;
+
+}
+
+console.log(filterOut(original, toRemove));
 
 
 // Iteration 5 | Unique Arrays
@@ -88,7 +106,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() { }
+function uniquifyArray(arr) {
+  if (arr.length === 0) {
+    return null;
+  }
+
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!result.includes(arr[i])) {  //checks if word is already in new array
+      result.push(arr[i]);  // moves words that are not yet in new array to new array
+    }
+  }
+
+  return result;
+}
 
 
 
