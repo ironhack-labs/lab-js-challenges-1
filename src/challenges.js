@@ -13,13 +13,62 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+// let count = 0
+
+// function howManyTimes(array, word){
+// for (i=0 ; i<array.length ; i++){
+//   console.log(array[i])
+//   if (array[i]===word){
+//     count++
+    
+//   }
+//   return count
+// }
+// }
+
+// howManyTimes(repeatedWords,"matter")
+// console.log(count)
 
 
+   
+    
+function howManyTimes(array, word){
+
+  let count=0
+  
+for (i=0 ; i<array.length ; i++){
+  if (array[i]===word){
+    count++
+  }
+  
+}
+  return count
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+/*
+Declare a function named createSequence. 
+The function should take one argument: a number (n). 
+The function should return an array of numbers in the range from 0 to n.
+*/
+
+
+function createSequence(num) {
+  let arr=[]
+  
+  if(num===0){
+    return arr
+  }
+
+  for(i=0;i<=num;i++){
+    arr[i]=i
+  }
+  return arr
+
+}
+
 
 
 
@@ -27,19 +76,39 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(firstArray, multiplier){
+
+let secondArray = []
+
+firstArray.forEach(function (element,index) {
+   secondArray[index]=element * multiplier })
+
+  return secondArray
+};
 
 
 
 
 // Iteration 4 | Filter Out
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+  
+function filterOut(original, toRemove) {
 
+let newArray=[]
+  
+for (i=0;i<original.length; i++){
+  let pet = original[i] 
+  if (toRemove.includes(pet)===false){
+    newArray.push(pet)
+  }
+}
+  return newArray
+}
 
-
+const result = filterOut(original, toRemove)
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,7 +125,50 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+
+function uniquifyArray(duplicateWords) {
+
+let wordsSeen=[]
+let newArray=[]
+
+console.log("original array: " + duplicateWords)
+
+for (i=0;i<duplicateWords.length;i++){
+
+let wordToCheck=duplicateWords[i]
+
+  if (!(wordsSeen.includes(wordToCheck))){
+    newArray.push(wordToCheck)
+      console.log("new Array: " + newArray)
+
+    }
+      wordsSeen.push(wordToCheck)
+        console.log("words seen: " + wordsSeen)
+
+
+  }
+
+  return newArray
+}
+
+// Maels answers
+
+
+//   let newArray=[]
+// for(i=0 ; i<duplicateWords.length ; i++){
+//     if (newArray.includes(duplicateWords[i])=== false){
+//             newArray.push(duplicateWords[i]) 
+//     }
+
+//     else {continue}
+
+//     }
+//   return newArray
+// }
+
+// result = uniquifyArray(duplicateWords)
+
+// console.log(result)
 
 
 
