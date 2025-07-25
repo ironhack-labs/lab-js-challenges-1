@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      count++;
+    }    
+  }
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const array = []
+  if(n !== 0){
+    for (let i = 0; i <= n; i++) {
+      array.push(i)
+    }
+  }
+  return array
+}
+console.log(createSequence(7))
 
 
 
@@ -27,8 +44,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(arr, num) {
+  let newArr = [];
+  arr.forEach(element => {
+    newArr.push(element * num);
+  });
+  return newArr;
+}
 
 
 
@@ -36,7 +58,25 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr, filter) {
+  if (arr.length === 0) {
+    return null;
+  } else {
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) {
+      let found = false;
+      for (let j = 0; j < filter.length; j++){
+        if (arr[i] === filter[j]){
+          found = true;
+        }
+      }
+      if (!found) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  }
+}
 
 
 
@@ -56,9 +96,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(arrWords) {
+  if (arrWords.length === 0) {
+    return null;
+  }
+  let uniqueWords = [];
+  for (let i = 0; i < arrWords.length; i++) {
+    let word = arrWords[i];
+    if (!uniqueWords.includes(word)) {
+      uniqueWords.push(word);
+    }
+  }
+  return uniqueWords;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +135,19 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arr) {
+  let greatest = 0;
+  for (let i = 0; i < arr.length; i++){
+    for (let j = 0; j < arr[i].length-3; j++){
+      let sum = arr[i][j] * arr[i][j + 1] * arr[i][j + 2] * arr[i][j + 3];
+      greatest = (sum > greatest) ? sum : greatest;
+    }
+  }
+  for (let i = 0; i < arr.length - 3; i++){
+    for (let j = 0; j < arr[i].length; j++){
+      let sum = arr[i][j] * arr[i + 1][j] * arr[i + 2][j] * arr[i + 3][j];
+      greatest = (sum > greatest) ? sum : greatest;
+    }
+  }
+  return greatest;
+}
