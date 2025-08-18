@@ -14,7 +14,7 @@ function createSequence(n) {
     return [];
   }
   let sequence = [];
-  for (let i = 1; i <= n; i++) {
+  for (let i = 0; i <= n; i++) {
     sequence.push(i);
   }
   return sequence;
@@ -38,8 +38,9 @@ const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
 function filterOut(original, toRemove) {
+  let filterArr = []
   if (original.length === 0) {
-    return null;
+    return filterArr;
   }
   if (toRemove.length === 0) {
     return original;
