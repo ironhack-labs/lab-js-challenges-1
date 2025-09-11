@@ -35,10 +35,12 @@ return count
 function createSequence(n) {
 
   const numbers = [];
- 
-for (let i = n; n >= 0; i--) {
-  numbers.push(n);
-  n--;
+
+ if (n !== 0) {
+  for (let i = n; n >= 0; i--) {
+    numbers.push(n);
+    n--;
+  }
 }
 
 return numbers.reverse()
@@ -69,9 +71,13 @@ const toRemove = ["cat", "dog"];
 
 function filterOut(complete, toFilter) {
 
-  const filtered = complete.filter(str => typeof str === 'string' && !toFilter.includes(str))
+  if (!complete.length) {
+    return null
+  }
 
+  const filtered = complete.filter(str => typeof str === 'string' && !toFilter.includes(str))
   return filtered;
+
 }
 
 
@@ -93,8 +99,11 @@ const duplicateWords = [
 
 function uniquifyArray(words) {
 
+  if (!words.length) {
+    return null
+  }
+
   const unique = words.filter((word, i, arr) => {
-    
   return arr.indexOf(word) === i;
 });
 
