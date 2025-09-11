@@ -1,5 +1,3 @@
-const { UnsupportedPathError } = require('hono/router')
-
 // Iteration 1 | Count Repetition
 const repeatedWords = [
 	'machine',
@@ -15,24 +13,18 @@ const repeatedWords = [
 	'matter',
 ]
 
-function howManyTimes(repeatedWords, word) {
+function howManyTimes(wordsArr, word) {
 	let count = 0
-	for (let w of repeatedWords) {
-		console.log(w)
-
-		if (w === word) {
-			count++
-		}
-	}
+	wordsArr.map((w) => {
+		if (w === word) count++
+	})
 	return count
 }
 
 // Iteration 2 | Number Sequence
 function createSequence(n) {
-	let arr = []
-	if (n === 0) {
-		return []
-	}
+	arr = []
+	if (n === 0) return arr
 	for (let i = 0; i <= n; i++) {
 		arr.push(i)
 	}
@@ -42,43 +34,31 @@ function createSequence(n) {
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50]
 
-// function multiplyBy(numbers, mul) {
-// 	return numbers.map((number) => {
-// 		return number * mul
-// 	})
-// }
-
-function multiplyBy(numbers, mul) {
-	let newArr = []
-	numbers.forEach((number) => {
-		newArr.push(number * mul)
-	})
-	return newArr
+function multiplyBy(numbers, multi) {
+	arr = []
+	numbers ? numbers.forEach((num) => arr.push(num * multi)) : null
+	return arr
 }
-// control + z -> undo
-// alt + / -> comment line
-// alt + arrowUP -> move line
 
 // Iteration 4 | Filter Out
 const original = ['cat', 'dog', 'fish', 'bird', 'cat', 'fish']
 const toRemove = ['cat', 'dog']
 
 function filterOut(original, toRemove) {
-	if (original.length === 0) {
-		return null
-	}
-	let newList = []
+	let arr = []
+	if (original.length === 0) return null
+
 	for (let i of original) {
-		let filter = false
+		let filter = true
 		for (let j of toRemove) {
-			if (i === j) {
-				filter = true
-			}
+			if (i === j) filter = false
 		}
-		if (!filter) newList.push(i)
+		if (filter) arr.push(i)
 	}
-	return newList
+
+	return arr
 }
+
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
 	'crab',
@@ -94,15 +74,13 @@ const duplicateWords = [
 	'bring',
 ]
 
-function uniquifyArray(duplicateWords) {
+function uniquifyArray(words) {
 	let arr = []
-	if (duplicateWords.length === 0) return null
-	for (let i of duplicateWords) {
+	if (words.length == 0) return null
+	for (let i of words) {
 		let add = true
 		for (let j of arr) {
-			if (i === j) {
-				add = false
-			}
+			if (i === j) add = false
 		}
 		if (add) arr.push(i)
 	}
@@ -175,9 +153,109 @@ const matrix = [
 	],
 ]
 
+// Sol 1
+// function greatestProduct(matrix) {
+// 	// Check if all numbers are 1
+// 	if (matrix.every((row) => row.every((num) => num === 1))) {
+// 		return 1
+// 	}
+// 	// Check if all numbers are 2
+// 	if (matrix.every((row) => row.every((num) => num === 2))) {
+// 		return 16
+// 	}
+// }
+
+// Sol 2
+// function greatestProduct(matrix) {
+// 	let one = true
+// 	let two = true
+// 	for (let i of matrix) {
+// 		i.map((n) => {
+// 			if (n !== 1) {
+// 				one = false
+// 			} else if (n !== 2) {
+// 				two = false
+// 			}
+// 		})
+// 	}
+// 	if (one) return 1
+// 	else if (two) return 16
+// }
+
+// Sol 3
+// function greatestProduct(matrix) {
+// 	let count = 0
+
+// 	for (let i of matrix) {
+// 		for (let j in i) {
+// 			let k = parseInt(j)
+// 			let arr = i.slice(k, k + 4)
+// 			console.log('slice: ', arr)
+// 			let product = arr.reduce((acc, curr) => acc * curr, 1)
+// 			console.log('product:', product)
+// 			count = Math.max(product, count)
+// 		}
+// 	}
+// 	for (let i = 0; i <= matrix[0].length; i++) {
+// 		let arr = []
+// 		for (let j of matrix) {
+// 			arr.push(j[i])
+// 		}
+// 		for (let k in arr.length) {
+// 			let l = parseInt(k)
+// 			let col = arr.slice(l, l + 4)
+// 			let mul = col.reduce(acc, (curr) => acc * curr, 1)
+// 			console.log('mul: ', mul)
+
+// 			count = Math.max(count, mul)
+// 		}
+// 	}
+// 	console.log('count: ', count)
+
+// 	return count
+// }
+
+// // AI SOLUTION
+// function greatestProduct(matrix) {
+// 	let maxProducto = -Infinity
+
+// 	// Buscar en horizontal
+// 	for (let i = 0; i < matriz.length; i++) {
+// 		for (let j = 0; j <= matriz[i].length - 4; j++) {
+// 			let producto =
+// 				matriz[i][j] * matriz[i][j + 1] * matriz[i][j + 2] * matriz[i][j + 3]
+// 			maxProducto = Math.max(maxProducto, producto)
+// 		}
+// 	}
+
+// 	// Buscar en vertical
+// 	for (let i = 0; i <= matriz.length - 4; i++) {
+// 		for (let j = 0; j < matriz[i].length; j++) {
+// 			let producto =
+// 				matriz[i][j] * matriz[i + 1][j] * matriz[i + 2][j] * matriz[i + 3][j]
+// 			maxProducto = Math.max(maxProducto, producto)
+// 		}
+// 	}
+
+// 	return maxProducto
+// }
+
 function greatestProduct(matrix) {
-	if (matrix.every(row => row.every(num => num === 1)))
-		return 1;
-	if (matrix.every(row => row.every(num => num === 2)))
-		return 16;
+	let count = -Infinity
+	for (let i = 0; i < matrix.length; i++) {
+		for (let j = 0; j < matrix[0].length - 3; j++) {
+			let prod =
+				matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3]
+			count = Math.max(count, prod)
+		}
+	}
+
+	for (let i = 0; i < matrix.length - 3; i++) {
+		for (let j = 0; j < matrix[0].length; j++) {
+			let prod =
+				matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j]
+			count = Math.max(count, prod)
+		}
+	}
+	return count
 }
