@@ -63,22 +63,21 @@ function multiplyBy(numbers, mul) {
 const original = ['cat', 'dog', 'fish', 'bird', 'cat', 'fish']
 const toRemove = ['cat', 'dog']
 
-
 function filterOut(original, toRemove) {
-	if (original.length === 0 ) {
-		return null;
+	if (original.length === 0) {
+		return null
 	}
-let newList = [];
-for (let i of original ) {
-let filter = false
-for (let j of toRemove) {
-	if (i === j) {
-		filter = true
+	let newList = []
+	for (let i of original) {
+		let filter = false
+		for (let j of toRemove) {
+			if (i === j) {
+				filter = true
+			}
+		}
+		if (!filter) newList.push(i)
 	}
-}
-if (!filter) newList.push(i) }
-return newList
-	 
+	return newList
 }
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -95,7 +94,20 @@ const duplicateWords = [
 	'bring',
 ]
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+	let arr = []
+	if (duplicateWords.length === 0) return null
+	for (let i of duplicateWords) {
+		let add = true
+		for (let j of arr) {
+			if (i === j) {
+				add = false
+			}
+		}
+		if (add) arr.push(i)
+	}
+	return arr
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
