@@ -13,30 +13,103 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array1, wordToSearch) {
+  let countNumberOfTimes = 0;
+  for (let eachWord of array1){
+    if(eachWord===wordToSearch){
+      countNumberOfTimes +=1;
+    }
+  }
+  return countNumberOfTimes;
+}
 
 
+// console.log(howManyTimes(repeatedWords, "machine"));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const array2=[];
+  if(n !== 0){
+    if(typeof n === "number"){
+      for (let i=n; i>=0; i--){
+        array2.unshift(i);
+      }
+      return array2;
+    } else {
+      return 'Insert a number!'
+    }
+  } else {
+    return [];
+  }
+}
 
+// console.log(createSequence(8));
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array3, multiplier) {
+  const array3_new = [];
+  array3.forEach(element => {
+    let calculation3 = element * multiplier;
+    array3_new.push(calculation3);
+  });
+  return array3_new;
+}
 
+// console.log(multiplyBy(numbers, 10));
 
 
 
 // Iteration 4 | Filter Out
-const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
+const original = ["cat", "dog", "fish", "bird", "cat", "dog", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+// function filterOut(array4_1, array4_2) {
+//   const array4_new = [];
+//   for (let eachWord4_1 of array4_1){
+//     for (let eachWord4_2 of array4_2){
+//       if(eachWord4_2 !== eachWord4_1){
+//         array4_new.push(eachWord4_1);
+//       }
+//     }
+//   }
+//   return array4_new;
+// }
+// console.log(filterOut(original, toRemove));
+
+
+function filterOut(array4_1, array4_2) {
+  const array4_new = [];
+  if(array4_1.length){
+    if(array4_2.length){
+      for (const eachWord4_1 of array4_1) {
+        let shouldRemove = false; // reset for each outer item
+        for (const eachWord4_2 of array4_2) {
+          if (eachWord4_1 === eachWord4_2) {
+            shouldRemove = true;
+            break;
+          }
+        }
+        if (!shouldRemove) {
+          array4_new.push(eachWord4_1);
+        }
+      }
+      return array4_new;
+    } else {
+      return array4_1;
+    }
+  } else {
+    return null;
+  }
+}
+// console.log(filterOut(original, toRemove));
+
+
+
 
 
 
@@ -56,8 +129,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array5) {
+  const array5_new = [];
+  if(!array5.length){
+    return null;
+  } else {
+    for (const eachElement5 of array5){
+      if(!array5_new.includes(eachElement5)){
+        array5_new.push(eachElement5);
+      } 
+    }
+    return array5_new;
+  }
+}
 
+// console.log(uniquifyArray(duplicateWords));
 
 
 
@@ -85,4 +171,15 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrixCalled) {
+  let X=1; //Random Vertical vs Horizontal  
+  if (X<=0){ //Horizontsal calculation
+  for (let i=0; i<=4; i++){
+    if (X<=0){ //Horizontsal calculation
+      console.log(matrixCalled[1][i]);
+    } else { //Vertical calculation
+      console.log(matrixCalled[i][1]);
+      }
+    }
+  }
+}
