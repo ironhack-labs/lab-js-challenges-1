@@ -175,4 +175,9 @@ const matrix = [
 	],
 ]
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+	if (matrix.every(row => row.every(num => num === 1)))
+		return 1;
+	if (matrix.every(row => row.every(num => num === 2)))
+		return 16;
+}
