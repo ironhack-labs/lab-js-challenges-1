@@ -26,7 +26,16 @@ function howManyTimes(repeatedWords, word) {
 }
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+	let arr = [];
+	if ( n === 0)
+		return[]
+		
+	for (let i = 0; i <= n; i++){
+		arr.push(i)
+	}
+return arr
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50]
