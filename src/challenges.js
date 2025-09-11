@@ -30,8 +30,9 @@ function howManyTimes(repeatedWords, word) {
 // Iteration 2 | Number Sequence
 function createSequence(n) {
 	let arr = []
-	if (n === 0) return []
-
+	if (n === 0) {
+		return []
+	}
 	for (let i = 0; i <= n; i++) {
 		arr.push(i)
 	}
@@ -62,8 +63,23 @@ function multiplyBy(numbers, mul) {
 const original = ['cat', 'dog', 'fish', 'bird', 'cat', 'fish']
 const toRemove = ['cat', 'dog']
 
-function filterOut() {}
 
+function filterOut(original, toRemove) {
+	if (original.length === 0 ) {
+		return null;
+	}
+let newList = [];
+for (let i of original ) {
+let filter = false
+for (let j of toRemove) {
+	if (i === j) {
+		filter = true
+	}
+}
+if (!filter) newList.push(i) }
+return newList
+	 
+}
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
 	'crab',
