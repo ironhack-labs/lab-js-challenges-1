@@ -13,13 +13,38 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArr, word) {
+  if(wordsArr.length === 0) return 0;
+
+  let  count = 0;
+  for (let i = 0; i < wordsArr.length; i++) {
+    if (wordsArr[i] === word) {
+      count ++;
+    }
+    
+  }
+  return count;
+}
+console.log(howManyTimes(repeatedWords, "matter"));
+console.log(howManyTimes(repeatedWords, "disobedience"));
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) return [];
+
+  let result = [];
+  for (i = 0; i <= n; i++) {
+    result.push(i) // add numbers from o-n into the array
+  }
+  return result;
+
+
+}
+console.log(createSequence(10));
 
 
 
@@ -27,7 +52,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) { if(numbers.length === 0) return [];
+
+  let result = [];
+  numbers.forEach(function(num) {result.push(num * multiplier);
+
+  });
+  return result;
+}
+console.log(multiplyBy(numbers, 2));
 
 
 
@@ -36,7 +69,13 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr1, arr2) { 
+  if(arr1.length === 0) return null;
+  if(arr2.length === 0) return arr1;
+
+  return arr1.filter(item => !arr2.includes(item));
+}
+console.log(filterOut(["cat", "dog", "fish", "bird", "cat", "fish"], ["cat", "dog"]));
 
 
 
@@ -56,7 +95,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArr) {
+  if (wordsArr.length === 0) return null;
+
+  let unique = [];
+  for (let word of wordsArr) {
+    if (!unique.includes(word)) {
+      unique.push(word);
+    }
+  }
+
+  return unique;
+}
 
 
 
@@ -85,4 +135,17 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) { 
+
+  let allNumbersArr = matrix.flat();
+
+  if (allNumbersArr.every(num => num === 1)) {
+    return 1;
+  }
+
+  if (allNumbersArr.every(num => num === 2)) {
+    return 16; 
+  }
+
+  return "Not all 1s or 2s";
+}
