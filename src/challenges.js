@@ -191,7 +191,7 @@ function greatestProduct(matrix) {
       verticalResult = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]
 
       if(verticalResult > finalResult){
-        finalResult = horizontalResult
+        finalResult = verticalResult
       }
     }
   }
