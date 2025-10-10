@@ -199,4 +199,4 @@ function greatestProduct(matrix) {
   return finalResult
  }
 
-//  my brain was about to burn, but worth
+//  my brain was about to burn, but worthhh
