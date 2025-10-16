@@ -13,13 +13,41 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, word) {
+  let count = 0
+
+  if (!repeatedWords.length) {
+    return 0
+  }
+
+  for (let i = 0; i < repeatedWords.length; i++) {
+    const wordArray = repeatedWords[i];
+    
+    if (wordArray === word) {
+      count++
+    }
+  }
+
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(numbers) {
+  let sequence = []
+
+  if (!numbers) {
+    return sequence
+  }
+
+  for (let i = 0; i <= numbers; i++) {
+    sequence.push(i)
+  }
+
+  return sequence
+}
 
 
 
@@ -27,7 +55,19 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  let arrayNum = []
+
+  if (!numbers.length) {
+    return arrayNum
+  }
+
+  numbers.forEach(number => {
+    arrayNum.push(number * multiplier)
+  });
+
+  return arrayNum
+}
 
 
 
@@ -36,10 +76,28 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  
+  if (!original.length) {
+    return null
+  }
 
+  if (!toRemove.length) {
+    return original
+  }
 
+  let arrayfilter = []
 
+  for (let i = 0; i < original.length; i++) {
+    const wordOriginal = original[i]
+
+    if (!toRemove.includes(wordOriginal)) {
+      arrayfilter.push(wordOriginal)
+    }
+  }
+
+  return arrayfilter
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,7 +114,24 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+
+  if (!duplicateWords.length) {
+    return null
+  }
+
+  let unique = []
+
+  for (let i = 0; i < duplicateWords.length; i++) {
+    const duplicateWord = duplicateWords[i];
+    
+    if (!unique.includes(duplicateWord)) {
+      unique.push(duplicateWord)
+    }
+  }
+
+  return unique
+}
 
 
 
