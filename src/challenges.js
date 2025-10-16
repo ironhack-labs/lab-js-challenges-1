@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+  let count = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === wordToSearch) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) return [];
+  const result = [];
+  for (let i = 0; i <= n; i++) {
+    result.push(i);
+  }
+  return result;
+}
 
 
 
@@ -27,8 +45,13 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
+function multiplyBy(numbers, factor) {
+  const result = [];
+  numbers.forEach (function(number) {
+    result.push(number * factor);
+  });
+  return result;
+}
 
 
 
@@ -36,7 +59,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {return null;}
+  const result = [];
+
+  for (let i = 0; i < original.length; i++){
+    const word = original[i];
+    if (!toRemove.includes(word)){
+      result.push(word)
+    }
+  }
+  return result;
+  
+}
+
+
+
 
 
 
@@ -56,8 +94,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(originArray) {
+  if (originArray.length === 0) {return null;}
+  const result = [];
 
+  for (let i = 0; i < originArray.length; i++){
+    const word = originArray[i];
+    if (!result.includes(word)){
+      result.push(word)
+    }
+  }
+  return result;
+  
+}
 
 
 
@@ -85,4 +134,26 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  const rows = matrix.length;
+  const cols = rows ? matrix[0].length : 0;
+
+  let max = 0;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+
+      if (c <= cols - 4) {
+        const pH = matrix[r][c] * matrix[r][c+1] * matrix[r][c+2] * matrix[r][c+3];
+        if (pH > max) max = pH;
+      }
+
+      if (r <= rows - 4) {
+        const pV = matrix[r][c] * matrix[r+1][c] * matrix[r+2][c] * matrix[r+3][c];
+        if (pV > max) max = pV;
+      }
+    }
+  }
+
+  return max;
+}
