@@ -13,33 +13,108 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+
+const missingWord = "matter";
+
+function howManyTimes(repeatedWords, missingWord) {
+
+  if (repeatedWords.length === 0) {
+    return 0;
+  }
 
 
+  let counter = 0;
 
+  for (let i = 0; i < repeatedWords.length; i++) {
+
+    if (missingWord === repeatedWords[i]) {
+      counter = counter + 1;
+
+    }
+  }
+
+  return counter;
+}
+
+
+console.log(`The missing word: ${missingWord} appeared: ${howManyTimes(repeatedWords, missingWord)} on the array`);
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+
+const numbersArray = [2, 5, 23, 6, 93, 16, 55]
+
+function createSequence(numbersArray) {
+  if (numbersArray === 0) {
+    return [];
+  }
+
+  for (let i = 0; i < numbersArray.length - 1; i++) {
+    for (let j = i + 1; j < numbersArray.length; j++) {
+      if (numbersArray[i] > numbersArray[j]) {
+        const aux1 = numbersArray[i];
+        numbersArray[i] = numbersArray[j];
+        numbersArray[j] = aux1;
+      }
+    }
+  }
+  return numbersArray;
+}
 
 
 
+// // Iteration 3 | Multiply for Each
 
-// Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
+const multiplier = 3;
+function multiplyBy(numbers, multiplier) {
+  const result = [];
+  if (numbers.length === 0) {
+    return [];
+  }
+  else {
 
-function multiplyBy() {}
+    numbers.forEach(function (number) {
+      result.push(number * multiplier)
+    });
+    return result;
 
+  }
 
+}
+console.log(multiplyBy(numbers, multiplier));
 
 
 // Iteration 4 | Filter Out
-const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
-const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+const original = ["arandano", "melon", "sandia", "sandia", "pomelo", "fresa"];
+const toRemove = ["melon", "arandano"];
 
+function filterOut(original, toRemove) {
+  let result = [];
 
+  if (original.length === 0) {
+    return null;
+  }
 
+  if (toRemove.length === 0) {
+    return original;
+  }
+  for (let i = 0; i < original.length; i++) {
+    let found = false;
+    for (let j = 0; j < toRemove.length; j++) {
+      if (original[i] === toRemove[j]) {
+        found = true;
+        break
+      }
+    }
+    if (found === false) {
+      result.push(original[i]);
+    }
+  }
+  return result;
+}
+
+console.log(filter(original, toRemove));
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,8 +131,42 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
 
+  let result = [];
+
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+
+  for (let i = 0; i < duplicateWords.length; i++) {
+
+    let count = 0;
+
+    for (let j = 0; j < result.length; j++) {
+
+      if (duplicateWords[i] === result[j]) {
+
+        count = count + 1;
+        break;
+
+      }
+
+    }
+
+    if (count === 0) {
+
+      result.push(duplicateWords[i]);
+
+    }
+
+  }
+  return result;
+}
+
+
+
+console.log(`la matriz filtrada es ${uniquifyArray(duplicateWords)}`);
 
 
 
@@ -85,4 +194,4 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() { }
