@@ -13,32 +13,75 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, wordToSearch) {
+  
+  if (repeatedWords.length === 0) return 0;
 
+  let count = 0;
 
+  for (let i = 0; i < repeatedWords.length; i++) {
+    
+    if (repeatedWords[i] === wordToSearch) {
+      count++;
+    }
+  }
+
+  return count;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  
+  if (n === 0) return [];
 
+  const sequence = [];
 
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+
+  return sequence;
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersArray, multiplier) {
+ 
+  if (numbersArray.length === 0) return [];
 
+  const result = [];
 
+  numbersArray.forEach(function(number) {
+    result.push(number * multiplier);
+  });
+  return result;
+}
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
 
+  if (original.length === 0) return null;
 
+  if (toRemove.length === 0) return original;
+
+  const disallowed = new Set(toRemove);
+
+  const result = [];
+  for (let i = 0; i < original.length; i++) {
+    const item = original[i];
+    if (!disallowed.has(item)) {
+      result.push(item);
+    }
+  }
+  return result;
+}
 
 
 // Iteration 5 | Unique Arrays
@@ -56,9 +99,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
 
+  if (duplicateWords.length === 0) return null;
 
+  const unique = [];
+
+  duplicateWords.forEach(function(word) {
+    if (!unique.includes(word)) {
+      unique.push(word);
+    }
+  });
+  return unique;
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
