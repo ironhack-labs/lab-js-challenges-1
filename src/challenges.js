@@ -1,3 +1,5 @@
+const { cloneElement } = require("react");
+
 // Iteration 1 | Count Repetition
 const repeatedWords = [
   "machine",
@@ -13,13 +15,32 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordsToSearch) {
+  let amount = 0
+
+  words.forEach(function(element, i, arr){
+    if(element === wordsToSearch){
+      amount++
+    }
+  })
+
+  return amount
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+ const newArr = []
+  if (number === 0){
+    return []
+  }
+for (let i=0; i<=number; i++){
+  newArr.push(i)
+}
+return newArr
+}
 
 
 
@@ -27,7 +48,21 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+
+function multiplyBy(numbers, num) {
+
+  const newArr2 = []
+  if (numbers.length === 0) {
+    return []
+  }
+
+  numbers.forEach(function (element2, index2, arr2) {
+    newArr2.push(element2 * num)
+  })
+return newArr2
+}
+
+
 
 
 
@@ -36,7 +71,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+
+  const newArr3 =[]
+  if (original.length === 0){
+    return null
+  }
+  else if (toRemove.length === 0){
+    return original
+  }
+  for (i =0; i<original.length; i++){
+    if (!toRemove.includes(original[i])){
+      newArr3.push(original[i])
+    }
+  }
+  return newArr3
+}
 
 
 
@@ -56,7 +106,18 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArray) {
+  const newArr4 =[]
+  if (wordsArray.length=== 0){
+    return null
+  }
+  for (let i=0; i<wordsArray.length; i++){
+    if (!newArr4.includes(wordsArray[i])){
+      newArr4.push(wordsArray[i])
+    }
+  }
+  return newArr4
+}
 
 
 
