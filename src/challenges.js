@@ -13,21 +13,40 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(repeatedWords, word) {
+  let WordCounter = 0;
+  for (let element of repeatedWords) {
+    if (element === word){
+      WordCounter += 1;
+    }
+  }
+  return WordCounter;
+}
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
 
-
+  if (number === 0) return [];
+  let  sequence = [];
+  for (let i = 0; i <= number; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, n) {
+
+  numbers.forEach((element, index, array) =>{
+    array[index] = element * n;
+  });
+  
+  return numbers;
+}
 
 
 
@@ -36,7 +55,13 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  
+  if(original.length === 0) return null;
+  if(toRemove.length === 0) return original;
+
+  return original.filter((element) => !toRemove.includes(element));
+}
 
 
 
@@ -56,7 +81,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+
+  if (duplicateWords.length === 0) return null;
+  
+  let uniqueWords = [];
+  duplicateWords.forEach((element) => {
+
+    if (!uniqueWords.includes(element)) {
+      uniqueWords.push(element);
+    }
+  
+  });
+  
+  return uniqueWords;
+}
 
 
 
@@ -85,4 +124,35 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  
+  let maxProduct = 0;
+  const size = matrix.length;
+
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      // Check horizonalty
+      if(j+3 < size) {
+        const horizontalProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+        if (horizontalProduct > maxProduct) {
+          maxProduct = horizontalProduct;
+        }
+      }
+      // Check verticaly
+      if(i+3 < size) {
+        const verticalProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+        if (verticalProduct > maxProduct) {
+          maxProduct = verticalProduct;
+        }
+      }
+      // Check diagonal right
+      if(i+3 < size && j+3 < size) {
+        const daigonalRightProdust = matrix[i][j] * matrix[i+1][j+1] * matrix[i+2][j+2] * matrix[i+3][j+3];
+        if (daigonalRightProdust > maxProduct) {
+          maxProduct = daigonalRightProdust;
+        }
+      }
+    }
+  }
+  return maxProduct;
+}
