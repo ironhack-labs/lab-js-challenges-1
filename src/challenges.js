@@ -1,64 +1,90 @@
 // Iteration 1 | Count Repetition
-const repeatedWords = [
-  "machine",
-  "matter",
-  "subset",
-  "trouble",
-  "starting",
-  "matter",
-  "eating",
-  "matter",
-  "truth",
-  "disobedience",
-  "matter"
-];
+const repeatedWords = ["machine", "matter", "subset", "trouble", "starting", "matter", "eating", "matter", "truth", "disobedience", "matter"];
 
-function howManyTimes() {}
-
-
+function howManyTimes(repeatedWords, word) {
+  let count = 0;
+  for (let i = 0; i < repeatedWords.length; i++) {
+    const currentWord = repeatedWords[i];
+    if (currentWord === word) {
+      count++;
+    }
+  }
+  return count;
+}
+// console.log(howManyTimes(repeatedWords, "matter"));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
+function createSequence(n) {
+  let arr = [];
+  if (n === 0) {
+    return arr;
+  }
+  for (let i = 0; i <= n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+// console.log(createSequence(7));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(numbers, multiplierNum) {
+  let arr = [];
+  if (numbers.length === 0) {
+    return arr;
+  }
+  numbers.forEach(function (num) {
+    arr.push(num * multiplierNum);
+  });
+  return arr;
+}
+// console.log(multiplyBy(numbers, 10));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
+function filterOut(original, toRemove) {
+  let filteredArr = [];
+  if (original.length === 0) {
+    return null;
+  } else if (toRemove.length === 0) {
+    return original;
+  } else {
+    for (let i = 0; i < original.length; i++) {
+      const currentWord = original[i];
+      if (toRemove.includes(currentWord)) {
+      } else {
+        filteredArr.push(currentWord);
+      }
+    }
+    return filteredArr;
+  }
+}
 
 
 // Iteration 5 | Unique Arrays
-const duplicateWords = [
-  "crab",
-  "poison",
-  "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
-  "poison",
-  "communion",
-  "simple",
-  "bring"
-];
+const duplicateWords = ["crab", "poison", "contagious", "simple", "bring", "sharp", "playground", "poison", "communion", "simple", "bring"];
 
-function uniquifyArray() {}
-
-
+function uniquifyArray(duplicateWords) {
+  let uniqueArr = [];
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  for (let i = 0; i < duplicateWords.length; i++) {
+    const currentWord = duplicateWords[i];
+    if (uniqueArr.includes(currentWord)) {
+    } else {
+      uniqueArr.push(currentWord);
+    }
+  }
+  return uniqueArr;
+}
+// console.log(uniquifyArray(duplicateWords));
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +111,30 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let max = 0;
+
+  //Horizontal
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      let p =
+        matrix[i][j] * matrix[i][j + 1] * matrix[i][j + 2] * matrix[i][j + 3];
+      if (p > max) {
+        max = p;
+      }
+    }
+  }
+
+  //Vertical
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let p =
+        matrix[i][j] * matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j];
+      if (p > max) {
+        max = p;
+      }
+    }
+  }
+  return max;
+}
+// console.log(greatestProduct(matrix));
