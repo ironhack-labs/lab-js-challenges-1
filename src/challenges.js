@@ -118,7 +118,7 @@ function uniquifyArray(wordsArr) {
   }
   
   wordsArr.forEach((word) => {
-    if(duplicates.indexOf(word) === -1){
+    if(duplicates.indexOf(word) < 0){
       duplicates.push(word)
     }
   })
@@ -155,11 +155,19 @@ const matrix = [
 
 function greatestProduct(matrix) {
   let maxProduct = 0
-  for(let i=0; i < matrix.length; i++) {
+
+  for(let i=0; i < matrix.length - 3; i++) {
       
-    for(let j=0; j < matrix.length; j++){
-        let horizontal = (matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]) / 4
-        let vertical = (matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]) / 4
+    for(let j=0; j < matrix.length - 3; j++){
+      let horizontal = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]
+      if(horizontal > maxProduct) {
+        maxProduct = horizontal
+      }
+
+      let vertical = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]
+      if(vertical > maxProduct) {
+        maxProduct = vertical
+      }
     }
   }
   return maxProduct
