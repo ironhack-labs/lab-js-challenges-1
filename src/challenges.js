@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, searchedWord) {
+  let count = 0;
+  for(let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === searchedWord) {
+      count ++
+    }
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let result = []
+  if (number === 0) {
+    return result
+  }
+  for (let i = 0; i <= number; i++) {
+    result.push(i)
+  }
+  return result
+}
 
 
 
@@ -27,7 +44,11 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  return numbers.array.forEach(element => {
+    element * multiplier
+  });
+}
 
 
 
@@ -36,7 +57,49 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+  }
+  let result = []
+  for (let i = 0; i < original.length; i++) {
+    let currentWord = original[i]
+    if (toRemove.includes(currentWord)) {
+      continue
+    }
+    result.push(currentWord)
+  }
+  /*for (const element of original) {
+    result.push(element)
+  }
+  for (let i = 0; i < original.length; i++) {
+    let currentWord = original[i]
+    if (toRemove.includes(currentWord)) {
+      let index = result.indexOf(currentWord) 
+      result.splice(index, 1)
+    }
+  }*/
+  return result
+}
+
+ console.log(filterOut(original, toRemove))
+
+/*
+cat, result = ["dog"]
+*/
+
+/*function filterOut(original, toRemove){
+  // let newArr = [];
+  for(let i =0 ; i<original.length; i++ ){
+    for(let j = 0; j<toRemove.length ; j++){
+      if(original[i] === toRemove[j]){
+        original.splice(j ,1);
+        console.log(original)
+      }
+    }
+  } 
+  return original;
+}*/
 
 
 
@@ -56,7 +119,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) {
+    return null
+  }
+  let result = []
+  for (let i = 0; i < duplicateWords.length; i++) {
+    let currentWord = duplicateWords[i]
+    if (result.includes(currentWord)) {
+      continue
+    }
+    result.push(currentWord)
+  }
+  return result
+}
 
 
 
