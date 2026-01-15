@@ -13,13 +13,32 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+let count = 0;
+  for (let i = 0; i < words.length; i++) {
+      if (words[i] === wordToSearch) {
+          count++;
+      }
+  }
+  return count;
+}
+console.log(howManyTimes(repeatedWords, "matter"));
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let result = [];
+  if (n === 0) {
+    return result;
+  }
+  for (let i = 0; i <= n; i++) {
+    result.push(i);
+  }
+  return result;
+}
 
 
 
@@ -27,21 +46,42 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(numbers, multiplier) {
+  let result = [];
+  numbers.forEach(num => {
+    result.push(num * multiplier);
+  });
+  return result;
+}
 
 
 // Iteration 4 | Filter Out
+
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+  if (toRemove.length === 0) {
+    return original;
+  }
+ let result = [];
 
+  original.forEach(item => {
+    if (!toRemove.includes(item)) {
+      result.push(item);
+    }
+  });
 
+  return result;  
+}
 
 
 // Iteration 5 | Unique Arrays
+
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,10 +96,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  if (words.length === 0) {
+    return null;
+  }
+  const uniqueArray = [];
 
+  for (let i = 0; i < words.length; i++) {
+    if (!uniqueArray.includes(words[i])) {
+      uniqueArray.push(words[i]);
+    }
+  }
 
-
+  return uniqueArray;
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +135,6 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  
+}
