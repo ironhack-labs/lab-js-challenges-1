@@ -45,9 +45,15 @@ function createSequence(number) {
 const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy(numbers, multiplier) {
-  return numbers.array.forEach(element => {
-    element * multiplier
+  console.log(numbers, multiplier)
+  if (numbers.length === 0) {
+    return []
+  }
+  const result = []
+  numbers.forEach((element) => {
+    result.push(element * multiplier)
   });
+  return result
 }
 
 
@@ -69,37 +75,9 @@ function filterOut(original, toRemove) {
     }
     result.push(currentWord)
   }
-  /*for (const element of original) {
-    result.push(element)
-  }
-  for (let i = 0; i < original.length; i++) {
-    let currentWord = original[i]
-    if (toRemove.includes(currentWord)) {
-      let index = result.indexOf(currentWord) 
-      result.splice(index, 1)
-    }
-  }*/
   return result
 }
 
- console.log(filterOut(original, toRemove))
-
-/*
-cat, result = ["dog"]
-*/
-
-/*function filterOut(original, toRemove){
-  // let newArr = [];
-  for(let i =0 ; i<original.length; i++ ){
-    for(let j = 0; j<toRemove.length ; j++){
-      if(original[i] === toRemove[j]){
-        original.splice(j ,1);
-        console.log(original)
-      }
-    }
-  } 
-  return original;
-}*/
 
 
 
@@ -161,4 +139,43 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  console.log(matrix)
+  let result = 0
+  for (let i = 0; i < matrix.length; i++) {
+    let selectedArray = matrix[i]
+    for (let j = 0; j < selectedArray.length - 3; j++) {
+      let selectedNumber = selectedArray[j]
+      console.log(selectedNumber)
+      let horizontalResult = selectedNumber *  selectedArray[j + 1] * selectedArray[j + 2] * selectedArray[j + 3]
+      if (i < matrix.length - 3) {
+        let verticalResult = selectedNumber *  matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j]
+        result = Math.max (horizontalResult, verticalResult, result)
+      } else {
+        result = Math.max (horizontalResult, result)
+      }
+      console.log(result)
+    }
+  }
+  console.log(result)
+  return result
+}
+
+const sampleMatrix = [
+  [1, 1, 1, 3],
+[1, 2, 1, 3],
+[3, 3, 3, 3],
+[1, 4, 1, 3]
+]
+console.log(greatestProduct(sampleMatrix))
+
+/*
+
+[1, 1, 1, 3]
+[1, 2, 1, 3]
+[3, 3, 3, 3]
+[1, 4, 1, 3]
+
+for each posiiton, we need to finc the multiplication of adjacent 3 positions. and check that for maximum
+
+ */
