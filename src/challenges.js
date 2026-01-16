@@ -13,31 +13,75 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+  function howManyTimes(array, word) {
+    if (array.length === 0) {
+      return 0;
+    }
+    return array.filter(item => item === word).length;
+  }
+console.log(howManyTimes(repeatedWords,"matter"));
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
 
+function createSequence(number) {
+    
+    if (number === 0) {
+        return [];
+    } let newArray = []; 
+    for (let i = 0 ; i <= number ; i++) {
+        newArray.push(i);
+    }
+    return newArray;
+    }
 
+    console.log(createSequence([]));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  if (numbers.length === 0) {
+    return [];
+  }
 
+  let result = [];
+  numbers.forEach(element => {
+    result.push(element * multiplier);
+  });
 
-
+  return result;
+}
+console.log(multiplyBy(numbers,10));
+console.log(multiplyBy(numbers,3));
 
 // Iteration 4 | Filter Out
+
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
 
+function filterOut(original, toRemove) {
+  
+    let result = [];
+
+  if (original.length === 0) {
+    return null;
+  } else if (toRemove.length === 0) {
+    return original;
+  } else {
+    for (let i = 0; i < original.length; i++) {
+      if (!toRemove.includes(original[i])) {        // This means "is not included in toRemove"
+        result.push(original[i]);
+      }
+    }
+    return result;
+  }
+}
+
+console.log(filterOut(original, toRemove));
 
 
 
@@ -56,7 +100,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+
+function uniquifyArray(array) {
+
+    let uniqueArray = [];
+    let duplicateWords = [];
+  
+    if (array.length === 0) {
+    return null;
+  } else {
+     uniqueArray = Array.from(new Set(array));
+     // "new Set" removes duplicates "Array.from" turns it back into an array
+  } return uniqueArray;
+}
+
+console.log(uniquifyArray(duplicateWords));
 
 
 

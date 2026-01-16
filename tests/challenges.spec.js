@@ -12,6 +12,8 @@ const shuffle = (currentArray) => {
   return array;
 };
 
+// ===== Exercise 1 ====
+
 describe("Iteration 1 | Count Repetition", () => {
   describe("function howManyTimes()", () => {
     it("should be defined as a function", () => {
@@ -56,6 +58,9 @@ describe("Iteration 1 | Count Repetition", () => {
     });
   });
 });
+
+
+// ===== Exercise 2 ====
 
 describe("Iteration 2 | Number Sequence", () => {
   describe("function createSequence()", () => {
