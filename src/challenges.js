@@ -140,42 +140,30 @@ const matrix = [
 ];
 
 function greatestProduct(matrix) {
-  console.log(matrix)
+  
   let result = 0
   for (let i = 0; i < matrix.length; i++) {
     let selectedArray = matrix[i]
-    for (let j = 0; j < selectedArray.length - 3; j++) {
+    for (let j = 0; j < selectedArray.length; j++) {
       let selectedNumber = selectedArray[j]
-      console.log(selectedNumber)
-      let horizontalResult = selectedNumber *  selectedArray[j + 1] * selectedArray[j + 2] * selectedArray[j + 3]
-      if (i < matrix.length - 3) {
-        let verticalResult = selectedNumber *  matrix[i + 1][j] * matrix[i + 2][j] * matrix[i + 3][j]
-        result = Math.max (horizontalResult, verticalResult, result)
-      } else {
-        result = Math.max (horizontalResult, result)
+      if (selectedArray[j + 1] !== undefined && selectedArray[j + 2] !== undefined && selectedArray[j + 3] !== undefined) {
+        result = checkValidityAndGetMax(selectedNumber, selectedArray[j + 1], selectedArray[j + 2], selectedArray[j + 3], result)
       }
-      console.log(result)
+      if (matrix[i + 1] !== undefined && matrix[i + 2] !== undefined && matrix[i + 3] !== undefined) {
+        result = checkValidityAndGetMax(selectedNumber, matrix[i + 1][j], matrix[i + 2][j], matrix[i + 3][j], result)
+      }
     }
   }
-  console.log(result)
   return result
+  
 }
 
-const sampleMatrix = [
-  [1, 1, 1, 3],
-[1, 2, 1, 3],
-[3, 3, 3, 3],
-[1, 4, 1, 3]
-]
-console.log(greatestProduct(sampleMatrix))
+function checkValidityAndGetMax(firstNumber, secondNumber, thirdNumber, fourthNumber, result) {
 
-/*
+  let mulResult = firstNumber *  secondNumber * thirdNumber * fourthNumber
+    if (!isNaN(mulResult) && mulResult > result) {
+      result = mulResult
+    }
+  return result
 
-[1, 1, 1, 3]
-[1, 2, 1, 3]
-[3, 3, 3, 3]
-[1, 4, 1, 3]
-
-for each posiiton, we need to finc the multiplication of adjacent 3 positions. and check that for maximum
-
- */
+}
