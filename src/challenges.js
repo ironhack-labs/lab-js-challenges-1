@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, searchedWord) {
+  let count = 0;
+  for(let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === searchedWord) {
+      count ++
+    }
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(number) {
+  let result = []
+  if (number === 0) {
+    return result
+  }
+  for (let i = 0; i <= number; i++) {
+    result.push(i)
+  }
+  return result
+}
 
 
 
@@ -27,7 +44,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  console.log(numbers, multiplier)
+  if (numbers.length === 0) {
+    return []
+  }
+  const result = []
+  numbers.forEach((element) => {
+    result.push(element * multiplier)
+  });
+  return result
+}
 
 
 
@@ -36,7 +63,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null
+  }
+  let result = []
+  for (let i = 0; i < original.length; i++) {
+    let currentWord = original[i]
+    if (toRemove.includes(currentWord)) {
+      continue
+    }
+    result.push(currentWord)
+  }
+  return result
+}
+
 
 
 
@@ -56,7 +97,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+  if (duplicateWords.length === 0) {
+    return null
+  }
+  let result = []
+  for (let i = 0; i < duplicateWords.length; i++) {
+    let currentWord = duplicateWords[i]
+    if (result.includes(currentWord)) {
+      continue
+    }
+    result.push(currentWord)
+  }
+  return result
+}
 
 
 
@@ -85,4 +139,31 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  
+  let result = 0
+  for (let i = 0; i < matrix.length; i++) {
+    let selectedArray = matrix[i]
+    for (let j = 0; j < selectedArray.length; j++) {
+      let selectedNumber = selectedArray[j]
+      if (selectedArray[j + 1] !== undefined && selectedArray[j + 2] !== undefined && selectedArray[j + 3] !== undefined) {
+        result = checkValidityAndGetMax(selectedNumber, selectedArray[j + 1], selectedArray[j + 2], selectedArray[j + 3], result)
+      }
+      if (matrix[i + 1] !== undefined && matrix[i + 2] !== undefined && matrix[i + 3] !== undefined) {
+        result = checkValidityAndGetMax(selectedNumber, matrix[i + 1][j], matrix[i + 2][j], matrix[i + 3][j], result)
+      }
+    }
+  }
+  return result
+  
+}
+
+function checkValidityAndGetMax(firstNumber, secondNumber, thirdNumber, fourthNumber, result) {
+
+  let mulResult = firstNumber *  secondNumber * thirdNumber * fourthNumber
+    if (!isNaN(mulResult) && mulResult > result) {
+      result = mulResult
+    }
+  return result
+
+}
