@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, search) {
+  let count = 0;
+
+  for (const word of arrayOfWords) {
+    if (word === search) {
+      count++;
+    }
+  }
+
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0) {
+    return [];
+  }
+
+  const sequence = [];
+  
+  for (let i=0; i<=n; i++) {
+    sequence.push(i);
+  }
+
+  return sequence;
+}
 
 
 
@@ -27,7 +49,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, multiplier) {
+  result = [];
+
+  arrayOfNumbers.forEach(function(element, index, arr){
+    result.push(element * multiplier);
+  })
+
+  return result;
+}
 
 
 
@@ -36,7 +66,21 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+
+  filteredArray = [];
+
+  for (const str of original) {
+    if (!toRemove.includes(str)) {
+      filteredArray.push(str);
+    }
+  }
+
+  return filteredArray;
+}
 
 
 
@@ -56,7 +100,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  if (arr.length === 0) {
+    return null;
+  }
+
+  const newArray = [];
+
+  for (let i=0; i<arr.length; i++) {
+    if(!newArray.includes(arr[i])){
+      newArray.push(arr[i]);
+    }
+  }
+
+  return newArray;
+}
 
 
 
@@ -85,4 +143,46 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  console.log("greatestProduct function");
+
+  let maxProduct = 0;
+
+  // Multiplicar lineas horizontales
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      const adjacent = matrix[i].slice(j, j + 4);
+
+      let product = 1;
+      for (const number of adjacent) {
+        product *= number;
+      }
+
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+
+  //Multiplicar lineas verticales
+  for (let i = 0; i < matrix[0].length; i++) {
+    for (let j = 0; j < matrix.length - 3; j++) {
+      const adjacent = [];
+
+      for (let k = 0; k < 4; k++) {
+        adjacent.push(matrix[k + j][i]);
+      }
+
+      let product = 1;
+      for (const number of adjacent) {
+        product *= number;
+      }
+
+      if (product > maxProduct) {
+        maxProduct = product;
+      }
+    }
+  }
+
+  return maxProduct;
+}
