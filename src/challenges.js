@@ -13,13 +13,39 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+
+  let result = 0
+  if (arr.length === 0)  {
+    return 0
+  }
+
+  arr.forEach(element => {
+    if ( element.toLowerCase() === word.toLowerCase()) {
+      result ++
+    }
+  });
+
+  return result
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+    result = []
+
+    if (num === 0)  {
+     return result
+    }
+
+    for ( i = 0; i <= num; i++)  {
+      result.push(i)
+    }
+    
+    return result
+}
 
 
 
@@ -27,7 +53,20 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, num) {
+
+   let newArray = []
+
+  if (arr.length === 0)  {
+    return newArray
+  }
+
+  arr.forEach(el => {
+    newArray.push(el * num)
+  });
+
+  return newArray
+}
 
 
 
@@ -36,7 +75,15 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrOG, arrRemove ) {
+
+  if (arrOG.length === 0) {
+    return null
+  }
+
+  return arrOG.filter(el => !arrRemove.includes(el))
+ 
+}
 
 
 
@@ -56,9 +103,15 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
 
+   if (arr.length === 0) {
+    return null
+  }
+ 
+  return arr.filter((el, i ) =>  arr.indexOf(el) === i)
 
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
@@ -85,4 +138,33 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arr) {
+
+  let maxProduct = 0
+
+  for (let row = 0; row < arr.length; row++) {
+    for (let col= 0; col < arr[row].length ; col++) {
+
+
+      //horizontal
+
+      if ( col <= arr[row].length - 4 ) { // reviso que no me pase del limite del array al multiplicar 4 numeros seguidos
+        let product = arr[row][col] * arr[row][col + 1] * arr[row][col + 2] * arr[row][col + 3] // multiplico los 4 numeros seguidos
+        if ( product > maxProduct) { 
+          maxProduct = product
+        }
+      }
+
+      //vertical
+
+      if ( row <= arr.length - 4) {
+        let product = arr[row][col] * arr[row + 1][col] * arr[row + 2][col] * arr[row + 3][col]
+        if ( product > maxProduct) {
+          maxProduct = product
+        }
+      }
+    }
+  }
+
+  return maxProduct
+}
