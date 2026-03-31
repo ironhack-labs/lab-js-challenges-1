@@ -13,21 +13,51 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, searchWord) {
+  
+  let times = 0;
+
+  for (let i = 0; i < words.length; i ++) {
+    if( words[i] === searchWord ) {
+      times++
+    }
+  }
+
+  return times
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
 
+  if(num === 0) {
+    return []
+  }
 
+  const result = [];
+
+  for (i=0; i <= num; i++) {
+    result.push(i);
+  }
+
+  return result
+
+}
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  const multipliedNumbers = []
+
+  numbers.forEach((element) => multipliedNumbers.push( element * multiplier))
+
+  return multipliedNumbers
+
+}
 
 
 
@@ -36,7 +66,37 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalArray, removeArray) {
+
+  if(originalArray.length === 0) {
+    return null
+  }
+
+  if(removeArray.length === 0) {
+    return originalArray
+  }
+
+  for(let i = 0; i < removeArray.length; i++) {
+
+    for(let j = 0; j < originalArray.length; j++) {
+      if(removeArray[i]===originalArray[j]) {
+        originalArray[j] = null
+      }
+    }
+  }
+
+  resultArray = []
+
+  originalArray.map(function(el){
+    if(el!==null) {
+      resultArray.push(el)
+    }
+  })
+
+  return resultArray
+}
+
+
 
 
 
@@ -56,7 +116,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+
+  if( words.length === 0) {
+    return null
+  }
+
+  const wordsObject = {}
+
+  words.map( el => wordsObject[el] = true)
+
+  const result = Object.keys(wordsObject)
+
+  return result
+}
 
 
 
@@ -85,4 +158,30 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+
+  let greatestProduct = 0;
+
+  for (let i = 0; i < matrix.length - 3; i ++) {
+    let row = matrix[i]
+
+    for (let j = 0; j < row.length - 3; j ++) {
+
+      let horizontalProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3]
+
+      if(horizontalProduct > greatestProduct) {
+        greatestProduct = horizontalProduct
+      }
+
+      let verticalProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j]
+
+      if(verticalProduct > greatestProduct) {
+        greatestProduct = verticalProduct
+      }
+    }
+
+    return greatestProduct
+
+  }
+
+}
