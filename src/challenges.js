@@ -13,13 +13,34 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, search) {
+  let acc = 0
+  words.forEach(word => {
+    if (word === search) {
+      acc ++
+    }
+  })
+
+  return acc
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(num) {
+  const arr = []
+
+  if (num === 0) {
+    return arr
+  }
+
+  for (let i = 0; i <= num; i++) {
+    arr.push(i)
+  }
+
+  return arr
+}
 
 
 
@@ -27,7 +48,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, mult) {
+  const multiplied = []
+  
+  arr.forEach(num => {
+    multiplied.push(num * mult)
+  })
+
+  return multiplied
+}
 
 
 
@@ -36,7 +65,30 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(array, remove) {
+  const filtered = []
+  const filterObject = {}
+
+  if (array.length === 0) {
+    return null
+  }
+
+  if (remove.length === 0) {
+    return array
+  }
+
+  remove.forEach(el => {
+    filterObject[el] = true
+  });
+
+  array.filter(el => {
+    if (!(el in filterObject)) {
+      filtered.push(el)
+    }
+  })
+  
+  return filtered
+}
 
 
 
@@ -56,12 +108,20 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (array.length === 0) {
+    return null
+  }
 
-
+  return array.filter((el, i, self) => {
+    return self.indexOf(el) === i
+  })
+}
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
+
+// No hecho, es bastante posible que se intente un poco más adelante
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -85,4 +145,6 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  
+}
