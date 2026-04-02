@@ -13,13 +13,39 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, string) {
+let count = 0;
+for ( let i=0 ; i< words.length ; i++){
+  if ( words[i].indexOf(string) !== -1){
+  count++ ;
+}
+if (count === 5){
+  return 5;
+}
+}
+return count;
+
+}
+
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let zeroArr = [];
+  for ( let i=0 ; i<= n ; i++){
+  if ( n === 0){
+    return zeroArr ;
+  }
+  else {
+    zeroArr.push(i);
+  }
+  }
+
+return zeroArr;
+
+}
 
 
 
@@ -27,7 +53,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbersarr,multiply) {
+let multiplyNum = [];
+  if ( numbersarr.length === 0){
+  return multiplyNum;
+}
+for ( let i=0 ; i< numbersarr.length ;i++){
+  multiplyNum.push (numbersarr[i]*multiply);
+}
+return multiplyNum;
+}
 
 
 
@@ -36,7 +71,20 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(originalarr, toRemovearr) {
+  if ( originalarr.length === 0 ){
+    return null;
+  }
+  let filterout = [];
+   for (let i=0 ; i<originalarr.length ; i++ ){
+    for (let j=0 ; j<toRemovearr.length ;j++ ){
+      if ( originalarr[i] === toRemovearr[j] ){
+        originalarr.splice (i,1);
+      }
+    }
+   }
+return originalarr;
+}
 
 
 
@@ -56,9 +104,35 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+// function uniquifyArray(duplicateWordsarr) {
+// if (duplicateWordsarr.length === 0 ){
+//   return null;
+// }
+// let duplicate = duplicateWordsarr[0];
+// for ( let i=1 ; i< duplicateWordsarr.length ; i++){
+// if (duplicateWordsarr[i] === duplicate){
+// duplicateWordsarr.splice(i,2);
+// }
+// }
+// return duplicateWordsarr;
+// }
 
 
+function uniquifyArray(duplicateWordsarr) {
+if (duplicateWordsarr.length === 0 ){
+  return null;
+ }
+
+ for ( let i=0 ; i< duplicateWordsarr.length ; i++){
+   for ( let j=i+1 ; j< duplicateWordsarr.length ; j++){
+ if (duplicateWordsarr[i] === duplicateWordsarr[j]){
+ duplicateWordsarr.splice(j,1);
+ j--;
+ }
+   }
+ }
+ return duplicateWordsarr;
+ }
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
