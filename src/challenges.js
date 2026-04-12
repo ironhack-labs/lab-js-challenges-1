@@ -13,21 +13,52 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+  let control = 0;
+  words.forEach(word => {
+    if (word === wordToSearch) control++;
+  });
+  return control;
+}
 
+console.log(howManyTimes(repeatedWords, "matter"))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(targetNum) {
 
+  let numRangeArr = [];
+
+  if(targetNum === 0) return numRangeArr;
+
+  for(let i = 0; i <= targetNum; i++){
+     numRangeArr.push(i);
+  }
+
+return numRangeArr;
+
+}
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, multiplier) {
+
+  let newNumArr = [];
+
+  arrayOfNumbers.forEach((num) => {
+    newNumArr.push (num * multiplier)
+  });
+
+  return newNumArr;
+
+}
+
+console.log(multiplyBy(numbers, 2))
+
 
 
 
@@ -36,9 +67,15 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
 
+  if (!original || original.length === 0) return null;
+  if (!toRemove || toRemove.length === 0) return original;
 
+  return original.filter(item => !toRemove.includes(item));
+}
+
+console.log(filterOut(original, toRemove))
 
 
 // Iteration 5 | Unique Arrays
@@ -56,7 +93,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+  const unique = [];
+
+  if (words.length === 0){
+    return null;
+  }
+
+  words.forEach(word => {
+    if (!unique.includes(word)) {
+      unique.push(word);
+    }
+  });
+
+  return unique;
+}
 
 
 
@@ -85,4 +136,28 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let greatest = 0;
+
+  for (let r = 0; r < matrix.length; r++) {
+    for (let c = 0; c < matrix[0].length; c++) {
+
+      // Horizontal →
+      if (c + 3 < matrix[0].length) {
+        greatest = Math.max(greatest,
+          matrix[r][c] * matrix[r][c+1] * matrix[r][c+2] * matrix[r][c+3]
+        );
+      }
+
+      // Vertical ↓
+      if (r + 3 < matrix.length) {
+        greatest = Math.max(greatest,
+          matrix[r][c] * matrix[r+1][c] * matrix[r+2][c] * matrix[r+3][c]
+        );
+      }
+
+    }
+  }
+
+  return greatest;
+}

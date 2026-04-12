@@ -178,7 +178,7 @@ const repeatedWords = [
 **Example:**
 
 ```javascript
-howManyTimes(repeatedWords, "matter");
+howManyTimes();
 ```
 
 **Expected output:**
@@ -426,7 +426,7 @@ const matrix = [
   To find the length of a string, use the `length` property. Here is an example:
 
   ```js
-  const str = "Hello, world!"";
+  const str = "Hello, world!";
   console.log(str.length); // 13
   ```
 
