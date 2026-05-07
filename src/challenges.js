@@ -13,13 +13,30 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArr, wordToSearch) {
+  let counter = 0;
+  for (const word of wordsArr) {
+    if (word === wordToSearch) {
+      counter++;
+    }
+  }
+  return counter;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if(n===0){
+    return []
+  }
+  counter = [];
+  for (let i = 0; i <= n; i++) {
+    counter.push(i);
+  }
+  return counter;
+}
 
 
 
@@ -27,7 +44,17 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numArr, multiplier) {
+    if (numArr.length === 0){
+      return []
+    }
+  const resultArr=[]
+  numArr.forEach(function(num){
+    
+    resultArr.push(num*multiplier)
+  })
+  return resultArr
+}
 
 
 
@@ -36,8 +63,34 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrOriginal, arrToFilter) {
+  const resultArr= []
+  if(arrOriginal.length===0){
+    return null
+  }
+  const strToCompare = arrToFilter.forEach(function(str1){
+    str1
+  })
+  arrOriginal.forEach(function(str){
+    if(!arrToFilter.includes(str)){
+      resultArr.push(str)
+    }
+  })
+  return resultArr
+}
 
+// function filterOut(arrOriginal, arrToFilter) {
+//   const resultArr= []
+//   const strToCompare = arrToFilter.forEach(function(str1){
+//     str1
+//   })
+//   arrOriginal.forEach(function(str, index){
+//     if(str1 !== str){
+//       resultArr.push(str)
+//     }
+//   })
+//   return resultArr
+// }
 
 
 
@@ -56,7 +109,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(strArr) {
+  if(strArr.length===0){
+    return null
+  }
+  const resultArr = [];
+  strArr.forEach(function (element) {
+    if (!resultArr.includes(element)) {
+      resultArr.push(element);
+    }
+  });
+  return resultArr;
+}
+
 
 
 
