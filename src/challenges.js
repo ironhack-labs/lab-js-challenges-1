@@ -31,11 +31,11 @@ function createSequence(n) {
   if(n===0){
     return []
   }
-  counter = [];
+  const sequence = [];
   for (let i = 0; i <= n; i++) {
-    counter.push(i);
+    sequence.push(i);
   }
-  return counter;
+  return sequence;
 }
 
 
@@ -68,9 +68,6 @@ function filterOut(arrOriginal, arrToFilter) {
   if(arrOriginal.length===0){
     return null
   }
-  const strToCompare = arrToFilter.forEach(function(str1){
-    str1
-  })
   arrOriginal.forEach(function(str){
     if(!arrToFilter.includes(str)){
       resultArr.push(str)
