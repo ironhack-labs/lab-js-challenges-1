@@ -1,4 +1,7 @@
 // Iteration 1 | Count Repetition
+/*Declare a function named howManyTimes that will take in an array of words as the first argument and a word to search for as the second argument. The function should return the number of times the word appears in the array.
+
+You can use the following array to test your solution:*/
 const repeatedWords = [
   "machine",
   "matter",
@@ -13,35 +16,92 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
+function howManyTimes(words, wordToSearch) {
+  let counter = 0;
+  words.forEach(function(element, index, arr){
+    if (element === wordToSearch) {
+      counter++;
+    }
+  })
+  return counter;    
+  };
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+/*
+Declare a function named createSequence. The function should take one argument: a number (n). The function should return an array of numbers in the range from 0 to n.
+*/
+
+function createSequence(numberForArray) {
+  const arraySequence = [];
+  for (let i = 0; i < numberForArray; i++) {
+    arraySequence.push(i);
+    // if (numberForArray === 0) {
+    //   return 0;
+    // } else {
+    //   return arraySequence;
+    // }
+  }
+  return arraySequence;
+}
 
 
 
 
 // Iteration 3 | Multiply for Each
+/*
+Implement the function multiplyBy that takes two arguments: an array of numbers and a number (multiplier). It should return a new array containing each number of the first array multiplied by the multiplier.
+
+Important: You must use the forEach() method in the function to iterate over the array. If you need a refresher on the forEach() method, check today's lesson or the following MDN page.
+
+You can use the following array to test your solution:
+*/
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
+function multiplyBy(arrayNum, numMulti) {
+  let resultArray = [];
+    arrayNum.forEach (function (element, index, arr) {
+      resultArray.push(element * numMulti);
+  })
+  return resultArray;
+}
 
 
 // Iteration 4 | Filter Out
+/*
+Declare a function filterOut. The function should take two arguments: an array of strings (original), and an array of strings to filter out.
+
+The function should return a new array that only includes the strings from the original array that are not present in the second array. In other words, you should remove all the strings listed in the second array.
+
+You can use the following array to test your solution:
+*/
+
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
+function filterOut(arrayOriginal, arrayFilter) {
+  let newResult = [];
+  arrayOriginal.forEach((item) => {
+    if (!arrayFilter.inludes(item)) {
+      newResult.push(item);
+    } else {
+      newResult.pop(item);
+    }
+  });
+  return newResult;
+}
+// console.log(filterOut(original, toRemove));
 
 
 
 // Iteration 5 | Unique Arrays
+/*
+Take the following array, remove the duplicates, and return a new array. You are more than likely going to want to check out the Array methods indexOf and includes.
+
+Do this in the form of a function uniquifyArray that receives an array of words as an argument.
+
+You can use the following array to test your solution:
+ */
 const duplicateWords = [
   "crab",
   "poison",
@@ -56,7 +116,15 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(sortWords) {
+  let newArray =[];
+  sortWords.forEach(function(element){
+    if (!newArray.includes(element)) {
+      newArray.push(element);
+    }
+  });
+  return newArray;
+}
 
 
 
