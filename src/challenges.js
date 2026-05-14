@@ -13,21 +13,50 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, palabraBuscar) {
+  let contador = 0;
+
+  array.forEach(palabra => {
+    if (palabra === palabraBuscar) {
+      contador++;
+    }
+  });
+
+  return contador;
+}
+
+console.log(howManyTimes(repeatedWords, "matter"));
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  if (n === 0){
+    return [];
+  }
+  const numeros = [];
+  for (let i = 0; i <= n; i++) {
+    numeros.push(i);
+  }
 
+  return numeros;
+}
+console.log(createSequence(7));
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr,multi) {
+const contenedor = [];
+arr.forEach(numero =>{
+contenedor.push(numero * multi)
+})
+return contenedor
+}
+console.log(multiplyBy(numbers,3))
 
 
 
@@ -36,7 +65,22 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrCadena,filtrar) {
+  if (arrCadena.length === 0) {
+  return null;
+}
+if (filtrar.length === 0) {
+  return arrCadena;
+}
+const resultado=[];
+arrCadena.forEach(palabra =>{
+  if (!filtrar.includes(palabra)) {
+resultado.push(palabra)
+  }
+})
+return resultado;
+}
+console.log(filterOut(original,toRemove))
 
 
 
@@ -46,18 +90,19 @@ const duplicateWords = [
   "crab",
   "poison",
   "contagious",
-  "simple",
-  "bring",
-  "sharp",
-  "playground",
   "poison",
-  "communion",
   "simple",
-  "bring"
+  "sharp",
+  "simple"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (array.length === 0) {
+    return null;
+  }
 
+  return [...new Set(array)];
+}
 
 
 
