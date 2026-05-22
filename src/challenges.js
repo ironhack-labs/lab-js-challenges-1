@@ -13,34 +13,52 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(repeatWords, searchWords) {
+  let numWords = 0
+  repeatWords.forEach(element => {
+    if (element === searchWords) {
+       numWords++
+    } 
+  }); return numWords;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
-
+function createSequence(n) {
+  const result = []
+  if (n <= 0){
+    return result;
+  }
+  for (let i=0; i<=n; i++){
+    result.push(i)
+  } return result;
+}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
-
-
+function multiplyBy(arrNum, nMultiplier) {
+  const result2 = []
+  arrNum.forEach(element => {
+    result2.push(element * nMultiplier)
+  });return result2;
+}
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
-
-
+function filterOut(originalArr, toRemoveArr) {
+  const arrNew = []
+  if(originalArr.length===0){
+    return null;
+  }
+  else if(toRemoveArr.length===0){
+    return originalArr;
+  }
+  originalArr.forEach(element => {
+     if(!toRemoveArr.includes(element)) {
+      arrNew.push(element);
+     } 
+  }); return arrNew;
+}
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
   "crab",
@@ -56,11 +74,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
-
-
+function uniquifyArray(randomWords) {
+  const uniqueWords = []
+  if(randomWords.length===0){
+    return null;
+  }
+  for(let i=0; i < randomWords.length; i++){
+    if(!uniqueWords.includes(randomWords[i])){
+      uniqueWords.push(randomWords[i]);
+    }
+  } return uniqueWords;
+}
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
