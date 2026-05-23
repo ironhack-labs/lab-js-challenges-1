@@ -13,13 +13,34 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrWords, search) {
+  let word
+  let counter = 0;
+  for (word of arrWords) {
+    if (word === search) {
+      counter++
+    }
+  } return counter
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(rangeNumber) {
+  const sequence = [];
+  if (rangeNumber === 0) {
+    return sequence
+  }
+  for (let i = 0; i <= rangeNumber; i++) {
+    sequence.push(i)
+  }
+  return sequence
+
+
+}
+
+// console.log(createSequence(0))
 
 
 
@@ -27,22 +48,57 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrNumbers, multiplier) {
+  const multNumbers = [];
+  const multiplyNumbers = function (element) {
+    multNumbers.push(element * multiplier)
+  }
+  arrNumbers.forEach(multiplyNumbers)
+  return multNumbers
+}
 
 
 
 
 // Iteration 4 | Filter Out
-const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
+const original = ["cat", "fish", "dog", "bird", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(strArr, filterArr) {
+  if (!strArr.length) {
+    return null
+  }
+  let filteredWords = []
+  for (word of strArr) {
+    if (filterArr.includes(word)) {
+      continue
+    }
+    filteredWords.push(word);
+  } return filteredWords
+
+  // for (wordToFilter of filterArr) {
+  //   while (strArr.includes(wordToFilter)) {
+  //     const indexWord = strArr.indexOf(wordToFilter)
+  //     strArr.splice(indexWord, 1)
+  //   }
+  // }
+  // return strArr
+
+}
+
+// console.log(filterOut(original, toRemove))
 
 
 
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
+  "crab",
+  "crab",
+  "crab",
+  "crab",
+  "crab",
+  "crab",
   "crab",
   "poison",
   "contagious",
@@ -56,7 +112,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrStr) {
+  if (!arrStr.length) {
+    return null
+  }
+  const filteredArr = []
+  for (word of arrStr) {
+    if (filteredArr.includes(word)) {
+      continue
+    }
+    filteredArr.push(word)
+  }
+  return filteredArr
+}
+
+// console.log(uniquifyArray(duplicateWords))
 
 
 
@@ -85,4 +155,49 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+const smallMatrix = [
+  [-1, -2, 3, 4, -5],
+  [1, -20, 3, 4, -5],
+  [1, 20, 3, 4, -5],
+  [1, -20, 3, 4, -5],
+  [1, -4, 3, 4, 5]
+]
+
+function greatestProduct(matrixArr) {
+
+  let greatestProduct = -Infinity;
+  let productNumbers;
+
+  for (let i = 0; i < matrixArr.length; i++) {
+
+    for (let j = 0; j < matrixArr[i].length - 3; j++) {
+
+      //ROW
+      const RowNs = [matrixArr[i][j], matrixArr[i][j + 1], matrixArr[i][j + 2], matrixArr[i][j + 3]]
+      //COLUMN
+      const ColNs = [matrixArr[j][i], matrixArr[j + 1][i], matrixArr[j + 2][i], matrixArr[j + 3][i]]
+
+      const productRow = RowNs[0] * RowNs[1] * RowNs[2] * RowNs[3]
+      const productCol = ColNs[0] * ColNs[1] * ColNs[2] * ColNs[3]
+
+
+      if (productRow > greatestProduct) {
+        greatestProduct = productRow
+        productNumbers = RowNs
+      }
+      if (productCol > greatestProduct) {
+        greatestProduct = productCol
+        productNumbers = ColNs
+      }
+
+    }
+
+  }
+
+  console.log("The greatest product of all the matrix is " + productNumbers + " " + greatestProduct)
+
+  return greatestProduct
+}
+
+
+greatestProduct(matrix)
