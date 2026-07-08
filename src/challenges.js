@@ -13,33 +13,50 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
-
-
-
+function howManyTimes(wordsArray, wordToSearch) {
+  if (wordsArray.length === 0) return 0;
+  let count = 0;
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (wordsArray[i] === wordToSearch) {
+      count++;
+    }
+  }
+  return count;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
-
-
-
+function createSequence(n) {
+  const sequence = [];
+  for (let i = 0; i <= n; i++) {
+    sequence.push(i);
+  }
+  return sequence;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
-
-
-
+function multiplyBy(numbersArray, multiplier) {
+  const result = [];
+  numbersArray.forEach(function(number) {
+    result.push(number * multiplier);
+  });
+  return result;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
-
+function filterOut(originalArray, toRemoveArray) {
+  const filtered = [];
+  for (let i = 0; i < originalArray.length; i++) {
+    if (!toRemoveArray.includes(originalArray[i])) {
+      filtered.push(originalArray[i]);
+    }
+  }
+  return filtered;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +73,16 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
-
-
+function uniquifyArray(wordsArray) {
+  if (wordsArray.length === 0) return null;
+  const uniqueWords = [];
+  for (let i = 0; i < wordsArray.length; i++) {
+    if (!uniqueWords.includes(wordsArray[i])) {
+      uniqueWords.push(wordsArray[i]);
+    }
+  }
+  return uniqueWords;
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
@@ -85,4 +108,23 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrixGrid) {
+  let maxProduct = 0;
+  for (let row = 0; row < matrixGrid.length; row++) {
+    for (let col = 0; col < matrixGrid[row].length; col++) {
+      if (col + 3 < matrixGrid[row].length) {
+        let horizontalProduct = matrixGrid[row][col] * matrixGrid[row][col + 1] * matrixGrid[row][col + 2] * matrixGrid[row][col + 3];
+        if (horizontalProduct > maxProduct) {
+          maxProduct = horizontalProduct;
+        }
+      }
+      if (row + 3 < matrixGrid.length) {
+        let verticalProduct = matrixGrid[row][col] * matrixGrid[row + 1][col] * matrixGrid[row + 2][col] * matrixGrid[row + 3][col];
+        if (verticalProduct > maxProduct) {
+          maxProduct = verticalProduct;
+        }
+      }
+    }
+  }
+  return maxProduct;
+}
