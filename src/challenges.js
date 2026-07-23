@@ -129,4 +129,22 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct() {
+
+}
+
+function getHighestAdjacentNumbersInRow(rowOfNumbers) {
+  if (rowOfNumbers.length < 4) {
+    return 1;
+  }
+
+  let highestNumbers = [];
+
+  for (let i=0;i<rowOfNumbers.length-4;i++) {
+    let 
+  }
+}
+
+function getHighestAdjacentNumbersInColumn(matrix, columnIndex) {
+
+}
