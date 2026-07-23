@@ -71,7 +71,6 @@ return !toRemove.includes(word);
 }
 
 
-
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
   "crab",
