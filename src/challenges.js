@@ -13,13 +13,42 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, word) {
+
+    if(arrayOfWords.length === 0){
+      return 0;
+    }
+
+    let counter = 0;
+
+    for(let i = 0; i < arrayOfWords.length; i++){
+      if(arrayOfWords[i] === word){
+        counter++;
+      }
+    }
+
+    return counter;
+
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(limitArray) {
+
+    let arraySequence = [];
+
+    if(limitArray === 0){
+      return arraySequence;
+    }
+
+    for(let i = 0; i <= limitArray; i++){
+      arraySequence.push(i);
+    }
+
+    return arraySequence;
+}
 
 
 
@@ -27,7 +56,20 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, multiplier) {
+
+  let arrayOfMultiplied = [];
+
+  if(arrayOfNumbers.length === 0){
+    return arrayOfMultiplied;
+  }
+
+  arrayOfNumbers.forEach(element => {
+    arrayOfMultiplied.push(element * multiplier);
+  });
+
+  return arrayOfMultiplied;
+}
 
 
 
@@ -36,8 +78,26 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayOfWords, arrayOfWordsToRemove) {
 
+  if(arrayOfWords.length === 0){
+    return null;
+  }
+
+  if(arrayOfWordsToRemove.length === 0){
+    return arrayOfWords;
+  }
+
+  let newArray = [];
+
+  for(let i = 0; i < arrayOfWords.length; i++){
+    if(!arrayOfWordsToRemove.includes(arrayOfWords[i])){
+      newArray.push(arrayOfWords[i]);
+    }
+  }
+
+  return newArray;
+}
 
 
 
@@ -56,7 +116,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayWithDuplicateWords) {
+
+  if(arrayWithDuplicateWords.length === 0){
+    return null;
+  }
+
+  let newArray = [];
+
+  for(let i = 0; i < arrayWithDuplicateWords.length; i++){
+    if(!newArray.includes(arrayWithDuplicateWords[i])){
+      newArray.push(arrayWithDuplicateWords[i]);
+    }
+  }
+  
+  return newArray;
+}
 
 
 
@@ -85,4 +160,32 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrixArray) {
+
+  let numberInTheColumn = matrixArray.length;
+  let maxProduct = 0;
+
+  for(let i = 0; i < matrixArray.length ; i++ ){
+
+    let numberInTheLine = matrixArray[i].length;
+
+    for(let j = 0; j < matrixArray[i].length; j++){
+
+      if(j < numberInTheLine - 3){
+        let actualLineProduct = matrixArray[i][j] * matrixArray[i][j+1] * matrixArray[i][j+2] * matrixArray[i][j+3];
+        if(maxProduct < actualLineProduct){
+          maxProduct = actualLineProduct;
+        }
+      }
+
+      if(i < numberInTheColumn - 3){
+        let actualColumnProduct = matrixArray[i][j] * matrixArray[i+1][j] * matrixArray[i+2][j] * matrixArray[i+3][j];
+        if(maxProduct < actualColumnProduct){
+          maxProduct = actualColumnProduct;
+        }
+      }
+    }
+  }
+
+  return maxProduct;
+}
