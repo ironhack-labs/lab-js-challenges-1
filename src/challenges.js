@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrayOfWords, wordToCount) {
+  let wordCount = 0;
+
+  for (let singleWord of arrayOfWords) {
+    if (singleWord === wordToCount) {
+      wordCount++;
+    }
+  }
+
+  return wordCount;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(endNumber) {
+  if (endNumber === 0) {
+    return [];
+  }
+
+  const arrayOfNumbers = [];
+
+  for (let i = 0; i <= endNumber; i++) {
+    arrayOfNumbers.push(i);
+  }
+
+  return arrayOfNumbers;
+}
 
 
 
@@ -27,7 +49,15 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arrayOfNumbers, multiplier) {
+  const arrayOfNumbersMultiplied = [];
+
+  arrayOfNumbers.forEach(singleNumber => {
+    arrayOfNumbersMultiplied.push(singleNumber * multiplier);
+  });
+
+  return arrayOfNumbersMultiplied;
+}
 
 
 
@@ -36,7 +66,24 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arrayOfWords, arrayOfFilterWords) {
+  if (!Array.isArray(arrayOfWords) || arrayOfWords.length === 0) {
+    return null;
+  }
+
+  const returnArray = arrayOfWords;
+
+  for (let singleFilterWord of arrayOfFilterWords) {
+    let index = returnArray.indexOf(singleFilterWord);
+
+    while (index !== -1) {
+      returnArray.splice(index, 1);
+      index = returnArray.indexOf(singleFilterWord);
+    }
+  }
+
+  return returnArray;
+}
 
 
 
@@ -56,7 +103,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arrayOfWords) {
+  if (!Array.isArray(arrayOfWords) || arrayOfWords.length === 0) {
+    return null;
+  }
+
+  const returnArray = [];
+
+  for (let singleWord of arrayOfWords) {
+    if (!returnArray.includes(singleWord)) {
+      returnArray.push(singleWord);
+    }
+  }
+
+  return returnArray;
+}
 
 
 
@@ -85,4 +146,41 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrixToCheck) {
+  let greatestProduct = -Infinity;
+
+  const numOfRows = matrixToCheck.length;
+  const numOfColumns = matrixToCheck[0].length;
+
+  for (let i = 0; i < numOfRows; i++) {
+    for (let j = 0; j < numOfColumns; j++) {
+      // Horizontally
+      if (j + 3 < numOfColumns) {
+        let currentProduct = 1;
+
+        for (let numIndex = j; numIndex <= j + 3; numIndex++) {
+          currentProduct *= matrixToCheck[i][numIndex];
+        }
+
+        if (currentProduct > greatestProduct) {
+          greatestProduct = currentProduct;
+        }
+      }
+
+      // Vertically
+      if (i + 3 < numOfRows) {
+        let currentProduct = 1;
+
+        for (let numIndex = i; numIndex <= i + 3; numIndex++) {
+          currentProduct *= matrixToCheck[numIndex][j];
+        }
+
+        if (currentProduct > greatestProduct) {
+          greatestProduct = currentProduct;
+        }
+      }
+    }
+  }
+
+  return greatestProduct;
+}
