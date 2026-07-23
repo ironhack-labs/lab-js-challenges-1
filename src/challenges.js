@@ -13,13 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(repeatedWords, word) {
+  if(repeatedWords.length === 0){
+    return 0;
+  }
+  let count = 0;
+  for(let i = 0; i < repeatedWords.length ; i++){
+    if(repeatedWords[i] == word){count++;}      
+  }
+
+  return count;
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  let count = [];
+  if(n == 0){
+    return count;
+  }
+  for(let i = 0; i <= n ; i++){
+    count.push(i);
+  }
+  return count;
+  
+
+
+}
 
 
 
@@ -27,7 +49,11 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+  const result = [];
+  numbers.forEach(function(number) {result.push(number * multiplier)})
+  return result;
+}
 
 
 
@@ -36,7 +62,19 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if(original.length === 0){return null}
+  if(toRemove.length === 0){return original}
+
+  const filter = [];
+  original.forEach(function(x){if(!toRemove.includes(x)){
+    filter.push(x);
+      }
+  })
+  return filter;
+}
+
+
 
 
 
@@ -56,7 +94,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(duplicateWords) {
+   if(duplicateWords.length === 0){return null}
+  const filter = [];
+    duplicateWords.forEach(function(x, index){
+      if(!filter.includes(x)){
+        filter.push(x);
+      }
+    })
+  return filter;
+}
+
 
 
 
@@ -85,4 +133,27 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix){
+  let max = 0;
+
+  for(let i = 0 ; i < matrix.length; i++){
+    for(let y = 0 ; y < matrix[i].length; y++){
+      if (y <= matrix[i].length - 4) {
+        const horizontal = matrix[i][y] * matrix[i][y + 1] * matrix[i][y + 2] * matrix[i][y + 3];
+      if (horizontal > max) {
+          max = horizontal;
+        }
+      }
+        if (i <= matrix.length - 4) {
+          const vertical = matrix[i][y] * matrix[i + 1][y] * matrix[i + 2][y] * matrix[i + 3][y];    
+        if (vertical > max) {
+            max = vertical;
+          }
+        }
+    }
+  }
+  return max;
+  }
+
+
+ 
