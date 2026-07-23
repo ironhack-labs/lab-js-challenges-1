@@ -13,21 +13,66 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(array, word) {
+  let totalNumRepetitions = 0
 
+  for (let i = 0; i < array.length; i++){
+    let currentElement = array[i]
+
+    if (currentElement === word){
+      totalNumRepetitions = totalNumRepetitions + 1
+    }
+  }
+
+  return totalNumRepetitions
+}
+
+// test:
+console.log(howManyTimes(repeatedWords,"matter"))
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) { 
 
+  if (n <= 0) {   // Guard Clause
+    return [];
+  }
 
+  let sequence = []
+
+  for (let i = 0; i <= n; i++) {
+
+    sequence.push(i)
+
+  }
+
+return sequence
+
+}
+
+//test:
+console.log(createSequence(9));
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(array, multiplier) {
+
+
+  let result = []
+
+  array.forEach((num) => {
+  result.push(num * multiplier)
+
+   });
+
+ return result
+}
+
+//test:
+console.log(multiplyBy(numbers, 3))
 
 
 
@@ -36,8 +81,29 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(array, toFilterArray) {
 
+  if (array.length === 0) {   // Guard Clause
+    return null
+  }
+
+  let newArray = []
+
+
+  for (let i = 0; i < array.length; i++){
+   let currentElement = array[i]
+
+   if (!toFilterArray.includes(currentElement)){
+    newArray.push(currentElement)
+    }
+
+  }
+
+  return newArray
+
+}
+
+console.log(filterOut(original, toRemove))
 
 
 
@@ -56,7 +122,27 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+
+   if (array.length === 0) {   // Guard Clause
+    return null
+  }
+
+   let result = []
+   
+   array.forEach((word)=>{
+
+    if(!result.includes(word)) {
+      result.push(word)
+    }
+
+   })
+
+  return result 
+
+}
+
+console.log(uniquifyArray(duplicateWords))
 
 
 
