@@ -13,7 +13,17 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsArray, word) {
+  let count = 0;
+
+  wordsArray.forEach(function (currentWord) {
+    if (currentWord === word) {
+      count++;
+    }
+  });
+
+  return count;
+}
 
 
 
