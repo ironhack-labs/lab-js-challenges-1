@@ -13,13 +13,31 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  let count = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      count++
+    }
+  }
+  return count
+}
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const sequence = []
+  for (let i = 0; i <= n; i++) {
+    if (n === 0) {
+      break
+    } else {
+      sequence.push(i)
+    }
+  }
+  return sequence
+}
 
 
 
@@ -27,7 +45,16 @@ function createSequence() {}
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(arr, n) {
+  const result = []
+
+  // I had to google how to do the forEach. Lukily, the MDN example was very similar. Not a big fan, not quite fully understand how it works at 100%.
+  arr.forEach(element => {
+    result.push(element * n)
+  })
+
+  return result
+}
 
 
 
@@ -36,7 +63,13 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(arr1, arr2) {
+  if (!Array.isArray(arr1) || !arr1.length) {
+    return null
+  } else {
+    return arr1.filter(word => !arr2.includes(word))
+  }
+}
 
 
 
@@ -56,7 +89,22 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  let result = []
+
+  if (!Array.isArray(arr) || !arr.length) {
+    return null
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (result.includes(arr[i])) {
+      continue
+    } else {
+      result.push(arr[i])
+    }
+  }
+  return result
+}
 
 
 
@@ -85,4 +133,32 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+  let result = 0
+
+  const rows = matrix.length
+  const cols = matrix[0].length
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+
+      if (col <= cols - 4) {
+        let colResult = matrix[row][col] * matrix[row][col + 1] * matrix[row][col + 2] * matrix[row][col + 3]
+
+        if (colResult > result) {
+          result = colResult
+        }
+      }
+
+      if (row <= rows - 4) {
+        let rowResult = matrix[row][col] * matrix[row + 1][col] * matrix[row + 2][col] * matrix[row + 3][col]
+
+        if (rowResult > result) {
+          result = rowResult
+        }
+      }
+    }
+  }
+
+  return result
+}
