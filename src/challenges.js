@@ -100,7 +100,21 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(array) {
+  if (array.length === 0) {
+    return null;
+  }
+
+  const result = [];
+
+  array.forEach(function (element) {
+    if (!result.includes(element)) {
+      result.push(element);
+    }
+  });
+
+  return result;
+}
 
 
 
