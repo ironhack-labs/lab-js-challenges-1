@@ -66,7 +66,21 @@ function multiplyBy(numbersArray, multiplier) {
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  if (original.length === 0) {
+    return null;
+  }
+
+  const result = [];
+
+  original.forEach(function (element) {
+    if (!toRemove.includes(element)) {
+      result.push(element);
+    }
+  });
+
+  return result;
+}
 
 
 
