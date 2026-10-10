@@ -13,6 +13,35 @@ const repeatedWords = [
   "matter"
 ];
 
+const repeatedWords = [
+  "machine",
+  "matter",
+  "subset",
+  "trouble",
+  "starting",
+  "matter",
+  "eating",
+  "matter",
+  "truth",
+  "disobedience",
+  "matter"
+];
+
+function howManyTimes(words, wordToSearch) {
+  let count = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i] === wordToSearch) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(howManyTimes(repeatedWords, "matter"));
+
+
 function howManyTimes() {}
 
 
@@ -23,12 +52,38 @@ function createSequence() {}
 
 
 
+function createSequence(n) {
+  const numbers = [];
+
+  for (let i = 0; i <= n; i++) {
+    numbers.push(i);
+  }
+
+  return numbers;
+}
+
+console.log(createSequence(7));
+
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy() {}
 
+
+const numbers = [1, 2, 5, 10, 13, 50];
+
+function multiplyBy(numbers, multiplier) {
+  const result = [];
+
+  numbers.forEach(function(number) {
+    result.push(number * multiplier);
+  });
+
+  return result;
+}
+
+console.log(multiplyBy(numbers, 2));
 
 
 
@@ -38,6 +93,17 @@ const toRemove = ["cat", "dog"];
 
 function filterOut() {}
 
+
+const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
+const toRemove = ["cat", "dog"];
+
+function filterOut(original, toRemove) {
+  return original.filter(function (word) {
+    return !toRemove.includes(word);
+  });
+}
+
+console.log(filterOut(original, toRemove));
 
 
 
@@ -59,6 +125,30 @@ const duplicateWords = [
 function uniquifyArray() {}
 
 
+
+const duplicateWords = [
+  "crab",
+  "poison",
+  "contagious",
+  "poison",
+  "simple",
+  "sharp",
+  "simple"
+];
+
+function uniquifyArray(words) {
+  const uniqueWords = [];
+
+  words.forEach(function(word) {
+    if (!uniqueWords.includes(word)) {
+      uniqueWords.push(word);
+    }
+  });
+
+  return uniqueWords;
+}
+
+console.log(uniquifyArray(duplicateWords));
 
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
