@@ -5,30 +5,61 @@ const repeatedWords = [
   "subset",
   "trouble",
   "starting",
-  "matter",
+  "machine",
   "eating",
   "matter",
   "truth",
   "disobedience",
+  "eating",
+  "subset",
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(Word, SumWord) {// primero me genero una funcion donde genero 2 argumentos en uno que me busque la palabra y la otra para que me diga cuantas veces se repite 
+let Sum = 0 // le creo una variable para que me cuente desde 0 
+Word.forEach(function(CountWord){// hago una interacion en mi array para que me vaya buscando las palabras ( hago la interacion sobre el primer argumento )
+  if ( CountWord === SumWord ){ // aqui hago un if para decir que cuando encuentre una palabra en la array me las vaya sumando si se repite
+    Sum ++;
+  }
+});
+return Sum;
+}
+// console.log(howManyTimes(repeatedWords,"matter")) // primero se pone la funcion, luego pongo la constante donde tengo las palabras y la palabra que quiero buscar.
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n){//genero una funcion inicial donde n es una variable que puede cambiar dependiendo del tamaño de la secuencia
+  if ( n === 0){ // Si el valor de n es 0 me devuelve una array vacia
+    return []
+  }
+  let createSeq = [] // creo una constante nueva para generar una array en funcion del valor n
 
-
-
+  for ( let i=0; i<= n; i++){ // hago una interacion donde al usar push me va sumando valores a mi array en funcion del valor inicial
+    createSeq.push(i)
+  }
+  return createSeq
+}
+// console.log(createSequence(8))// siempre se pone primero la funcion que se hace referencia y luego el valor de la array 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
 
+
+function multiplyBy(Number,Multiply) { /* genero una funcion donde tengo 2 argumentos de los cuales
+                                            uso numero y coeficiente de multiplicacion*/
+  const result = []   // genero una constante que me devuelva un array nueva 
+  Number.forEach(function(NewResult){ // hago una interaccion dentro de mi funcion para que me devuelva la nueva array segun mi valor multiplicador 
+    if ( NewResult === 0){ // aqui mi idea es que me devuelva un valor null ya que el valor 0 no deberia dar ARRAY
+      return result= "not available"
+    }
+    else {result.push( NewResult*Multiply)}
+  })
+  return result;
+} 
+console.log(multiplyBy(numbers,0))
 
 
 
@@ -36,9 +67,18 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
-
-
+function filterOut(original,toRemove) {
+  if ( original.length === 0){
+    return null;
+  }
+  let result = []
+  original.forEach(function(filter){
+    if (!toRemove.includes(filter))
+      result.push(filter)
+  })
+  return result
+}
+console.log(filterOut(original,toRemove))
 
 
 // Iteration 5 | Unique Arrays
@@ -56,8 +96,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(Words) {
+if (Words.length === 0){
+  return null
+}
+ let NewArray = []
+ Words.forEach(function(letter){
+    if( NewArray.indexOf(letter) === -1){
+      NewArray.push(letter)
+    }
+ })
+ return NewArray;
+}
+console.log(uniquifyArray(duplicateWords))
 
 
 
