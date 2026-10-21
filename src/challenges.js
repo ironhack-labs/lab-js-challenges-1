@@ -10,36 +10,101 @@ const repeatedWords = [
   "matter",
   "truth",
   "disobedience",
+  "matter",
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes
+(repeatedWords, word) 
+{
+	let timesRepeated = 0;
 
+	for (let i = 0; i < repeatedWords.length; i++) {
 
+		const toAnalyse = repeatedWords[i];
 
+		if (toAnalyse === word) {
+
+			timesRepeated++;
+		}
+	}
+
+	return timesRepeated;
+}
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
 
+const n = 4;
 
+function createSequence
+(n) 
+{ 
+	let sequence = [];
 
+	for (let i = 0; i <= n; i++) {
+
+		sequence.push(i);
+	}
+
+	if (n === 0) {
+
+  	sequence = [];
+	}
+	
+	return sequence;
+}
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy
+(numbers, multiplier) 
+{
+	let multipliedNumbers = [];
 
+		// this forEach thing was a wee bit confusing to get at first but i get it just fine now :D
+		numbers.forEach(function(number) {
 
+  		multipliedNumbers.push(number * multiplier);
+		});
 
+	if (numbers.length === 0) {
+
+		numbers = null;
+	}
+
+	return multipliedNumbers;
+}
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut
+(original, toRemove) 
+{
+	let reviewed = [];
 
+	for (let i = 0; i < original.length; i++) {
 
+		if (toRemove.includes(original[i])) {
 
+			continue;
+		}
+
+		else {
+
+			reviewed.push(original[i]);	
+		}
+	}
+
+	if (original.length === 0) {
+
+		return null;
+	}	
+
+	return reviewed;
+}
 
 // Iteration 5 | Unique Arrays
 const duplicateWords = [
@@ -56,10 +121,32 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray
+(duplicateWords) 
+{
+	let curatedArray = [];
 
+	for (let i = 0; i < duplicateWords.length; i++) {
 
+		if (!curatedArray.includes(duplicateWords[i])) {
+  	
+			curatedArray.push(duplicateWords[i]);
+		}
 
+		else {
+
+			continue;
+		}
+
+	}
+
+	if (duplicateWords.length === 0) {
+
+		return null;
+	}
+
+	return curatedArray;
+}
 
 // Bonus: Iteration 6 | Product of Adjacent Numbers
 const matrix = [
