@@ -49,7 +49,7 @@ function multiplyBy(numbers, multiplier) {
   let result =[];
 
   numbers.forEach(function(currentNum){
-    result.push (currentNumber * multiplier);
+    result.push (currentNum * multiplier);
 
 });
   return result;
