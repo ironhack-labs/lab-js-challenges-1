@@ -13,31 +13,74 @@ const repeatedWords = [
   "matter"
 ];
 
-function howManyTimes() {}
+function howManyTimes(words, wordToSearch) {
+  if (repeatedWords.length === 0) {
+    return 0;
+  }
+let count = 0;
+for (let i = 0; i < words.length; ++i) {
+  if (words[i] === wordToSearch) {
+    count++
+  }
+ }
+return count; 
+}
+console.log(howManyTimes(repeatedWords, "matter"));
+console.log(howManyTimes(repeatedWords, "machine"));
+console.log(howManyTimes(repeatedWords, "hello"));
 
 
 
 
 // Iteration 2 | Number Sequence
-function createSequence() {}
+function createSequence(n) {
+  const sequense = [];
+  if (n === 0) {
+    return [];
+  }
+  for (let i = 0; i<=n; ++i) {
+    sequense.push(i);
+  }
+  return sequense;
+}
+console.log(createSequence(0));
+console.log(createSequence(5));
 
 
 
 
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
-
-function multiplyBy() {}
-
-
+function multiplyBy(numbers, multiplier) {
+const result = [];
+numbers.forEach(function(number) {
+  result.push(number * multiplier);
+});
+  return result;
+}
+console.log(multiplyBy(numbers, 3));
 
 
 // Iteration 4 | Filter Out
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  const result = [];
+  if(original.length === 0) {
+    return null;
+  }
 
+  original.forEach(function(word) {
+    if (!toRemove.includes(word)) {
+      result.push(word);
+    }
+  });
+
+  return result;
+}
+
+console.log(filterOut(original, toRemove));
 
 
 
@@ -56,8 +99,19 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
-
+function uniquifyArray(duplicateWords) {
+  const result = [];
+  if (duplicateWords.length === 0) {
+    return null;
+  }
+  duplicateWords.forEach(function(duplicateWord) {
+    if(!result.includes(duplicateWord)) {
+      result.push(duplicateWord);
+    }
+  });
+  return result;
+}
+console.log(uniquifyArray(duplicateWords));
 
 
 
@@ -85,4 +139,27 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrix) {
+let greatest = 0;
+for (let row = 0; row < matrix.length; ++row) {
+  for (let col = 0; col < matrix[row].length; col++) {
+    if (col + 3 < matrix[row].length) {
+      const product = 
+      matrix[row][col] * matrix[row][col + 1] * matrix[row][col + 2] * matrix[row][col + 3];
+      if (product > greatest) {
+        greatest = product;
+      }
+    }
+    
+    if (row + 3 < matrix.length) {
+      const product = 
+      matrix[row][col] * matrix[row +1][col] * matrix[row + 2][col] * matrix[row + 3][col];
+      if (product > greatest) {
+        greatest = product;
+      }
+    }
+  }
+}
+return greatest;
+}
+console.log(greatestProduct(matrix));
