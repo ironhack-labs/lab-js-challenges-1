@@ -140,9 +140,10 @@ const matrix = [
 ];
 
 function greatestProduct(matrix) {
-let greatest = 0;
+let greatest = -Infinity;
 for (let row = 0; row < matrix.length; ++row) {
   for (let col = 0; col < matrix[row].length; col++) {
+    
     if (col + 3 < matrix[row].length) {
       const product = 
       matrix[row][col] * matrix[row][col + 1] * matrix[row][col + 2] * matrix[row][col + 3];
@@ -158,6 +159,32 @@ for (let row = 0; row < matrix.length; ++row) {
         greatest = product;
       }
     }
+
+    if (row + 3 < matrix.length &&
+        col + 3 < matrix[row].length
+      ) {
+        const product =
+          matrix[row][col] *
+          matrix[row + 1][col + 1] *
+          matrix[row + 2][col + 2] *
+          matrix[row + 3][col + 3];
+
+        if (product > greatest) {
+          greatest = product;
+        }
+      }
+
+    if (row + 3 < matrix.length && col - 3 >= 0) {
+        const product =
+          matrix[row][col] *
+          matrix[row + 1][col - 1] *
+          matrix[row + 2][col - 2] *
+          matrix[row + 3][col - 3];
+
+        if (product > greatest) {
+          greatest = product;
+        }
+      }
   }
 }
 return greatest;
