@@ -43,7 +43,17 @@ return numbers;
 // Iteration 3 | Multiply for Each
 const numbers = [1, 2, 5, 10, 13, 50];
 
-function multiplyBy() {}
+function multiplyBy(numbers, multiplier) {
+
+  let result = []
+
+  numbers.forEach((n) => {
+    result.push(n*multiplier);
+
+  });
+
+  return result;
+}
 
 
 
@@ -52,7 +62,17 @@ function multiplyBy() {}
 const original = ["cat", "dog", "fish", "bird", "cat", "fish"];
 const toRemove = ["cat", "dog"];
 
-function filterOut() {}
+function filterOut(original, toRemove) {
+  let result = [];
+
+  original.forEach((word) => {
+    if (!toRemove.includes(word)) {
+      result.push(word);
+    }
+  });
+
+  return result;
+}
 
 
 
@@ -72,7 +92,17 @@ const duplicateWords = [
   "bring"
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(words) {
+
+  let result = []
+
+  duplicateWords.forEach((repeat)=> {
+    if(!result.includes(repeat)){
+      result.push(word)
+    }
+  })
+  return result;
+}
 
 
 
